@@ -1,0 +1,20 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.startupEditor": "none",
+    "editor.minimap.enabled": false,
+    "go.toolsManagement.autoUpdate": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "redhat.telemetry.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    "files.autoSave": "onFocusChange",
+    "vim.useSystemClipboard": true,
+    "editor.lineNumbers": "relative",
+    "eslint.codeActionsOnSave.rules": null,
+    "editor.fontFamily": "jetbrainsmono nerd font,Menlo, Monaco, 'Courier New', monospace",
+    "window.titleBarStyle": "native",
+    "breadcrumbs.enabled": false,
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.lightContrast": "soft"
+}
