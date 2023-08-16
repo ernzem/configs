@@ -1,9 +1,14 @@
+Personal configuration files. 
+Requires Dotbot tool: https://github.com/anishathalye/dotbot
+Dotbot integration info: https://github.com/anishathalye/dotbot
+
 ## TODO
- Mac VSCode install extensions:
+
+ - [ ] VSCode scripts that installs extensions from text file.
  ```bash
+# To retrieve a list of installed vs code extensions
+code --list-extensions >> ~/.cfg/code/vs_code_extensions_list.txt
+
  # To install VSCode extensions:
  cat ~/.config/Code/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
  ```
- - [ ] Syntching settings auto setup in Mac (create symlinks)
- - [ ] Script that creates symlinks for setting in MAC:
-     - [ ] Vscode

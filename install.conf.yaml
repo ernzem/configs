@@ -1,0 +1,29 @@
+# link all common stuff
+
+- defaults:
+    link:
+      create: true
+      relink: true
+- link:
+    ~/.config/alacritty/:  alacritty
+    ~/.config/bat/:  bat
+    ~/.config/kitty/:  kitty
+    ~/.config/nvim/:  nvim
+
+# link all the Linux stuff
+- defaults:
+    link:
+      if: '[ "$(uname -s)" = "Linux" ]'
+      create: true
+      relink: true
+- link:
+    ~/.config/Code/User/settings.json:  code/User/settings.json
+    ~/.config/Code/User/keybindings.json:  code/User/keybindings.json
+    ~/.config/Code/User/snippets:  code/User/snippets
+
+# change defaults and link all the Mac stuff
+# - defaults:
+#     link:
+#       if: '[ "$(uname -s)" = "Darwin" ]'
+# - link:
+    # ~/.gitlocal:  git/mac
