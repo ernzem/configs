@@ -10,7 +10,7 @@
     ~/.config/kitty/:  kitty
     ~/.config/nvim/:  nvim
 
-# link all the Linux stuff
+# Linux
 - defaults:
     link:
       if: '[ "$(uname -s)" = "Linux" ]'
@@ -21,9 +21,13 @@
     ~/.config/Code/User/keybindings.json:  code/User/keybindings.json
     ~/.config/Code/User/snippets:  code/User/snippets
 
-# change defaults and link all the Mac stuff
-# - defaults:
-#     link:
-#       if: '[ "$(uname -s)" = "Darwin" ]'
-# - link:
-    # ~/.gitlocal:  git/mac
+# Mac
+- defaults:
+    link:
+      if: '[ "$(uname -s)" = "Darwin" ]'
+      create: true
+      relink: true
+- link:
+    ~/Library/Application Support/Code/User/settings.json:  code/User/settings.json
+    ~/Library/Application Support/Code/User/keybindings.json:  code/User/keybindings.json
+    ~/Library/Application Support/Code/User/snippets:  code/User/snippets
