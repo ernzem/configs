@@ -20,6 +20,7 @@
     ~/.config/Code/User/settings.json:  code/User/settings.json
     ~/.config/Code/User/keybindings.json:  code/User/keybindings.json
     ~/.config/Code/User/snippets:  code/User/snippets
+    ~/.config/foot/: foot
 
 # Mac
 - defaults:
