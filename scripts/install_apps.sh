@@ -8,9 +8,12 @@ sudo apt install -y apt-transport-https
 sudo apt install -y wget gpg git curl
 sudo apt install -y tmux
 sudo apt install -y ripgrep
-sudo apt install -y timeshift
-sudo apt install -y foot
+sudo apt install -y timeshift pkexec
+# sudo apt install -y foot
 sudo apt install -y fprintd
+
+sudo apt install -y wl-clipboard # Wayland only
+#sudo apt install -y xclip # X11 only
 # sudo apt install -y gnome-tweaks
 # -----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y bat
@@ -24,7 +27,7 @@ sudo apt update && sudo apt install -y brave-browser
 # -----------------------------------------------------------------------------------------------------------------------
 # Starship https://starship.rs/guide/#%F0%9F%9A%80-installation
 curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init bash)"' >> ~/.bashrc
+# echo 'eval "$(starship init bash)"' >> ~/.bashrc
 # -----------------------------------------------------------------------------------------------------------------------
 # Flatpak & Flathub
 sudo apt install flatpak
@@ -58,10 +61,9 @@ echo \
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Make docker as non root user https://docs.docker.com/engine/install/linux-postinstall/
+# Make docker as non root user
 # sudo groupadd docker
 sudo usermod -aG docker $USER
-newgrp docker
 
 # Autostart docker
 # sudo systemctl enable docker.service
@@ -95,4 +97,11 @@ sudo apt install -y syncthing
 
 # -------------------------------------------------------------------------------------------------------------------------
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+mkdir ~/Apps
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage --output-dir ~/Apps
+chmod u+x ~/Apps/nvim.appimage
+
+curl -LO https://github.com/keepassxreboot/keepassxc/releases/download/2.7.6/KeePassXC-2.7.6-x86_64.AppImage --output-dir ~/Apps
+chmod u+x ~/Apps/KeePassXC-2.7.6-x86_64.AppImage
 
