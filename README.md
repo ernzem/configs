@@ -10,5 +10,5 @@ Dotbot integration info: https://github.com/anishathalye/dotbot
 code --list-extensions >> ~/.cfg/code/vs_code_extensions_list.txt
 
  # To install VSCode extensions:
- cat ~/.config/Code/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
+ cat ~/.cfg/code/vs_code_extensions_list.txt | xargs -n 1 code --install-extension
  ```
