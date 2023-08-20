@@ -9,9 +9,9 @@ sudo apt install -y wget gpg git curl
 sudo apt install -y tmux
 sudo apt install -y ripgrep
 sudo apt install -y timeshift pkexec
-# sudo apt install -y foot
+sudo apt install -y foot
+sudp apt install -y pandoc
 sudo apt install -y fprintd
-
 sudo apt install -y wl-clipboard # Wayland only
 #sudo apt install -y xclip # X11 only
 # sudo apt install -y gnome-tweaks
@@ -70,10 +70,10 @@ sudo usermod -aG docker $USER
 # sudo systemctl enable containerd.service
 # -----------------------------------------------------------------------------------------------------------------------
 # Typora
-#wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
-#sudo add-apt-repository 'deb https://typora.io/linux ./'
-#sudo apt update
-#sudo apt install -y typora
+wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt update
+sudo apt install -y typora
 # -----------------------------------------------------------------------------------------------------------------------
 # Syntching
 # Add the release PGP keys:
@@ -101,7 +101,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 mkdir ~/Apps
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage --output-dir ~/Apps
 chmod u+x ~/Apps/nvim.appimage
-
-curl -LO https://github.com/keepassxreboot/keepassxc/releases/download/2.7.6/KeePassXC-2.7.6-x86_64.AppImage --output-dir ~/Apps
-chmod u+x ~/Apps/KeePassXC-2.7.6-x86_64.AppImage
 
