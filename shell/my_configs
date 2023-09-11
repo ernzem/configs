@@ -20,7 +20,7 @@ export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 
 # Aliases
 alias cn="rg '' $HOME/Sync/Notes/cli/ --no-filename |fzf |grep -o '^[^#]*'"
-alias cfg="cd ~/.cfg; vim"
+alias cfg="(cd ~/.cfg; vim ...)"
 alias bat='bat --paging=never'
 
 # switch branch with fzf
