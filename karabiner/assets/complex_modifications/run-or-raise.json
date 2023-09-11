@@ -44,7 +44,7 @@
             ]
         },
         {
-            "description": "left_option + shift + s  -> IntelliJ IDE CE",
+            "description": "left_option + shift + s  -> Goland",
             "manipulators": [
                 {
                     "from": {
@@ -58,7 +58,7 @@
                     },
                     "to": [
                         {
-                            "shell_command": "open '/Applications/IntelliJ IDEA CE.app'"
+                            "shell_command": "open '/Applications/GoLand.app'"
                         }
                     ],
                     "type": "basic"
