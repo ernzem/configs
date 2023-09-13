@@ -20,4 +20,3 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Open project in neovim under new tmux window
 -- TODO: Doesn't work yet. Probably some changes required in tmux
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-

@@ -1,7 +1,11 @@
 require 'mellifluous'.setup({
-    dim_inactive = false,
+    dim_inactive = true,
     color_set = 'mellifluous',
-    styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
+    mellifluous = {
+        neutral = false,     -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+        bg_contrast = 'hard' -- options: 'soft', 'medium', 'hard'
+    },
+    styles = {               -- see :h attr-list for options. set {} for NONE, { option = true } for option
         comments = { italic = true },
         conditionals = {},
         folds = {},
@@ -48,6 +52,7 @@ require 'mellifluous'.setup({
 
 vim.o.termguicolors = true
 vim.cmd.colorscheme 'mellifluous'
+-- vim.cmd.colorscheme 'darcula-solid'
 
 -- Highlight cursor line number without line itself
 vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.api.nvim_get_color_map().bg })
