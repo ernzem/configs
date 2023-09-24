@@ -60,28 +60,6 @@
                         ]
                     },
                     {
-                        "description": "left_option + shift + s  -> IntelliJ IDE CE",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option",
-                                            "left_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/IntelliJ IDEA CE.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "left_option + x  -> Slack",
                         "manipulators": [
                             {
@@ -145,23 +123,21 @@
                         ]
                     },
                     {
-                        "description": "control+tilda -> command+tilda",
+                        "description": "left_option + shift + s  -> Goland",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "grave_accent_and_tilde",
+                                    "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
-                                            "control"
+                                            "left_option",
+                                            "left_shift"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "grave_accent_and_tilde",
-                                        "modifiers": [
-                                            "command"
-                                        ]
+                                        "shell_command": "open '/Applications/GoLand.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -176,7 +152,7 @@
                                     "key_code": "grave_accent_and_tilde",
                                     "modifiers": {
                                         "mandatory": [
-                                            "command"
+                                            "left_command"
                                         ]
                                     }
                                 },
@@ -184,7 +160,31 @@
                                     {
                                         "key_code": "grave_accent_and_tilde",
                                         "modifiers": [
-                                            "control"
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "control+tilda -> command+tilda",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": [
+                                            "left_command"
                                         ]
                                     }
                                 ],
@@ -240,6 +240,70 @@
                                         "modifiers": [
                                             "command"
                                         ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Capslock -> Left Control if terminal app",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Capslock -> Left Command if other than terminal app",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^net\\.kovidgoyal\\.kitty$",
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command"
                                     }
                                 ],
                                 "type": "basic"
@@ -357,6 +421,16 @@
                             "to": [
                                 {
                                     "key_code": "left_control"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_control"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "right_command"
                                 }
                             ]
                         }
@@ -637,18 +711,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": [
-                        {
-                            "key_code": "escape"
-                        }
-                    ]
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,

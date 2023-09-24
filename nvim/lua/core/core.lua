@@ -58,8 +58,13 @@ vim.opt.cursorline = true
 
 -- Netrw (File Explorer settings)
 vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 20
 vim.g.netrw_list_hide = '^..=/=$,.DS_Store,.idea,__pycache__,venv,*.o,*.pyc,.*.swp'
 vim.g.netrw_hide = 1
 vim.g.netw_browse_split = 4
+vim.g.netrw_altv = 1
 vim.g.netrw_liststyle = 4
+vim.g.netrw_winsize = 20
+
+-- Open new split panes to right and bottom, which feels more natural
+vim.o.splitbelow = true
+vim.o.splitright = true

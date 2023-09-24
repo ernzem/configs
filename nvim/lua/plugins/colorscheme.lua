@@ -2,10 +2,10 @@ require 'mellifluous'.setup({
     dim_inactive = true,
     color_set = 'mellifluous',
     mellifluous = {
-        neutral = false,     -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-        bg_contrast = 'hard' -- options: 'soft', 'medium', 'hard'
+        neutral = true,       -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+        bg_contrast = 'hard`' -- options: 'soft', 'medium', 'hard'
     },
-    styles = {               -- see :h attr-list for options. set {} for NONE, { option = true } for option
+    styles = {                -- see :h attr-list for options. set {} for NONE, { option = true } for option
         comments = { italic = true },
         conditionals = {},
         folds = {},

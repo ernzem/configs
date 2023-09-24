@@ -33,6 +33,15 @@ vim.api.nvim_create_user_command("AutoStop", function()
     vim.api.nvim_create_augroup("teej-automagic", { clear = true })
 end, {})
 
+local augroup = vim.api.nvim_create_augroup
+
+-- Trim trailing whitespaces
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+    group = augroup("TrimTrailingWhitespaces", {}),
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+})
+
 -- Loads file changes from the disk
 -- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
 --   command = "if mode() != 'c' | checktime | endif",

@@ -1,0 +1,30 @@
+{
+  "title": "Terminal app left command becomes left control",
+  "rules": [
+    {
+      "description": "Terminal left_command -> left_control",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_command"
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.googlecode\\.iterm2$",
+                "^net\\.kovidgoyal\\.kitty$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

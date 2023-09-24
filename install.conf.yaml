@@ -9,7 +9,9 @@
     ~/.config/bat/:  bat
     ~/.config/kitty/:  kitty
     ~/.config/nvim/:  nvim
+    ~/.config/zellij: zellij
     ~/.config/starship.toml: starship.toml
+    ~/.config/zellij: zellij
     ~/.tmux.conf: tmux.conf
 
 # Linux
@@ -36,3 +38,4 @@
     ~/Library/Application Support/Code/User/snippets:  code/User/snippets
     ~/.config/karabiner/assets:  karabiner/assets
     ~/.config/karabiner/karabiner.json:  karabiner/karabiner.json
+    ~/.Library/Keyboard Layouts/US Keyboard with Lithuanian letters.bundle: US Keyboard with Lithuanian letters.bundle

@@ -5,9 +5,10 @@ case $OS in
     alias vim='~/Apps/nvim.appimage'
     ;;
 
-  'Darwin') 
+  'Darwin')
     alias awsw='aws2-wrap'
     alias vim='nvim'
+    alias repo='cd `ls -1d ~/repos/* | fzf`'
     ;;
 
   *)
@@ -15,14 +16,18 @@ esac
 
 eval "$(starship init $SHELL)"
 
-# Use ripgrep when getting files with fzf 
+# Use ripgrep when getting files with fzf
 export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 
 # Aliases
-alias cn="rg '' $HOME/Sync/Notes/cli/ --no-filename |fzf |grep -o '^[^#]*'"
+alias cn='print -z -- $(rg "" $HOME/Sync/Notes/cli/ --no-filename | fzf | grep -o "^[^#]*")'
 alias cfg="(cd ~/.cfg; vim ...)"
 alias bat='bat --paging=never'
 
+
+
+alias bat='bat --paging=never'
+alias gs='git status'
 # switch branch with fzf
 gch() {
     git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf)

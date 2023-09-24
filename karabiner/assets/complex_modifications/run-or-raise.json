@@ -1,175 +1,174 @@
 {
-    "title": "Run or Raise Apps",
-    "rules": [
+  "title": "Run or Raise Apps",
+  "rules": [
+    {
+      "description": "left_option + w  -> Brave",
+      "manipulators": [
         {
-            "description": "left_option + w  -> Brave",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "w",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/Brave Browser.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + s  -> VSCode",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "s",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/Visual Studio Code.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + shift + s  -> Goland",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "s",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option",
-                                "left_shift"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/GoLand.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + space  -> Alacritty ",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "spacebar",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/Alacritty.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + space  -> Kitty",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "spacebar",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/Kitty.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + x  -> Slack",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "x",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/Slack.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + m  -> Microsoft Outlook",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "m",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open '/Applications/Microsoft Outlook.app'"
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "left_option + e  -> Finder",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "e",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open ."
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Brave Browser.app'"
+            }
+          ],
+          "type": "basic"
         }
-        
-    ]
+      ]
+    },
+    {
+      "description": "left_option + shift + s  -> VSCode",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "left_option",
+                "left_shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Visual Studio Code.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + s  -> Goland",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/GoLand.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + d  -> Alacritty ",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Alacritty.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + d  -> Kitty",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Kitty.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + x  -> Slack",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Slack.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + m  -> Microsoft Outlook",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Microsoft Outlook.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + e  -> Finder",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open ."
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
 }
