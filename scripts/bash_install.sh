@@ -2,7 +2,7 @@
 
 # TODO: detect default shell and check its source files there
 
-FILENAME=~/.bashrc
+FILENAME=~/.zshrc
 TARGET_STR="source ~/.cfg/shell/my_configs"
 
 case `grep -Fx "$TARGET_STR" "$FILENAME"  >/dev/null; echo $?` in

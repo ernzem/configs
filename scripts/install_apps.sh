@@ -10,8 +10,9 @@ sudo apt install -y tmux
 sudo apt install -y ripgrep
 sudo apt install -y timeshift pkexec
 sudo apt install -y foot
-sudp apt install -y pandoc
-sudo apt install -y fprintd
+sudo apt install -y pandoc
+sudo apt install -y libpam-fprintd
+sudo apt install -y zsh
 sudo apt install -y wl-clipboard # Wayland only
 #sudo apt install -y xclip # X11 only
 # sudo apt install -y gnome-tweaks
@@ -34,7 +35,7 @@ sudo apt install flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 # -----------------------------------------------------------------------------------------------------------------------
 # fzf installation
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf 
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 # -----------------------------------------------------------------------------------------------------------------------
 # VS Code
@@ -47,7 +48,7 @@ sudo apt install -y code
 # -----------------------------------------------------------------------------------------------------------------------
 # Docker
 sudo apt update
-sudo apt-get install ca-certificates curl gnupg
+sudo apt-get install -y ca-certificates curl gnupg
 
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -57,9 +58,9 @@ echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
- 
+
 sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Make docker as non root user
 # sudo groupadd docker
