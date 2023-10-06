@@ -55,5 +55,5 @@ vim.cmd.colorscheme 'mellifluous'
 -- vim.cmd.colorscheme 'darcula-solid'
 
 -- Highlight cursor line number without line itself
-vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.api.nvim_get_color_map().bg })
+-- vim.api.nvim_set_hl(0, "CursorLine", { bg = vim.api.nvim_get_color_map().bg })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = vim.api.nvim_get_color_map().fg })

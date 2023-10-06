@@ -8,12 +8,8 @@ local go_file = '*.go'
 --   end
 -- })
 
----------------------------WORK IN PROGRESS-------------------------------------
--- TODO:
---  - pass filename to golangci
---  - line numbers doesn't match due to golang ci reading old unsaved file
---  - pass filename to golangci
-vim.api.nvim_create_autocmd({ "InsertLeavePre", "BufWritePost" }, {
+----------------------------CLI Tool Behave Like LSP------------------------------------
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     group = vim.api.nvim_create_augroup("goFormatting", { clear = false }),
     pattern = go_file,
     callback = function()
@@ -51,7 +47,7 @@ vim.api.nvim_create_autocmd({ "InsertLeavePre", "BufWritePost" }, {
                         col = issue.Pos.Column - 1,
                         severity = vim.diagnostic.severity.ERROR,
                         source = issue.FromLinter,
-                        message = issue.Text,
+                        message = issue.FromLinter .. ': '.. issue.Text,
                         user_data = {},
                     })
                 end

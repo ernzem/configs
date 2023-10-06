@@ -1,19 +1,21 @@
-local attach_to_buffer = function(output_bufnr, pattern, command)
+require('core.output_buffer')
+
+local attach_to_buffer = function(pattern, command)
     vim.api.nvim_create_autocmd("BufWritePost", {
-        group = vim.api.nvim_create_augroup("teej-automagic", { clear = true }),
+        group = vim.api.nvim_create_augroup("auto-command", { clear = true }),
         pattern = pattern,
         callback = function()
-            local append_data = function(_, data)
-                if data then
-                    vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, data)
-                end
-            end
+            -- Open buffer, if we need to.
+            Open_buffer()
 
-            vim.api.nvim_buf_set_lines(output_bufnr, 0, -1, false, { "output:" }) -- TODO: add timestamp
+            -- Clear the buffer's contents incase it has been used.
+            vim.api.nvim_buf_set_lines(Get_buf_nr(), 0, -1, true, { "output:" }) -- TODO: add timestamp
+
+            -- Run the command.
             vim.fn.jobstart(command, {
                 stdout_buffered = true,
-                on_stdout = append_data,
-                on_stderr = append_data,
+                on_stdout = Log,
+                on_stderr = Log,
             })
         end,
     })
@@ -22,21 +24,22 @@ end
 
 vim.api.nvim_create_user_command("AutoRun", function()
     print "AutoRun starts now..."
-    local bufnr = vim.fn.input "Bufnr: "
     local pattern = vim.fn.input "Pattern: "
     local command = vim.split(vim.fn.input "Command: ", " ")
-    attach_to_buffer(tonumber(bufnr), pattern, command)
+    attach_to_buffer(pattern, command)
+    -- vim.api.nvim_command('w')
+    vim.cmd('silent write')
 end, {})
 
 
 vim.api.nvim_create_user_command("AutoStop", function()
-    vim.api.nvim_create_augroup("teej-automagic", { clear = true })
+    vim.api.nvim_create_augroup("auto-command", { clear = true })
 end, {})
 
 local augroup = vim.api.nvim_create_augroup
 
 -- Trim trailing whitespaces
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     group = augroup("TrimTrailingWhitespaces", {}),
     pattern = "*",
     command = [[%s/\s\+$//e]],
@@ -44,6 +47,26 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 
 -- Loads file changes from the disk
 -- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+--
 --   command = "if mode() != 'c' | checktime | endif",
 --   pattern = { "*" },
 -- })
+
+
+vim.api.nvim_create_user_command("NrColumnToggle", function()
+    if not vim.opt.nu then
+        return
+    end
+
+    if vim.opt.relativenumber._value then
+        vim.opt.relativenumber = false
+    else
+        vim.opt.relativenumber = true
+    end
+end, {})
+
+
+
+vim.api.nvim_create_user_command("OutBufferToggle", function()
+    Open_buffer()
+end, {})
