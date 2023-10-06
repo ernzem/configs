@@ -9,6 +9,7 @@ case $OS in
     alias awsw='aws2-wrap'
     alias vim='nvim'
     alias repo='cd `ls -1d ~/repos/* | fzf`'
+    source ~/.work_config
     ;;
 
   *)
