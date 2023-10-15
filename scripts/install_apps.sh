@@ -5,7 +5,7 @@ set -e
 
 sudo apt update && sudo apt upgrade
 sudo apt install -y apt-transport-https
-sudo apt install -y wget gpg git curl
+sudo apt install -y wget gpg git curl ca-certificates gnupg
 sudo apt install -y tmux
 sudo apt install -y ripgrep
 sudo apt install -y timeshift pkexec
@@ -48,7 +48,7 @@ sudo apt install -y code
 # -----------------------------------------------------------------------------------------------------------------------
 # Docker
 sudo apt update
-sudo apt-get install -y ca-certificates curl gnupg
+# sudo apt-get install -y ca-certificates curl gnupg
 
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -60,7 +60,9 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 sudo apt update
+# Docker CLI
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
 
 # Make docker as non root user
 # sudo groupadd docker

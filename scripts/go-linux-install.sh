@@ -15,21 +15,21 @@ echo " "
 echo "Install ${FILE}..."
 sudo bash -c "rm -rf /usr/local/go && tar -C /usr/local -xzf ${FILE}"
 
-if [ -r ~/.profile ];
+if [ -r ~/.zprofile ];
     then
         echo " "
         echo "Profile file identified. Adding changes to it..."
     else
         echo " "
         echo "Profile file does not exists. Creating it..."
-        touch ~/.profile
+        touch ~/.zprofile
 fi
 
-echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.zprofile
 
 echo " "
 echo "Reloading profile file.."
-source ~/.profile
+source ~/.zprofile
 
 echo " "
 echo "Checking Go instalation by checking Golang version..."
@@ -37,7 +37,7 @@ go version
 
 echo " "
 echo "SUCCESS!!! Adding GOPATH to profile file..."
-echo "export PATH=$(go env GOPATH)/bin:$PATH" >> ~/.profile
+echo "export PATH=$(go env GOPATH)/bin:$PATH" >> ~/.zprofile
 
 echo " "
 echo "Cleaning up..."
