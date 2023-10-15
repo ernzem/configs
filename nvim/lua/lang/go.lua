@@ -61,3 +61,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 vim.keymap.set('n', '<leader>dt', require('dap-go').debug_test)
 vim.keymap.set('n', '<leader>dlt', require('dap-go').debug_last_test)
+
+require('core.autocommands')
+-- vim.keymap.set("n", "<F5>", '<cmd>lua vim.print(Prev_function_name)<cr>', {noremap=true, silent=true}) -- TODO: do not run when not test file
+vim.keymap.set("n", "<F6>", '<cmd>lua Run_cmd("go test -v -race "..vim.api.nvim_buf_get_name(0))<cr>', {noremap=true, silent=true}) -- TODO: do not run when not test file
+vim.keymap.set("n", "<F7>", '<cmd>lua Run_cmd("go test -v -race ./...")<cr>', {noremap=true, silent=true})
+
+

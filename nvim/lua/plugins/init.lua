@@ -23,7 +23,6 @@ require('lazy').setup({
         dependencies = "rktjmp/lush.nvim",
         priority = 1000,
     },
-
     -------------------GIT-------------------------------------
     -- Show, view git changes
     { 'lewis6991/gitsigns.nvim' },
@@ -31,7 +30,6 @@ require('lazy').setup({
     -- { 'tpope/vim-fugitive' },
     -- Git open files in github
     -- { 'tpope/vim-rhubarb' },
-
     -----------------Telescope----------------------------------
     {
         'nvim-telescope/telescope.nvim',
@@ -45,7 +43,6 @@ require('lazy').setup({
             return vim.fn.executable 'make' == 1
         end,
     },
-
     --------------Treesitter (syntax parser)--------------------
     {
         'nvim-treesitter/nvim-treesitter',
@@ -54,7 +51,6 @@ require('lazy').setup({
         },
         build = ':TSUpdate',
     },
-
     ---------------------------LSP------------------------------
     {
         'neovim/nvim-lspconfig',
@@ -65,7 +61,6 @@ require('lazy').setup({
             { 'folke/neodev.nvim',       opts = {} }
         },
     },
-
     ---------------------Autocompletion----------------------------
     {
         'hrsh7th/nvim-cmp',
@@ -89,7 +84,8 @@ require('lazy').setup({
     { 'mbbill/undotree' },
     -- Comment single line or block of lines with hotkeys
     { 'numToStr/Comment.nvim',    opts = {} },
-
+    -- Toggle terminal functionality
+    { 'akinsho/toggleterm.nvim',  version = "*", config = true },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',
@@ -113,3 +109,4 @@ require("plugins.harpoon")
 require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
+require("plugins.toggleterm")

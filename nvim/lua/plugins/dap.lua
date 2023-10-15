@@ -91,7 +91,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 -- Keymaps
-vim.keymap.set('n', '<F5>', dapui.toggle)
+vim.keymap.set('n', '<F4>', dapui.toggle)
 vim.keymap.set('n', '<F8>', dap.continue)
 vim.keymap.set('n', '<F9>', dap.step_over)
 vim.keymap.set('n', '<F10>', dap.step_into)
