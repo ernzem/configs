@@ -84,8 +84,6 @@ require('lazy').setup({
     { 'mbbill/undotree' },
     -- Comment single line or block of lines with hotkeys
     { 'numToStr/Comment.nvim',    opts = {} },
-    -- Toggle terminal functionality
-    { 'akinsho/toggleterm.nvim',  version = "*", config = true },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',
@@ -109,4 +107,3 @@ require("plugins.harpoon")
 require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
-require("plugins.toggleterm")
