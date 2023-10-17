@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ $(tmux display-message -p '#{window_panes}') == 1 ]]; then
+    tmux split-window -vf -p 30
+    # echo "SINGLE PANE"
+    exit 0
+fi
+
 tmux list-panes -F '#F' | grep -q Z
 if [ $? -eq 0 ]; then
     # echo "Command succeeded"
