@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $(tmux display-message -p '#{window_panes}') == 1 ]]; then
-    tmux split-window -vf -p 30
+    tmux split-window -vf -p 30 -c "#{pane_current_path}"
     # echo "SINGLE PANE"
     exit 0
 fi
