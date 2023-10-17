@@ -12,7 +12,7 @@
     ~/.config/zellij: zellij
     ~/.config/starship.toml: starship.toml
     ~/.config/zellij: zellij
-    ~/.tmux.conf: tmux.conf
+    ~/.tmux.conf: tmux/tmux.conf
 
 # Linux
 - defaults:
