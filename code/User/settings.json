@@ -9,14 +9,21 @@
     "editor.fontSize": 14,
     "terminal.integrated.fontSize": 14,
     "files.autoSave": "onFocusChange",
-    "vim.useSystemClipboard": true,
     "editor.lineNumbers": "relative",
     "eslint.codeActionsOnSave.rules": null,
     "editor.fontFamily": "jetbrainsmono nerd font,Menlo, Monaco, 'Courier New', monospace",
     "window.titleBarStyle": "native",
     "breadcrumbs.enabled": false,
-    "workbench.colorTheme": "Material Light",
+    "workbench.colorTheme": "Default Dark+",
     "gruvboxMaterial.lightContrast": "soft",
     "window.menuBarVisibility": "toggle",
-    "keyboard.dispatch": "keyCode"
+    "git.openRepositoryInParentFolders": "never",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.colorCustomizations": {
+        "[Material Light]": {
+            "terminal.ansiBrightBlack": "#BCBCBC",
+        }
+    } 
 }
