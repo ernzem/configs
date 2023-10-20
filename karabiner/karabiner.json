@@ -39,6 +39,27 @@
                         ]
                     },
                     {
+                        "description": "left_option + w  -> Firefox",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Firefox.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left_option + s  -> VSCode",
                         "manipulators": [
                             {
