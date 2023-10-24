@@ -24,11 +24,11 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
--- vim.opt.ignorecase = true
--- vim.opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Don't keep search results highlighted & use increment (regex) search
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Keep signcolumn on by default
@@ -62,7 +62,7 @@ vim.g.netrw_list_hide = '^..=/=$,.DS_Store,.idea,__pycache__,venv,*.o,*.pyc,.*.s
 vim.g.netrw_hide = 1
 vim.g.netw_browse_split = 4
 vim.g.netrw_altv = 1
-vim.g.netrw_liststyle = 4
+vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 20
 
 -- Open new split panes to right and bottom, which feels more natural
