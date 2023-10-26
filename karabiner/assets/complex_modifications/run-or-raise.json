@@ -2,6 +2,27 @@
   "title": "Run or Raise Apps",
   "rules": [
     {
+      "description": "left_option + n  -> Typora",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/Typora.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+    {
       "description": "left_option + w  -> Brave",
       "manipulators": [
         {

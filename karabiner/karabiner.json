@@ -18,7 +18,28 @@
                 },
                 "rules": [
                     {
-                        "description": "left_option + w  -> Firefox",
+                        "description": "left_option + d  -> Alacritty ",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Alacritty.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + w  -> Brave",
                         "manipulators": [
                             {
                                 "from": {
@@ -31,7 +52,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Firefox.app'"
+                                        "shell_command": "open '/Applications/Brave Browser.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -39,7 +60,29 @@
                         ]
                     },
                     {
-                        "description": "left_option + s  -> VSCode",
+                        "description": "left_option + shift + s  -> VSCode",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Visual Studio Code.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> Goland",
                         "manipulators": [
                             {
                                 "from": {
@@ -52,7 +95,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Visual Studio Code.app'"
+                                        "shell_command": "open '/Applications/GoLand.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -123,21 +166,20 @@
                         ]
                     },
                     {
-                        "description": "left_option + shift + s  -> Goland",
+                        "description": "left_option + n  -> Typora",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "s",
+                                    "key_code": "n",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_option",
-                                            "left_shift"
+                                            "left_option"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/GoLand.app'"
+                                        "shell_command": "open '/Applications/Typora.app'"
                                     }
                                 ],
                                 "type": "basic"
