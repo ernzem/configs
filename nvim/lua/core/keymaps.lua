@@ -17,6 +17,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Replace command for the word under the cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Close current buffer
+vim.keymap.set("n", "<leader>q", '<cmd>bd%<cr>')
 -- Open project in neovim under new tmux window
 -- TODO: Doesn't work yet. Probably some changes required in tmux
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -30,3 +32,6 @@ vim.keymap.set("n", "<C-H>", [[<cmd>vertical resize -5<cr>]])
 vim.keymap.set("n", "<C-K>", [[<cmd>horizontal resize -2<cr>]])
 vim.keymap.set("n", "<C-J>", [[<cmd>horizontal resize +2<cr>]])
 vim.keymap.set("n", "<C-L>", [[<cmd>vertical resize +5<cr>]])
+
+-- Disable
+vim.keymap.set("n", "Q", "<nop>")

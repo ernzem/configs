@@ -85,7 +85,11 @@ require('lazy').setup({
     -- Comment single line or block of lines with hotkeys
     { 'numToStr/Comment.nvim', opts = {} },
     -- Toggle terminal functionality
-    { 'akinsho/toggleterm.nvim',  version = "*", config = true },
+    -- { 'akinsho/toggleterm.nvim',  version = "*", config = true },
+    -- Dev icons
+    {'nvim-tree/nvim-web-devicons', opts = {}},
+    -- Beautify netrw
+    {'prichrd/netrw.nvim', opts = {} },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',
@@ -109,5 +113,5 @@ require("plugins.harpoon")
 require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
-require("plugins.toggleterm")
+-- require("plugins.toggleterm")
 require("plugins.comment")

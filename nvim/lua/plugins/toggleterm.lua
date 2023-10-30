@@ -1,3 +1,4 @@
+-- DISABLED!!!!
 -- https://github.com/akinsho/toggleterm.nvim/tree/main
 require("toggleterm").setup({
     size = 20,
