@@ -21,7 +21,7 @@ eval "$(starship init $SHELL)"
 export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 
 # Aliases
-alias cn='print -z -- $(rg "" $HOME/Sync/Notes/cli/ --no-filename | fzf | grep -o "^[^#]*")'
+alias cn='print -z -- $(rg "" $HOME/Sync/Notes/cli/ --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
 alias ecn='(cd $HOME/Sync/Notes/cli/; vim)'
 alias cfg="(cd ~/.cfg; vim)"
 alias bat='bat --paging=never'
