@@ -2,13 +2,23 @@
 OS="`uname`"
 case $OS in
   'Linux')
+    export NOTES="/mnt/failai/Sync/Notes"
+    export REPOS="/mnt/failai/Desktop/Repositories"
+
     alias vim='~/Apps/nvim.appimage'
+    alias tocbd='wl-copy'
+    alias fromcbd='wl-paste'
     ;;
 
   'Darwin')
+    export NOTES="$HOME/Sync/Notes"
+    export REPOS="$HOME/repos"
+
     alias awsw='aws2-wrap'
     alias vim='nvim'
-    alias rp='cd `ls -1d ~/repos/* | fzf`'
+    alias chrp='cd `ls -1d ~/repos/* | fzf`'
+    alias tocbd='pbcopy'
+    alias fromcbd='pbpaste'
     source ~/.work_config
     ;;
 
@@ -21,16 +31,27 @@ eval "$(starship init $SHELL)"
 export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 
 # Aliases
-alias cn='print -z -- $(rg "" $HOME/Sync/Notes/cli/ --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
-alias ecn='(cd $HOME/Sync/Notes/cli/; vim)'
+alias cn='print -z -- $(rg "" $NOTES/cli/ --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
+alias ecn='(cd $NOTES/cli/; vim)'
 alias cfg="(cd ~/.cfg; vim)"
 alias bat='bat --paging=never'
-
-
+alias rp='bash ~/.cfg/scripts/tmux-sessionizer.sh'
 
 alias bat='bat --paging=never'
 alias gs='git status'
+
 # switch branch with fzf
 gch() {
     git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf)
+}
+
+# Format Json, print outptut & copy to clipboard.
+# Required params:
+#  1st -> raw Json string. Required
+# Optional:
+#  2nd -> desired indentation. 4 by default
+fjson() {
+    local i=4
+    if [[ "$2" =~ ^[0-9]+$ ]]; then i="$2" fi
+    jq --indent $i <<< $1 | tocbd && fromcbd && echo '\nCopied to clipboard!'
 }
