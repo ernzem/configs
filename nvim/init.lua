@@ -10,7 +10,4 @@ else
     require("lang")
     -- Single statusline always
     vim.opt.laststatus = 3
-    if next(vim.fn.argv()) == nil then
-        vim.api.nvim_command('Explore')
-    end
 end

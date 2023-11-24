@@ -4,11 +4,12 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Go through file tree
-vim.keymap.set("n", "<leader>pv", '<cmd>Lexplore<cr>')
-
--- Paste without loosing  clipboard item
-vim.keymap.set("x", "<leader>p", [["_dP]])
+-- Disable copying on certain commands
+vim.keymap.set({"x"}, "<leader>p", [["_dP]])
+vim.keymap.set({"n", "x"}, "d", '"_d')
+vim.keymap.set({"n", "x"}, "dd", '"_dd')
+vim.keymap.set({"n", "x"}, "c", '"_c')
+vim.keymap.set({"n", "x"}, "cc", '"_cc')
 
 -- Move selected lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -20,7 +21,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Close current buffer
 vim.keymap.set("n", "<leader>q", '<cmd>bd%<cr>')
 -- Open project in neovim under new tmux window
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.cfg/scripts/tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>ss", "<cmd>silent !tmux neww ~/.cfg/scripts/tmux-sessionizer<CR>")
 
 -- vim.keymap.set("n", "<C-J>", '<C-W><C-J>')
 -- vim.keymap.set("n", "<C-H>", '<C-W><C-H>')

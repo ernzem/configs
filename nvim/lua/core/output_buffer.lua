@@ -9,6 +9,21 @@ function Get_buf_name()
     return output_buf_name
 end
 
+function Run_cmd(command)
+    -- Open buffer, if we need to.
+    Open_buffer()
+
+    -- Clear the buffer's contents incase it has been used.
+    vim.api.nvim_buf_set_lines(Get_buf_nr(), 0, -1, true, { command })
+
+    -- Run the command.
+    vim.fn.jobstart(command, {
+        stdout_buffered = false,
+        on_stdout = Log,
+        on_stderr = Log,
+    })
+end
+
 -- FROM https://stackoverflow.com/questions/75141843/create-a-temporary-readonly-buffer-for-test-output
 function Log(_, data)
     if data then

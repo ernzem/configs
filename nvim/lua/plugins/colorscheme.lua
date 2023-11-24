@@ -40,7 +40,7 @@ require 'mellifluous'.setup({
         indent_blankline = true,
         nvim_tree = {
             enabled = true,
-            show_root = false,
+            show_root = true,
         },
         telescope = {
             enabled = true,

@@ -80,15 +80,15 @@ dapui.setup({
 })
 
 -- Open automatically when a new debug session is created
-dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
-end
+-- dap.listeners.after.event_initialized["dapui_config"] = function()
+--     dapui.open()
+-- end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--     dapui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--     dapui.close()
+-- end
 
 -- Keymaps
 vim.keymap.set('n', '<F4>', dapui.toggle)
@@ -98,7 +98,7 @@ vim.keymap.set('n', '<F10>', dap.step_into)
 vim.keymap.set('n', '<F11>', dap.step_out)
 vim.keymap.set('n', '<F12>', dap.terminate)
 vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
-vim.keymap.set('n', '<leader>e', dapui.eval)
+vim.keymap.set('n', '<leader>v', dapui.eval)
 
 -- Auto run debugger
 vim.api.nvim_create_user_command("AutoDebug", function()

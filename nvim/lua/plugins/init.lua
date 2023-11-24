@@ -76,6 +76,8 @@ require('lazy').setup({
     },
 
     ----------------------Others----------------------------------
+    -- Bufferline
+    { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
     -- Statusline
     { 'nvim-lualine/lualine.nvim' },
     -- Tag files and access allways via hotkeys
@@ -83,13 +85,20 @@ require('lazy').setup({
     -- Visualize undo tree
     { 'mbbill/undotree' },
     -- Comment single line or block of lines with hotkeys
-    { 'numToStr/Comment.nvim', opts = {} },
+    { 'numToStr/Comment.nvim',       opts = {} },
     -- Toggle terminal functionality
-    -- { 'akinsho/toggleterm.nvim',  version = "*", config = true },
+    { 'akinsho/toggleterm.nvim',     version = "*", config = true },
     -- Dev icons
-    {'nvim-tree/nvim-web-devicons', opts = {}},
-    -- Beautify netrw
-    {'prichrd/netrw.nvim', opts = {} },
+    { 'nvim-tree/nvim-web-devicons', opts = {} },
+    -- File Browser: https://github.com/nvim-tree/nvim-tree.lua
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        }
+    },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',
@@ -105,6 +114,7 @@ require('lazy').setup({
 -- Import Settings
 require("plugins.treesitter")
 require("plugins.colorscheme")
+require("plugins.nvim-tree")
 require("plugins.statusline")
 require("plugins.telescope")
 require("plugins.gitsigns")
@@ -113,5 +123,5 @@ require("plugins.harpoon")
 require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
--- require("plugins.toggleterm")
+require("plugins.toggleterm")
 require("plugins.comment")
