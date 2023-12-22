@@ -4,10 +4,9 @@ if vim.g.vscode then
 else
     --  require("")
     require("core.core")
+    require("core.winbar")
     require("core.keymaps")
     require("core.autocommands")
     require("plugins")
     require("lang")
-    -- Single statusline always
-    vim.opt.laststatus = 3
 end

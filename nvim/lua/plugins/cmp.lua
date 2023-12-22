@@ -6,6 +6,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
+    completion = { completeopt = "menu,menuone" },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -40,9 +41,12 @@ cmp.setup {
             end
         end, { 'i', 's' }),
     },
+
+    -- preselect = require('cmp').PreselectMode.None,
     sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'luasnip',  keyword_length = 1 },
+        { name = 'nvim_lsp', keyword_length = 2 },
+        { name = "buffer" },
+        { name = 'path',     keyword_length = 1 },
     },
 }
-

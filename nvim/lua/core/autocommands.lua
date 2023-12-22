@@ -1,5 +1,7 @@
 function Run_cmd(cmd)
-    vim.fn.jobstart("bash ".."$HOME/.cfg/tmux/scripts/send-cmd.bash ".."'"..cmd.."'")
+    -- vim.fn.jobstart("bash ".."$HOME/.cfg/tmux/scripts/send-cmd.bash ".."'"..cmd.."'")
+    -- vim.cmd("TermExec direction="..direction[choice].." cmd='" .. cmd .. "'")
+    vim.cmd("TermExec cmd='" .. cmd .. "'")
 end
 
 Attach_to_buffer = function(pattern, command)

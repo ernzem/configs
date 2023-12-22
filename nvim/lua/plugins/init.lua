@@ -15,14 +15,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     ----------------Colorschemes------------------------------
-    { "ramojus/mellifluous.nvim", priority = 1000 },
-    -- { "elvessousa/sobrio", priority=1000 },
-    -- { "sainnhe/gruvbox-material", priority=1000 },
-    {
-        "briones-gabriel/darcula-solid.nvim",
-        dependencies = "rktjmp/lush.nvim",
-        priority = 1000,
-    },
+    { 'projekt0n/github-nvim-theme' },
+    -- { "ramojus/mellifluous.nvim",   priority = 1000 },
+    -- { 'navarasu/onedark.nvim' },
+    -- {
+    --     "briones-gabriel/darcula-solid.nvim",
+    --     dependencies = "rktjmp/lush.nvim",
+    --     priority = 1000,
+    -- },
     -------------------GIT-------------------------------------
     -- Show, view git changes
     { 'lewis6991/gitsigns.nvim' },
@@ -77,7 +77,7 @@ require('lazy').setup({
 
     ----------------------Others----------------------------------
     -- Bufferline
-    { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+    -- { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
     -- Statusline
     { 'nvim-lualine/lualine.nvim' },
     -- Tag files and access allways via hotkeys
@@ -125,3 +125,4 @@ require("plugins.lsp")
 require("plugins.dap")
 require("plugins.toggleterm")
 require("plugins.comment")
+require("plugins.luasnip")

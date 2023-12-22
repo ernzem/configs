@@ -1,17 +1,10 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
-    defaults = {
-        mappings = {
-            n = {
-                ['<c-d>'] = require('telescope.actions').delete_buffer
-            }, -- n
-            i = {
-                ['<C-u>'] = false,
-                -- ['<C-d>'] = false,
-                ['<c-d>'] = require('telescope.actions').delete_buffer
-            } -- i
-        },
-    },
+    pickers = {
+        lsp_implementations = {
+            theme = "cursor"
+        }
+    }
 }
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')

@@ -14,6 +14,20 @@ vim.opt.clipboard = 'unnamedplus'
 
 -- Autoread file changes on the disk
 vim.o.autoread = true
+-- Triger `autoread` when files changes on disk
+-- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+-- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+    pattern = '*',
+    command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
+})
+
+-- Notification after file change
+-- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+-- vim.api.nvim_create_autocmd({'FileChangedShellPost'}, {
+--   pattern = '*',
+--   command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
+-- })
 
 -- Indenting
 vim.opt.breakindent = true
@@ -46,7 +60,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 -- Default tab behavior
 vim.opt.tabstop = 4
@@ -55,10 +69,10 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- Set command line to autohide when not in use
--- vim.opt.cmdheight = 0
+vim.opt.cmdheight = 0
 
 -- Highlight number
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Netrw (File Explorer settings)
 vim.g.netrw_banner = 0
@@ -72,3 +86,5 @@ vim.g.netrw_winsize = 20
 -- Open new split panes to right and bottom, which feels more natural
 vim.o.splitbelow = true
 vim.o.splitright = true
+
+-- vim.opt.winbar= "%f %m"

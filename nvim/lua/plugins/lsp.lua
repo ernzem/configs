@@ -15,12 +15,21 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
+    local telescope = require('telescope.builtin')
+    local vertical_layout = { layout_strategy = 'vertical', layout_config = { preview_cutoff = 60 }, fname_width = 100, results_title=nil}
+    local ivy_theme = require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 10 }, fname_width = 100})
+
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+
+    nmap('gr', function() telescope.lsp_references(ivy_theme) end, '[G]oto [R]eferences')
+    nmap('gI', function() telescope.lsp_implementations(ivy_theme) end, '[G]oto [I]mplementation')
+
+    nmap('Gr', function() telescope.lsp_references(vertical_layout) end, '[G]oto [R]eferences')
+    nmap('<leader>I', function() telescope.lsp_implementations(vertical_layout) end, '[G]oto [I]mplementation')
+
     nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')

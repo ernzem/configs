@@ -5,11 +5,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Disable copying on certain commands
-vim.keymap.set({"x"}, "<leader>p", [["_dP]])
-vim.keymap.set({"n", "x"}, "d", '"_d')
-vim.keymap.set({"n", "x"}, "dd", '"_dd')
-vim.keymap.set({"n", "x"}, "c", '"_c')
-vim.keymap.set({"n", "x"}, "cc", '"_cc')
+vim.keymap.set({ "x" }, "<leader>p", [["_dP]])
+vim.keymap.set({ "n", "x" }, "d", '"_d')
+vim.keymap.set({ "n", "x" }, "dd", '"_dd')
+vim.keymap.set({ "n", "x" }, "c", '"_c')
+vim.keymap.set({ "n", "x" }, "cc", '"_cc')
 
 -- Move selected lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Close current buffer
 vim.keymap.set("n", "<leader>q", '<cmd>bd%<cr>')
 -- Open project in neovim under new tmux window
-vim.keymap.set("n", "<leader>ss", "<cmd>silent !tmux neww ~/.cfg/scripts/tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux popup 'bash ~/.cfg/scripts/tmux-sessionizer.sh && tmux popup -C'<CR>")
 
 -- vim.keymap.set("n", "<C-J>", '<C-W><C-J>')
 -- vim.keymap.set("n", "<C-H>", '<C-W><C-H>')
@@ -35,3 +35,5 @@ vim.keymap.set("n", "<C-L>", [[<cmd>vertical resize +5<cr>]])
 
 -- Disable
 vim.keymap.set("n", "Q", "<nop>")
+
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {noremap = true, silent = true})
