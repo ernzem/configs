@@ -26,7 +26,8 @@
                 "^com\\.apple\\.Terminal$",
                 "^com\\.googlecode\\.iterm2$",
                 "^net\\.kovidgoyal\\.kitty$",
-                "^org\\.alacritty$"
+                "^org\\.alacritty$",
+                "^com\\.github.wez\\.wezterm$"
               ]
             }
           ]
@@ -58,7 +59,8 @@
                 "^com\\.apple\\.Terminal$",
                 "^com\\.googlecode\\.iterm2$",
                 "^net\\.kovidgoyal\\.kitty$",
-                "^org\\.alacritty$"
+                "^org\\.alacritty$",
+                "^com\\.github.wez\\.wezterm$"
               ]
             }
           ]

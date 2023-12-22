@@ -21,7 +21,7 @@
           "type": "basic"
         }
       ]
-    }
+    },
     {
       "description": "left_option + w  -> Brave",
       "manipulators": [
@@ -101,6 +101,27 @@
           "to": [
             {
               "shell_command": "open '/Applications/GoLand.app'"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "left_option + d  -> WezTerm ",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open '/Applications/WezTerm.app'"
             }
           ],
           "type": "basic"
