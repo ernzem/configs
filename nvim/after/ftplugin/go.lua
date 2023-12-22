@@ -1,29 +1,31 @@
 local go_file = '*.go'
 -----------------------------AutoFormat & organizeImports before save------------------------
+
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = go_file,
-  callback = function()
-    local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
-    -- buf_request_sync defaults to a 1000ms timeout. Depending on your
-    -- machine and codebase, you may want longer. Add an additional
-    -- argument after params if you find that you have to write the file
-    -- twice for changes to be saved.
-    -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-    for cid, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-          vim.lsp.util.apply_workspace_edit(r.edit, enc)
+    pattern = go_file,
+    callback = function()
+        local params = vim.lsp.util.make_range_params()
+        params.context = { only = { "source.organizeImports" } }
+        -- buf_request_sync defaults to a 1000ms timeout. Depending on your
+        -- machine and codebase, you may want longer. Add an additional
+        -- argument after params if you find that you have to write the file
+        -- twice for changes to be saved.
+        -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+        local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+        for cid, res in pairs(result or {}) do
+            for _, r in pairs(res.result or {}) do
+                if r.edit then
+                    local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                    vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                end
+            end
         end
-      end
+        vim.lsp.buf.format({ async = false })
     end
-    vim.lsp.buf.format({async = false})
-  end
 })
 
 ----------------------------CLI Tool Behave Like LSP------------------------------------
+
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     group = vim.api.nvim_create_augroup("goFormatting", { clear = false }),
     pattern = go_file,
@@ -79,8 +81,9 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         })
     end
 })
+
 -------------------------------------------------------------------------------
-require('core.autocommands')
+local utils = require('utils')
 vim.api.nvim_create_user_command("AutoTest", function()
     local path = vim.fn.input({
         prompt = "Test Path: ",
@@ -93,13 +96,41 @@ vim.api.nvim_create_user_command("AutoTest", function()
         group = vim.api.nvim_create_augroup("GoAutoTest", { clear = true }),
         pattern = go_file,
         callback = function()
-            Run_cmd(cmd)
+            utils.run(cmd)
         end
     })
 
-    Run_cmd(cmd)
+    utils.run(cmd)
 end, {})
 
+--------------- Run Tests Functions-----------------------------------------
+local function go_package()
+    local ui_buffers = require('utils').ui_buffers
+    if ui_buffers[vim.bo.filetype] ~= true then
+        return './' .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")
+    end
+
+    local state = require('state').state
+    if state['PrevBuffPath'] == nil or vim.fn.fnamemodify(state['PrevBuffPath'], ":e") ~= 'go' then
+        local input_path = vim.fn.input({
+            prompt = "Test Path: ",
+            default = "./",
+            completion = "dir"
+        })
+        return input_path
+    end
+
+    return './' .. vim.fn.fnamemodify(state['PrevBuffPath'], ":.:h")
+end
+
+local run_package_tests = function ()
+    utils.run("go test -race " .. go_package())
+end
+
+local run_all_tests = function ()
+    utils.run("go test -race ./...")
+end
+-----------------------------------------------------------------------------
 
 vim.api.nvim_create_user_command("AutoTestStop", function()
     vim.api.nvim_create_augroup("GoAutoTest", { clear = true })
@@ -109,10 +140,10 @@ vim.keymap.set('n', '<leader>dt', require('dap-go').debug_test)
 vim.keymap.set('n', '<leader>dlt', require('dap-go').debug_last_test)
 
 local keyOpts = { noremap = true, silent = true }
+vim.keymap.set("n", "<F6>", run_package_tests, keyOpts)
+vim.keymap.set("n", "<F7>", run_all_tests, keyOpts)
+
 -- vim.keymap.set("n", "<F5>", '<cmd>lua vim.print(Prev_function_name)<cr>', keyOpts) -- TODO: do not run when not test file
-vim.keymap.set("n", "<F6>",
-    function() Run_cmd("go test -race ./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")) end, keyOpts) -- TODO: do not run when not test file
-vim.keymap.set("n", "<F7>", function() Run_cmd("go test -race ./...") end, keyOpts)
 -------------treesitter-get-function--------------------------------------------------------
 -- local function get_closest_above_cursor(test_tree)
 --   local result

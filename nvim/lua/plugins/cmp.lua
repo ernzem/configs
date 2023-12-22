@@ -42,7 +42,7 @@ cmp.setup {
         end, { 'i', 's' }),
     },
 
-    -- preselect = require('cmp').PreselectMode.None,
+    preselect = require('cmp').PreselectMode.None,
     sources = {
         { name = 'luasnip',  keyword_length = 1 },
         { name = 'nvim_lsp', keyword_length = 2 },

@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Set relative line number
 vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Enable mouse mode
 vim.opt.mouse = 'a'
@@ -14,20 +14,6 @@ vim.opt.clipboard = 'unnamedplus'
 
 -- Autoread file changes on the disk
 vim.o.autoread = true
--- Triger `autoread` when files changes on disk
--- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
--- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
-    pattern = '*',
-    command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
-})
-
--- Notification after file change
--- https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
--- vim.api.nvim_create_autocmd({'FileChangedShellPost'}, {
---   pattern = '*',
---   command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None",
--- })
 
 -- Indenting
 vim.opt.breakindent = true
@@ -72,19 +58,8 @@ vim.opt.expandtab = true
 vim.opt.cmdheight = 0
 
 -- Highlight number
--- vim.opt.cursorline = true
-
--- Netrw (File Explorer settings)
-vim.g.netrw_banner = 0
-vim.g.netrw_list_hide = '^..=/=$,.DS_Store,.idea,__pycache__,venv,*.o,*.pyc,.*.swp'
-vim.g.netrw_hide = 1
-vim.g.netw_browse_split = 4
-vim.g.netrw_altv = 1
--- vim.g.netrw_liststyle = 3
-vim.g.netrw_winsize = 20
+vim.opt.cursorline = false
 
 -- Open new split panes to right and bottom, which feels more natural
 vim.o.splitbelow = true
 vim.o.splitright = true
-
--- vim.opt.winbar= "%f %m"

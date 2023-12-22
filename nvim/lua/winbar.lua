@@ -1,16 +1,12 @@
-local backlist = {}
-backlist['toggleterm'] = true
-backlist['NvimTree'] = true
+local ui_buffers = require("utils").ui_buffers
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     group = vim.api.nvim_create_augroup("WINBAR", { clear = true }),
     pattern = { "*" },
     callback = function()
-        if vim.bo.filetype == '' or backlist[vim.bo.filetype] == true then
+        if vim.bo.filetype == '' or ui_buffers[vim.bo.filetype] == true then
             return
         end
-
-        -- vim.print(vim.bo.filetype)
         vim.wo.winbar = " %f %m"
     end,
 })
