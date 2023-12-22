@@ -1,5 +1,4 @@
 # link all common stuff
-
 - defaults:
     link:
       create: true
@@ -12,6 +11,7 @@
     ~/.config/zellij: zellij
     ~/.config/starship.toml: starship.toml
     ~/.config/zellij: zellij
+    ~/.config/wezterm: wezterm
     ~/.tmux.conf: tmux/tmux.conf
 
 # Linux
