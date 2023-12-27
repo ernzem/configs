@@ -5,7 +5,7 @@ case $OS in
     export NOTES="/mnt/failai/Sync/Notes"
     export REPOS="/mnt/failai/Desktop/Repositories"
 
-    alias vim='~/Apps/nvim.appimage'
+    alias vim='nvim'
     alias tocbd='wl-copy'
     alias fromcbd='wl-paste'
     ;;
