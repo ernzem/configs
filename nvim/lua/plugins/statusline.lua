@@ -1,15 +1,15 @@
-local custom_wombat = require('lualine.themes.wombat')
+local github_light = require('lualine.themes.wombat')
 
 -- Change the background of lualine_c section for normal mode
-custom_wombat.normal.c.bg = '#C9C9C9'
-custom_wombat.normal.c.fg = '#000000'
-custom_wombat.normal.b.bg = '#B4B4B4'
-custom_wombat.normal.b.fg = '#000000'
+github_light.normal.c.bg = '#C9C9C9'
+github_light.normal.c.fg = '#000000'
+github_light.normal.b.bg = '#B4B4B4'
+github_light.normal.b.fg = '#000000'
 
 require('lualine').setup({
     options = {
         icons_enabled = false,
-        theme = custom_wombat,
+        theme = 'auto',
         component_separators = '|',
         section_separators = '',
         disabled_filetypes = {

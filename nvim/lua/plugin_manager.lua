@@ -17,7 +17,8 @@ require('lazy').setup({
     ----------------Colorschemes------------------------------
     { 'projekt0n/github-nvim-theme' },
     -- { "ramojus/mellifluous.nvim",   priority = 1000 },
-    -- { 'navarasu/onedark.nvim' },
+    { 'navarasu/onedark.nvim' },
+    { 'rebelot/kanagawa.nvim' },
     -- {
     --     "briones-gabriel/darcula-solid.nvim",
     --     dependencies = "rktjmp/lush.nvim",
