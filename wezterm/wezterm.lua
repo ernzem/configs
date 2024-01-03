@@ -3,14 +3,14 @@ local wezterm = require 'wezterm'
 -- Maximize on startup
 local mux = wezterm.mux
 wezterm.on('gui-startup', function()
-    local tab, pane, window = mux.spawn_window({})
+    local _, _, window = mux.spawn_window({})
     window:gui_window():maximize()
 end)
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-    config = wezterm.config_builder()
+    local config = wezterm.config_builder()
 end
 
 -- This table will hold the configuration.
