@@ -3,6 +3,7 @@ OS="`uname`"
 case $OS in
   'Linux')
     export NOTES="/mnt/failai/Sync/Notes"
+    export CLI="/mnt/failai/Sync/cli"
     export REPOS="/mnt/failai/Desktop/Repositories"
 
     alias vim='nvim'
@@ -12,11 +13,11 @@ case $OS in
 
   'Darwin')
     export NOTES="$HOME/Sync/Notes"
+    export CLI="$HOME/Sync/cli"
     export REPOS="$HOME/repos"
 
     alias awsw='aws2-wrap'
     alias vim='nvim'
-    alias chrp='cd `ls -1d ~/repos/* | fzf`'
     alias tocbd='pbcopy'
     alias fromcbd='pbpaste'
     source ~/.work_config
@@ -31,11 +32,11 @@ eval "$(starship init $SHELL)"
 export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 
 # Aliases
-alias cn='print -z -- $(rg "" $NOTES/cli/ --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
-alias ecn='(cd $NOTES/cli/; vim)'
+alias cn='print -z -- $(rg "" $CLI --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
+alias ecn='(cd $CLI; vim)'
 alias cfg="(cd ~/.cfg; vim)"
 alias bat='bat --paging=never'
-alias rp='bash ~/.cfg/scripts/tmux-sessionizer.sh'
+alias rp='cd `ls -1d ~/repos/* | fzf`'
 
 alias bat='bat --paging=never'
 alias gs='git status'
