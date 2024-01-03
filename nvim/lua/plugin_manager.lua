@@ -100,6 +100,9 @@ require('lazy').setup({
             "nvim-tree/nvim-web-devicons",
         }
     },
+    -- ZenMode https://github.com/folke/zen-mode.nvim
+    { "folke/zen-mode.nvim", opts = {} },
+
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',

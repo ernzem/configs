@@ -1,4 +1,3 @@
--- DISABLED!!!!
 -- https://github.com/akinsho/toggleterm.nvim/tree/main
 require("toggleterm").setup({
     size = 20,
@@ -40,3 +39,4 @@ local function lazygit_toggle()
 end
 
 vim.keymap.set("n", [[<leader>\]], lazygit_toggle, { noremap = true, silent = true })
+vim.keymap.set({ "i", "t" }, [[<c-a>]], '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })

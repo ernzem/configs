@@ -20,8 +20,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Close current buffer
 vim.keymap.set("n", "<leader>q", '<cmd>bd%<cr>')
--- Open project in neovim under new tmux window
-vim.keymap.set("n", "<leader>s", "<cmd>silent !tmux popup 'bash ~/.cfg/scripts/tmux-sessionizer.sh && tmux popup -C'<CR>")
 
 -- vim.keymap.set("n", "<C-J>", '<C-W><C-J>')
 -- vim.keymap.set("n", "<C-H>", '<C-W><C-H>')
@@ -36,4 +34,4 @@ vim.keymap.set("n", "<C-L>", [[<cmd>vertical resize +5<cr>]])
 -- Disable
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], {noremap = true, silent = true})
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
