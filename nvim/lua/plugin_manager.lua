@@ -77,8 +77,6 @@ require('lazy').setup({
     },
 
     ----------------------Others----------------------------------
-    -- Bufferline
-    -- { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
     -- Statusline
     { 'nvim-lualine/lualine.nvim' },
     -- Tag files and access allways via hotkeys
@@ -102,7 +100,8 @@ require('lazy').setup({
     },
     -- ZenMode https://github.com/folke/zen-mode.nvim
     { "folke/zen-mode.nvim", opts = {} },
-
+    -- Sync terminal bacground with vim background
+    { "typicode/bg.nvim",    lazy = false },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',
