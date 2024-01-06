@@ -5,6 +5,9 @@ case $OS in
     export NOTES="/mnt/failai/Sync/Notes"
     export CLI="/mnt/failai/Sync/cli"
     export REPOS="/mnt/failai/Desktop/Repositories"
+    HISTFILE=~/.zsh_history
+    HISTSIZE=10000
+    SAVEHIST=10000
 
     alias vim='nvim'
     alias tocbd='wl-copy'
@@ -25,6 +28,9 @@ case $OS in
 
   *)
 esac
+
+# share history across shells
+setopt SHARE_HISTORY
 
 eval "$(starship init $SHELL)"
 
