@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Set relative line number
 vim.opt.nu = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.opt.mouse = 'a'
@@ -46,7 +46,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- Default tab behavior
 vim.opt.tabstop = 4

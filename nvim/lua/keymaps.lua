@@ -34,4 +34,5 @@ vim.keymap.set("n", "<C-L>", [[<cmd>vertical resize +5<cr>]])
 -- Disable
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+-- Terminal exit mapping
+-- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })

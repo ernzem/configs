@@ -12,7 +12,6 @@ require('kanagawa').setup({
     }
 })
 
-vim.opt.background = "dark"
 vim.cmd("colorscheme kanagawa-wave")
 
 -- vim.opt.background = "light"
