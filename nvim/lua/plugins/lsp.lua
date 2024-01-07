@@ -16,8 +16,8 @@ local on_attach = function(_, bufnr)
     end
 
     local telescope = require('telescope.builtin')
-    local vertical_layout = { layout_strategy = 'vertical', layout_config = { preview_cutoff = 60 }, fname_width = 100, results_title=nil}
-    local ivy_theme = require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 10 }, fname_width = 100})
+    local vertical_layout = { layout_strategy = 'vertical', layout_config = { preview_cutoff = 60 }, fname_width = 100, results_title = nil }
+    local ivy_theme = require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 10 }, fname_width = 100 })
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -108,20 +108,20 @@ local servers = {
     -- golangci_lint_ls = {},
     -- pyright = {},
     -- rust_analyzer = {},
-    tsserver = {},
+    -- tsserver = {},
     -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-    eslint = {
-        enable = true,
-        format = { enable = true }, -- this will enable formatting
-        autoFixOnSave = true,
-        codeActionsOnSave = {
-            mode = "all",
-            rules = { "!debugger", "!no-only-tests/*" },
-        },
-        lintTask = {
-            enable = true,
-        },
-    },
+    -- eslint = {
+    --     enable = true,
+    --     format = { enable = true }, -- this will enable formatting
+    --     autoFixOnSave = true,
+    --     codeActionsOnSave = {
+    --         mode = "all",
+    --         rules = { "!debugger", "!no-only-tests/*" },
+    --     },
+    --     lintTask = {
+    --         enable = true,
+    --     },
+    -- },
 
     lua_ls = {
         Lua = {
