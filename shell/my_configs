@@ -45,6 +45,7 @@ alias notes="(nvim $NOTES/)"
 alias todo="(cd $NOTES; vim TODO/)"
 alias bat='bat --paging=never'
 alias rp='cd `ls -1d ~/repos/* | fzf`'
+alias trp='bash ~/.cfg/scripts/wezterm-sessionizer.sh'
 
 alias bat='bat --paging=never'
 alias gs='git status'

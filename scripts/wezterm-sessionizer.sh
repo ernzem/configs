@@ -11,10 +11,10 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-wezterm_running=$(pgrep wezterm)
-if [[ -z $wezterm_running ]]; then
-    exit 0
-fi
+# wezterm_running=$(ps aux | grep WezTerm)
+# if [[ -z $wezterm_running ]]; then
+#     exit 0
+# fi
 
 tab_id=$(wezterm cli list --format json | jq ".[] | select(.cwd == \"file://$selected\")| .tab_id")
 if [[ -n $tab_id ]]; then
