@@ -48,4 +48,10 @@ config.window_padding = {
 -- config.color_scheme = 'Mexico Light (base16)'
 config.color_scheme = 'Kanagawa (Gogh)'
 
+-- Use non gui tab style
+config.use_fancy_tab_bar = false
+config.tab_max_width = 40
+config.switch_to_last_active_tab_when_closing_tab = true
+config.tab_bar_at_bottom = true
+
 return config
