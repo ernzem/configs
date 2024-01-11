@@ -58,7 +58,7 @@ vim.opt.expandtab = true
 vim.opt.cmdheight = 0
 
 -- Highlight number
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 
 -- Open new split panes to right and bottom, which feels more natural
 vim.o.splitbelow = true

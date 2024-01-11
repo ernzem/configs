@@ -4,6 +4,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Write changes to disk
 vim.keymap.set({ "n", "i" }, "<C-s>", '<cmd>:w<cr>', { desc = 'Save Current Buffer' })
 
 -- Disable copying on certain commands
@@ -41,3 +42,6 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- Terminal exit mapping
 -- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })
+
+-- Run wezterm sessionizer script
+vim.keymap.set("n", "<leader>rp", '<cmd>silent !wezterm cli spawn -- bash ~/.cfg/scripts/wezterm-sessionizer.sh<cr>')
