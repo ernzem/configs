@@ -65,3 +65,14 @@ fjson() {
     if [[ "$2" =~ ^[0-9]+$ ]]; then i="$2" fi
     jq --indent $i <<< $1 | tocbd && fromcbd && echo '\nCopied to clipboard!'
 }
+
+genuuid() {
+    local cmd=$(uuidgen)
+
+    # On Mac OS make uuid letters lowercase
+    if [[ `uname` == Darwin ]] then
+	    cmd=$(uuidgen | tr A-Z a-z)
+    fi
+
+    echo -n "$cmd" | tocbd && fromcbd && echo '\nCopied to clipboard!'
+}
