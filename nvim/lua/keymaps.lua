@@ -5,7 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Write changes to disk
-vim.keymap.set({ "n", "i" }, "<C-s>", '<cmd>:w<cr>', { desc = 'Save Current Buffer' })
+-- vim.keymap.set({ "n", "i" }, "<C-s>", '<cmd>:w<cr>', { desc = 'Save Current Buffer' })
 
 -- Disable copying on certain commands
 vim.keymap.set({ "x" }, "<leader>p", [["_dP]])
@@ -23,7 +23,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Close current buffer
 vim.keymap.set("n", "<leader>q", '<cmd>bd%<cr>')
-vim.keymap.set("n", "<C-S-Q>", '<cmd>bd!<cr>')
+vim.keymap.set("n", "<C-Q>", '<cmd>bd!%<cr>')
 
 -- Jump between window splits
 vim.keymap.set("n", "<C-J>", '<C-W><C-J>')
@@ -44,4 +44,4 @@ vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })
 
 -- Run wezterm sessionizer script
-vim.keymap.set("n", "<leader>rp", '<cmd>silent !wezterm cli spawn -- bash ~/.cfg/scripts/wezterm-sessionizer.sh<cr>')
+vim.keymap.set("n", "<leader>rp", '<cmd>silent !tmux display-popup -E "sh ~/.cfg/scripts/tmux-sessionizer.sh"<cr>')

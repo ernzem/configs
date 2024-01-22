@@ -1,7 +1,9 @@
 #!/bin/bash
 
+PANE_TITLE="__OUTPUT__"
 if [[ $(tmux display-message -p '#{window_panes}') == 1 ]]; then
     tmux split-window -vf -p 30 -c "#{pane_current_path}"
+    tmux select-pane -T "$PANE_TITLE"
     exit 0
 fi
 

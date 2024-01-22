@@ -18,7 +18,7 @@ require('lualine').setup({
             winbar = {},
         },
         ignore_focus = {},
-        always_divide_middle = true,
+        always_divide_middle = false,
         globalstatus = true,
         refresh = {
             statusline = 1000,
@@ -29,7 +29,7 @@ require('lualine').setup({
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { { 'filename', path = 1, shorting_target = 60, } },
+        lualine_c = { { 'filename', path = 3, shorting_target = 60, } },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }

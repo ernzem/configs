@@ -37,7 +37,7 @@ config.font = wezterm.font {
 }
 
 config.hide_tab_bar_if_only_one_tab = true
--- config.window_decorations = "RESIZE"
+config.window_decorations = "RESIZE"
 config.window_padding = {
     left = '0cell',
     right = '0cell',
@@ -54,4 +54,13 @@ config.tab_max_width = 40
 config.switch_to_last_active_tab_when_closing_tab = true
 config.tab_bar_at_bottom = true
 
+config.keys = {
+    {
+        key = '9',
+        mods = 'CMD',
+        action = wezterm.action.SpawnCommandInNewTab {
+            args = { 'bash', '-c', '~/.cfg/scripts/wezterm-sessionizer.sh;exec bash' },
+        },
+    },
+}
 return config

@@ -19,6 +19,7 @@ require('lazy').setup({
     -- { "ramojus/mellifluous.nvim",   priority = 1000 },
     { 'navarasu/onedark.nvim' },
     { 'rebelot/kanagawa.nvim' },
+    { 'shaunsingh/solarized.nvim' },
     -- {
     --     "briones-gabriel/darcula-solid.nvim",
     --     dependencies = "rktjmp/lush.nvim",
@@ -126,6 +127,6 @@ require("plugins.harpoon")
 require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
-require("plugins.toggleterm")
+-- require("plugins.toggleterm")
 require("plugins.comment")
 require("plugins.luasnip")

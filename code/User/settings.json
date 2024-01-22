@@ -1,7 +1,6 @@
 {
     "security.workspace.trust.untrustedFiles": "open",
     "workbench.startupEditor": "none",
-    "editor.minimap.enabled": false,
     "go.toolsManagement.autoUpdate": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "redhat.telemetry.enabled": false,
@@ -14,7 +13,7 @@
     "editor.fontFamily": "jetbrainsmono nerd font,Menlo, Monaco, 'Courier New', monospace",
     "window.titleBarStyle": "native",
     "breadcrumbs.enabled": false,
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "Material Light",
     "gruvboxMaterial.lightContrast": "soft",
     "window.menuBarVisibility": "toggle",
     "git.openRepositoryInParentFolders": "never",
@@ -25,5 +24,8 @@
         "[Material Light]": {
             "terminal.ansiBrightBlack": "#BCBCBC",
         }
-    } 
+    },
+    "workbench.activityBar.location": "hidden",
+    "markdown.extension.preview.autoShowPreviewToSide": true,
+    "editor.minimap.enabled": false
 }

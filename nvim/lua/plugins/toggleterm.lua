@@ -38,5 +38,5 @@ local function lazygit_toggle()
     lazygit:toggle()
 end
 
-vim.keymap.set({ "n", "i", "t" }, [[<c-\>]], lazygit_toggle, { noremap = true, silent = true })
+vim.keymap.set({ "n", "i", "t" }, [[<F2>]], lazygit_toggle, { noremap = true, silent = true })
 vim.keymap.set({ "i", "t" }, [[<c-a>]], '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
