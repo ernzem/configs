@@ -17,9 +17,7 @@ require('lazy').setup({
     ----------------Colorschemes------------------------------
     { 'projekt0n/github-nvim-theme' },
     -- { "ramojus/mellifluous.nvim",   priority = 1000 },
-    { 'navarasu/onedark.nvim' },
     { 'rebelot/kanagawa.nvim' },
-    { 'shaunsingh/solarized.nvim' },
     -- {
     --     "briones-gabriel/darcula-solid.nvim",
     --     dependencies = "rktjmp/lush.nvim",
@@ -85,24 +83,24 @@ require('lazy').setup({
     -- Visualize undo tree
     { 'mbbill/undotree' },
     -- Comment single line or block of lines with hotkeys
-    { 'numToStr/Comment.nvim',       opts = {} },
+    { 'numToStr/Comment.nvim',       lazy = true, opts = {} },
     -- Toggle terminal functionality
-    { 'akinsho/toggleterm.nvim',     version = "*", config = true },
+    -- { 'akinsho/toggleterm.nvim',     version = "*", config = true },
     -- Dev icons
     { 'nvim-tree/nvim-web-devicons', opts = {} },
     -- File Browser: https://github.com/nvim-tree/nvim-tree.lua
     {
         "nvim-tree/nvim-tree.lua",
         version = "*",
-        lazy = false,
+        lazy = true,
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         }
     },
     -- ZenMode https://github.com/folke/zen-mode.nvim
-    { "folke/zen-mode.nvim", opts = {} },
-    -- Sync terminal bacground with vim background
-    { "typicode/bg.nvim",    lazy = false },
+    -- { "folke/zen-mode.nvim", opts = {} },
+    -- Sync terminal background with vim background
+    { "typicode/bg.nvim", lazy = false },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',

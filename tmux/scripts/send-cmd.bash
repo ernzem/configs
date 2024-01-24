@@ -15,5 +15,7 @@ if [ $? -eq 0 ]; then
     tmux resize-pane -Z
 fi
 
+# Exit Copy Mode
+tmux send-keys -t $PANE_INDEX C-c
 # Send command
 tmux send-keys -t $PANE_INDEX "$1" Enter
