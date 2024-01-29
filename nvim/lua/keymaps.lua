@@ -44,4 +44,5 @@ vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })
 
 -- Run wezterm sessionizer script
-vim.keymap.set("n", "<leader>rp", '<cmd>silent !tmux display-popup -E "sh ~/.cfg/scripts/tmux-sessionizer.sh"<cr>')
+vim.keymap.set("n", "<leader>rp",
+    '<cmd>silent !wezterm cli split-pane --percent 25 -- sh ~/.cfg/scripts/wezterm-sessionizer.sh<cr>')

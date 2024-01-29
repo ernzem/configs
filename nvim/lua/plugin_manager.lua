@@ -83,9 +83,9 @@ require('lazy').setup({
     -- Visualize undo tree
     { 'mbbill/undotree' },
     -- Comment single line or block of lines with hotkeys
-    { 'numToStr/Comment.nvim',       lazy = true, opts = {} },
+    { 'numToStr/Comment.nvim',       lazy = true,   opts = {} },
     -- Toggle terminal functionality
-    -- { 'akinsho/toggleterm.nvim',     version = "*", config = true },
+    { 'akinsho/toggleterm.nvim',     version = "*", config = true },
     -- Dev icons
     { 'nvim-tree/nvim-web-devicons', opts = {} },
     -- File Browser: https://github.com/nvim-tree/nvim-tree.lua
@@ -125,6 +125,6 @@ require("plugins.harpoon")
 require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
--- require("plugins.toggleterm")
+require("plugins.toggleterm")
 require("plugins.comment")
 require("plugins.luasnip")

@@ -45,7 +45,8 @@ alias notes="(nvim $NOTES/)"
 alias todo="(cd $NOTES; vim TODO/)"
 alias bat='bat --paging=never'
 alias rp='cd `ls -1d ~/repos/* | fzf`'
-alias trp='tmux display-popup -E "bash ~/.cfg/scripts/tmux-sessionizer.sh"'
+alias trp='sh ~/.cfg/scripts/wezterm-sessionizer.sh'
+# alias trp='tmux display-popup -E "bash ~/.cfg/scripts/tmux-sessionizer.sh"'
 
 alias bat='bat --paging=never'
 alias gs='git status'

@@ -68,4 +68,4 @@ vim.o.splitright = true
 vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
 -- vim.opt.titlestring = "nvim %{finddir('.git/..', expand('%:p:h').';')}" //using git folder
-vim.opt.titlestring = "%{fnamemodify(getcwd(0), ':t')} - nvim"
+vim.opt.titlestring = "%{fnamemodify(getcwd(0), ':t')}"

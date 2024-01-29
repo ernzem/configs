@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm'
-
+local act = wezterm.action
 -- Maximize on startup
 local mux = wezterm.mux
 wezterm.on('gui-startup', function()
@@ -53,14 +53,20 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 40
 config.switch_to_last_active_tab_when_closing_tab = true
 config.tab_bar_at_bottom = true
-
+-- timeout_milliseconds defaults to 1000 and can be omitted
+config.disable_default_key_bindings = true
+config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
-    {
-        key = '9',
-        mods = 'CMD',
-        action = wezterm.action.SpawnCommandInNewTab {
-            args = { 'bash', '-c', '~/.cfg/scripts/wezterm-sessionizer.sh;exec bash' },
-        },
-    },
+    -- https://wezfurlong.org/wezterm/config/default-keys.html?h=disable+key
+    -- To get all keybindings from editor itself:
+    -- wezterm show-keys --lua
+    -- TODO:
+    -- alt-tab between tabs
+    -- switch to certain tab
+
+    { key = 'f', mods = 'LEADER', action = act.Search { CaseSensitiveString = "" } },
+    { key = 'c', mods = 'LEADER', action = act.CopyTo 'Clipboard' },
+    { key = 'v', mods = 'LEADER', action = act.PasteFrom 'Clipboard' },
+    { key = 'q', mods = 'LEADER', action = act.CloseCurrentTab { confirm = true } }
 }
 return config

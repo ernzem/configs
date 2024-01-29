@@ -10,7 +10,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+# selected_name=$(basename "$selected" | tr . _)
 # wezterm_running=$(ps aux | grep WezTerm)
 # if [[ -z $wezterm_running ]]; then
 #     exit 0
@@ -23,4 +23,4 @@ if [[ -n $tab_id ]]; then
 fi
 
 pane_id=$(wezterm cli spawn --cwd $selected)
-wezterm cli set-tab-title --pane-id $pane_id $selected_name
+# wezterm cli set-tab-title --pane-id $pane_id $selected_name
