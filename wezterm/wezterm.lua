@@ -22,15 +22,14 @@ local os = wezterm.target_triple
 
 if os == 'x86_64-apple-darwin' or os == 'aarch64-apple-darwin' then
     config.font_size = 14
-    config.freetype_load_target = "Light"
 end
 
 if os == 'x86_65-unknown-linux-gnu' then
     config.font_size = 12
-    config.freetype_render_target = "Normal"
 end
 
 -- This is where you actually apply your config choices
+config.freetype_render_target = "Light"
 config.font = wezterm.font {
     family = 'JetBrainsMono Nerd Font',
     harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
