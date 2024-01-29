@@ -63,3 +63,9 @@ vim.opt.cursorline = true
 -- Open new split panes to right and bottom, which feels more natural
 vim.o.splitbelow = true
 vim.o.splitright = true
+
+-- Title in titlebar work-dir nvim
+vim.opt.title = true
+vim.opt.titlelen = 0 -- do not shorten title
+-- vim.opt.titlestring = "nvim %{finddir('.git/..', expand('%:p:h').';')}" //using git folder
+vim.opt.titlestring = "%{fnamemodify(getcwd(0), ':t')} - nvim"
