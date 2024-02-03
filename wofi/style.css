@@ -1,0 +1,53 @@
+/* ::root{ */
+/*     --accent: #5291e2; */
+/*     --dark: #323232; */
+/*     --light: #7C818C; */
+/*     --ld: #404552; */
+/*     --dl: #4B5162 */
+/*     --white: white; */
+/* } */
+
+*{
+    font-family: monospace;
+}
+
+window {
+    background-color: #285577;
+    opacity: 0.95;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 3px solid black;
+    background-color: #323232;
+    color: white;
+}
+
+#inner-box {
+    background-color: #323232;
+
+}
+
+#outer-box {
+    margin: 5px;
+    padding: 20px;
+    background-color: #323232;
+}
+
+#scroll {
+}
+
+#text {
+    padding: 5px;
+    color: white;
+}
+
+
+#entry:selected {
+    background-color: #285577;
+}
+
+#text:selected {
+}

@@ -25,6 +25,10 @@
     ~/.config/Code/User/keybindings.json:  code/User/keybindings.json
     ~/.config/Code/User/snippets:  code/User/snippets
     ~/.config/foot/: foot
+    ~/.config/sway/:  sway
+    ~/.config/wofi/:  wofi
+    ~/.config/waybar/:  waybar
+    ~/.config/gammastep/:  gammastep
 
 # Mac
 - defaults:
