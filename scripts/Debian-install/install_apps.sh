@@ -13,8 +13,10 @@ sudo apt install -y foot
 sudo apt install -y pandoc
 sudo apt install -y libpam-fprintd
 sudo apt install -y zsh
+sudo apt install -y dconf-editor
 sudo apt install -y wl-clipboard # Wayland only
-#sudo apt install -y xclip # X11 only
+sudo apt install -y libnotify-bin # for sending notifications via cli
+# sudo apt install -y xclip # X11 only
 # sudo apt install -y gnome-tweaks
 # -----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y bat
@@ -22,9 +24,9 @@ mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 # -----------------------------------------------------------------------------------------------------------------------
 # Brave Browser https://brave.com/linux/#debian-ubuntu-mint
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update && sudo apt install -y brave-browser
+# sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+# echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+# sudo apt update && sudo apt install -y brave-browser
 # -----------------------------------------------------------------------------------------------------------------------
 # Starship https://starship.rs/guide/#%F0%9F%9A%80-installation
 curl -sS https://starship.rs/install.sh | sh
@@ -39,12 +41,12 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 # -----------------------------------------------------------------------------------------------------------------------
 # VS Code
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-rm -f packages.microsoft.gpg
-sudo apt update
-sudo apt install -y code
+# wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+# sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+# sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+# rm -f packages.microsoft.gpg
+# sudo apt update
+# sudo apt install -y code
 # -----------------------------------------------------------------------------------------------------------------------
 # Docker
 sudo apt update
@@ -68,15 +70,15 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 # sudo groupadd docker
 sudo usermod -aG docker $USER
 
-# Autostart docker
-# sudo systemctl enable docker.service
-# sudo systemctl enable containerd.service
+# Stop docker autostart docker
+# sudo systemctl disable docker.service
+# sudo systemctl disable containerd.service
 # -----------------------------------------------------------------------------------------------------------------------
 # Typora
-wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
-sudo add-apt-repository 'deb https://typora.io/linux ./'
-sudo apt update
-sudo apt install -y typora
+# wget -qO - https://typora.io/linux/public-key.asc | sudo tee /etc/apt/trusted.gpg.d/typora.asc
+# sudo add-apt-repository 'deb https://typora.io/linux ./'
+# sudo apt update
+# sudo apt install -y typora
 # -----------------------------------------------------------------------------------------------------------------------
 # Syntching
 # Add the release PGP keys:
@@ -101,7 +103,14 @@ sudo apt install -y syncthing
 # -------------------------------------------------------------------------------------------------------------------------
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-mkdir ~/Apps
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage --output-dir ~/Apps
-chmod u+x ~/Apps/nvim.appimage
+mkdir -p ~/.local/bin
+curl -L -o ~/.local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x ~/.local/bin/nvim
+
+curl -LO https://github.com/wez/wezterm/releases/download/20240128-202157-1e552d76/wezterm-20240128-202157-1e552d76.Debian12.deb
+sudo apt install -y ./wezterm-20240128-202157-1e552d76.Debian12.deb
+rm wezterm-20240128-202157-1e552d76.Debian12.deb
+
+echo "\nDONE!\n"
+
 

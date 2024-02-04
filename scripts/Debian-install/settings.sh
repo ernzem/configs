@@ -47,11 +47,10 @@ gsettings set org.gnome.desktop.thumbnailers disable "['application/pdf']"
 # disable hot corners
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 
-#================================APP-SETTINGS==================================================
-echo "add bash settings file to .bashrc ..."
-echo "# Import my setttings" >> ~/.bashrc
-echo "source ~/.my_configs.bash" >> ~/.bashrc
+# Show battery percentage
+gsettings set org.gnome.desktop.interface show-battery-percentage true
 
+#================================APP-SETTINGS==================================================
 # Disable evolution services
 sudo chmod -x /usr/libexec/evolution-data-server/evolution-alarm-notify
 sudo chmod -x /usr/libexec/evolution-source-registry
@@ -59,7 +58,19 @@ sudo chmod -x /usr/libexec/evolution-addressbook-factory
 sudo chmod -x /usr/libexec/evolution-calendar-factory
 
 # Remove games
-sudo apt purge aisleriot five-or-more four-in-a-row gnome-2048 gnome-chess hitori gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles gnome-robots gnome-sudoku gnome-taquin gnome-tetravex iagno lightsoff quadrapassel swell-foop tali
+sudo apt purge -y aisleriot five-or-more four-in-a-row gnome-2048 gnome-chess hitori gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles gnome-robots gnome-sudoku gnome-taquin gnome-tetravex iagno lightsoff quadrapassel swell-foop tali
 
 # Remove evolution
-sudo apt remove evolution gnome-music yelp
+sudo apt remove -y evolution gnome-music yelp simple-scan gnome-contacts gnome-weather gnome-calendar cheese
+sudo apt autoremove -y
+
+#===============================DISABLE GNOME TRACKER=============================================
+# https://www.linuxuprising.com/2019/07/how-to-completely-disable-tracker.html
+
+systemctl --user mask tracker-extract-3.service tracker-miner-fs-3.service tracker-miner-rss-3.service tracker-writeback-3.service tracker-xdg-portal-3.service tracker-miner-fs-control-3.service
+tracker3 reset -s -r
+
+#=============================Disable autostart gnome-software=====================================
+mkdir -pv ~/.config/autostart && cp /etc/xdg/autostart/org.gnome.Software.desktop ~/.config/autostart/
+echo "X-GNOME-Autostart-enabled=false" >> ~/.config/autostart/org.gnome.Software.desktop
+dconf write /org/gnome/desktop/search-providers/disabled "['org.gnome.Software.desktop']"
