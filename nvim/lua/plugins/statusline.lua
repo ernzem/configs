@@ -9,8 +9,8 @@ github_light.normal.b.fg = '#000000'
 require('lualine').setup({
     options = {
         icons_enabled = false,
-        theme = 'auto',
-        -- theme = github_light,
+        -- theme = 'auto',
+        theme = github_light,
         component_separators = '|',
         section_separators = '',
         disabled_filetypes = {

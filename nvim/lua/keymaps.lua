@@ -42,7 +42,3 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- Terminal exit mapping
 -- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })
-
--- Run wezterm sessionizer script
-vim.keymap.set("n", "<leader>rp",
-    '<cmd>silent !wezterm cli split-pane --percent 25 -- sh ~/.cfg/scripts/wezterm-sessionizer.sh<cr>')

@@ -11,7 +11,7 @@ require('kanagawa').setup({
     }
 })
 
-vim.cmd("colorscheme kanagawa-wave")
+-- vim.cmd("colorscheme kanagawa-wave")
 
--- vim.opt.background = "light"
--- vim.cmd("colorscheme github_light_high_contrast")
+vim.opt.background = "light"
+vim.cmd("colorscheme github_light_default")
