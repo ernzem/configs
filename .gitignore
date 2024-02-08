@@ -8,4 +8,8 @@
 ehthumbs.db
 Thumbs.db
 
+# Neovim
 nvim/lazy-lock.json
+
+# Karabiner
+karabiner/automatic_backups/*

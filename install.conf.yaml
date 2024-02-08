@@ -40,6 +40,5 @@
     ~/Library/Application Support/Code/User/settings.json:  code/User/settings.json
     ~/Library/Application Support/Code/User/keybindings.json:  code/User/keybindings.json
     ~/Library/Application Support/Code/User/snippets:  code/User/snippets
-    ~/.config/karabiner/assets:  karabiner/assets
-    ~/.config/karabiner/karabiner.json:  karabiner/karabiner.json
+    ~/.config/karabiner:  karabiner
     ~/.Library/Keyboard Layouts/US Keyboard with Lithuanian letters.bundle: US Keyboard with Lithuanian letters.bundle
