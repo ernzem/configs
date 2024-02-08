@@ -99,6 +99,11 @@ require('lazy').setup({
     },
     -- Sync terminal background with vim background
     { "typicode/bg.nvim", lazy = false },
+    -- Diagnostics
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
     ------------------------Debugger-------------------------------
     {
         'mfussenegger/nvim-dap',
@@ -124,5 +129,6 @@ require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.dap")
 require("plugins.toggleterm")
+require("plugins.trouble")
 require("plugins.comment")
 require("plugins.luasnip")
