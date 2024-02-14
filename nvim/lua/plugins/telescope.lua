@@ -1,5 +1,14 @@
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
+    defaults = {
+        -- Default configuration for telescope goes here:
+        -- config_key = value,
+        mappings = {
+            i = {
+                ['<c-q>'] = require('telescope.actions').delete_buffer
+            }
+        }
+    },
     pickers = {
         lsp_implementations = {
             theme = "cursor"
