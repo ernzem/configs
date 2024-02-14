@@ -47,8 +47,6 @@ local on_attach = function(_, bufnr)
     end, '[W]orkspace [L]ist Folders')
     nmap('<C-f>', vim.lsp.buf.format, 'Format current buffer with LSP')
     vim.keymap.set('i', '<C-f>', vim.lsp.buf.format, { buffer = bufnr, desc = 'Format current buffer with LSP' })
-    vim.keymap.set('n', '<leader>er', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',
-        { noremap = true, silent = true })
 end
 
 -- Enable the following language servers
