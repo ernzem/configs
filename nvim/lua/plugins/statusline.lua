@@ -1,5 +1,11 @@
 local github_light = require('lualine.themes.wombat')
 
+local function workspace_dir()
+    -- return vim.fn.getcwd()
+    return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+end
+
+
 -- Change the background of lualine_c section for normal mode
 github_light.normal.c.bg = '#C9C9C9'
 github_light.normal.c.fg = '#000000'
@@ -29,7 +35,7 @@ require('lualine').setup({
     sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { { 'filename', path = 3, shorting_target = 60, } },
+        lualine_c = { workspace_dir },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
