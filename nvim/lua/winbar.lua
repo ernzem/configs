@@ -7,6 +7,6 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
         if vim.bo.filetype == '' or ui_buffers[vim.bo.filetype] == true then
             return
         end
-        vim.wo.winbar = " %f %m"
+        vim.wo.winbar = "%{expand('%:~:.')} %m"
     end,
 })
