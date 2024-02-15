@@ -9,8 +9,8 @@ require("nvim-tree").setup({
         width = 40
     }
 })
-vim.keymap.set("n", "<leader>e", '<cmd>NvimTreeFindFileToggle<CR>',
-    { buffer = nil, noremap = true, silent = true, nowait = true })
+-- vim.keymap.set("n", "<leader>e", '<cmd>NvimTreeFindFileToggle<CR>',
+--     { buffer = nil, noremap = true, silent = true, nowait = true })
 
 -- close buffer tree if we're the last window around
 vim.api.nvim_create_autocmd({ "QuitPre" }, {

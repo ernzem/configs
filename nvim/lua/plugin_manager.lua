@@ -43,6 +43,10 @@ require('lazy').setup({
             return vim.fn.executable 'make' == 1
         end,
     },
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
     --------------Treesitter (syntax parser)--------------------
     {
         'nvim-treesitter/nvim-treesitter',
@@ -89,16 +93,16 @@ require('lazy').setup({
     -- Dev icons
     { 'nvim-tree/nvim-web-devicons', opts = {} },
     -- File Browser: https://github.com/nvim-tree/nvim-tree.lua
-    {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = true,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        }
-    },
+    -- {
+    --     "nvim-tree/nvim-tree.lua",
+    --     version = "*",
+    --     lazy = true,
+    --     dependencies = {
+    --         "nvim-tree/nvim-web-devicons",
+    --     }
+    -- },
     -- Sync terminal background with vim background
-    { "typicode/bg.nvim", lazy = false },
+    { "typicode/bg.nvim",            lazy = false },
     -- Diagnostics
     {
         "folke/trouble.nvim",
@@ -119,7 +123,7 @@ require('lazy').setup({
 -- Import Settings
 require("plugins.treesitter")
 require("plugins.colorscheme")
-require("plugins.nvim-tree")
+-- require("plugins.nvim-tree")
 require("plugins.statusline")
 require("plugins.telescope")
 require("plugins.gitsigns")
