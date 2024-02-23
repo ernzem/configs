@@ -6,6 +6,5 @@ else
     require("keymaps")
     require("commands")
     require("plugin_manager")
-    require("winbar")
     require("state")
 end

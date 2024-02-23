@@ -1,4 +1,18 @@
--- See `:help telescope` and `:help telescope.setup()`
+-- Function allows multiple selections
+local select_one_or_multi = function(prompt_bufnr)
+    local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+    local multi = picker:get_multi_selection()
+    if not vim.tbl_isempty(multi) then
+        require('telescope.actions').close(prompt_bufnr)
+        for _, j in pairs(multi) do
+            if j.path ~= nil then
+                vim.cmd(string.format('%s %s', 'edit', j.path))
+            end
+        end
+    else
+        require('telescope.actions').select_default(prompt_bufnr)
+    end
+end
 require('telescope').setup {
     defaults = {
         sorting_strategy = "ascending",
@@ -11,11 +25,12 @@ require('telescope').setup {
             i = {
                 ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
                 ['<c-q>'] = require('telescope.actions').delete_buffer,
-                ["<C-h>"] = require('telescope.actions').which_key
+                ["<C-h>"] = require('telescope.actions').which_key,
+                ['<CR>'] = select_one_or_multi,
             }
         },
         preview = {
-            hide_on_startup = true
+            hide_on_startup = false
         }
     },
     pickers = {
@@ -44,7 +59,7 @@ require('telescope').setup {
             hidden = { file_browser = false, folder_browser = false },
             respect_gitignore = vim.fn.executable "fd" == 1,
             no_ignore = false,
-            follow_symlinks = false,
+            follow_symlinks = true,
             browse_files = require("telescope._extensions.file_browser.finders").browse_files,
             browse_folders = require("telescope._extensions.file_browser.finders").browse_folders,
             hide_parent_dir = false,
@@ -57,13 +72,13 @@ require('telescope').setup {
             hijack_netrw = false,
             use_fd = true,
             git_status = true,
-        }
+        },
     }
 }
--- Load telescope fzf native
+-- Load telescope extensions
 pcall(require('telescope').load_extension, 'fzf')
--- Load file browser extension: https://github.com/nvim-telescope/telescope-file-browser.nvim
-require("telescope").load_extension "file_browser"
+pcall(require("telescope").load_extension, "file_browser")
+pcall(require('telescope').load_extension, 'ui-select')
 
 vim.api.nvim_set_keymap("n", "<space>e",
     ":lua require 'telescope'.extensions.file_browser.file_browser({path=vim.fn.expand('%:p:h') })<CR>",
