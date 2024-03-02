@@ -1,3 +1,6 @@
+-- Disable welcome text
+vim.opt.shortmess:append({ I = true })
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -11,6 +14,12 @@ vim.opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'
+
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:-,foldsep: ,foldclose:+]]
 
 -- Autoread file changes on the disk
 vim.o.autoread = true

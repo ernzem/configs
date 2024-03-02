@@ -1,10 +1,10 @@
-if vim.g.vscode then
-    require("defaults")
-    require("keymaps")
-else
-    require("defaults")
-    require("keymaps")
+require("defaults")
+require("keymaps")
+
+if not vim.g.vscode then
     require("commands")
-    require("plugin_manager")
     require("state")
+    require("plugin_manager")
+
+    vim.cmd("colorscheme kanagawa-wave")
 end
