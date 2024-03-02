@@ -1,9 +1,10 @@
 return {
     'rebelot/kanagawa.nvim',
-    lazy = true,
+    -- event = "VeryLazy",
     config = function()
         require('kanagawa').setup({
             terminalColors = true,
+            dimInactive = true,
             colors = {
                 theme = {
                     all = {

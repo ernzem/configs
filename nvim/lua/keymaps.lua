@@ -1,11 +1,11 @@
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Write changes to disk
--- vim.keymap.set({ "n", "i" }, "<C-s>", '<cmd>:w<cr>', { desc = 'Save Current Buffer' })
+vim.keymap.set("n", "<leader>w", '<cmd>:silent write<cr>',
+    { desc = 'Save Current Buffer', noremap = true, silent = true })
+vim.keymap.set("n", "<cr>w", '<cmd>:silent write<cr>',
+    { desc = 'Save Current Buffer', noremap = true, silent = true })
 
 -- Disable copying on certain commands
 vim.keymap.set({ "x" }, "<leader>p", [["_dP]])
@@ -42,3 +42,9 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- Terminal exit mapping
 -- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })
+
+vim.keymap.set("", ";", ':', { noremap = true })
+
+vim.keymap.set("i", "<C-;>", "<Esc>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<S-L>", "$", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<S-H>", "_", { noremap = true, silent = true })

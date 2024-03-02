@@ -1,6 +1,7 @@
 return {
     {
         'nvim-telescope/telescope-fzf-native.nvim',
+        lazy = true,
         build = 'make',
         cond = function()
             return vim.fn.executable 'make' == 1
@@ -8,12 +9,13 @@ return {
     },
     {
         "nvim-telescope/telescope-file-browser.nvim",
-        lazy = true,
+        event = "VeryLazy",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
+        event = "VeryLazy",
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             -- Function allows multiple selections
@@ -42,7 +44,7 @@ return {
                     mappings = {
                         i = {
                             ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
-                            ['<c-q>'] = require('telescope.actions').delete_buffer,
+                            ['<C-S-Q>'] = require('telescope.actions').delete_buffer,
                             ["<C-h>"] = require('telescope.actions').which_key,
                             ['<CR>'] = select_one_or_multi,
                         }
@@ -96,16 +98,15 @@ return {
             -- Load telescope extensions
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require("telescope").load_extension, "file_browser")
-            pcall(require('telescope').load_extension, 'ui-select')
 
-            vim.api.nvim_set_keymap("n", "<space>e",
+            vim.api.nvim_set_keymap("n", "<leader>e",
                 ":lua require 'telescope'.extensions.file_browser.file_browser({path=vim.fn.expand('%:p:h') })<CR>",
                 { noremap = true })
 
             -- See `:help telescope.builtin`
             vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
                 { desc = '[?] Find recently opened files' })
-            vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers,
+            vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers,
                 { desc = '[ ] Find existing buffers' })
             vim.keymap.set('n', '<leader>/', function()
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -123,6 +124,21 @@ return {
             vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
             vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,
                 { desc = '[S]earch [D]iagnostics' })
+
+
+            local vertical_layout = { layout_strategy = 'vertical', layout_config = { preview_cutoff = 60 }, fname_width = 100, results_title = nil }
+            local ivy_theme = require('telescope.themes').get_ivy({ previewer = false, layout_config = { height = 10 }, fname_width = 100 })
+
+            vim.keymap.set("n", 'gr', function() require('telescope.builtin').lsp_references(ivy_theme) end,
+                { desc = '[G]oto [R]eferences' })
+            vim.keymap.set("n", 'gI', function() require('telescope.builtin').lsp_implementations(ivy_theme) end,
+                { desc = '[G]oto [I]mplementation' })
+
+            vim.keymap.set("n", 'Gr', function() require('telescope.builtin').lsp_references(vertical_layout) end,
+                { desc = '[G]oto [R]eferences' })
+            vim.keymap.set("n", '<leader>I',
+                function() require('telescope.builtin').lsp_implementations(vertical_layout) end,
+                { desc = '[G]oto [I]mplementation' })
         end
     },
 }

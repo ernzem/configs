@@ -2,6 +2,7 @@ return {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    event = "VeryLazy",
     config = function()
         vim.opt.termguicolors = true
         require("bufferline").setup({
@@ -32,7 +33,7 @@ return {
         })
 
 
-        vim.keymap.set({ "n", "i" }, "<C-;>", '<cmd>BufferLineTogglePin<cr>', { noremap = true, silent = true })
+        vim.keymap.set({ "n", "i" }, "<C-'>", '<cmd>BufferLineTogglePin<cr>', { noremap = true, silent = true })
 
         vim.keymap.set({ "n", "i" }, "<C-1>", '<cmd>BufferLineGoToBuffer 1<cr>', { noremap = true, silent = true })
         vim.keymap.set({ "n", "i" }, "<C-2>", '<cmd>BufferLineGoToBuffer 2<cr>', { noremap = true, silent = true })

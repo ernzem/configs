@@ -6,6 +6,7 @@ return {
         -- Debugger configs for go
         'leoluz/nvim-dap-go',
     },
+    event = "VeryLazy",
     config = function()
         local dap, dapui, dapgo = require("dap"), require("dapui"), require('dap-go')
         dapgo.setup()
