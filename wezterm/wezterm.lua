@@ -35,7 +35,7 @@ config.font = wezterm.font {
 }
 
 config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = "RESIZE"
+-- config.window_decorations = "RESIZE"
 config.window_padding = {
     left = '0cell',
     right = '0cell',
@@ -43,8 +43,8 @@ config.window_padding = {
     bottom = '0cell',
 }
 -- For example, changing the color scheme:
-config.color_scheme = 'Mexico Light (base16)'
--- config.color_scheme = 'Kanagawa (Gogh)'
+-- config.color_scheme = 'Mexico Light (base16)'
+config.color_scheme = 'Kanagawa (Gogh)'
 
 -- Use non gui tab style
 config.use_fancy_tab_bar = false
