@@ -4,8 +4,6 @@ vim.g.maplocalleader = ' '
 -- Write changes to disk
 vim.keymap.set("n", "<leader>w", '<cmd>:silent write<cr>',
     { desc = 'Save Current Buffer', noremap = true, silent = true })
-vim.keymap.set("n", "<cr>w", '<cmd>:silent write<cr>',
-    { desc = 'Save Current Buffer', noremap = true, silent = true })
 
 -- Disable copying on certain commands
 vim.keymap.set({ "x" }, "<leader>p", [["_dP]])

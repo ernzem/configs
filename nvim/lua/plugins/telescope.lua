@@ -39,6 +39,7 @@ return {
                     layout_config = {
                         horizontal = {
                             prompt_position = "top",
+                            preview_width = 0.65,
                         },
                     },
                     mappings = {
@@ -50,7 +51,7 @@ return {
                         }
                     },
                     preview = {
-                        hide_on_startup = false
+                        hide_on_startup = true
                     }
                 },
                 pickers = {
@@ -63,8 +64,8 @@ return {
                         layout_config = {
                             horizontal = {
                                 prompt_position = "top",
-                                preview_width = 0.6,
-                                width = 0.95
+                                preview_width = 0.65,
+                                width = 0.90
                             }
                         },
                         path = vim.loop.cwd(),
@@ -92,6 +93,9 @@ return {
                         hijack_netrw = false,
                         use_fd = true,
                         git_status = true,
+                        preview = {
+                            hide_on_startup = true
+                        }
                     },
                 }
             }

@@ -107,7 +107,7 @@ return {
         vim.keymap.set('n', '<F10>', dap.step_into)
         vim.keymap.set('n', '<F11>', dap.step_out)
         vim.keymap.set('n', '<F12>', dap.terminate)
-        vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint)
+        vim.keymap.set('n', '<F3>', dap.toggle_breakpoint)
         vim.keymap.set('n', '<leader>v', dapui.eval)
 
         -- Auto run debugger

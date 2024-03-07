@@ -4,7 +4,6 @@ return {
     dependencies = {
         { 'williamboman/mason.nvim', config = true },
         'williamboman/mason-lspconfig.nvim',
-        -- Additional lua configuration
         { 'folke/neodev.nvim',       opts = {} }
     },
     config = function()
@@ -18,7 +17,6 @@ return {
                 vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
             end
 
-
             nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
             nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -26,7 +24,6 @@ return {
 
             nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
             nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-            nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
             -- See `:help K` for why this keymap
             nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -34,10 +31,12 @@ return {
 
             -- Lesser used LSP functionality
             nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-            nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-            nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-            nmap('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-                '[W]orkspace [L]ist Folders')
+            -- TODO: Disabled because unused and collides with save keyword
+            -- nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+            -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+            -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+            -- nmap('<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+            --     '[W]orkspace [L]ist Folders')
             nmap('<C-f>', vim.lsp.buf.format, 'Format current buffer with LSP')
             vim.keymap.set('i', '<C-f>', vim.lsp.buf.format, { buffer = bufnr, desc = 'Format current buffer with LSP' })
         end
@@ -124,8 +123,56 @@ return {
             },
         }
 
-        -- Setup neovim lua configuration to enable type checking for nvim-dap-ui to get type checking, documentation and autocompletion for all API functions.
-        require('neodev').setup({ library = { plugins = { "nvim-dap-ui" }, types = true } })
+        -- Assign new icons for lsp sign column
+        local function sign_define(args)
+            vim.fn.sign_define(args.name, {
+                texthl = args.name,
+                text = args.text,
+                numhl = ''
+            })
+        end
+        sign_define({ name = 'DiagnosticSignError', text = '' })
+        sign_define({ name = 'DiagnosticSignWarn', text = '' })
+        sign_define({ name = 'DiagnosticSignHint', text = '󰌶' })
+        sign_define({ name = 'DiagnosticSignInfo', text = '󰋽' })
+
+        -- Disable diagnostics when switching mode
+        vim.api.nvim_create_autocmd('ModeChanged', {
+            pattern = { 'n:i', 'v:s' },
+            desc = 'Disable diagnostics in insert and select mode',
+            callback = function(e) vim.diagnostic.disable(e.buf) end
+        })
+
+        -- Enable diagnostics when back to normal
+        vim.api.nvim_create_autocmd('ModeChanged', {
+            pattern = 'i:n',
+            desc = 'Enable diagnostics when leaving insert mode',
+            callback = function(e)
+                vim.diagnostic.enable(e.buf)
+                require("winbar").update()
+            end
+
+        })
+
+        -- TODO: fix the following 2 autocmds from kickstart.nvim . It should highlight all same variables
+
+        -- The following two autocommands are used to highlight references of the
+        -- word under your cursor when your cursor rests there for a little while.
+        --    See `:help CursorHold` for information about when this is executed
+        --
+        -- When you move your cursor, the highlights will be cleared (the second autocommand).
+        -- local client = vim.lsp.get_client_by_id(event.data.client_id)
+        -- if client and client.server_capabilities.documentHighlightProvider then
+        --     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        --         buffer = event.buf,
+        --         callback = vim.lsp.buf.document_highlight,
+        --     })
+        --
+        --     vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        --         buffer = event.buf,
+        --         callback = vim.lsp.buf.clear_references,
+        --     })
+        -- end
 
         -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
         local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -37,7 +37,8 @@ return {
             sections = {
                 lualine_a = { 'mode' },
                 lualine_b = { 'branch', 'diff' },
-                lualine_c = { workspace_dir, { 'filename', path = 1, shorting_target = 80, } },
+                -- lualine_c = { workspace_dir, { 'filename', path = 1, shorting_target = 80, } },
+                lualine_c = { workspace_dir },
                 lualine_x = { 'encoding', 'fileformat', 'filetype' },
                 lualine_y = { 'progress' },
                 lualine_z = { 'location' }

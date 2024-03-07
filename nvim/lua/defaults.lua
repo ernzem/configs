@@ -1,4 +1,4 @@
--- Disable welcome text
+-- Disable welcome textdefau
 vim.opt.shortmess:append({ I = true })
 
 -- Disable netrw
@@ -40,8 +40,7 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Don't keep search results highlighted & use increment (regex) search
-vim.opt.hlsearch = false
+--Use increment (regex) search
 vim.opt.incsearch = true
 
 -- Keep signcolumn on by default
@@ -50,8 +49,10 @@ vim.wo.signcolumn = 'yes'
 -- When scrolling keep at least nr of lines at the bottom
 vim.opt.scrolloff = 10
 
+-- time in ms after which the swap file will be
+-- written and CursorHold autocommand event is triggered.
+vim.opt.updatetime = 500
 -- Decrease update time
-vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -64,7 +65,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 -- Set command line to autohide when not in use
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0
 
 -- Highlight number
 vim.opt.cursorline = true
@@ -72,6 +73,9 @@ vim.opt.cursorline = true
 -- Open new split panes to right and bottom, which feels more natural
 vim.o.splitbelow = true
 vim.o.splitright = true
+
+-- Global statusline
+vim.opt.laststatus = 3
 
 -- Title in titlebar work-dir nvim
 vim.opt.title = true
