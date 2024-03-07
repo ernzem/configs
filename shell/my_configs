@@ -41,10 +41,10 @@ export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 alias cn='print -z -- $(rg "" $CLI --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
 alias ecn='(cd $CLI; vim)'
 alias cfg="(cd ~/.cfg; vim)"
-alias notes="(nvim $NOTES/)"
+alias notes="(cd $NOTES/; nvim)"
 alias todo="(cd $NOTES; vim TODO/)"
 alias bat='bat --paging=never'
-alias rp='cd `ls -1d ~/repos/* | fzf`'
+alias rp='find ~/repos -mindepth 1 -maxdepth 1 -type d | fzf'
 
 alias bat='bat --paging=never'
 alias gs='git status'
