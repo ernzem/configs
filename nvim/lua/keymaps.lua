@@ -42,7 +42,7 @@ vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set('t', '<C->', [[<C-\><C-n>]], { noremap = true, silent = true })
 
 vim.keymap.set("", ";", ':', { noremap = true })
+vim.keymap.set("", "<C-;>", ':!', { noremap = true })
 
-vim.keymap.set("i", "<C-;>", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<S-L>", "$", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<S-H>", "_", { noremap = true, silent = true })
