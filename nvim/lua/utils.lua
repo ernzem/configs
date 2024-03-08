@@ -7,9 +7,9 @@ function M.run(cmd)
 end
 
 M.ui_buffers = {}
-M.ui_buffers['toggleterm'] = true
 M.ui_buffers[''] = true
 M.ui_buffers['NvimTree'] = true
+M.ui_buffers['toggleterm'] = true
 M.ui_buffers['TelescopePrompt'] = true
 
 return M

@@ -23,36 +23,32 @@ local modes = {
 
 local M = {}
 function M.update_mode_colors()
-    local current_mode = vim.api.nvim_get_mode().mode
-    local mode_color = "%#LineNr#"
+    local current_mode = vim.fn.mode()
+    local mode_color = "%#Statusline#"
     if current_mode == "n" then
-        mode_color = "%#ModeMsg#"
-    elseif current_mode == "i" or current_mode == "ic" then
-        mode_color = "%#IncSearch#"
-    elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
-        mode_color = "%#StatuslineVisualAccent#"
-    elseif current_mode == "R" then
-        mode_color = "%#StatuslineReplaceAccent#"
-    elseif current_mode == "c" then
-        mode_color = "%#StatuslineCmdLineAccent#"
-    elseif current_mode == "t" then
-        mode_color = "%#StatuslineTerminalAccent#"
+        mode_color = "%#LineNr#"
+        -- elseif current_mode == "i" or current_mode == "ic" then
+        --     mode_color = "%#IncSearch#"
+        -- elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
+        --     mode_color = "%#StatuslineVisualAccent#"
+        -- elseif current_mode == "R" then
+        --     mode_color = "%#StatuslineReplaceAccent#"
+        -- elseif current_mode == "c" then
+        --     mode_color = "%#StatuslineCmdLineAccent#"
+        -- elseif current_mode == "t" then
+        --     mode_color = "%#StatuslineTerminalAccent#"
     end
     return mode_color
 end
 
 function M.mode()
-    local current_mode = vim.api.nvim_get_mode().mode
-    return string.format("%s", modes[current_mode]):upper()
+    return modes[vim.fn.mode()]
 end
 
-function M.git_branch()
-    local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-
-    if string.len(branch) > 0 then
-        return " " .. branch .. " "
-    else
-        return ""
+local function branch_name()
+    local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+    if branch ~= "" then
+        return " " .. branch
     end
 end
 
@@ -69,10 +65,12 @@ function Statusline()
     local percentage = "%p%%"
 
     return table.concat {
-        "%#LineNr#",
-        [[ %{luaeval("require('statusline').git_branch()")}%*]],
-        "%#LineNr#",
-        [[ %{luaeval("require('statusline').workspace_dir()")} %*]],
+        M.update_mode_colors(),
+        [[ %{luaeval("require('statusline').mode()")} %*]],
+        "%#Normal#",
+        [[ %{luaeval("vim.g.branch_name")} ]],
+        "%#Normal# ",
+        [[ %{luaeval("require('statusline').workspace_dir()")} ]],
         "%#LineNr#",
         align_right,
         filetype,
@@ -80,15 +78,35 @@ function Statusline()
         fileencoding,
         "  ",
         fileformat,
-        "  ",
+        " %#Normal# ",
         linecol,
-        "  ",
+        " %#LineNr# ",
         percentage,
         " ",
     }
 end
 
-vim.opt.showmode = true
-vim.opt.statusline = '%!luaeval("Statusline()")'
-vim.opt.cmdheight = 1
+local statusline = '%!v:lua.Statusline()'
+
+vim.opt.cmdheight = 0
+vim.opt.showmode = false
+vim.opt.statusline = statusline
+
+local statusline_group = vim.api.nvim_create_augroup("statusline", { clear = true })
+
+vim.api.nvim_create_autocmd({ "VimEnter", "BufWinEnter", "FocusGained" }, {
+    group = statusline_group,
+    callback = function()
+        vim.g.branch_name = branch_name()
+    end
+})
+
+-- Sort bug which hides statusline when entered to insert mode with vim.opt.cmdheight = 0
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    group = statusline_group,
+    callback = function()
+        vim.opt.statusline = statusline
+    end
+})
+
 return M

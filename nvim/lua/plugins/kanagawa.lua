@@ -4,7 +4,7 @@ return {
     config = function()
         require('kanagawa').setup({
             terminalColors = true,
-            dimInactive = true,
+            dimInactive = false,
             colors = {
                 theme = {
                     all = {
