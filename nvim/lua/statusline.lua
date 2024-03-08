@@ -26,7 +26,7 @@ function M.update_mode_colors()
     local current_mode = vim.fn.mode()
     local mode_color = "%#Statusline#"
     if current_mode == "n" then
-        mode_color = "%#LineNr#"
+        mode_color = "%#StatusLineNC#"
         -- elseif current_mode == "i" or current_mode == "ic" then
         --     mode_color = "%#IncSearch#"
         -- elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
@@ -56,34 +56,34 @@ function M.workspace_dir()
     return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
 end
 
-function Statusline()
-    local align_right = "%="
-    local fileencoding = "%{&fileencoding?&fileencoding:&encoding}"
-    local fileformat = "%{&fileformat}"
-    local filetype = "%y"
-    local linecol = "%l:%c"
-    local percentage = "%p%%"
+local align_right = "%="
+local fileencoding = "%{&fileencoding?&fileencoding:&encoding}"
+local fileformat = "%{&fileformat}"
+local filetype = "%y"
+local linecol = "%l:%c"
+local percentage = "%p%%"
+local static_statusline = table.concat {
+    [[ %{luaeval("require('statusline').mode()")} %*]],
+    "%#Statusline#",
+    [[ %{luaeval("vim.g.branch_name")} ]],
+    "%#Statusline# ",
+    [[ %{luaeval("require('statusline').workspace_dir()")} ]],
+    "%#StatusLineNC#",
+    align_right,
+    filetype,
+    "  ",
+    fileencoding,
+    "  ",
+    fileformat,
+    " %#Statusline# ",
+    linecol,
+    " %#StatuslineNC# ",
+    percentage,
+    " ",
+}
 
-    return table.concat {
-        M.update_mode_colors(),
-        [[ %{luaeval("require('statusline').mode()")} %*]],
-        "%#Normal#",
-        [[ %{luaeval("vim.g.branch_name")} ]],
-        "%#Normal# ",
-        [[ %{luaeval("require('statusline').workspace_dir()")} ]],
-        "%#LineNr#",
-        align_right,
-        filetype,
-        "  ",
-        fileencoding,
-        "  ",
-        fileformat,
-        " %#Normal# ",
-        linecol,
-        " %#LineNr# ",
-        percentage,
-        " ",
-    }
+function Statusline()
+    return M.update_mode_colors() .. static_statusline
 end
 
 local statusline = '%!v:lua.Statusline()'
