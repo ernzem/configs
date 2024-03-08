@@ -29,6 +29,13 @@ return {
             nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
             nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
+
+            -- Diagnostic keymaps
+            vim.keymap.set('n', '<leader>db', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+            vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+            vim.keymap.set('n', '<leader>ds', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic error [M]essages' })
+            vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+
             -- Lesser used LSP functionality
             nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
             -- TODO: Disabled because unused and collides with save keyword
