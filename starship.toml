@@ -127,7 +127,7 @@ disabled=true
 disabled=true
 
 [line_break]
-disabled=true
+disabled=false
 
 [localip]
 disabled=true
