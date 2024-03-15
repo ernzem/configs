@@ -62,7 +62,7 @@ gch() {
 fjson() {
     local i=4
     if [[ "$2" =~ ^[0-9]+$ ]]; then i="$2" fi
-    jq --indent $i <<< $1 | tocbd && fromcbd && echo '\nCopied to clipboard!'
+    jq --indent $i <<< $1 | tocbd && fromcbd | jq && echo '\nCopied to clipboard!'
 }
 
 genuuid() {
