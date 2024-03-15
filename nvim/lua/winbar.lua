@@ -1,11 +1,12 @@
 -- Winbar parts
 local save = " %m"
 local right_side = "%="
-local path = "%#LineNr# %{expand('%:h')}/%#Normal#"
+-- local path = "%#LineNr# %{expand('%:h')}/%#Normal#"
+local path = " %{expand('%:h')}/%#Normal#"
 local filename = "%{expand('%:t')}"
 
 -- Static winbar sting
-local default_winbar = path .. filename .. save .. right_side
+local default_winbar = " " .. filename .. save .. right_side
 
 local function lsp_info()
     local count = {}
@@ -38,7 +39,7 @@ local function lsp_info()
         info = " %#DiagnosticSignInfo#󰋽 " .. count["info"]
     end
 
-    return errors .. warnings .. hints .. info .. "%#Normal# "
+    return errors .. warnings .. hints .. info .. "%#Normal#"
 end
 
 local function file_icon(filetype)
@@ -80,7 +81,7 @@ function M.create()
         return
     end
 
-    vim.wo.winbar = file_icon(vim.bo.filetype) .. default_winbar .. lsp_info()
+    vim.wo.winbar = path .. file_icon(vim.bo.filetype) .. default_winbar .. lsp_info()
 end
 
 function M.update()
@@ -89,7 +90,7 @@ function M.update()
         return
     end
 
-    attach_winbar(file_icon(vim.bo.filetype) .. default_winbar .. lsp_info())
+    attach_winbar(path .. file_icon(vim.bo.filetype) .. default_winbar .. lsp_info())
 end
 
 local winbar_group = vim.api.nvim_create_augroup("winbar", { clear = true })

@@ -147,8 +147,8 @@ vim.keymap.set('n', '<leader>dt', require('dap-go').debug_test)
 vim.keymap.set('n', '<leader>dlt', require('dap-go').debug_last_test)
 
 local keyOpts = { noremap = true, silent = true }
-vim.keymap.set("n", "<F6>", run_package_tests, keyOpts)
-vim.keymap.set("n", "<F7>", run_all_tests, keyOpts)
+vim.keymap.set({ "n", "t" }, "<F6>", run_package_tests, keyOpts)
+vim.keymap.set({ "n", "t" }, "<F7>", run_all_tests, keyOpts)
 
 -- vim.keymap.set("n", "<F5>", '<cmd>lua vim.print(Prev_function_name)<cr>', keyOpts) -- TODO: do not run when not test file
 -------------treesitter-get-function--------------------------------------------------------

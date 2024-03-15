@@ -33,7 +33,7 @@ return {
             -- Diagnostic keymaps
             vim.keymap.set('n', '<leader>db', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
             vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-            vim.keymap.set('n', '<leader>ds', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic error [M]essages' })
+            vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic error [M]essages' })
             vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
             -- Lesser used LSP functionality
@@ -158,7 +158,6 @@ return {
                 vim.diagnostic.enable(e.buf)
                 require("winbar").update()
             end
-
         })
 
         -- TODO: fix the following 2 autocmds from kickstart.nvim . It should highlight all same variables

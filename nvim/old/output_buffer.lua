@@ -1,5 +1,6 @@
+local M = {}
 local output_buf_nr = -1
-local output_buf_name = '__OUTPUT__'
+local output_buf_name = '[OUTPUT]'
 
 function Get_buf_nr()
     return output_buf_nr
@@ -9,9 +10,12 @@ function Get_buf_name()
     return output_buf_name
 end
 
-function Run_cmd(command)
+function M.run(command)
     -- Open buffer, if we need to.
     Open_buffer()
+
+    -- Mark output buffer writable
+    vim.api.nvim_buf_set_option(output_buf_nr, "readonly", false)
 
     -- Clear the buffer's contents incase it has been used.
     vim.api.nvim_buf_set_lines(Get_buf_nr(), 0, -1, true, { command })
@@ -61,10 +65,9 @@ function Open_buffer()
         -- Collect the buffer's number.
         output_buf_nr = vim.api.nvim_get_current_buf()
 
-        -- Mark the buffer as readonly.
-        vim.opt_local.readonly = true
-
         -- Bring cursor back to previous buffer
         vim.api.nvim_command('wincmd p')
     end
 end
+
+return M

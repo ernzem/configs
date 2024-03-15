@@ -64,9 +64,9 @@ local linecol = "%l:%c"
 local percentage = "%p%%"
 local static_statusline = table.concat {
     [[ %{luaeval("require('statusline').mode()")} %*]],
-    "%#Statusline#",
-    [[ %{luaeval("vim.g.branch_name")} ]],
-    "%#Statusline# ",
+    "%#StatuslineNC#",
+    [[ %{luaeval("vim.g.branch_name")} %*]],
+    -- "%#Statusline# ",
     [[ %{luaeval("require('statusline').workspace_dir()")} ]],
     "%#StatusLineNC#",
     align_right,
@@ -88,8 +88,8 @@ end
 
 local statusline = '%!v:lua.Statusline()'
 
-vim.opt.cmdheight = 0
-vim.opt.showmode = false
+-- vim.opt.showmode = false
+-- vim.opt.cmdheight = 0
 vim.opt.statusline = statusline
 
 local statusline_group = vim.api.nvim_create_augroup("statusline", { clear = true })
@@ -102,7 +102,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "BufWinEnter", "FocusGained" }, {
 })
 
 -- Sort bug which hides statusline when entered to insert mode with vim.opt.cmdheight = 0
-vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+vim.api.nvim_create_autocmd({ "InsertEnter", "TermLeave" }, {
     group = statusline_group,
     callback = function()
         vim.opt.statusline = statusline

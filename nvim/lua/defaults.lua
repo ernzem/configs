@@ -15,11 +15,15 @@ vim.opt.mouse = 'a'
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'
 
+-- Code folding options
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:-,foldsep: ,foldclose:+]]
+
+-- Save marks up to 100 files.f1 - include global marks
+-- vim.o.viminfo = '100,f1'
 
 -- Autoread file changes on the disk
 vim.o.autoread = true
@@ -63,9 +67,6 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
--- Set command line to autohide when not in use
--- vim.opt.cmdheight = 0
 
 -- Highlight number
 vim.opt.cursorline = true

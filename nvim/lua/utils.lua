@@ -3,7 +3,8 @@ local M = {}
 function M.run(cmd)
     -- vim.fn.jobstart("sh " .. "$HOME/.cfg/tmux/scripts/send-cmd.bash " .. "'" .. cmd .. "'")
     -- vim.cmd("TermExec cmd='" .. cmd .. "'")
-    require('output_buffer').run(cmd)
+    -- require('output_buffer').run(cmd)
+    require('terminal').termExec(cmd)
 end
 
 M.ui_buffers = {}

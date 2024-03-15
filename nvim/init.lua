@@ -7,6 +7,7 @@ if not vim.g.vscode then
     require("state")
     require("winbar")
     require("statusline")
+    require("terminal")
 
     vim.cmd("colorscheme kanagawa-wave")
 end

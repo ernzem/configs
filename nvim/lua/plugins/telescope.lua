@@ -22,6 +22,7 @@ return {
             local select_one_or_multi = function(prompt_bufnr)
                 local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
                 local multi = picker:get_multi_selection()
+
                 if not vim.tbl_isempty(multi) then
                     require('telescope.actions').close(prompt_bufnr)
                     for _, j in pairs(multi) do
@@ -33,6 +34,7 @@ return {
                     require('telescope.actions').select_default(prompt_bufnr)
                 end
             end
+
             require('telescope').setup {
                 defaults = {
                     sorting_strategy = "ascending",
@@ -40,6 +42,7 @@ return {
                         horizontal = {
                             prompt_position = "top",
                             preview_width = 0.65,
+
                         },
                     },
                     mappings = {
@@ -47,17 +50,25 @@ return {
                             ['<C-p>'] = require('telescope.actions.layout').toggle_preview,
                             ['<C-S-Q>'] = require('telescope.actions').delete_buffer,
                             ["<C-h>"] = require('telescope.actions').which_key,
-                            ['<CR>'] = select_one_or_multi,
+                            ["<C-Space>"] = { "<esc>", type = "command" },
+                            ["<esc>"] = require('telescope.actions').close,
                         }
                     },
                     preview = {
-                        hide_on_startup = true
+                        hide_on_startup = false
                     }
                 },
                 pickers = {
                     lsp_implementations = {
                         theme = "cursor"
                     },
+                    find_files = {
+                        mappings = {
+                            i = {
+                                ['<CR>'] = select_one_or_multi
+                            }
+                        },
+                    }
                 },
                 extensions = {
                     file_browser = {
@@ -94,8 +105,8 @@ return {
                         use_fd = true,
                         git_status = true,
                         preview = {
-                            hide_on_startup = true
-                        }
+                            hide_on_startup = false
+                        },
                     },
                 }
             }
