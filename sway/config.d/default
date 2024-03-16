@@ -213,7 +213,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # for_window [class="^.*"] border pixel 0
 bindsym $mod+d exec swaymsg "[app_id=foot] focus" || exec $term
 bindsym $mod+s exec swaymsg "[app_id=wezterm] focus" || exec wezterm
-bindsym $mod+w exec swaymsg "[app_id=Firefox] focus" || exec firefox
+bindsym $mod+w exec swaymsg "[app_id=firefox] focus" || exec firefox
 
 set $menu wofi --show drun -i | xargs swaymsg exec --
 bindsym $mod+space exec $menu
@@ -232,10 +232,9 @@ smart_borders on
 default_border none
 hide_edge_borders --i3 smart
 
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/bin/syncthing serve --no-browser --logfile=default
 exec gammastep -m wayland
-exec nm-applet --indicator
+# exec nm-applet --indicator
 exec mako
 
 set $mode_system System (l) Lock, (e) Logout, (r) Reboot, (Shift+s) Shutdown
