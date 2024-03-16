@@ -1,28 +1,27 @@
-local go_file = '*.go'
+local go_file = "*.go"
 -----------------------------AutoFormat & organizeImports before save------------------------
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = go_file,
-    callback = function()
-        local params = vim.lsp.util.make_range_params()
-        params.context = { only = { "source.organizeImports" } }
-        -- buf_request_sync defaults to a 1000ms timeout. Depending on your
-        -- machine and codebase, you may want longer. Add an additional
-        -- argument after params if you find that you have to write the file
-        -- twice for changes to be saved.
-        -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-        local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-        for cid, res in pairs(result or {}) do
-            for _, r in pairs(res.result or {}) do
-                if r.edit then
-                    local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-                    vim.lsp.util.apply_workspace_edit(r.edit, enc)
-                end
-            end
-        end
-        vim.lsp.buf.format({ async = false })
-    end
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     pattern = go_file,
+--     callback = function()
+--         local params = vim.lsp.util.make_range_params()
+--         params.context = { only = { "source.organizeImports" } }
+--         -- buf_request_sync defaults to a 1000ms timeout. Depending on your
+--         -- machine and codebase, you may want longer. Add an additional
+--         -- argument after params if you find that you have to write the file
+--         -- twice for changes to be saved.
+--         -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+--         local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+--         for cid, res in pairs(result or {}) do
+--             for _, r in pairs(res.result or {}) do
+--                 if r.edit then
+--                     local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+--                     vim.lsp.util.apply_workspace_edit(r.edit, enc)
+--                 end
+--             end
+--         end
+--         vim.lsp.buf.format({ async = false })
+--     end
+-- })
 
 ----------------------------CLI Tool Behave Like LSP------------------------------------
 
@@ -30,10 +29,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     group = vim.api.nvim_create_augroup("goFormatting", { clear = false }),
     pattern = go_file,
     callback = function()
-        local command = 'golangci-lint run ./' ..
-            vim.fn.fnamemodify(vim.fn.expand('%:h'), ':p:~:.') .. ' --fast --fix --out-format json'
+        local command = "golangci-lint run ./"
+            .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")
+            .. " --fast --out-format json"
         local bufnr = vim.api.nvim_get_current_buf()
-        local ns = vim.api.nvim_create_namespace "live-tests"
+        local ns = vim.api.nvim_create_namespace("live-tests")
         local issues = {}
 
         -- save tags
@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 end
 
                 for _, line in ipairs(data) do
-                    if line == '' then
+                    if line == "" then
                         goto continue
                     end
                     local decoded = vim.json.decode(line)
@@ -61,7 +61,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
             on_exit = function()
                 -- Reload current buffer
                 vim.cmd("if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif")
-
 
                 -- load tags
                 vim.cmd("silent! loadview")
@@ -77,7 +76,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                             col = issue.Pos.Column - 1,
                             severity = vim.diagnostic.severity.ERROR,
                             source = issue.FromLinter,
-                            message = issue.FromLinter .. ': ' .. issue.Text,
+                            message = issue.FromLinter .. ": " .. issue.Text,
                             user_data = {},
                         })
                     end
@@ -86,16 +85,16 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
                 vim.diagnostic.set(ns, bufnr, failed, {})
             end,
         })
-    end
+    end,
 })
 
 -------------------------------------------------------------------------------
-local utils = require('utils')
+local utils = require("utils")
 vim.api.nvim_create_user_command("AutoTest", function()
     local path = vim.fn.input({
         prompt = "Test Path: ",
-        default = "./" .. vim.fn.fnamemodify(vim.fn.expand('%:h'), ':p:~:.'),
-        completion = "dir"
+        default = "./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:."),
+        completion = "dir",
     })
     local cmd = "go test -race " .. path
 
@@ -104,7 +103,7 @@ vim.api.nvim_create_user_command("AutoTest", function()
         pattern = go_file,
         callback = function()
             utils.run(cmd)
-        end
+        end,
     })
 
     utils.run(cmd)
@@ -112,22 +111,22 @@ end, {})
 
 --------------- Run Tests Functions-----------------------------------------
 local function go_package()
-    local ui_buffers = require('utils').ui_buffers
+    local ui_buffers = require("utils").ui_buffers
     if ui_buffers[vim.bo.filetype] ~= true then
-        return './' .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")
+        return "./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")
     end
 
-    local state = require('state').state
-    if state['PrevBuffPath'] == nil or vim.fn.fnamemodify(state['PrevBuffPath'], ":e") ~= 'go' then
+    local state = require("state").state
+    if state["PrevBuffPath"] == nil or vim.fn.fnamemodify(state["PrevBuffPath"], ":e") ~= "go" then
         local input_path = vim.fn.input({
             prompt = "Test Path: ",
             default = "./",
-            completion = "dir"
+            completion = "dir",
         })
         return input_path
     end
 
-    return './' .. vim.fn.fnamemodify(state['PrevBuffPath'], ":.:h")
+    return "./" .. vim.fn.fnamemodify(state["PrevBuffPath"], ":.:h")
 end
 
 local run_package_tests = function()
@@ -143,8 +142,8 @@ vim.api.nvim_create_user_command("AutoTestStop", function()
     vim.api.nvim_create_augroup("GoAutoTest", { clear = true })
 end, {})
 
-vim.keymap.set('n', '<leader>dt', require('dap-go').debug_test)
-vim.keymap.set('n', '<leader>dlt', require('dap-go').debug_last_test)
+vim.keymap.set("n", "<leader>dt", require("dap-go").debug_test)
+vim.keymap.set("n", "<leader>dlt", require("dap-go").debug_last_test)
 
 local keyOpts = { noremap = true, silent = true }
 vim.keymap.set({ "n", "t" }, "<F6>", run_package_tests, keyOpts)

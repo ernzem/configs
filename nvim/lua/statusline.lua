@@ -88,8 +88,8 @@ end
 
 local statusline = '%!v:lua.Statusline()'
 
--- vim.opt.showmode = false
--- vim.opt.cmdheight = 0
+vim.opt.showmode = false
+vim.opt.cmdheight = 0
 vim.opt.statusline = statusline
 
 local statusline_group = vim.api.nvim_create_augroup("statusline", { clear = true })
