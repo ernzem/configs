@@ -12,9 +12,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         local ns = vim.api.nvim_create_namespace("live-tests")
         local issues = {}
 
-        -- save tags
-        vim.cmd("mkview!")
-
         vim.fn.jobstart(command, {
             stdout_buffered = true,
             on_stdout = function(_, data)
@@ -37,9 +34,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
             on_exit = function()
                 -- Reload current buffer
                 vim.cmd("if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif")
-
-                -- load tags
-                vim.cmd("silent! loadview")
 
                 -- Add issues to table
                 local failed = {}
@@ -72,7 +66,7 @@ vim.api.nvim_create_user_command("AutoTest", function()
         default = "./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:."),
         completion = "dir",
     })
-    local cmd = "go test -race " .. path
+    local cmd = "go test -failfast -race " .. path
 
     vim.api.nvim_create_autocmd("BufWritePost", {
         group = vim.api.nvim_create_augroup("GoAutoTest", { clear = true }),
@@ -106,11 +100,13 @@ local function go_package()
 end
 
 local run_package_tests = function()
-    utils.run("go test -race " .. go_package())
+    utils.run("clear")
+    utils.run("go test -failfast -race " .. go_package())
 end
 
 local run_all_tests = function()
-    utils.run("go test -race ./...")
+    utils.run("clear")
+    utils.run("go test -failfast -race ./...")
 end
 -----------------------------------------------------------------------------
 

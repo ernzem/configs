@@ -1,7 +1,6 @@
 return {
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
+    event = "VeryLazy",
     config = function()
         require("conform").setup({
             notify_on_error = false,
@@ -17,7 +16,7 @@ return {
             end,
             formatters_by_ft = {
                 lua = { "stylua" },
-                go = { "goimports-reviser", "gofumpt" },
+                go = { "goimports-reviser", "gofumpt", "golines" },
                 -- python = { "isort", "black" },
                 -- javascript = { { "prettierd", "prettier" } },
             },

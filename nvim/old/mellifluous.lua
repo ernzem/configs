@@ -1,17 +1,20 @@
-require('mellifluous').setup({
+require("mellifluous").setup({
     dim_inactive = false,
-    color_set = 'mellifluous',
+    color_set = "mellifluous",
     mellifluous = {
-        neutral = true,        -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-        bg_contrast = 'hard`', -- options: 'soft', 'medium', 'hard'
+        neutral = true,
         color_overrides = {
             light = {
                 -- bg = '#FFFFFF',
-                main_keywords = '#843242',
+                main_keywords = "#843242",
                 -- main_keywords = '#233485',
                 -- comments = '#AAAAAA',
-            }
-        }
+            },
+
+            dark = {
+                bg = "#101010",
+            },
+        },
     },
     styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
         comments = { italic = true },
@@ -30,10 +33,10 @@ require('mellifluous').setup({
     },
     transparent_background = {
         enabled = false,
-        floating_windows = true,
-        telescope = true,
-        file_tree = true,
-        cursor_line = true,
+        floating_windows = false,
+        telescope = false,
+        file_tree = false,
+        cursor_line = false,
         status_line = false,
     },
     flat_background = {
@@ -52,7 +55,7 @@ require('mellifluous').setup({
         },
         telescope = {
             enabled = true,
-            nvchad_like = true,
+            nvchad_like = false,
         },
         startify = true,
     },
@@ -62,6 +65,6 @@ vim.o.termguicolors = true
 vim.opt.background = "light"
 
 -- Highlight cursor line number without line itself
-local cursorLineBg = '#E6E6E6'
+local cursorLineBg = "#E6E6E6"
 vim.api.nvim_set_hl(0, "CursorLine", { bg = cursorLineBg })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = vim.api.nvim_get_color_map().fg, bg = cursorLineBg })

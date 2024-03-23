@@ -1,12 +1,12 @@
 -- Winbar parts
 local save = " %m"
 local right_side = "%="
--- local path = "%#LineNr# %{expand('%:h')}/%#Normal#"
-local path = " %{expand('%:h')}/%#Normal#"
+-- local path = "%#Normal# %{expand('%:h')}/%#Normal#"
+local path = " %{expand('%:h')}/"
 local filename = "%{expand('%:t')}"
 
 -- Static winbar sting
-local default_winbar = " " .. filename .. save .. right_side
+local default_winbar = filename .. "%#WinBar#" .. save .. right_side
 
 local function lsp_info()
     local count = {}
@@ -39,22 +39,17 @@ local function lsp_info()
         info = " %#DiagnosticSignInfo#󰋽 " .. count["info"]
     end
 
-    return errors .. warnings .. hints .. info .. "%#Normal#"
+    return errors .. warnings .. hints .. info .. " "
 end
 
-local function file_icon(filetype)
-    local ok, icons = pcall(require, "nvim-web-devicons")
-    if not ok or not filetype then
-        return ""
-    end
-
-    local icon, color = icons.get_icon_by_filetype(filetype)
-    if not icon then
-        return ""
-    end
-
-    return " %#" .. color .. "#" .. icon .. "%#Normal#"
+local function icon_with_color()
+    local icon, color = require("utils").file_icon(vim.bo.filetype)
+    return " %#" .. color .. "#" .. icon .. "%* "
 end
+
+-- Variables for autocommands
+local ui_buffers = require("utils").ui_buffers
+local M = {}
 
 -- Detect if nvim mode is insert
 local function is_insert()
@@ -72,16 +67,12 @@ local function attach_winbar(winbar)
     end
 end
 
--- Variables for autocommands
-local ui_buffers = require("utils").ui_buffers
-local M = {}
-
 function M.create()
     if ui_buffers[vim.bo.filetype] == true then
         return
     end
 
-    vim.wo.winbar = path .. file_icon(vim.bo.filetype) .. default_winbar .. lsp_info()
+    vim.wo.winbar = "%#WinBar#" .. path .. icon_with_color() .. default_winbar .. lsp_info()
 end
 
 function M.update()
@@ -90,20 +81,20 @@ function M.update()
         return
     end
 
-    attach_winbar(path .. file_icon(vim.bo.filetype) .. default_winbar .. lsp_info())
+    attach_winbar("%#WinBar#" .. path .. icon_with_color() .. default_winbar .. lsp_info())
 end
 
 local winbar_group = vim.api.nvim_create_augroup("winbar", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     group = winbar_group,
     pattern = "*.*",
-    callback = M.create
+    callback = M.create,
 })
 
 vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
     group = winbar_group,
     pattern = "*.*",
-    callback = M.update
+    callback = M.update,
 })
 
 return M

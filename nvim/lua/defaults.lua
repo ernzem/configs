@@ -1,5 +1,8 @@
--- Disable welcome textdefau
+-- Disable welcome text
 vim.opt.shortmess:append({ I = true })
+
+-- Set termguicolors
+vim.opt.termguicolors = true
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
@@ -10,13 +13,13 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 -- Code folding options
-vim.o.foldcolumn = '1'
+vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
@@ -48,7 +51,7 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.wo.signcolumn = "yes"
 
 -- When scrolling keep at least nr of lines at the bottom
 vim.opt.scrolloff = 10
@@ -60,7 +63,7 @@ vim.opt.updatetime = 500
 vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Default tab behavior
 vim.opt.tabstop = 4
