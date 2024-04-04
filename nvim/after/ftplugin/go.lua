@@ -100,12 +100,10 @@ local function go_package()
 end
 
 local run_package_tests = function()
-    utils.run("clear")
     utils.run("go test -failfast -race " .. go_package())
 end
 
 local run_all_tests = function()
-    utils.run("clear")
     utils.run("go test -failfast -race ./...")
 end
 -----------------------------------------------------------------------------

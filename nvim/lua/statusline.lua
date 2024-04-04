@@ -63,14 +63,6 @@ function M.my_marks()
     local marks = ""
 
     for _, v in ipairs(M.Mark_keys) do
-        -- if M.Marks[v] ~= nil then
-        --     if M.Mark_paths[M.Marks[v]] ~= nil then
-        --         local icon, _ = require("utils").file_icon(vim.bo.filetype)
-        --         -- marks = marks .. " %#CurSearch# " .. v .. ":" .. M.Mark_paths[M.Marks[v]] .. " %#Statusline#" -- With key letter
-        --         marks = marks .. " %#CurSearch# " .. icon .. " " .. M.Mark_paths[M.Marks[v]] .. " %#Statusline#"
-        --     end
-        -- end
-
         if M.Marks[v] == nil then
             goto continue
         end
@@ -80,8 +72,7 @@ function M.my_marks()
         end
 
         local icon, _ = require("utils").file_icon(vim.bo.filetype)
-        -- marks = marks .. " %#CurSearch# " .. v .. ":" .. M.Mark_paths[M.Marks[v]] .. " %#Statusline#" -- With key letter
-        marks = marks .. " %#CurSearch# " .. v .. ": " .. icon .. " " .. M.Mark_paths[M.Marks[v]] .. " %#Statusline#"
+        marks = marks .. " %#Search# " .. v .. ": " .. icon .. " " .. M.Mark_paths[M.Marks[v]] .. " %#Statusline#"
         ::continue::
     end
 
@@ -105,8 +96,8 @@ local static_statusline1 = table.concat({
     [[ %{luaeval("require('statusline').mode()")} %*]],
     "%#Statusline#",
     [[ %{luaeval("vim.g.branch_name")} %*]],
-    -- "%#Statusline# ",
-    [[ %{luaeval("require('statusline').workspace_dir()")} ]],
+    "%#Statusline# ",
+    [[ %{luaeval("require('statusline').workspace_dir()")} %*]],
     "%#Statusline#",
 })
 
@@ -178,10 +169,5 @@ vim.keymap.set("n", "mL", function()
     statusline = "%!v:lua.Statusline()"
     vim.opt.statusline = statusline
 end)
-
--- vim.keymap.set("n", "<space>j", "J")
--- vim.keymap.set("n", "<space>k", "'K")
--- vim.keymap.set("n", "<space>l", "'L")
--- vim.keymap.set("n", "<space>;", "'A")
 
 return M

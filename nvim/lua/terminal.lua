@@ -98,6 +98,20 @@ local function hideTerminal()
 end
 
 function M.toggleTerminal(cfg)
+    -- if vim.fn.win_gotoid(M.te_win_id) == 1 and api.nvim_win_get_buf(M.te_win_id) == M.te_buf then
+    --     if cfg == nil or cfg.save_win_size == true then
+    --         save_win_size()
+    --     end
+    --
+    --     hideTerminal()
+    --
+    --     if cfg ~= nil and cfg.reopen == true then
+    --         openTerminal()
+    --     end
+    -- else
+    --     openTerminal()
+    --     vim.cmd.startinsert()
+    -- end
     if vim.fn.win_gotoid(M.te_win_id) == 1 and api.nvim_win_get_buf(M.te_win_id) == M.te_buf then
         if cfg == nil or cfg.save_win_size == true then
             save_win_size()
@@ -105,13 +119,13 @@ function M.toggleTerminal(cfg)
 
         hideTerminal()
 
-        if cfg ~= nil and cfg.reopen == true then
-            openTerminal()
+        if cfg == nil or cfg.reopen == false then
+            return
         end
-    else
-        openTerminal()
-        vim.cmd.startinsert()
     end
+
+    openTerminal()
+    vim.cmd.startinsert()
 end
 
 -------------------------------------CMD-----------------------------------------------

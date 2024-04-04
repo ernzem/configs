@@ -44,8 +44,8 @@ config.window_padding = {
     bottom = "0cell",
 }
 -- For example, changing the color scheme:
-config.color_scheme = "Mexico Light (base16)"
--- config.color_scheme = 'Kanagawa (Gogh)'
+-- config.color_scheme = "Mexico Light (base16)"
+config.color_scheme = "Kanagawa (Gogh)"
 
 -- Use non gui tab style
 config.use_fancy_tab_bar = false

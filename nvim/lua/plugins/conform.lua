@@ -20,6 +20,11 @@ return {
                 -- python = { "isort", "black" },
                 -- javascript = { { "prettierd", "prettier" } },
             },
+            formatters = {
+                goimports_reviser = {
+                    prepend_args = { "-rm-unused" },
+                },
+            },
         })
 
         vim.keymap.set({ "n", "i" }, "<C-f>", function()

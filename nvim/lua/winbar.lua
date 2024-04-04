@@ -97,4 +97,11 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
     callback = M.update,
 })
 
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    group = winbar_group,
+    pattern = "*",
+    callback = function()
+        vim.api.nvim_set_hl(0, "WinBar", { bold = true })
+    end,
+})
 return M
