@@ -226,7 +226,7 @@ input type:keyboard {
   xkb_options ctrl:nocaps
 }
 
-gaps inner 4
+# gaps inner 4
 # gaps outer 2
 smart_borders on
 default_border none
