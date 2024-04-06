@@ -98,20 +98,6 @@ local function hideTerminal()
 end
 
 function M.toggleTerminal(cfg)
-    -- if vim.fn.win_gotoid(M.te_win_id) == 1 and api.nvim_win_get_buf(M.te_win_id) == M.te_buf then
-    --     if cfg == nil or cfg.save_win_size == true then
-    --         save_win_size()
-    --     end
-    --
-    --     hideTerminal()
-    --
-    --     if cfg ~= nil and cfg.reopen == true then
-    --         openTerminal()
-    --     end
-    -- else
-    --     openTerminal()
-    --     vim.cmd.startinsert()
-    -- end
     if vim.fn.win_gotoid(M.te_win_id) == 1 and api.nvim_win_get_buf(M.te_win_id) == M.te_buf then
         if cfg == nil or cfg.save_win_size == true then
             save_win_size()
@@ -165,8 +151,8 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 function M.termExec(cmd)
     local current_focused_window = fn.win_getid()
 
-    -- Open terminal window
-    if vim.fn.win_gotoid(M.te_win_id) ~= 1 then
+    -- -- Open terminal window
+    if vim.fn.win_gotoid(M.te_win_id) ~= 1 or M.window_type == fullwindow then
         -- Preventing not to go insert mode in terminal
         local previous_run_cmd_value = M.run_cmd
         M.run_cmd = true
@@ -179,9 +165,6 @@ function M.termExec(cmd)
 
     -- FIXME: fix when term normal mode cursor is at the bottom
     vim.cmd("$")
-
-    -- Send Ctrl-U to clean input
-    -- vim.api.nvim_chan_send(vim.bo[M.te_buf].channel, '\x30\x78\x31\x35')
 
     -- Clear terminal window
     vim.api.nvim_chan_send(vim.bo[M.te_buf].channel, "clear\r")
