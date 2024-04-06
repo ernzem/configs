@@ -93,10 +93,10 @@ local filetype = "%y"
 local linecol = "%l:%c"
 local percentage = "%p%%"
 local static_statusline1 = table.concat({
-    [[ %{luaeval("require('statusline').mode()")} %*]],
+    -- [[ %{luaeval("require('statusline').mode()")} %*]],
     "%#Statusline#",
     [[ %{luaeval("vim.g.branch_name")} %*]],
-    "%#Statusline# ",
+    "%#Statusline#",
     [[ %{luaeval("require('statusline').workspace_dir()")} %*]],
     "%#Statusline#",
 })
@@ -117,13 +117,11 @@ local static_statusline2 = table.concat({
 })
 
 function Statusline()
-    return M.update_mode_colors() .. static_statusline1 .. M.my_marks() .. static_statusline2
+    -- return M.update_mode_colors() .. static_statusline1 .. M.my_marks() .. static_statusline2
+    return static_statusline1 .. M.my_marks() .. static_statusline2
 end
 
 local statusline = "%!v:lua.Statusline()"
-
-vim.opt.showmode = false
-vim.opt.cmdheight = 0
 vim.opt.statusline = statusline
 
 local statusline_group = vim.api.nvim_create_augroup("statusline", { clear = true })
