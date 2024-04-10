@@ -41,11 +41,11 @@ vim.keymap.set("n", "<C-S-L>", [[<cmd>vertical resize +5<cr>]])
 
 -- Disable
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("", ";", ":")
+-- vim.keymap.set("", ";", ":")
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<C-Space>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set({ "n", "v" }, "<S-L>", "$", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<S-H>", "_", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<S-L>", "$", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "v" }, "<S-H>", "_", { noremap = true, silent = true })
