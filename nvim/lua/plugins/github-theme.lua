@@ -19,6 +19,7 @@ local specs = {
 local groups = {
     github_light_high_contrast = {
         NormalNC = { bg = "inactive" }, -- Non-current windows
+        StatusLine = { bg = "inactive" },
     },
 }
 
@@ -33,7 +34,5 @@ return {
             specs = specs,
             groups = groups,
         })
-
-        vim.api.nvim_set_hl(0, "StatusLine", { bg = "#eeeeee" })
     end,
 }

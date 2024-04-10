@@ -113,7 +113,7 @@ local static_statusline2 = table.concat({
     linecol,
     " %#Statusline# ",
     percentage,
-    " ",
+    " %*",
 })
 
 function Statusline()
