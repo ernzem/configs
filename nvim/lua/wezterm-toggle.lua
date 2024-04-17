@@ -4,14 +4,13 @@ local function send_cmd(pane_id, cmd)
 end
 
 local M = {}
-local wezcli = "wezterm cli"
 M.nvim_pane = tonumber(os.getenv("WEZTERM_PANE"))
 M.term_pane = nil
 M.split_position = "bottom"
 M.split_percentage = 30
 
 function M.get_term_pane()
-    local panes = vim.json.decode(vim.fn.system({ wezcli, "list", "--format", "json" }))
+    local panes = vim.json.decode(vim.fn.system({ "wezterm", "cli", "list", "--format", "json" }))
     if panes == nil then
         vim.notify("Panes list is nil: failure of listing wezterm panes!")
         return nil
@@ -44,7 +43,8 @@ end
 function M.exec(cmd)
     M.term_pane = M.get_term_pane()
     if M.term_pane == nil then
-        local new_split_cmd = { wezcli, "split-pane", "--" .. M.split_position, "--percent", M.split_percentage }
+        local new_split_cmd =
+        { "wezterm", "cli", "split-pane", "--" .. M.split_position, "--percent", M.split_percentage }
         local pane_id = vim.fn.system(new_split_cmd)
 
         -- Execute cmd to terminal pane
@@ -53,7 +53,7 @@ function M.exec(cmd)
     end
 
     -- Make term pane visible by unzooming nvim pane
-    vim.fn.jobstart({ wezcli, "zoom-pane", "--unzoom", "--pane-id", M.nvim_pane })
+    vim.fn.jobstart({ "wezterm", "cli", "zoom-pane", "--unzoom", "--pane-id", M.nvim_pane })
 
     -- Execute cmd to terminal pane
     send_cmd(M.term_pane.pane_id, cmd)
