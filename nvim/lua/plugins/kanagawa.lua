@@ -20,6 +20,7 @@ return {
                 local theme = colors.theme
                 return {
                     StatusLine = { bg = theme.ui.bg },
+                    StatusLineNC = { bg = theme.ui.bg },
                     MsgArea = { bold = true },
                 }
             end,

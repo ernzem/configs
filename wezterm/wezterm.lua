@@ -81,5 +81,25 @@ config.keys = {
     -- { key = '7',   mods = 'LEADER', action = act.ActivateTab(6) },
     -- { key = '8',   mods = 'LEADER', action = act.ActivateTab(7) },
     -- { key = '9',   mods = 'LEADER', action = act.ActivateTab(8) },
+    {
+        key = "a",
+        mods = "CTRL",
+        action = wezterm.action_callback(function(_, pane)
+            local tab = pane:tab()
+            local panes = tab:panes_with_info()
+            if #panes == 1 then
+                pane:split({
+                    direction = "Bottom",
+                    size = 0.3,
+                })
+            elseif not panes[1].is_zoomed then
+                panes[1].pane:activate()
+                tab:set_zoomed(true)
+            elseif panes[1].is_zoomed then
+                tab:set_zoomed(false)
+                panes[2].pane:activate()
+            end
+        end),
+    },
 }
 return config

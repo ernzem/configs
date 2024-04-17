@@ -4,7 +4,8 @@ function M.run(cmd)
     -- vim.fn.jobstart("sh " .. "$HOME/.cfg/tmux/scripts/send-cmd.bash " .. "'" .. cmd .. "'")
     -- vim.cmd("TermExec cmd='" .. cmd .. "'")
     -- require('output_buffer').run(cmd)
-    require("terminal").termExec(cmd)
+    -- require("terminal").termExec(cmd)
+    require("wezterm-toggle").exec(cmd)
 end
 
 function M.file_icon(filetype)

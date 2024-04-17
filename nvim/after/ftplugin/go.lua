@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     callback = function()
         local command = "golangci-lint run ./"
             .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")
-            .. " --fast --out-format json"
+            .. " --fast --fix --out-format json"
         local bufnr = vim.api.nvim_get_current_buf()
         local ns = vim.api.nvim_create_namespace("live-tests")
         local issues = {}

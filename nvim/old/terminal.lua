@@ -5,6 +5,7 @@ local api = vim.api
 local splitv = "split_vertical"
 local splith = "split_horizontal"
 local fullwindow = "full_window"
+local tab = "tab"
 
 local default_layouts = {}
 default_layouts[splitv] = 0.45
@@ -13,6 +14,7 @@ default_layouts[splith] = 0.30
 local M = {}
 M.te_buf = nil
 M.te_win_id = 0
+M.te_tab = nil
 M.window_type = splitv
 M.percentage = default_layouts[M.window_type]
 M.te_channel_id = 0
@@ -48,7 +50,7 @@ local function split_size()
     return math.floor(vim.o.columns * M.percentage)
 end
 
-local function createWindow()
+local function create_window_if_needed()
     if M.window_type == fullwindow then
         return
     end
@@ -56,27 +58,52 @@ local function createWindow()
     if M.window_type == splitv then
         vim.cmd("bo vsp")
         vim.cmd("vertical resize " .. split_size())
+        return
     end
 
     if M.window_type == splith then
         vim.cmd("bo sp")
         vim.cmd.resize(split_size())
+        return
     end
 end
 
-local function openTerminal()
-    createWindow()
-
-    -- Create new terminal buffer?
+local function create_terminal_if_needed()
     if M.te_buf == nil or vim.fn.bufexists(M.te_buf) ~= 1 then
         vim.cmd("au TermOpen * setlocal nonumber norelativenumber signcolumn=no")
-
         M.te_channel_id = vim.cmd.terminal()
-
         M.te_buf = fn.bufnr("%")
         M.te_win_id = fn.win_getid()
+    end
+
+    return
+end
+
+local function openTabTerminal()
+    if M.te_tab ~= nil and api.nvim_tabpage_is_valid(M.te_tab) then
+        api.nvim_set_current_tabpage(M.te_tab)
+    else
+        vim.cmd("$tabe")
+        vim.bo.bufhidden = "wipe"
+
+        M.te_tab = api.nvim_get_current_tabpage()
+        M.te_win_id = api.nvim_tabpage_get_win(0)
+    end
+
+    create_terminal_if_needed()
+
+    api.nvim_win_set_buf(M.te_win_id, M.te_buf)
+    vim.cmd.startinsert()
+end
+
+local function openTerminal()
+    if M.window_type == tab then
+        openTabTerminal()
         return
     end
+
+    create_window_if_needed()
+    create_terminal_if_needed()
 
     -- Terminal exists. Attach to a new window
     M.te_win_id = vim.fn.win_getid()
@@ -84,8 +111,11 @@ local function openTerminal()
 end
 
 local function hideTerminal()
+    if M.te_win_id == tab then
+        return
+    end
+
     if vim.fn.win_gotoid(M.te_win_id) ~= 1 then
-        vim.print("Expected terminal window does't exist: " .. M.te_win_id)
         return
     end
 
@@ -98,6 +128,11 @@ local function hideTerminal()
 end
 
 function M.toggleTerminal(cfg)
+    if M.window_type == tab then
+        M.toggleTabTerminal(cfg)
+        return
+    end
+
     if vim.fn.win_gotoid(M.te_win_id) == 1 and api.nvim_win_get_buf(M.te_win_id) == M.te_buf then
         if cfg == nil or cfg.save_win_size == true then
             save_win_size()
@@ -112,6 +147,16 @@ function M.toggleTerminal(cfg)
 
     openTerminal()
     vim.cmd.startinsert()
+end
+
+function M.toggleTabTerminal(cfg)
+    if M.te_tab ~= nil and api.nvim_get_current_tabpage() == M.te_tab then
+        api.nvim_win_close(M.te_win_id, true)
+        M.te_tab = nil
+        return
+    end
+
+    openTabTerminal()
 end
 
 -------------------------------------CMD-----------------------------------------------
@@ -133,6 +178,11 @@ vim.api.nvim_create_user_command("Ft", function()
     M.toggleTerminal({ reopen = true, save_win_size = false })
 end, {})
 
+vim.api.nvim_create_user_command("Tt", function()
+    M.window_type = tab
+    M.toggleTabTerminal({ reopen = true, save_win_size = false })
+end, {})
+
 ----------------------------------AUTOCMD----------------------------------------------
 
 local terminal_group = vim.api.nvim_create_augroup("terminal", { clear = true })
@@ -152,7 +202,7 @@ function M.termExec(cmd)
     local current_focused_window = fn.win_getid()
 
     -- -- Open terminal window
-    if vim.fn.win_gotoid(M.te_win_id) ~= 1 or M.window_type == fullwindow then
+    if vim.fn.win_gotoid(M.te_win_id) ~= 1 or M.window_type == fullwindow or M.window_type == tab then
         -- Preventing not to go insert mode in terminal
         local previous_run_cmd_value = M.run_cmd
         M.run_cmd = true

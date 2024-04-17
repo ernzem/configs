@@ -20,6 +20,7 @@ local groups = {
     github_light_high_contrast = {
         NormalNC = { bg = "inactive" }, -- Non-current windows
         StatusLine = { bg = "inactive" },
+        StatusLineNC = { bg = "inactive" },
     },
 }
 

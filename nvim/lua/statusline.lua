@@ -72,7 +72,7 @@ function M.my_marks()
         end
 
         local icon, _ = require("utils").file_icon(vim.bo.filetype)
-        marks = marks .. " %#Search# " .. v .. ": " .. icon .. " " .. M.Mark_paths[M.Marks[v]] .. " %#Statusline#"
+        marks = marks .. " %#Search# " .. v .. ": " .. icon .. " " .. M.Mark_paths[M.Marks[v]] .. " %#StatusLine#"
         ::continue::
     end
 
@@ -94,24 +94,25 @@ local linecol = "%l:%c"
 local percentage = "%p%%"
 local static_statusline1 = table.concat({
     -- [[ %{luaeval("require('statusline').mode()")} %*]],
-    "%#Statusline#",
+    "%#StatusLine#",
     [[ %{luaeval("vim.g.branch_name")} %*]],
-    "%#Statusline#",
+    "%#StatusLine#",
     [[ %{luaeval("require('statusline').workspace_dir()")} %*]],
-    "%#Statusline#",
+    "%#StatusLine#",
 })
 
 local static_statusline2 = table.concat({
     --TODO: modify to be static and only update with keyboard
     align_right,
+    "%#StatusLineNC#",
     filetype,
     "  ",
     fileencoding,
     "  ",
     fileformat,
-    " %#Statusline# ",
+    " %#StatusLine# ",
     linecol,
-    " %#Statusline# ",
+    " %#StatusLineNC# ",
     percentage,
     " %*",
 })
