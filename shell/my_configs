@@ -72,6 +72,12 @@ gch() {
     git checkout $(git for-each-ref refs/heads/ --format='%(refname:short)' | fzf)
 }
 
+# fuzzy find git file differences
+gd() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
+
 # Format Json, print outptut & copy to clipboard.
 # Required params:
 #  1st -> raw Json string. Required
