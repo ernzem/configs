@@ -23,7 +23,7 @@ local os = wezterm.target_triple
 
 if os == "x86_64-apple-darwin" or os == "aarch64-apple-darwin" then
     config.font_size = 14
-    config.freetype_load_target = "Light"
+    -- config.freetype_load_target = "Light"
 end
 
 if os == "x86_65-unknown-linux-gnu" then
@@ -36,7 +36,7 @@ config.font = wezterm.font({
 })
 
 config.hide_tab_bar_if_only_one_tab = true
-config.window_decorations = "RESIZE"
+-- config.window_decorations = "RESIZE"
 config.window_padding = {
     left = "0cell",
     right = "0cell",
@@ -44,14 +44,15 @@ config.window_padding = {
     bottom = "0cell",
 }
 -- For example, changing the color scheme:
--- config.color_scheme = "Mexico Light (base16)"
-config.color_scheme = "Kanagawa (Gogh)"
+config.color_scheme = "Mexico Light (base16)"
+-- config.color_scheme = "Kanagawa (Gogh)"
 
 -- Use non gui tab style
 config.use_fancy_tab_bar = false
 config.tab_max_width = 40
 config.switch_to_last_active_tab_when_closing_tab = true
 config.tab_bar_at_bottom = true
+config.scroll_to_bottom_on_input = true
 -- timeout_milliseconds defaults to 1000 and can be omitted
 -- config.disable_default_key_bindings = true
 -- config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
