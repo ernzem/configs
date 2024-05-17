@@ -1,14 +1,6 @@
 local M = {}
 local output_buf_nr = -1
-local output_buf_name = '[OUTPUT]'
-
-function Get_buf_nr()
-    return output_buf_nr
-end
-
-function Get_buf_name()
-    return output_buf_name
-end
+local output_buf_name = 'OUTPUT'
 
 function M.run(command)
     -- Open buffer, if we need to.
@@ -18,7 +10,7 @@ function M.run(command)
     vim.api.nvim_buf_set_option(output_buf_nr, "readonly", false)
 
     -- Clear the buffer's contents incase it has been used.
-    vim.api.nvim_buf_set_lines(Get_buf_nr(), 0, -1, true, { command })
+    vim.api.nvim_buf_set_lines(output_buf_nr, 0, -1, true, { command })
 
     -- Run the command.
     vim.fn.jobstart(command, {
@@ -53,8 +45,6 @@ end
 
 function Open_buffer()
     -- Get a boolean that tells us if the buffer number is visible anymore.
-    --
-    -- :help bufwinnr
     local buffer_visible = vim.api.nvim_call_function("bufwinnr", { output_buf_nr }) ~= -1
 
     if output_buf_nr == -1 or not buffer_visible then
@@ -64,6 +54,9 @@ function Open_buffer()
 
         -- Collect the buffer's number.
         output_buf_nr = vim.api.nvim_get_current_buf()
+
+        -- Set filetype so custom behavios/settings could be applied.
+        vim.api.nvim_buf_set_option(output_buf_nr, "filetype", "output")
 
         -- Bring cursor back to previous buffer
         vim.api.nvim_command('wincmd p')

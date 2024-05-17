@@ -47,6 +47,7 @@ return {
 
             -- Lesser used LSP functionality
             nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+            nmap("<leader>i", vim.lsp.buf.implementation, "[G]oto [i]mplementation")
             -- TODO: Disabled because unused and collides with save keyword
             -- nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
             -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')

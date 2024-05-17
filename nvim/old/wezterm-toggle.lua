@@ -1,6 +1,16 @@
+local clear_screen = "tput clear"
 local function send_cmd(pane_id, cmd)
     -- TODO: clear terminal input before executing
-    vim.fn.jobstart({ "wezterm", "cli", "send-text", "--no-paste", "--pane-id", pane_id, cmd .. "\r" })
+    -- TODO: focus to term pane, execute cmd and jump back to previous pane in order trigger scroll to terminal bottom thing.
+    vim.fn.jobstart({
+        "wezterm",
+        "cli",
+        "send-text",
+        "--no-paste",
+        "--pane-id",
+        pane_id,
+        clear_screen .. "\r" .. cmd .. "\r",
+    })
 end
 
 local M = {}
@@ -43,9 +53,8 @@ end
 function M.exec(cmd)
     M.term_pane = M.get_term_pane()
     if M.term_pane == nil then
-        local new_split_cmd =
-        { "wezterm", "cli", "split-pane", "--" .. M.split_position, "--percent", M.split_percentage }
-        local pane_id = vim.fn.system(new_split_cmd)
+        local split_cmd = { "wezterm", "cli", "split-pane", "--" .. M.split_position, "--percent", M.split_percentage }
+        local pane_id = vim.fn.system(split_cmd)
 
         -- Execute cmd to terminal pane
         send_cmd(tonumber(pane_id), cmd)

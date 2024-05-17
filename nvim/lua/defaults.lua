@@ -4,7 +4,7 @@ vim.opt.shortmess:append({ I = true })
 -- Set termguicolors
 vim.opt.termguicolors = true
 
--- Disable netrw
+-- Disable Netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -25,9 +25,6 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
--- Save marks up to 100 files.f1 - include global marks
--- vim.o.viminfo = '100,f1'
-
 -- Autoread file changes on the disk
 vim.o.autoread = true
 
@@ -46,6 +43,7 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+-- vim.opt.hlsearch = false
 
 --Use increment (regex) search
 vim.opt.incsearch = true
@@ -84,5 +82,4 @@ vim.opt.laststatus = 3
 -- Title in titlebar work-dir nvim
 vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
--- vim.opt.titlestring = "nvim %{finddir('.git/..', expand('%:p:h').';')}" //using git folder
 vim.opt.titlestring = "%{fnamemodify(getcwd(0), ':t')}"

@@ -8,11 +8,6 @@ return {
         end,
     },
     {
-        "nvim-telescope/telescope-file-browser.nvim",
-        event = "VeryLazy",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    },
-    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         event = "VeryLazy",
@@ -64,7 +59,7 @@ return {
                 },
                 pickers = {
                     lsp_implementations = {
-                        theme = "vertical",
+                        theme = "ivy",
                         show_line = "false",
                     },
                     find_files = {
@@ -75,56 +70,10 @@ return {
                         },
                     },
                 },
-                extensions = {
-                    file_browser = {
-                        layout_config = {
-                            horizontal = {
-                                prompt_position = "top",
-                                preview_width = 0.65,
-                                width = 0.90,
-                            },
-                        },
-                        path = vim.loop.cwd(),
-                        cwd = vim.loop.cwd(),
-                        cwd_to_path = false,
-                        grouped = true,
-                        files = true,
-                        add_dirs = true,
-                        depth = 1,
-                        auto_depth = false,
-                        select_buffer = true,
-                        hidden = { file_browser = false, folder_browser = false },
-                        respect_gitignore = vim.fn.executable("fd") == 1,
-                        no_ignore = false,
-                        follow_symlinks = true,
-                        browse_files = require("telescope._extensions.file_browser.finders").browse_files,
-                        browse_folders = require("telescope._extensions.file_browser.finders").browse_folders,
-                        hide_parent_dir = false,
-                        collapse_dirs = false,
-                        prompt_path = false,
-                        quiet = false,
-                        dir_icon = "",
-                        dir_icon_hl = "Default",
-                        display_stat = false,
-                        hijack_netrw = false,
-                        use_fd = true,
-                        git_status = true,
-                        preview = {
-                            hide_on_startup = false,
-                        },
-                    },
-                },
+                extensions = {},
             })
             -- Load telescope extensions
             pcall(require("telescope").load_extension, "fzf")
-            pcall(require("telescope").load_extension, "file_browser")
-
-            vim.api.nvim_set_keymap(
-                "n",
-                "<leader>e",
-                ":lua require 'telescope'.extensions.file_browser.file_browser({path=vim.fn.expand('%:p:h') })<CR>",
-                { noremap = true }
-            )
 
             -- See `:help telescope.builtin`
             vim.keymap.set(
@@ -171,7 +120,7 @@ return {
                 results_title = nil,
             }
             local ivy_theme = require("telescope.themes").get_ivy({
-                previewer = true,
+                previewer = false,
                 layout_config = { height = 20 },
                 show_line = false, -- telescope lsp_implementations specific config
             })
@@ -179,9 +128,9 @@ return {
             vim.keymap.set("n", "gr", function()
                 require("telescope.builtin").lsp_references(ivy_theme)
             end, { desc = "[G]oto [R]eferences" })
-            vim.keymap.set("n", "gI", function()
-                require("telescope.builtin").lsp_implementations(ivy_theme)
-            end, { desc = "[G]oto [I]mplementation" })
+            -- vim.keymap.set("n", "gI", function()
+            --     require("telescope.builtin").lsp_implementations(ivy_theme)
+            -- end, { desc = "[G]oto [I]mplementation" })
 
             vim.keymap.set("n", "Gr", function()
                 require("telescope.builtin").lsp_references(vertical_layout)

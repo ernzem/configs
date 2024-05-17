@@ -1,12 +1,12 @@
--- Winbar parts
-local save = " %m"
-local right_side = "%="
--- local path = "%#Normal# %{expand('%:h')}/%#Normal#"
-local path = " %{expand('%:h')}/"
+-- WinBar parts
+local save = "%#WinBar#%m "
+-- local right_side = "%="
+local path = "%#WinBarNC#%{expand('%:h')}/%#WinBarNC#"
 local filename = "%{expand('%:t')}"
 
+-- local default_winbar = filename .. "%#WinBar#" .. save .. right_side
 -- Static winbar sting
-local default_winbar = filename .. "%#WinBar#" .. save .. right_side
+local default_winbar = filename .. "%#WinBar#"
 
 local function lsp_info()
     local count = {}
@@ -72,7 +72,8 @@ function M.create()
         return
     end
 
-    vim.wo.winbar = "%#WinBar#" .. path .. icon_with_color() .. default_winbar .. lsp_info()
+    vim.wo.winbar = "%#WinBar#" ..
+        save .. path .. "%#WinBar#" .. icon_with_color() .. default_winbar .. lsp_info() .. "%#WinBar#"
 end
 
 function M.update()
@@ -81,7 +82,8 @@ function M.update()
         return
     end
 
-    attach_winbar("%#WinBar#" .. path .. icon_with_color() .. default_winbar .. lsp_info())
+    attach_winbar("%#WinBar#" ..
+        save .. path .. "%#WinBar#" .. icon_with_color() .. default_winbar .. lsp_info() .. "%#WinBar#")
 end
 
 local winbar_group = vim.api.nvim_create_augroup("winbar", { clear = true })
@@ -97,11 +99,11 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
     callback = M.update,
 })
 
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-    group = winbar_group,
-    pattern = "*",
-    callback = function()
-        vim.api.nvim_set_hl(0, "WinBar", { bold = true })
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+--     group = winbar_group,
+--     pattern = "*",
+--     callback = function()
+--         vim.api.nvim_set_hl(0, "WinBar", { bold = true })
+--     end,
+-- })
 return M

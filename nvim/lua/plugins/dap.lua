@@ -1,18 +1,19 @@
 return {
-    'mfussenegger/nvim-dap',
+    "mfussenegger/nvim-dap",
     dependencies = {
+        "nvim-neotest/nvim-nio",
         -- Creates a beautiful debugger UI
-        'rcarriga/nvim-dap-ui',
+        "rcarriga/nvim-dap-ui",
         -- Debugger configs for go
-        'leoluz/nvim-dap-go',
+        "leoluz/nvim-dap-go",
     },
     event = "VeryLazy",
     config = function()
-        local dap, dapui, dapgo = require("dap"), require("dapui"), require('dap-go')
+        local dap, dapui, dapgo = require("dap"), require("dapui"), require("dap-go")
         dapgo.setup()
 
         dapui.setup({
-            icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+            icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
             mappings = {
                 -- Use a table to apply multiple mappings
                 expand = { "<CR>", "<2-LeftMouse>" },
@@ -32,15 +33,15 @@ return {
                         -- Provide IDs as strings or tables with "id" and "size" keys
                         {
                             id = "breakpoints",
-                            size = 0.10
+                            size = 0.10,
                         },
                         {
                             id = "stacks",
-                            size = 0.20
+                            size = 0.20,
                         },
                         {
                             id = "watches",
-                            size = 0.20
+                            size = 0.20,
                         },
                         {
                             id = "scopes",
@@ -71,15 +72,15 @@ return {
                 enabled = vim.fn.exists("+winbar") == 0,
                 element = "repl",
                 icons = {
-                    pause = '⏸',
-                    play = '▶',
-                    step_into = '⏎',
-                    step_over = '⏭',
-                    step_out = '⏮',
-                    step_back = 'b',
-                    run_last = '▶▶',
-                    terminate = '⏹',
-                    disconnect = '⏏',
+                    pause = "⏸",
+                    play = "▶",
+                    step_into = "⏎",
+                    step_over = "⏭",
+                    step_out = "⏮",
+                    step_back = "b",
+                    run_last = "▶▶",
+                    terminate = "⏹",
+                    disconnect = "⏏",
                 },
             },
             render = {
@@ -101,14 +102,14 @@ return {
         -- end
 
         -- Keymaps
-        vim.keymap.set('n', '<F4>', dapui.toggle)
-        vim.keymap.set('n', '<F8>', dap.continue)
-        vim.keymap.set('n', '<F9>', dap.step_over)
-        vim.keymap.set('n', '<F10>', dap.step_into)
-        vim.keymap.set('n', '<F11>', dap.step_out)
-        vim.keymap.set('n', '<F12>', dap.terminate)
-        vim.keymap.set('n', '<F3>', dap.toggle_breakpoint)
-        vim.keymap.set('n', '<leader>v', dapui.eval)
+        vim.keymap.set("n", "<F4>", dapui.toggle)
+        vim.keymap.set("n", "<F8>", dap.continue)
+        vim.keymap.set("n", "<F9>", dap.step_over)
+        vim.keymap.set("n", "<F10>", dap.step_into)
+        vim.keymap.set("n", "<F11>", dap.step_out)
+        vim.keymap.set("n", "<F12>", dap.terminate)
+        vim.keymap.set("n", "<F3>", dap.toggle_breakpoint)
+        vim.keymap.set("n", "<leader>v", dapui.eval)
 
         -- Auto run debugger
         vim.api.nvim_create_user_command("AutoDebug", function()
@@ -123,9 +124,8 @@ return {
             })
         end, {})
 
-
         vim.api.nvim_create_user_command("AutoDebugStop", function()
             vim.api.nvim_create_augroup("DAP", { clear = true })
         end, {})
-    end
+    end,
 }

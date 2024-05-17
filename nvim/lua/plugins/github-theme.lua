@@ -1,7 +1,7 @@
 local options = {
     hide_nc_statusline = false, -- Override the underline style for non-active statuslines
     terminal_colors = true,
-    dim_inactive = true,
+    dim_inactive = false,
 }
 
 local palettes = {
@@ -19,8 +19,8 @@ local specs = {
 local groups = {
     github_light_high_contrast = {
         NormalNC = { bg = "inactive" }, -- Non-current windows
-        StatusLine = { bg = "inactive" },
-        StatusLineNC = { bg = "inactive" },
+        WinBar = { bg = "inactive", bold = true },
+        WinBarNC = { bg = "inactive" },
     },
 }
 

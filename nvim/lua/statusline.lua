@@ -56,36 +56,6 @@ function M.workspace_dir()
     return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end
 
-M.Marks = {}
-M.Mark_paths = {}
-M.Mark_keys = { "J", "K", "L" }
-function M.my_marks()
-    local marks = ""
-
-    for _, v in ipairs(M.Mark_keys) do
-        if M.Marks[v] == nil then
-            goto continue
-        end
-
-        if M.Mark_paths[M.Marks[v]] == nil then
-            goto continue
-        end
-
-        local icon, _ = require("utils").file_icon(vim.bo.filetype)
-        marks = marks .. " %#Search# " .. v .. ": " .. icon .. " " .. M.Mark_paths[M.Marks[v]] .. " %#StatusLine#"
-        ::continue::
-    end
-
-    return marks
-end
-
-local function set_mark(key)
-    --TODO: vim.api.nvim_get_mark(:, opts)
-    local buf_path = vim.api.nvim_buf_get_name(0)
-    M.Marks[key] = buf_path
-    M.Mark_paths[buf_path] = vim.fn.expand("%:t")
-end
-
 local align_right = "%="
 local fileencoding = "%{&fileencoding?&fileencoding:&encoding}"
 local fileformat = "%{&fileformat}"
@@ -104,22 +74,20 @@ local static_statusline1 = table.concat({
 local static_statusline2 = table.concat({
     --TODO: modify to be static and only update with keyboard
     align_right,
-    "%#StatusLineNC#",
     filetype,
     "  ",
     fileencoding,
     "  ",
     fileformat,
-    " %#StatusLine# ",
+    "  ",
     linecol,
-    " %#StatusLineNC# ",
+    "  ",
     percentage,
-    " %*",
+    " ",
 })
 
 function Statusline()
-    -- return M.update_mode_colors() .. static_statusline1 .. M.my_marks() .. static_statusline2
-    return static_statusline1 .. M.my_marks() .. static_statusline2
+    return static_statusline1 .. static_statusline2
 end
 
 local statusline = "%!v:lua.Statusline()"
@@ -141,32 +109,5 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "TermLeave" }, {
         vim.opt.statusline = statusline
     end,
 })
-
-vim.keymap.set("n", "mJ", function()
-    local key = M.Mark_keys[1]
-    set_mark(key)
-    vim.cmd("mark " .. key)
-
-    statusline = "%!v:lua.Statusline()"
-    vim.opt.statusline = statusline
-end)
-
-vim.keymap.set("n", "mK", function()
-    local key = M.Mark_keys[2]
-    set_mark(key)
-    vim.cmd("mark " .. key)
-
-    statusline = "%!v:lua.Statusline()"
-    vim.opt.statusline = statusline
-end)
-
-vim.keymap.set("n", "mL", function()
-    local key = M.Mark_keys[3]
-    set_mark(key)
-    vim.cmd("mark " .. key)
-
-    statusline = "%!v:lua.Statusline()"
-    vim.opt.statusline = statusline
-end)
 
 return M
