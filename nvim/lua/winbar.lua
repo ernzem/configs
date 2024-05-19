@@ -13,33 +13,6 @@ local hl_warn = "WinBarDiagnosticSignWarn"
 local hl_hint = "WinBarDiagnosticSignHint"
 local hl_info = "WinBarDiagnosticSignInfo"
 
-local winbar_bg = vim.api.nvim_get_hl(0, { name = "WinBarNC" }).bg
-
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-    pattern = "*",
-    callback = function()
-        winbar_bg = vim.api.nvim_get_hl(0, { name = "WinBarNC" }).bg -- to get the current colorscheme background
-
-        local hl_string = vim.api.nvim_get_hl(0, { name = "String" })
-        local hl_msg_area = vim.api.nvim_get_hl(0, { name = "MsgArea" })
-
-        vim.api.nvim_set_hl(0, hl_file, { fg = hl_string.fg, bg = winbar_bg })
-        vim.api.nvim_set_hl(0, hl_path, { fg = hl_msg_area.fg, bg = winbar_bg })
-        vim.api.nvim_set_hl(0, hl_symbols, { bg = winbar_bg })
-
-
-        local hl_org_lsp_error = vim.api.nvim_get_hl(0, { name = "DiagnosticSignError" })
-        local hl_org_lsp_warn = vim.api.nvim_get_hl(0, { name = "DiagnosticSignWarn" })
-        local hl_org_lsp_hint = vim.api.nvim_get_hl(0, { name = "DiagnosticSignHint" })
-        local hl_org_lsp_info = vim.api.nvim_get_hl(0, { name = "DiagnosticSignInfo" })
-
-        vim.api.nvim_set_hl(0, hl_error, { fg = hl_org_lsp_error.fg, bg = winbar_bg })
-        vim.api.nvim_set_hl(0, hl_warn, { fg = hl_org_lsp_warn.fg, bg = winbar_bg })
-        vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = winbar_bg })
-        vim.api.nvim_set_hl(0, hl_info, { fg = hl_org_lsp_info.fg, bg = winbar_bg })
-    end,
-})
-
 local opts = {
     file_icon_default = "",
     folder_icon = "",
@@ -75,11 +48,10 @@ M.file_path = function()
 
     if status_web_devicons_ok then
         file_icon = web_devicons.get_icon(filename, file_type, { default = default })
-        hl_file_icon = "WinBarDevIcon" .. file_type
+        hl_file_icon = "WinBarBufFileIcon"
 
-        -- TODO: refactor so highlight would be created during colorscheme change
         local hl_dev_icon = vim.api.nvim_get_hl(0, { name = "DevIcon" .. file_type })
-        vim.api.nvim_set_hl(0, hl_file_icon, { fg = hl_dev_icon.fg, bg = winbar_bg })
+        vim.api.nvim_set_hl(0, hl_file_icon, { fg = hl_dev_icon.fg, bg = M.winbar_bg, bold = true })
     end
 
     if not file_icon then
@@ -88,7 +60,7 @@ M.file_path = function()
 
     file_icon = "%#" .. hl_file_icon .. "#" .. file_icon .. " %*"
 
-    value = " "
+    value = "%#" .. hl_path .. "#" .. " "
     local file_path_list = {}
     local _ = string.gsub(file_path, "[^/]+", function(w)
         table.insert(file_path_list, w)
@@ -108,9 +80,8 @@ M.file_path = function()
         value = value .. "%#" .. hl_path .. "#" .. file_path_list[i] .. " " .. sep .. " %*"
     end
 
-    value = value .. file_icon .. "%#" .. hl_file .. "#" .. filename -- .. "%*" -- for ending hl_file highlight
-
-    return value
+    -- return value .. file_icon .. "%#" .. hl_file .. "#" .. filename -- .. "%*" -- for ending hl_file highlight
+    return value .. file_icon .. "%#" .. hl_file_icon .. "#" .. filename -- .. "%*" -- for ending hl_file highlight
 end
 
 function M.lsp_info()
@@ -178,6 +149,33 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
     group = winbar_autocmd_group,
     pattern = "*.*",
     callback = M.update,
+})
+
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    group = winbar_autocmd_group,
+    pattern = "*",
+    callback = function()
+        M.winbar_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+
+        local hl_string = vim.api.nvim_get_hl(0, { name = "String" })
+        local hl_msg_area = vim.api.nvim_get_hl(0, { name = "Comment" })
+
+        vim.api.nvim_set_hl(0, hl_file, { fg = hl_string.fg, bg = M.winbar_bg })
+        vim.api.nvim_set_hl(0, hl_path, { fg = hl_msg_area.fg, bg = M.winbar_bg })
+        vim.api.nvim_set_hl(0, hl_symbols, { bg = M.winbar_bg })
+
+        local hl_org_lsp_error = vim.api.nvim_get_hl(0, { name = "DiagnosticSignError" })
+        local hl_org_lsp_warn = vim.api.nvim_get_hl(0, { name = "DiagnosticSignWarn" })
+        local hl_org_lsp_hint = vim.api.nvim_get_hl(0, { name = "DiagnosticSignHint" })
+        local hl_org_lsp_info = vim.api.nvim_get_hl(0, { name = "DiagnosticSignInfo" })
+
+        vim.api.nvim_set_hl(0, hl_error, { fg = hl_org_lsp_error.fg, bg = M.winbar_bg })
+        vim.api.nvim_set_hl(0, hl_warn, { fg = hl_org_lsp_warn.fg, bg = M.winbar_bg })
+        vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = M.winbar_bg })
+        vim.api.nvim_set_hl(0, hl_info, { fg = hl_org_lsp_info.fg, bg = M.winbar_bg })
+
+        M.update()
+    end,
 })
 
 return M
