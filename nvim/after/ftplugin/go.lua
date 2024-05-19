@@ -107,8 +107,7 @@ end, {})
 
 --------------- Run Tests Functions-----------------------------------------
 local function go_package()
-    local ui_buffers = require("utils").ui_buffers
-    if ui_buffers[vim.bo.filetype] ~= true then
+    if require("utils").is_ui_filetype(vim.bo.filetype) ~= true then
         return "./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:.")
     end
 

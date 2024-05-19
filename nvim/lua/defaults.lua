@@ -1,9 +1,3 @@
--- Disable welcome text
-vim.opt.shortmess:append({ I = true })
-
--- Set termguicolors
-vim.opt.termguicolors = true
-
 -- Disable Netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

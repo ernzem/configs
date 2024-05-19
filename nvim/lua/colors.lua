@@ -1,9 +1,8 @@
 -- change background color for default theme
 local function override_colors(color)
     local cyan = vim.api.nvim_get_hl(0, { name = "Function" }).fg
-    local highlights = vim.api.nvim_get_hl(0, {})
 
-    for key, value in pairs(highlights) do
+    for key, value in pairs(vim.api.nvim_get_hl(0, {})) do
         if value["fg"] ~= nil and value["fg"] == cyan then
             vim.api.nvim_set_hl(0, key, { fg = color })
         end
@@ -19,26 +18,30 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
         if vim.o.background == "light" then
             local background_color = "#FFFFFF"
+            local DarkYellow = "#5D2B0A"
+
             vim.api.nvim_set_hl(0, "Normal", { bg = background_color })
             vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#F5F5F5" })
             -- vim.api.nvim_set_hl(0, "Cursorline", { bg = background_color })
-            vim.api.nvim_set_hl(0, "Winbar", { bg = background_color, fg = TitleHi.fg })
+            vim.api.nvim_set_hl(0, "WinBar", { bg = background_color, fg = TitleHi.fg, bold = true })
+            vim.api.nvim_set_hl(0, "WinbarNC", { bg = background_color })
             -- vim.api.nvim_set_hl(0, "Statusline", { bg = background_color, fg = NormalHi.fg })
             -- vim.api.nvim_set_hl(0, "StatuslineNC", { bg = background_color })
             vim.api.nvim_set_hl(0, "Special", { fg = StatementHi.fg })
 
-            local DarkYellow = "#5D2B0A"
             override_colors(DarkYellow)
         else
-            vim.api.nvim_set_hl(0, "Winbar", { bg = NormalHi.bg, fg = TitleHi.fg })
-            -- vim.api.nvim_set_hl(0, "Statusline", { bg = NormalHi.bg, fg = NormalHi.fg })
-            vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#1E2025" })
-            vim.api.nvim_set_hl(0, "Cursorline", { bg = NormalHi.bg, })
+            local DarkYellow = "#F0CA66"
+
+            vim.api.nvim_set_hl(0, "WinBar", { bg = NormalHi.bg, fg = TitleHi.fg, bold = true })
+            vim.api.nvim_set_hl(0, "WinBarNC", { bg = NormalHi.bg })
+            vim.api.nvim_set_hl(0, "Statusline", { bg = NormalHi.bg, fg = NormalHi.fg })
             -- vim.api.nvim_set_hl(0, "StatuslineNC", { bg = NormalHi.bg })
+            vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#1E2025" })
+            -- vim.api.nvim_set_hl(0, "Cursorline", { bg = NormalHi.bg, })
             vim.api.nvim_set_hl(0, "Special", { fg = StatementHi.fg })
             vim.api.nvim_set_hl(0, "String", { fg = "#8CB648" })
 
-            local DarkYellow = "#F0CA66"
             override_colors(DarkYellow)
         end
     end,
