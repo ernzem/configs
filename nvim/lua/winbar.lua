@@ -3,31 +3,42 @@ local M = {}
 local save = " %m"
 local right_side = "%="
 
-local hl_path = "MsgArea"
-local hl_file = "String"
-local hl_symbols = "Function"
+local hl_path = "WinBarPath"
+local hl_file = "WinBarFile"
+local hl_symbols = "WinBarSymbols"
 local hl_file_icon = "WinBarFileIcon"
 
----------------- Alternative way with custom highlights-------------------
--- local hl_path = "WinBarPath"
--- local hl_file = "WinBarFile"
--- local hl_symbols = "WinBarSymbols"
+local hl_error = "WinBarDiagnosticSignError"
+local hl_warn = "WinBarDiagnosticSignWarn"
+local hl_hint = "WinBarDiagnosticSignHint"
+local hl_info = "WinBarDiagnosticSignInfo"
 
--- vim.api.nvim_create_autocmd({ "ColorScheme" }, {
---     pattern = "*",
---     callback = function()
---         local hl_string = vim.api.nvim_get_hl(0, { name = "String" })
---         local hl_winbar_nc = vim.api.nvim_get_hl(0, { name = "WinBarNC" })
+local winbar_bg = vim.api.nvim_get_hl(0, { name = "WinBarNC" }).bg
 
--- vim.api.nvim_set_hl(0, hl_file, { fg = hl_string.fg, bg = hl_winbar_nc.bg })
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    pattern = "*",
+    callback = function()
+        winbar_bg = vim.api.nvim_get_hl(0, { name = "WinBarNC" }).bg -- to get the current colorscheme background
 
--- local hl_msg_area = vim.api.nvim_get_hl(0, { name = "MsgArea" })
--- vim.api.nvim_set_hl(0, hl_path, { fg = hl_msg_area.fg })
+        local hl_string = vim.api.nvim_get_hl(0, { name = "String" })
+        local hl_msg_area = vim.api.nvim_get_hl(0, { name = "MsgArea" })
 
--- vim.api.nvim_set_hl(0, hl_symbols, { fg = opts.colors.symbols })
---     end,
--- })
----------------------------------------------------------------------------
+        vim.api.nvim_set_hl(0, hl_file, { fg = hl_string.fg, bg = winbar_bg })
+        vim.api.nvim_set_hl(0, hl_path, { fg = hl_msg_area.fg, bg = winbar_bg })
+        vim.api.nvim_set_hl(0, hl_symbols, { bg = winbar_bg })
+
+
+        local hl_org_lsp_error = vim.api.nvim_get_hl(0, { name = "DiagnosticSignError" })
+        local hl_org_lsp_warn = vim.api.nvim_get_hl(0, { name = "DiagnosticSignWarn" })
+        local hl_org_lsp_hint = vim.api.nvim_get_hl(0, { name = "DiagnosticSignHint" })
+        local hl_org_lsp_info = vim.api.nvim_get_hl(0, { name = "DiagnosticSignInfo" })
+
+        vim.api.nvim_set_hl(0, hl_error, { fg = hl_org_lsp_error.fg, bg = winbar_bg })
+        vim.api.nvim_set_hl(0, hl_warn, { fg = hl_org_lsp_warn.fg, bg = winbar_bg })
+        vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = winbar_bg })
+        vim.api.nvim_set_hl(0, hl_info, { fg = hl_org_lsp_info.fg, bg = winbar_bg })
+    end,
+})
 
 local opts = {
     file_icon_default = "",
@@ -64,7 +75,11 @@ M.file_path = function()
 
     if status_web_devicons_ok then
         file_icon = web_devicons.get_icon(filename, file_type, { default = default })
-        hl_file_icon = "DevIcon" .. file_type
+        hl_file_icon = "WinBarDevIcon" .. file_type
+
+        -- TODO: refactor so highlight would be created during colorscheme change
+        local hl_dev_icon = vim.api.nvim_get_hl(0, { name = "DevIcon" .. file_type })
+        vim.api.nvim_set_hl(0, hl_file_icon, { fg = hl_dev_icon.fg, bg = winbar_bg })
     end
 
     if not file_icon then
@@ -112,16 +127,16 @@ function M.lsp_info()
     local info = ""
 
     if count["errors"] ~= 0 then
-        errors = " %#DiagnosticSignError# " .. count["errors"]
+        errors = " %#" .. hl_error .. "# " .. count["errors"]
     end
     if count["warnings"] ~= 0 then
-        warnings = " %#DiagnosticSignWarn# " .. count["warnings"]
+        warnings = " %#" .. hl_warn .. "# " .. count["warnings"]
     end
     if count["hints"] ~= 0 then
-        hints = " %#DiagnosticSignHint#󰌶 " .. count["hints"]
+        hints = " %#" .. hl_hint .. "#󰌶 " .. count["hints"]
     end
     if count["info"] ~= 0 then
-        info = " %#DiagnosticSignInfo#󰋽 " .. count["info"]
+        info = " %#" .. hl_info .. "#󰋽 " .. count["info"]
     end
 
     return errors .. warnings .. hints .. info .. " "
