@@ -72,6 +72,8 @@ vim.o.splitright = true
 
 -- Global statusline
 vim.opt.laststatus = 3
+vim.opt.cmdheight = 0
+vim.opt.showmode = false
 
 -- Title in titlebar work-dir nvim
 vim.opt.title = true

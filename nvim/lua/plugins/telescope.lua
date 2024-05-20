@@ -10,7 +10,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             -- Function allows multiple selections
