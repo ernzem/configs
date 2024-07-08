@@ -4,13 +4,30 @@ return {
         "nvim-neotest/nvim-nio",
         -- Creates a beautiful debugger UI
         "rcarriga/nvim-dap-ui",
+        -- Adds virtual text with values
+        "theHamsta/nvim-dap-virtual-text",
         -- Debugger configs for go
         "leoluz/nvim-dap-go",
     },
     event = "VeryLazy",
     config = function()
         local dap, dapui, dapgo = require("dap"), require("dapui"), require("dap-go")
-        dapgo.setup()
+
+        require("nvim-dap-virtual-text").setup({
+            virt_text_pos = "eol",
+        })
+
+        dapgo.setup({
+            dap_configurations = {
+                {
+                    type = "go",
+                    name = "Debug test on fixed test file",
+                    request = "launch",
+                    mode = "test",
+                    program = "${file}",
+                },
+            },
+        })
 
         dapui.setup({
             icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
@@ -115,6 +132,18 @@ return {
         vim.api.nvim_create_user_command("AutoDebug", function()
             dap.terminate()
             dap.continue()
+            vim.api.nvim_create_autocmd("BufWritePost", {
+                group = vim.api.nvim_create_augroup("DAP", { clear = true }),
+                pattern = "*.go",
+                callback = function()
+                    dap.run_last()
+                end,
+            })
+        end, {})
+
+        vim.api.nvim_create_user_command("AutoGoDebugTest", function()
+            dap.terminate()
+            dapgo.debug_test()
             vim.api.nvim_create_autocmd("BufWritePost", {
                 group = vim.api.nvim_create_augroup("DAP", { clear = true }),
                 pattern = "*.go",

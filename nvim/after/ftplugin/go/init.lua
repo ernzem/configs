@@ -87,12 +87,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 -------------------------------------------------------------------------------
 local utils = require("utils")
 vim.api.nvim_create_user_command("AutoTest", function()
-    local path = vim.fn.input({
+    local cmd = vim.fn.input({
         prompt = "Test Path: ",
-        default = "./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:."),
+        default = "go test -failfast -count=1 -race ./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:."),
         completion = "dir",
     })
-    local cmd = "go test -failfast -race " .. path
 
     vim.api.nvim_create_autocmd("BufWritePost", {
         group = vim.api.nvim_create_augroup("GoAutoTest", { clear = true }),
@@ -125,11 +124,11 @@ local function go_package()
 end
 
 local run_package_tests = function()
-    utils.run("go test -failfast -race " .. go_package())
+    utils.run("go test -failfast -count=1 -race " .. go_package())
 end
 
 local run_all_tests = function()
-    utils.run("go test -failfast -race ./...")
+    utils.run("go test -failfast -count=1 -race ./...")
 end
 -----------------------------------------------------------------------------
 

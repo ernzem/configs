@@ -7,8 +7,7 @@ if not vim.g.vscode then
     require("output_buffer")
     require("statusline")
     require("winbar")
-    -- require("colors")
 
-    -- vim.cmd("colorscheme github_light_high_contrast")
-    vim.cmd("colorscheme kanagawa-wave")
+    -- vim.cmd("colorscheme kanagawa-wave")
+    vim.cmd("colorscheme catppuccin-macchiato")
 end

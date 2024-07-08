@@ -47,7 +47,7 @@ return {
                     mappings = {
                         i = {
                             ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
-                            ["<C-S-Q>"] = require("telescope.actions").delete_buffer,
+                            ["<C-R>"] = require("telescope.actions").delete_buffer,
                             ["<C-h>"] = require("telescope.actions").which_key,
                             ["<C-Space>"] = { "<esc>", type = "command" },
                             ["<esc>"] = require("telescope.actions").close,
@@ -139,5 +139,13 @@ return {
                 require("telescope.builtin").lsp_implementations(vertical_layout)
             end, { desc = "[G]oto [I]mplementation" })
         end,
+
+        vim.keymap.set("n", "<leader>sn", function()
+            require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+        end, { desc = "[S]earch [N]eovim files" }),
+
+        vim.keymap.set("n", "<leader>sc", function()
+            require("telescope.builtin").find_files({ cwd = "~/.cfg" })
+        end, { desc = "[S]earch [C]onfiguration files" }),
     },
 }

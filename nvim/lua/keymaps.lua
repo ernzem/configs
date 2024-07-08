@@ -41,9 +41,11 @@ vim.keymap.set("n", "<C-S-L>", [[<cmd>vertical resize +5<cr>]])
 
 -- Disable
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<F1>", "<nop>")
+vim.keymap.set({ "n", "i" }, "<F1>", "<nop>")
 
 -- Print git branch name in buffer
-vim.keymap.set({ "n", "i" }, "<C-S-B>",
+vim.keymap.set(
+    { "n", "i" },
+    "<C-S-B>",
     '<ESC>:silent .-1r !echo "$(git rev-parse --abbrev-ref HEAD)" | grep -E -o "^[A-Z]+-[0-9]+"<CR>g_:startinsert!<CR>'
 )

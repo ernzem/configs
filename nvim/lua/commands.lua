@@ -16,6 +16,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     command = [[%s/\s\+$//e]],
 })
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
 vim.api.nvim_create_user_command("NrColumnToggle", function()
     if not vim.opt.nu then
         return
@@ -38,7 +46,6 @@ Attach_to_buffer = function(pattern, command)
     })
 end
 
-
 vim.api.nvim_create_user_command("AutoRun", function()
     print "AutoRun starts now..."
     local pattern = vim.fn.input "Pattern: "
@@ -51,11 +58,3 @@ end, {})
 vim.api.nvim_create_user_command("AutoStop", function()
     vim.api.nvim_create_augroup("auto-command", { clear = true })
 end, {})
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
