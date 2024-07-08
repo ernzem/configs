@@ -8,6 +8,7 @@ wezterm.on("gui-startup", function()
 end)
 
 local c = wezterm.config_builder()
+
 -- if  wezterm.target_triple:find("windows") ~= nil then
 -- end
 
@@ -17,7 +18,8 @@ if wezterm.target_triple:find("darwin") ~= nil then
 end
 
 if wezterm.target_triple:find("linux") ~= nil then
-    c.font_size = 10
+    c.font_size = 12
+    c.window_decorations = "RESIZE"
 end
 
 c.font = wezterm.font({

@@ -9,7 +9,7 @@ sudo apt install -y wget gpg git curl ca-certificates gnupg
 sudo apt install -y tmux
 sudo apt install -y ripgrep
 sudo apt install -y timeshift pkexec
-sudo apt install -y foot
+# sudo apt install -y foot
 sudo apt install -y pandoc
 sudo apt install -y libpam-fprintd
 sudo apt install -y zsh
@@ -17,7 +17,7 @@ sudo apt install -y dconf-editor
 sudo apt install -y wl-clipboard # Wayland only
 sudo apt install -y libnotify-bin # for sending notifications via cli
 # sudo apt install -y xclip # X11 only
-# sudo apt install -y gnome-tweaks
+sudo apt install -y gnome-tweaks
 # -----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y bat
 mkdir -p ~/.local/bin
@@ -49,26 +49,26 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # sudo apt install -y code
 # -----------------------------------------------------------------------------------------------------------------------
 # Docker
-sudo apt update
+# sudo apt update
 # sudo apt-get install -y ca-certificates curl gnupg
 
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
+# sudo install -m 0755 -d /etc/apt/keyrings
+# curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# echo \
+#   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+#   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+#  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-sudo apt update
+# sudo apt update
 # Docker CLI
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 
 # Make docker as non root user
 # sudo groupadd docker
-sudo usermod -aG docker $USER
+# sudo usermod -aG docker $USER
 
 # Stop docker autostart docker
 # sudo systemctl disable docker.service
@@ -107,9 +107,14 @@ mkdir -p ~/.local/bin
 curl -L -o ~/.local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x ~/.local/bin/nvim
 
-curl -LO https://github.com/wez/wezterm/releases/download/20240128-202157-1e552d76/wezterm-20240128-202157-1e552d76.Debian12.deb
-sudo apt install -y ./wezterm-20240128-202157-1e552d76.Debian12.deb
-rm wezterm-20240128-202157-1e552d76.Debian12.deb
+# curl -LO https://github.com/wez/wezterm/releases/download/20240128-202157-1e552d76/wezterm-20240128-202157-1e552d76.Debian12.deb
+# sudo apt install -y ./wezterm-20240128-202157-1e552d76.Debian12.deb
+# rm wezterm-20240128-202157-1e552d76.Debian12.deb
+# ---------------------------------------------------------------------------------------------------------------------------
+# Wezterm
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+sudo apt update && sudo apt install wezterm
 
 echo "\nDONE!\n"
 
