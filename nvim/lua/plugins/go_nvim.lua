@@ -1,7 +1,7 @@
 return {
     "ray-x/go.nvim",
-    dependencies = { -- optional packages
-        "ray-x/guihua.lua",
+    dependencies = { -- optional package. Currently disabled since features either not needed or already covered
+        -- "ray-x/guihua.lua",
         "neovim/nvim-lspconfig",
         "nvim-treesitter/nvim-treesitter",
     },
