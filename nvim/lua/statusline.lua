@@ -56,8 +56,10 @@ end
 local function branch_name()
     local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
     if branch ~= "" then
-        return " " .. branch
+        return "  " .. branch .. " "
     end
+
+    return ""
 end
 
 function M.workspace_dir()
@@ -65,7 +67,7 @@ function M.workspace_dir()
 end
 
 local mode = "%{%v:lua.require'statusline'.mode()%} "
-local git_branch = [[ %{luaeval("vim.g.branch_name")} %*]]
+local git_branch = [[%{luaeval("vim.g.branch_name")}%*]]
 local workspace_dir = [[ %{luaeval("require('statusline').workspace_dir()")} %*]]
 local fileencoding = "%{&fileencoding?&fileencoding:&encoding}"
 local align_right = "%="
