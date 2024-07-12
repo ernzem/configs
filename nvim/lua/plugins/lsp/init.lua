@@ -2,21 +2,14 @@ return {
     {
         "folke/lazydev.nvim",
         ft = "lua",
-        opts = {
-            library = {
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
-            },
-        },
+        opts = { library = { { path = "luvit-meta/library", words = { "vim%.uv" } } } },
     },
     { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
     {                                        -- optional completion source for require statements and module annotations.
         "hrsh7th/nvim-cmp",
         opts = function(_, opts)
             opts.sources = opts.sources or {}
-            table.insert(opts.sources, {
-                name = "lazydev",
-                group_index = 0, -- 0 to skip loading LuaLS completions
-            })
+            table.insert(opts.sources, { name = "lazydev", group_index = 0 }) -- 0 to skip loading LuaLS completions
         end,
     },
     {
@@ -47,17 +40,17 @@ return {
                     end
                 end,
             })
-            -- Set LSP Diagnostics settings
-            require("plugins.lsp.diagnostics")
 
             local servers = require("plugins.lsp.servers")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
             capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
             require("mason").setup()
+
             require("mason-tool-installer").setup({
                 ensure_installed = vim.list_extend(vim.tbl_keys(servers or {}), require("plugins.lsp.tools")),
             })
+
             require("mason-lspconfig").setup({
                 handlers = {
                     function(server_name)
@@ -70,6 +63,9 @@ return {
                     end,
                 },
             })
+
+            -- Set LSP Diagnostics settings
+            require("plugins.lsp.diagnostics")
         end,
     },
 }
