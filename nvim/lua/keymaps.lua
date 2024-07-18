@@ -49,3 +49,11 @@ vim.keymap.set(
     "<C-S-B>",
     '<ESC>:silent .-1r !echo "$(git rev-parse --abbrev-ref HEAD)" | grep -E -o "^[A-Z]+-[0-9]+"<CR>g_:startinsert!<CR>'
 )
+
+vim.keymap.set("n", "<leader>ih",
+    function()
+        local result = vim.treesitter.get_captures_at_cursor(0)
+        print(vim.inspect(result))
+    end,
+    { noremap = true, silent = false }
+)

@@ -28,6 +28,7 @@ return {
     "projekt0n/github-nvim-theme",
     lazy = false,
     -- priority = 1000,
+    event = "VeryLazy",
     config = function()
         require("github-theme").setup({
             options = options,

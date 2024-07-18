@@ -17,7 +17,8 @@ vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.fillchars = [[eob: ,fold: ,foldopen:*,foldsep: ,foldclose:-]]
 
 -- Autoread file changes on the disk
 vim.o.autoread = true
@@ -47,12 +48,6 @@ vim.wo.signcolumn = "yes"
 
 -- When scrolling keep at least nr of lines at the bottom
 vim.opt.scrolloff = 10
-
--- time in ms after which the swap file will be
--- written and CursorHold autocommand event is triggered.
-vim.opt.updatetime = 500
--- Decrease update time
-vim.opt.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { "menu", "menuone", "noselect" }

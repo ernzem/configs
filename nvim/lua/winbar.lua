@@ -16,10 +16,11 @@ local hl_info = "WinBarDiagnosticSignInfo"
 local opts = {
     file_icon_default = "",
     folder_icon = "",
-    seperator = "",
+    -- seperator = "",
     -- seperator = ">",
+    -- lock_icon = "",
+    seperator = "⏵",
     editor_state = "●",
-    lock_icon = "",
 }
 
 local status_web_devicons_ok, web_devicons = pcall(require, "nvim-web-devicons")
@@ -103,16 +104,16 @@ function M.lsp_info()
     local info = ""
 
     if count["errors"] ~= 0 then
-        errors = " %#" .. hl_error .. "# " .. count["errors"]
+        errors = " %#" .. hl_error .. "#E " .. count["errors"]
     end
     if count["warnings"] ~= 0 then
-        warnings = " %#" .. hl_warn .. "# " .. count["warnings"]
+        warnings = " %#" .. hl_warn .. "#W " .. count["warnings"]
     end
     if count["hints"] ~= 0 then
-        hints = " %#" .. hl_hint .. "#󰌶 " .. count["hints"]
+        hints = " %#" .. hl_hint .. "#H " .. count["hints"]
     end
     if count["info"] ~= 0 then
-        info = " %#" .. hl_info .. "#󰋽 " .. count["info"]
+        info = " %#" .. hl_info .. "#I " .. count["info"]
     end
 
     return errors .. warnings .. hints .. info .. " "

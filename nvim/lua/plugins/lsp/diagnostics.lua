@@ -7,10 +7,10 @@ local function sign_define(args)
     })
 end
 
-sign_define({ name = "DiagnosticSignError", text = "" })
-sign_define({ name = "DiagnosticSignWarn", text = "" })
-sign_define({ name = "DiagnosticSignHint", text = "󰌶" })
-sign_define({ name = "DiagnosticSignInfo", text = "󰋽" })
+-- sign_define({ name = "DiagnosticSignError", text = "" })
+-- sign_define({ name = "DiagnosticSignWarn", text = "" })
+-- sign_define({ name = "DiagnosticSignHint", text = "󰌶" })
+-- sign_define({ name = "DiagnosticSignInfo", text = "󰋽" })
 
 -- Disable diagnostics when switching mode
 vim.api.nvim_create_autocmd("ModeChanged", {

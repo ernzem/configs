@@ -6,7 +6,7 @@ return {
                 custom = { ".ds_store" },
             },
             git = {
-                enable = true,
+                enable = false,
             },
             view = {
                 width = 40,
