@@ -18,6 +18,27 @@
                 },
                 "rules": [
                     {
+                        "description": "left_option + w  -> Brave",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Brave Browser.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left_option + n  -> VSCodium",
                         "manipulators": [
                             {
@@ -53,27 +74,6 @@
                                 "to": [
                                     {
                                         "shell_command": "open '/Applications/WezTerm.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + w  -> Firefox",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Firefox.app'"
                                     }
                                 ],
                                 "type": "basic"
