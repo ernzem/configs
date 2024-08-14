@@ -1,12 +1,11 @@
 local M = {}
-
 local hl_mode_insert = "ModeInsert"
 local hl_mode_normal = "ModeNormal"
 local hl_mode_visual = "ModeVisual"
 local hl_mode_other = "ModeOther"
 
 M.mode_map = {
-    ["n"] = { name = "NORMAL", color = hl_mode_normal },
+    ["n"] = { name = "NORMAL", color = "Statusline" },
     ["no"] = { name = "O-PENDING", color = "Statusline" },
     ["nov"] = { name = "O-PENDING", color = "Statusline" },
     ["noV"] = { name = "O-PENDING", color = "Statusline" },
@@ -66,37 +65,108 @@ function M.workspace_dir()
     return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end
 
+local function file_icon(filetype)
+    local ok, icons = pcall(require, "nvim-web-devicons")
+    if not ok or not filetype then
+        return "", ""
+    end
+
+    local icon, color = icons.get_icon_by_filetype(filetype)
+    if not icon then
+        return "", ""
+    end
+
+    return icon, color
+end
+
+M.Marks = {}
+-- M.Mark_paths = {}
+M.Mark_keys = { "J", "K", "L" }
+
+function M.file_marks()
+    local m = ""
+
+    for _, v in ipairs(M.Mark_keys) do
+        local mark = vim.api.nvim_get_mark(v, {})
+        if mark[4] == "" then
+            goto continue
+        end
+
+        local filename = vim.fs.basename(mark[4])
+        local ic, icon_cl = file_icon(vim.filetype.match({ filename = filename }))
+        -- m = m .. " %#StatusLine# " .. v .. ": " .. "%#" .. icon_cl .. "#" .. ic .. " " .. filename .. " %#StatusLineNC#"
+        -- m = m .. " %#" .. icon_cl .. "# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        m = m .. " %#StatusLine# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        ::continue::
+    end
+
+    return m
+end
+
+function M.grapple_marks()
+    local m = ""
+    local t = require("grapple").tags()
+    for i, v in ipairs(t) do
+        if v.path == nil then
+            goto continue
+        end
+
+        local filename = vim.fs.basename(v.path)
+        local ic, icon_cl = file_icon(vim.filetype.match({ filename = filename }))
+        -- m = m .. " %#StatusLine# " .. v .. ": " .. "%#" .. icon_cl .. "#" .. ic .. " " .. filename .. " %#StatusLineNC#"
+        -- m = m .. " %#" .. icon_cl .. "# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        m = m .. " %#StatusLine# " .. i .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        ::continue::
+    end
+
+    return m
+end
+
 local mode = "%{%v:lua.require'statusline'.mode()%} "
 local git_branch = [[%{luaeval("vim.g.branch_name")}%*]]
 local workspace_dir = [[ %{luaeval("require('statusline').workspace_dir()")} %*]]
-local fileencoding = "%{&fileencoding?&fileencoding:&encoding}"
+local tags = "%{%v:lua.require'statusline'.grapple_marks()%}"
 local align_right = "%="
-local fileformat = "%{&fileformat}"
-local filetype = "%y"
 local linecol = "%l:%c"
 local percentage = "%p%%"
-local statusline_string = table.concat({
-    mode,
-    "%#StatusLine#",
-    git_branch,
-    "%#StatusLine#",
-    workspace_dir,
-    "%#StatusLineNC#",
-    align_right,
-    filetype,
-    "  ",
-    fileencoding,
-    "  ",
-    fileformat,
-    " %#StatusLine# ",
-    linecol,
-    " %#StatusLineNC# ",
-    percentage,
-    " ",
-})
+-- local statusline_string = table.concat({
+--     mode,
+--     "%#StatusLine#",
+--     git_branch,
+--     "%#StatusLine#",
+--     workspace_dir,
+--     "%#StatusLineNC#",
+--     M.my_marks(),
+--     align_right,
+--     filetype,
+--     "  ",
+--     fileencoding,
+--     "  ",
+--     fileformat,
+--     " %#StatusLine# ",
+--     linecol,
+--     " %#StatusLineNC# ",
+--     percentage,
+--     " ",
+-- })
 
 function Statusline()
-    return statusline_string
+    return table.concat({
+        mode,
+        "%#StatusLine#",
+        git_branch,
+        "%#StatusLine#",
+        workspace_dir,
+        "%#StatusLineNC#",
+        tags,
+        align_right,
+        " %#StatusLine# ",
+        linecol,
+        "  ",
+        -- " %#StatusLineNC# ",
+        percentage,
+        " ",
+    })
 end
 
 local statusline_group = vim.api.nvim_create_augroup("statusline", { clear = true })
