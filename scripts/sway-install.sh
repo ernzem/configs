@@ -3,4 +3,4 @@
 
 set -e
 
-sudo apt install -y sway swayidle swaylock waybar wofi gammastep m1ako-notifier network-manager-gnome brightnessctl wdisplays
+sudo apt install -y sway swayidle swaylock waybar wofi gammastep mako-notifier network-manager-gnome brightnessctl wdisplays pavucontrol grimshot
