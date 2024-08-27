@@ -95,8 +95,8 @@ function M.file_marks()
         local filename = vim.fs.basename(mark[4])
         local ic, icon_cl = file_icon(vim.filetype.match({ filename = filename }))
         -- m = m .. " %#StatusLine# " .. v .. ": " .. "%#" .. icon_cl .. "#" .. ic .. " " .. filename .. " %#StatusLineNC#"
-        -- m = m .. " %#" .. icon_cl .. "# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
-        m = m .. " %#StatusLine# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        m = m .. " %#" .. icon_cl .. "# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        -- m = m .. " %#StatusLine# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
         ::continue::
     end
 
@@ -114,7 +114,7 @@ function M.grapple_marks()
         local filename = vim.fs.basename(v.path)
         local ic, icon_cl = file_icon(vim.filetype.match({ filename = filename }))
         -- m = m .. " %#StatusLine# " .. v .. ": " .. "%#" .. icon_cl .. "#" .. ic .. " " .. filename .. " %#StatusLineNC#"
-        -- m = m .. " %#" .. icon_cl .. "# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        -- m = m .. " %#" .. icon_cl .. "# " .. i .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
         m = m .. " %#StatusLine# " .. i .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
         ::continue::
     end
@@ -129,26 +129,6 @@ local tags = "%{%v:lua.require'statusline'.grapple_marks()%}"
 local align_right = "%="
 local linecol = "%l:%c"
 local percentage = "%p%%"
--- local statusline_string = table.concat({
---     mode,
---     "%#StatusLine#",
---     git_branch,
---     "%#StatusLine#",
---     workspace_dir,
---     "%#StatusLineNC#",
---     M.my_marks(),
---     align_right,
---     filetype,
---     "  ",
---     fileencoding,
---     "  ",
---     fileformat,
---     " %#StatusLine# ",
---     linecol,
---     " %#StatusLineNC# ",
---     percentage,
---     " ",
--- })
 
 function Statusline()
     return table.concat({
@@ -163,7 +143,6 @@ function Statusline()
         " %#StatusLine# ",
         linecol,
         "  ",
-        -- " %#StatusLineNC# ",
         percentage,
         " ",
     })

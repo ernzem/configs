@@ -30,6 +30,7 @@ M.exclude_filetype = {
     "toggleterm",
     "qf",
     "output",
+    ""
 }
 
 function M.is_ui_filetype(target_filetype)
