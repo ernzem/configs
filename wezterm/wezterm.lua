@@ -14,6 +14,7 @@ local config = wezterm.config_builder()
 
 if wezterm.target_triple:find("darwin") ~= nil then
     config.font_size = 14
+    config.window_decorations = "RESIZE"
     -- config.freetype_load_target = "Light"
 end
 
@@ -34,12 +35,12 @@ config.window_padding = {
     bottom = "0cell",
 }
 
--- c.color_scheme = "Mexico Light (base16)"
+config.color_scheme = "Mexico Light (base16)"
 -- c.color_scheme = "Kanagawa (Gogh)"
-config.color_scheme = 'Default Dark (base16)'
-config.colors = {
-    background = "#232326",
-}
+-- config.color_scheme = 'Default Dark (base16)'
+-- config.colors = {
+--     background = "#232326",
+-- }
 
 -- Use non gui tab style
 config.use_fancy_tab_bar = false
@@ -47,6 +48,7 @@ config.tab_max_width = 40
 config.switch_to_last_active_tab_when_closing_tab = true
 config.tab_bar_at_bottom = true
 config.scroll_to_bottom_on_input = true
+config.hide_tab_bar_if_only_one_tab = true
 
 -- timeout_milliseconds defaults to 1000 and can be omitted
 -- config.disable_default_key_bindings = true
