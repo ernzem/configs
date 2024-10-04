@@ -157,7 +157,7 @@ vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
     callback = M.update,
 })
 
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     group = winbar_autocmd_group,
     pattern = "*",
     callback = function()

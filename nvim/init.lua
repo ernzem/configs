@@ -7,5 +7,4 @@ if not vim.g.vscode then
     require("output_buffer")
     require("statusline")
     require("winbar")
-    require("colorschemes")
 end
