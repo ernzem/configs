@@ -35,12 +35,12 @@ config.window_padding = {
     bottom = "0cell",
 }
 
-config.color_scheme = "Mexico Light (base16)"
+-- config.color_scheme = "Mexico Light (base16)"
 -- c.color_scheme = "Kanagawa (Gogh)"
--- config.color_scheme = 'Default Dark (base16)'
--- config.colors = {
---     background = "#232326",
--- }
+config.color_scheme = 'Default Dark (base16)'
+config.colors = {
+    background = "#232326",
+}
 
 -- Use non gui tab style
 config.use_fancy_tab_bar = false
