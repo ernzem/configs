@@ -3,6 +3,10 @@
 # Exit if any command fails
 set -e
 
+# If sway minimal install, these are needed:
+sudo apt install -y zip unzip git lxpolkit libfuse2 build-essential
+
+# Others
 sudo apt update && sudo apt upgrade
 sudo apt install -y apt-transport-https
 sudo apt install -y wget gpg git curl ca-certificates gnupg
