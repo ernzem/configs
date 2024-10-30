@@ -11,8 +11,8 @@ if not vim.g.vscode then
 	require("plugin_manager")
 	require("commands")
 	require("output_buffer")
-    require("winbar")
-    require("colors")
+	require("winbar")
+	require("colors")
 
 	vim.g.neovide_cursor_animation_length = 0
 end
