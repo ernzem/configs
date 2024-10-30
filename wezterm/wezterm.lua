@@ -14,7 +14,7 @@ local config = wezterm.config_builder()
 
 if wezterm.target_triple:find("darwin") ~= nil then
     config.font_size = 14
-    config.window_decorations = "RESIZE"
+    -- config.window_decorations = "RESIZE"
     -- config.freetype_load_target = "Light"
 end
 
@@ -55,15 +55,15 @@ config.hide_tab_bar_if_only_one_tab = true
 -- config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
     {
-        key = "a",
+        key = "Space",
         mods = "CTRL",
         action = wezterm.action_callback(function(_, pane)
             local tab = pane:tab()
             local panes = tab:panes_with_info()
             if #panes == 1 then
                 pane:split({
-                    direction = "Bottom",
-                    size = 0.3,
+                    direction = "Right",
+                    size = 0.40,
                 })
             elseif not panes[1].is_zoomed then
                 panes[1].pane:activate()
