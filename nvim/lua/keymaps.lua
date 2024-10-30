@@ -52,7 +52,7 @@ key.set("n", "<C-/>", comment_line, { expr = true, desc = "Toggle comment line" 
 key.set("i", "<C-/>", comment_line_in_insert, { expr = true, desc = "Toggle comment line" })
 ----------------------------------------------------------------------------------------------
 
-key.set("n", "<C-;>", ":!", { dec = "Run shell command" })
+key.set("n", "<C-;>", ":!", { desc = "Run shell command" })
 
 -- Print git branch name in buffer
 key.set(
