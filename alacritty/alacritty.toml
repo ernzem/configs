@@ -1,19 +1,19 @@
+import = [
+  # "/opt/homebrew/lib/node_modules/alacritty-themes/themes/Google.light.toml"
+]
+
 [font]
-size=14
-offset = { x = 0, y = 1 }
+size = 14
 
-[font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
+  [font.offset]
+  x = 0
+  y = 1
 
-# [shell]
-# program = "/bin/zsh"
-# args = ["-c", "ls"]
-# args = ["-l", "-c", "tmux attach || tmux"]
-
-# program = "/opt/homebrew/bin/tmux"
-# args = ["attach"]
+  [font.normal]
+  family = "JetBrainsMono Nerd Font"
+  style = "Regular"
 
 [window]
+# decorations = "None"
 startup_mode = "Maximized"
 decorations_theme_variant = "Dark"
