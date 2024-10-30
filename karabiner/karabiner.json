@@ -4,7 +4,33 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "left_option + d  -> WezTerm ",
+                        "description": "left_option + n  -> Typora",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Typora.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> Sublime Text",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + d  -> WezTerm",
                         "manipulators": [
                             {
                                 "from": {
@@ -30,19 +56,6 @@
                         ]
                     },
                     {
-                        "description": "left_option + n  -> VSCodium",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/VSCodium.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "left_option + shift + s  -> VSCode",
                         "manipulators": [
                             {
@@ -50,7 +63,7 @@
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["left_option", "left_shift"] }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Visual Studio Code.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
                                 "type": "basic"
                             }
                         ]
@@ -346,7 +359,8 @@
                 }
             ],
             "name": "Default profile",
-            "selected": true
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         { "name": "Default Mac keyboard" }
     ]
