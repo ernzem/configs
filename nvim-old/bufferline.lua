@@ -1,43 +1,55 @@
 return {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = "VeryLazy",
-    config = function()
-        vim.opt.termguicolors = true
-        require("bufferline").setup({
-            options = {
-                diagnostics = "nvim_lsp",
-                indicator = {
-                    style = 'none',
-                },
-                diagnostics_update_in_insert = false,
-                diagnostics_indicator = function(count, level, diagnostics_dict, context)
-                    local s = " "
-                    for e, n in pairs(diagnostics_dict) do
-                        local sym = e == "error" and " "
-                            or (e == "warning" and " " or "i ")
-                        s = s .. n .. sym
-                    end
-                    return s
-                end
-            },
-            highlights = {
-                buffer_selected = { italic = false },
-                diagnostic_selected = { italic = false },
-                hint_selected = { italic = false },
-                pick_selected = { italic = false },
-                pick_visible = { italic = false },
-                pick = { italic = false },
-            },
-        })
+	"akinsho/bufferline.nvim",
+	enabled = false,
+	version = "*",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	event = "BufWinEnter",
+	config = function()
+		local bufferline = require("bufferline")
 
+		bufferline.setup({
+			options = {
+				style_preset = bufferline.style_preset.no_italic,
+				numbers = "ordinal",
+				diagnostics = "nvim_lsp",
+				indicator = {
+					style = "none",
+				},
+				custom_areas = {
+					right = function()
+						local result = {}
+						local seve = vim.diagnostic.severity
+						local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
+						local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
+						local info = #vim.diagnostic.get(0, { severity = seve.INFO })
+						local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
 
-        vim.keymap.set({ "n", "i" }, "<C-'>", '<cmd>BufferLineTogglePin<cr>', { noremap = true, silent = true })
+						if error ~= 0 then
+							table.insert(result, { text = " E " .. error, link = "DiagnosticError" })
+						end
 
-        vim.keymap.set({ "n", "i" }, "<C-1>", '<cmd>BufferLineGoToBuffer 1<cr>', { noremap = true, silent = true })
-        vim.keymap.set({ "n", "i" }, "<C-2>", '<cmd>BufferLineGoToBuffer 2<cr>', { noremap = true, silent = true })
-        vim.keymap.set({ "n", "i" }, "<C-3>", '<cmd>BufferLineGoToBuffer 3<cr>', { noremap = true, silent = true })
-        vim.keymap.set({ "n", "i" }, "<C-4>", '<cmd>BufferLineGoToBuffer 4<cr>', { noremap = true, silent = true })
-    end
+						if warning ~= 0 then
+							table.insert(result, { text = " W " .. warning, link = "DiagnosticWarn" })
+						end
+
+						if hint ~= 0 then
+							table.insert(result, { text = " H " .. hint, link = "DiagnosticHint" })
+						end
+
+						if info ~= 0 then
+							table.insert(result, { text = " I " .. info, link = "DiagnosticInfo" })
+						end
+						return result
+					end,
+				},
+			},
+		})
+
+		vim.keymap.set({ "n", "i" }, "<leader>m", "<cmd>BufferLineTogglePin<cr>", { noremap = true, silent = true })
+
+		vim.keymap.set({ "n", "i" }, "<C-1>", "<cmd>BufferLineGoToBuffer 1<cr>", { noremap = true, silent = true })
+		vim.keymap.set({ "n", "i" }, "<C-2>", "<cmd>BufferLineGoToBuffer 2<cr>", { noremap = true, silent = true })
+		vim.keymap.set({ "n", "i" }, "<C-3>", "<cmd>BufferLineGoToBuffer 3<cr>", { noremap = true, silent = true })
+		vim.keymap.set({ "n", "i" }, "<C-4>", "<cmd>BufferLineGoToBuffer 4<cr>", { noremap = true, silent = true })
+	end,
 }

@@ -166,7 +166,7 @@ return {
             desc = "Enable diagnostics when leaving insert mode",
             callback = function(e)
                 vim.diagnostic.enable(e.buf)
-                require("winbar").update()
+                -- require("winbar").update()
             end,
         })
 
