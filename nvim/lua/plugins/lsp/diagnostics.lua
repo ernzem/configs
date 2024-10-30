@@ -7,8 +7,14 @@ local function sign_define(args)
     })
 end
 
--- sign_define({ name = "DiagnosticSignError", text = "" })
--- sign_define({ name = "DiagnosticSignWarn", text = "" })
+local utils = require("utils")
+sign_define({ name = "DiagnosticSignError", text = utils.diagn_symbols.error })
+sign_define({ name = "DiagnosticSignWarn", text = utils.diagn_symbols.warn })
+sign_define({ name = "DiagnosticSignHint", text = utils.diagn_symbols.hint })
+sign_define({ name = "DiagnosticSignInfo", text = utils.diagn_symbols.info })
+
+-- sign_define({ name = "DiagnosticSignError", text = "󰅚" })
+-- sign_define({ name = "DiagnosticSignWarn", text = "󰀪" })
 -- sign_define({ name = "DiagnosticSignHint", text = "󰌶" })
 -- sign_define({ name = "DiagnosticSignInfo", text = "󰋽" })
 

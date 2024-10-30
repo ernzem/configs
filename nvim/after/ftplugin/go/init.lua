@@ -1,7 +1,11 @@
+if vim.g.vscode then
+	return
+end
+
 local go_file = "*.go"
 --------------------------------------Settings---------------------------------------------------
 -- Highlight column
-vim.opt_local.colorcolumn = "120"
+-- vim.opt_local.colorcolumn = "120"
 -----------------------------Auto add/remove/organize imports before save------------------------
 
 vim.api.nvim_create_autocmd("BufWritePre", {

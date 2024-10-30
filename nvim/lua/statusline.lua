@@ -62,7 +62,7 @@ local function branch_name()
 end
 
 function M.workspace_dir()
-    return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end
 
 local function file_icon(filetype)
@@ -156,14 +156,14 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "FocusGained" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter", "InsertEnter", "TermLeave" }, {
+vim.api.nvim_create_autocmd({ "InsertEnter", "TermLeave" }, {
     group = statusline_group,
     callback = function()
         vim.opt.statusline = "%!v:lua.Statusline()"
     end,
 })
 
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     group = statusline_group,
     pattern = "*",
     callback = function()

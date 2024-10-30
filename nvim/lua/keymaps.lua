@@ -39,8 +39,12 @@ vim.keymap.set("n", "<C-S-K>", [[<cmd>horizontal resize -2<cr>]])
 vim.keymap.set("n", "<C-S-J>", [[<cmd>horizontal resize +2<cr>]])
 vim.keymap.set("n", "<C-S-L>", [[<cmd>vertical resize +5<cr>]])
 
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
 -- Disable
-vim.keymap.set("n", "Q", "<nop>")
+-- vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set({ "n", "i" }, "<F1>", "<nop>")
 
 -- Print git branch name in buffer
@@ -49,6 +53,9 @@ vim.keymap.set(
     "<C-S-B>",
     '<ESC>:silent .-1r !echo "$(git rev-parse --abbrev-ref HEAD)" | grep -E -o "^[A-Z]+-[0-9]+"<CR>g_:startinsert!<CR>'
 )
+
+vim.keymap.set("i", "<C-space>", '<C-o>')
+vim.keymap.set("t", "<C-space>", '<C-\\><C-o>')
 
 vim.keymap.set("n", "<leader>ih",
     function()
