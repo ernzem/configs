@@ -87,27 +87,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 --         })
 --     end,
 -- })
-
--------------------------------------------------------------------------------
-local utils = require("utils")
-vim.api.nvim_create_user_command("AutoTest", function()
-    local cmd = vim.fn.input({
-        prompt = "Test Path: ",
-        default = "go test -failfast -count=1 -race ./" .. vim.fn.fnamemodify(vim.fn.expand("%:h"), ":p:~:."),
-        completion = "dir",
-    })
-
-    vim.api.nvim_create_autocmd("BufWritePost", {
-        group = vim.api.nvim_create_augroup("GoAutoTest", { clear = true }),
-        pattern = go_file,
-        callback = function()
-            utils.run(cmd)
-        end,
-    })
-
-    utils.run(cmd)
-end, {})
-
 --------------- Run Tests Functions-----------------------------------------
 local function go_package()
     if require("utils").is_ui_filetype(vim.bo.filetype) ~= true then
@@ -134,12 +113,8 @@ end
 local run_all_tests = function()
     utils.run("go test -failfast -count=1 -race ./...")
 end
+
 -----------------------------------------------------------------------------
-
-vim.api.nvim_create_user_command("AutoTestStop", function()
-    vim.api.nvim_create_augroup("GoAutoTest", { clear = true })
-end, {})
-
 vim.keymap.set("n", "<leader>dt", require("dap-go").debug_test)
 vim.keymap.set("n", "<leader>dlt", require("dap-go").debug_last_test)
 
