@@ -61,8 +61,10 @@ key.set(
 	'<ESC>:silent .-1r !echo "$(git rev-parse --abbrev-ref HEAD)" | grep -E -o "^[A-Z]+-[0-9]+"<CR>g_:startinsert!<CR>'
 )
 
-key.set("i", "<C-space>", "<C-o>")
-key.set("t", "<C-space>", "<C-\\><C-o>")
+key.set("i", "<C-space>", "<ESC>", { desc = "Exit insert mode" })
+key.set("t", "<C-space>", "<C-\\><C-o>",{ desc = "Exit terminal mode" } )
+-- key.set("i", "<C-space>", "<C-o>")
+-- key.set("t", "<C-space>", "<C-\\><C-o>")
 
 key.set("n", "<leader>ih", function()
 	local result = vim.treesitter.get_captures_at_cursor(0)
