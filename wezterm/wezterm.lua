@@ -55,8 +55,8 @@ config.hide_tab_bar_if_only_one_tab = true
 -- config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
     {
-        key = "Space",
-        mods = "CTRL",
+        key = "F1",
+        -- mods = "CTRL",
         action = wezterm.action_callback(function(_, pane)
             local tab = pane:tab()
             local panes = tab:panes_with_info()
