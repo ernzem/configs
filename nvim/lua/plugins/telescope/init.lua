@@ -46,10 +46,6 @@ return {
 					},
 					find_files = {
 						hidden = true,
-
-						preview = {
-							hide_on_startup = true,
-						},
 						mappings = {
 							i = {
 								["<CR>"] = require("plugins.telescope.multi_select").Edit_multi_files,
