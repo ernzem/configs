@@ -25,20 +25,16 @@ key.set("n", "<leader>q", "<cmd>bd%<cr>")
 key.set("n", "<C-Q>", "<cmd>bd!%<cr>")
 
 -- Jump between window splits
-key.set("n", "<C-J>", "<C-W><C-J>")
-key.set("n", "<C-H>", "<C-W><C-H>")
-key.set("n", "<C-K>", "<C-W><C-K>")
-key.set("n", "<C-L>", "<C-W><C-L>")
+key.set("n", "<C-j>", "<C-W><C-J>")
+key.set("n", "<C-h>", "<C-W><C-H>")
+key.set("n", "<C-k>", "<C-W><C-K>")
+key.set("n", "<C-l>", "<C-W><C-L>")
 
 -- Resize splits
 key.set("n", "<C-S-H>", [[<cmd>vertical resize -5<cr>]])
 key.set("n", "<C-S-K>", [[<cmd>horizontal resize -2<cr>]])
 key.set("n", "<C-S-J>", [[<cmd>horizontal resize +2<cr>]])
 key.set("n", "<C-S-L>", [[<cmd>vertical resize +5<cr>]])
-
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-key.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -------------------------------- Commenting keymaps --------------------------------------
 local comment_line = function()
@@ -52,7 +48,11 @@ key.set("n", "<C-/>", comment_line, { expr = true, desc = "Toggle comment line" 
 key.set("i", "<C-/>", comment_line_in_insert, { expr = true, desc = "Toggle comment line" })
 ----------------------------------------------------------------------------------------------
 
+key.set("n", "<C-space>", ":", { desc = "Enter command"})
 key.set("n", "<C-;>", ":!", { desc = "Run shell command" })
+
+key.set("i", "<C-j>", "<ESC>", { desc = "Exit insert mode" })
+key.set("t", "<C-j>", "<C-\\><C-o>",{ desc = "Exit terminal mode" } )
 
 -- Print git branch name in buffer
 key.set(
@@ -60,11 +60,6 @@ key.set(
 	"<C-S-B>",
 	'<ESC>:silent .-1r !echo "$(git rev-parse --abbrev-ref HEAD)" | grep -E -o "^[A-Z]+-[0-9]+"<CR>g_:startinsert!<CR>'
 )
-
-key.set("i", "<C-space>", "<ESC>", { desc = "Exit insert mode" })
-key.set("t", "<C-space>", "<C-\\><C-o>",{ desc = "Exit terminal mode" } )
--- key.set("i", "<C-space>", "<C-o>")
--- key.set("t", "<C-space>", "<C-\\><C-o>")
 
 key.set("n", "<leader>ih", function()
 	local result = vim.treesitter.get_captures_at_cursor(0)
