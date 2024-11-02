@@ -1,24 +1,52 @@
+local utils = require("utils")
+
 local function workspace_dir()
-	return vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+	return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+end
+
+local function file_icon(filetype)
+    local ok, icons = pcall(require, "nvim-web-devicons")
+    if not ok or not filetype then
+        return ""
+    end
+
+    local icon, _ = icons.get_icon_by_filetype(filetype)
+    if not icon then
+        return ""
+    end
+
+    return icon
+end
+
+local function grapple_marks()
+    local t = require("grapple").tags()
+    if t == nil then
+        return ""
+    end
+
+    local m = ""
+    for i, v in ipairs(t) do
+        if v.path == nil then
+            goto continue
+        end
+
+        local filename = vim.fs.basename(v.path)
+        local ic  = file_icon(vim.filetype.match({ filename = filename }))
+        m = m  .. " " .. i .. ": " .. ic .. " " .. filename .. " "
+        ::continue::
+    end
+
+    return m
 end
 
 return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
-	config = function()
-		local github_light = require("lualine.themes.wombat")
-
-		-- Change the background of lualine_c section for normal mode
-		github_light.normal.c.bg = "#C9C9C9"
-		github_light.normal.c.fg = "#000000"
-		github_light.normal.b.bg = "#B4B4B4"
-		github_light.normal.b.fg = "#000000"
-
-		require("lualine").setup({
-			options = {
-				icons_enabled = false,
+    enabled = false,
+	opts = {
+        options = {
+				icons_enabled = true,
 				theme = "auto",
-				-- theme = github_light,
 				component_separators = "|",
 				section_separators = "",
 				disabled_filetypes = {
@@ -29,17 +57,27 @@ return {
 				always_divide_middle = false,
 				globalstatus = true,
 				refresh = {
-					statusline = 1000,
-					tabline = 1000,
-					winbar = 1000,
+					statusline = 10000000,
+					tabline = 10000000,
+					winbar = 10000000,
 				},
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "  ".. "branch", "diff" },
-				-- lualine_c = { workspace_dir, { 'filename', path = 1, shorting_target = 80, } },
-				lualine_c = { workspace_dir },
-				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_b = {  "branch", workspace_dir},
+				-- lualine_c = { { "filename", path = 1 }},
+				lualine_c = { grapple_marks },
+				lualine_x = { {
+                    "diagnostics",
+                    sources = { 'nvim_workspace_diagnostic' },
+                    symbols = {
+                        error = utils.diagn_symbols.error .. ' ',
+                        warn = utils.diagn_symbols.warn .. ' ',
+                        info = utils.diagn_symbols.info .. ' ',
+                        hint = utils.diagn_symbols.hint .. ' '
+                    }},
+                    "filetype"
+                },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
@@ -55,6 +93,5 @@ return {
 			winbar = {},
 			inactive_winbar = {},
 			extensions = {},
-		})
-	end,
+		}
 }

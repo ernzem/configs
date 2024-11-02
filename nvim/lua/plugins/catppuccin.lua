@@ -1,9 +1,9 @@
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    -- event = "VeryLazy",
+    -- lazy = false,
+    -- priority = 1000,
+    event = "VeryLazy",
     config = function()
         require("catppuccin").setup({
             color_overrides = {
@@ -44,6 +44,6 @@ return {
             },
         })
 
-        vim.cmd("colorscheme catppuccin-mocha")
+        -- vim.cmd("colorscheme catppuccin-mocha")
     end,
 }
