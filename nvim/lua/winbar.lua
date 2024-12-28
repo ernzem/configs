@@ -163,7 +163,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
         local hl_string = vim.api.nvim_get_hl(0, { name = "String" })
         local hl_msg_area = vim.api.nvim_get_hl(0, { name = "Comment" })
 
-        vim.api.nvim_set_hl(0, hl_file, { bg = M.winbar_bg, bold = true })
+        vim.api.nvim_set_hl(0, hl_file, { bg = M.winbar_bg, bold = false })
         vim.api.nvim_set_hl(0, hl_path, { fg = hl_msg_area.fg, bg = M.winbar_bg })
         vim.api.nvim_set_hl(0, hl_symbols, { bg = M.winbar_bg })
 

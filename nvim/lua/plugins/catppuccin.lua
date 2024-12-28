@@ -12,7 +12,7 @@ return {
                 },
                 mocha = {
                     -- Attempt to apply onedark colors
-                    -- base = "#232326",
+                    -- base = "#000000",
                     -- blue = "#57a5e5",
                     -- crust = "#37383d",
                     -- green = "#8fb573",

@@ -52,7 +52,7 @@ key.set("n", "<C-space>", ":", { desc = "Enter command"})
 key.set("n", "<C-;>", ":!", { desc = "Run shell command" })
 
 key.set("i", "<C-j>", "<ESC>", { desc = "Exit insert mode" })
-key.set("t", "<C-j>", "<C-\\><C-o>",{ desc = "Exit terminal mode" } )
+key.set("t", "<C-j>", "<C-\\><C-n>",{ desc = "Exit terminal mode" } )
 
 -- Print git branch name in buffer
 key.set(

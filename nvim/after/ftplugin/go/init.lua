@@ -3,6 +3,7 @@ if vim.g.vscode then
 end
 
 local go_file = "*.go"
+local utils = require("utils")
 --------------------------------------Settings---------------------------------------------------
 -- Highlight column
 -- vim.opt_local.colorcolumn = "120"

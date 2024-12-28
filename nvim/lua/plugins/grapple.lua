@@ -1,7 +1,7 @@
 return {
     "cbochs/grapple.nvim",
     opts = {
-        scope = "git_branch", -- also try out "git_branch"
+        scope = "git_branch",
         icons = true,
     },
     event = { "BufReadPost", "BufNewFile" },

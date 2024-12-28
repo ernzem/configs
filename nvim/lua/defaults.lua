@@ -13,12 +13,12 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
 -- Code folding options
-vim.o.foldcolumn = "1"
+-- vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 -- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.fillchars = [[eob: ,fold: ,foldopen:*,foldsep: ,foldclose:-]]
+-- vim.o.fillchars = [[eob: ,fold: ,foldopen:*,foldsep: ,foldclose:-]]
 
 -- Autoread file changes on the disk
 vim.o.autoread = true
@@ -38,7 +38,7 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
--- vim.opt.hlsearch = false
+vim.opt.hlsearch = false
 
 --Use increment (regex) search
 vim.opt.incsearch = true
@@ -67,8 +67,8 @@ vim.o.splitright = true
 
 -- Global statusline
 vim.opt.laststatus = 3
-vim.opt.cmdheight = 0
-vim.opt.showmode = false
+-- vim.opt.cmdheight = 0
+-- vim.opt.showmode = false
 
 -- Title in titlebar work-dir nvim
 vim.opt.title = true

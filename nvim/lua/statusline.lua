@@ -3,6 +3,7 @@ local hl_mode_insert = "ModeInsert"
 local hl_mode_normal = "ModeNormal"
 local hl_mode_visual = "ModeVisual"
 local hl_mode_other = "ModeOther"
+local hl_marks = "MarksStatusline"
 
 M.mode_map = {
     ["n"] = { name = "NORMAL", color = "Statusline" },
@@ -12,8 +13,7 @@ M.mode_map = {
     ["no\22"] = { name = "O-PENDING", color = "Statusline" },
     ["niI"] = { name = "NORMAL", color = hl_mode_normal },
     ["niR"] = { name = "NORMAL", color = hl_mode_normal },
-    ["niV"] = { name = "NORMAL", color = hl_mode_normal },
-    ["nt"] = { name = "NORMAL", color = hl_mode_normal },
+    ["niV"] = { name = "NORMAL", color = hl_mode_normal }, ["nt"] = { name = "NORMAL", color = hl_mode_normal },
     ["ntT"] = { name = "NORMAL", color = hl_mode_normal },
     ["v"] = { name = "VISUAL", color = hl_mode_visual },
     ["vs"] = { name = "VISUAL", color = hl_mode_visual },
@@ -40,7 +40,7 @@ M.mode_map = {
     ["rm"] = { name = "MORE", color = "Statusline" },
     ["r?"] = { name = "CONFIRM", color = "Statusline" },
     ["!"] = { name = "SHELL", color = "Statusline" },
-    ["t"] = { name = "TERMINAL", color = "Statusline" },
+    ["t"] = { name = "T", color = "Statusline" },
 }
 
 function M.mode()
@@ -65,13 +65,13 @@ function M.workspace_dir()
     return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end
 
-local function file_icon(filetype)
+local function file_icon(filename, filetype)
     local ok, icons = pcall(require, "nvim-web-devicons")
     if not ok or not filetype then
         return "", ""
     end
 
-    local icon, color = icons.get_icon_by_filetype(filetype)
+    local icon, color = icons.get_icon_color(filename, filetype)
     if not icon then
         return "", ""
     end
@@ -79,50 +79,50 @@ local function file_icon(filetype)
     return icon, color
 end
 
-M.Marks = {}
--- M.Mark_paths = {}
-M.Mark_keys = { "J", "K", "L" }
-
-function M.file_marks()
-    local m = ""
-
-    for _, v in ipairs(M.Mark_keys) do
-        local mark = vim.api.nvim_get_mark(v, {})
-        if mark[4] == "" then
-            goto continue
-        end
-
-        local filename = vim.fs.basename(mark[4])
-        local ic, icon_cl = file_icon(vim.filetype.match({ filename = filename }))
-        -- m = m .. " %#StatusLine# " .. v .. ": " .. "%#" .. icon_cl .. "#" .. ic .. " " .. filename .. " %#StatusLineNC#"
-        m = m .. " %#" .. icon_cl .. "# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
-        -- m = m .. " %#StatusLine# " .. v .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
-        ::continue::
-    end
-
-    return m
+local function hl_expression(highlight_group_name)
+    return "%#".. highlight_group_name .. "#"
 end
 
 function M.grapple_marks()
     local m = ""
+    local hl_mark_icon_name = "StatuslineMarkIcon"
+    local statusline_bg = vim.api.nvim_get_hl(0, { name = "Statusline" }).bg
+
     local t = require("grapple").tags()
-    for i, v in ipairs(t) do
-        if v.path == nil then
+    if t == nil then
+        return ""
+    end
+
+    for index, mark in ipairs(t) do
+        if mark.path == nil then
             goto continue
         end
 
-        local filename = vim.fs.basename(v.path)
-        local ic, icon_cl = file_icon(vim.filetype.match({ filename = filename }))
-        -- m = m .. " %#StatusLine# " .. v .. ": " .. "%#" .. icon_cl .. "#" .. ic .. " " .. filename .. " %#StatusLineNC#"
-        -- m = m .. " %#" .. icon_cl .. "# " .. i .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
-        m = m .. " %#StatusLine# " .. i .. ": " .. ic .. " " .. filename .. " %#StatusLineNC#"
+        local filename = vim.fs.basename(mark.path)
+        local icon, icon_cl = file_icon(filename, vim.filetype.match({ filename = filename }))
+
+        vim.api.nvim_set_hl(0, hl_mark_icon_name .. index, { fg = icon_cl, bg = statusline_bg, bold = true })
+        m = table.concat({
+            m,
+            " ",
+            hl_expression(hl_marks),
+            " ",
+            index,
+            " ",
+            hl_expression(hl_mark_icon_name .. index),
+            icon,
+            hl_expression(hl_marks),
+            " ",
+            filename,
+            " %#StatusLineNC#"
+        })
         ::continue::
     end
 
     return m
 end
 
-local mode = "%{%v:lua.require'statusline'.mode()%} "
+-- local mode = "%{%v:lua.require'statusline'.mode()%} "
 local git_branch = [[%{luaeval("vim.g.branch_name")}%*]]
 local workspace_dir = [[ %{luaeval("require('statusline').workspace_dir()")} %*]]
 local tags = "%{%v:lua.require'statusline'.grapple_marks()%}"
@@ -132,18 +132,19 @@ local percentage = "%p%%"
 
 function Statusline()
     return table.concat({
-        mode,
+        -- mode,
         "%#StatusLine#",
+        " ",
         git_branch,
         "%#StatusLine#",
         workspace_dir,
         "%#StatusLineNC#",
         tags,
         align_right,
-        " %#StatusLine# ",
-        percentage,
-        "  ",
+        " %#StatusLine# [",
         linecol,
+        "] ",
+        percentage,
         " ",
     })
 end
@@ -177,6 +178,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
         vim.api.nvim_set_hl(0, hl_mode_normal, { fg = hl_comment.fg, bg = statusline_bg })
         vim.api.nvim_set_hl(0, hl_mode_visual, { fg = hl_function.fg, bg = statusline_bg, bold = true })
         vim.api.nvim_set_hl(0, hl_mode_other, { bg = statusline_bg, bold = true })
+        vim.api.nvim_set_hl(0, hl_marks, { bg=statusline_bg,  bold = true })
 
         vim.opt.statusline = "%!v:lua.Statusline()"
     end,
