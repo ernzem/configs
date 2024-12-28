@@ -185,6 +185,17 @@ end, {})
 
 ----------------------------------AUTOCMD----------------------------------------------
 
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+	group = augroup("terminal-new-buffer", { clear = true }),
+	desc = "Open terminal in insert mode, turn off line numbers",
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.scrolloff = 0
+		vim.cmd.startinsert()
+	end,
+})
+
 local terminal_group = vim.api.nvim_create_augroup("terminal", { clear = true })
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
     group = terminal_group,

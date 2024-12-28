@@ -13,12 +13,9 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
 -- Code folding options
--- vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
--- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.o.fillchars = [[eob: ,fold: ,foldopen:*,foldsep: ,foldclose:-]]
 
 -- Autoread file changes on the disk
 vim.o.autoread = true
@@ -27,7 +24,7 @@ vim.o.autoread = true
 vim.opt.breakindent = true
 vim.opt.smartindent = true
 
--- Use swapfiles & backup
+-- Not use swapfiles & backup
 vim.opt.swapfile = false
 vim.opt.backup = false
 
@@ -65,7 +62,7 @@ vim.opt.cursorline = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 
--- Global statusline
+-- Statusline
 vim.opt.laststatus = 3
 -- vim.opt.cmdheight = 0
 -- vim.opt.showmode = false

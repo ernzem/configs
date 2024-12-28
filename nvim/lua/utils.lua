@@ -1,5 +1,12 @@
 local M = {}
 
+M.diagn_symbols = {
+    error = "",
+    warn = "",
+    hint = "󰌶",
+    info = "󰋽",
+}
+
 M.exclude_filetype = {
     "help",
     "startify",
@@ -19,13 +26,6 @@ M.exclude_filetype = {
     ""
 }
 
-M.diagn_symbols = {
-    error = "",
-    warn = "",
-    hint = "󰌶",
-    info = "󰋽",
-}
-
 function M.is_ui_filetype(target_filetype)
     if vim.tbl_contains(M.exclude_filetype, target_filetype) then
         return true
@@ -35,7 +35,7 @@ function M.is_ui_filetype(target_filetype)
 end
 
 function M.run(cmd)
-    require("output_buffer").run(cmd)
+    require("output").run(cmd)
     -- vim.fn.jobstart("sh " .. "$HOME/.cfg/tmux/scripts/send-cmd.bash " .. "'" .. cmd .. "'")
     -- vim.cmd("TermExec cmd='" .. cmd .. "'")
     -- require("terminal").termExec(cmd)

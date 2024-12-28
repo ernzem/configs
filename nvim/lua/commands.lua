@@ -1,5 +1,4 @@
 local augroup = vim.api.nvim_create_augroup
-local set = vim.opt_local
 
 -- NOTE: Might not be needed with nvim 0.12
 -- Triger `autoread` when files changes on disk.
@@ -23,26 +22,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	callback = function()
 		vim.highlight.on_yank()
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "TermOpen" }, {
-	group = augroup("terminal-new-buffer", { clear = true }),
-	desc = "Open terminal in insert mode, turn off line numbers",
-	callback = function()
-		set.number = false
-		set.relativenumber = false
-		set.scrolloff = 0
-		vim.cmd.startinsert()
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter" }, {
-	group = augroup("enter-terminal-buffer", { clear = true }),
-    pattern = "term://*",
-	desc = "Go to insert mode when entering terminal buffer",
-	callback = function()
-		vim.cmd.startinsert()
 	end,
 })
 
