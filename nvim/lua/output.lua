@@ -5,22 +5,22 @@ local M = {}
 local output_buf_nr = -1
 local output_buf_name = "OUTPUT"
 
-local vertical_split = "split_vertical"
-local horizontal_split = "split_horizontal"
+local vsplit = "split_vertical"
+local hsplit = "split_horizontal"
 
-local default_layouts = {}
-default_layouts[vertical_split] = 0.45
-default_layouts[horizontal_split] = 0.30
+local defaults = {}
+defaults[vsplit] = 0.45
+defaults[hsplit] = 0.30
 
 local function split_size(split_type)
-	return math.floor(vim.o.columns * default_layouts[split_type])
+	return math.floor(vim.o.columns * defaults[split_type])
 end
 
 local function create_or_raise_buffer()
 	-- Create a new buffer with the name from output_buf_name variable.
 	-- Same name will reuse the current buffer.
 	vim.cmd("botright vsplit " .. output_buf_name)
-	vim.cmd("vertical resize " .. split_size(vertical_split))
+	vim.cmd("vertical resize " .. split_size(vsplit))
 
 	-- Collect the buffer's number.
 	output_buf_nr = api.nvim_get_current_buf()
@@ -29,7 +29,7 @@ local function create_or_raise_buffer()
 	api.nvim_command("wincmd p")
 
 	-- Set filetype so custom behavios/settings could be applied.
-	api.nvim_buf_set_option(output_buf_nr, "filetype", "output")
+	api.nvim_set_option_value("filetype", "output", { buf = output_buf_nr })
 end
 
 function M.run(command)
@@ -78,7 +78,7 @@ function Log(_, data)
 	end
 end
 
-local function hide_output_window(win_id)
+local function hide(win_id)
 	if #(api.nvim_list_wins()) > 1 then
 		api.nvim_win_hide(win_id)
 	else
@@ -86,7 +86,7 @@ local function hide_output_window(win_id)
 	end
 end
 
-local function toggle_output()
+local function toggle()
 	local output_win = api.nvim_call_function("bufwinid", { output_buf_nr })
 
 	if output_win == -1 then
@@ -94,9 +94,9 @@ local function toggle_output()
 		return
 	end
 
-	hide_output_window(output_win)
+	hide(output_win)
 end
 
-vim.keymap.set({ "n", "i" }, "<C-S>", toggle_output, { noremap = true })
+vim.keymap.set({ "n", "i" }, "<C-S>", toggle, { noremap = true })
 
 return M
