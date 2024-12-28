@@ -1,5 +1,6 @@
+[general]
 import = [
-  # "/opt/homebrew/lib/node_modules/alacritty-themes/themes/Google.light.toml"
+  "/opt/homebrew/lib/node_modules/alacritty-themes/themes/Google.light.toml"
 ]
 
 [font]
