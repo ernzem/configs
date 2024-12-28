@@ -14,20 +14,6 @@ function M.workspace_dir()
     return "|  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t").. " |"
 end
 
-local function file_icon(filename, filetype)
-    local ok, icons = pcall(require, "nvim-web-devicons")
-    if not ok or not filetype then
-        return "", ""
-    end
-
-    local icon, color = icons.get_icon_color(filename, filetype)
-    if not icon then
-        return "", ""
-    end
-
-    return icon, color
-end
-
 function M.grapple_marks()
     local m = ""
     local hl_mark_icon_name = "StatuslineMarkIcon"
@@ -44,9 +30,9 @@ function M.grapple_marks()
         end
 
         local filename = vim.fs.basename(mark.path)
-        local icon, icon_cl = file_icon(filename, vim.filetype.match({ filename = filename }))
-
+        local icon, icon_cl = require("utils").file_icon(filename, vim.filetype.match({ filename = filename }))
         vim.api.nvim_set_hl(0, hl_mark_icon_name .. index, { fg = icon_cl, bg = statusline_bg, bold = true, underline= false })
+
         m = table.concat({
             m,
             " ",

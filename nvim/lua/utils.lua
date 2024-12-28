@@ -52,6 +52,20 @@ function M.isempty(s)
     return s == nil or s == ''
 end
 
+function M.file_icon(filename, filetype)
+    local ok, icons = pcall(require, "nvim-web-devicons")
+    if not ok or not filetype then
+        return "", ""
+    end
+
+    local icon, color = icons.get_icon_color(filename, filetype)
+    if not icon then
+        return "", ""
+    end
+
+    return icon, color
+end
+
 function M.get_buf_option(opt)
     local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
     if not status_ok then
