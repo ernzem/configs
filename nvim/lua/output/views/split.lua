@@ -3,28 +3,11 @@ local api = vim.api
 
 local vertical_split = "v"
 local horizontal_split = "h"
-
 local default_orientation = vertical_split
-local default_sizes = {
-	v = 0.45,
-	h = 0.30,
-}
+local default_sizes = { v = 0.45, h = 0.30 }
+local M = { win_ids = {} }
 
--- TODO: add tab context so that show & hide would work on the same tab only
-local M = {
-	win_ids = {},
-}
-function M.print_state()
-	if #M.win_ids == 0 then
-		print("{}")
-		return
-	end
-
-	for k, v in pairs(M.win_ids) do
-		print(k, ":", vim.inspect(v))
-	end
-end
-
+------------------------------------------------------------------------
 local function new_win(win_id)
 	return {
 		id = win_id,
@@ -40,16 +23,26 @@ local function split_size(win)
 	return math.floor(vim.o.columns * win.size)
 end
 
+------------------------------------------------------------------------
+function M.print_state()
+	if #M.win_ids == 0 then
+		print("{}")
+		return
+	end
+
+	for k, v in pairs(M.win_ids) do
+		print(k, ":", vim.inspect(v))
+	end
+end
+
 function M.save_split_state(tab)
 	local ui_tabline = (vim.o.showtabline == 2 or #(api.nvim_list_tabpages()) > 1) and 1 or 0
 	local ui_statusline = vim.o.laststatus ~= 0 and 1 or 0
 
 	-- print(ui_tabline)
 	-- print(ui_statusline)
-
 	local max_height = api.nvim_win_get_height(0) + vim.o.cmdheight + ui_tabline + ui_statusline == vim.o.lines
 	local max_width = api.nvim_win_get_width(0) == vim.o.columns
-
 	-- print(max_height)
 	-- print(max_width)
 
@@ -129,6 +122,7 @@ function M.hide()
 	end
 end
 
+------------------------------------------------------------------------------------------------
 vim.api.nvim_create_autocmd("TabClosed", {
 	group = vim.api.nvim_create_augroup("clean-split-toggle-state", { clear = true }),
 	desc = "Toggle output: clean tab split window state",
