@@ -46,9 +46,7 @@ local function write(_, data)
 	end
 
 	api.nvim_buf_set_lines(M.state.buf_id, -1, -1, true, data)
-
-	-- Set the cursor position to the bottom.
-	api.nvim_win_set_cursor(0, { api.nvim_buf_line_count(M.state.buf_id), 0 })
+	api.nvim_win_set_cursor(0, { api.nvim_buf_line_count(M.state.buf_id), 0 }) -- Move cursor position to the bottom.
 end
 
 -------------------------EXTERNAL---------------------------------
