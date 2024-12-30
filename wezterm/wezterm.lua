@@ -52,26 +52,26 @@ config.switch_to_last_active_tab_when_closing_tab = true
 -- config.disable_default_key_bindings = true
 -- config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
-	{
-		key = "F1",
-		-- mods = "CTRL",
-		action = wezterm.action_callback(function(_, pane)
-			local tab = pane:tab()
-			local panes = tab:panes_with_info()
-			if #panes == 1 then
-				pane:split({
-					direction = "Right",
-					size = 0.40,
-				})
-			elseif not panes[1].is_zoomed then
-				panes[1].pane:activate()
-				tab:set_zoomed(true)
-			elseif panes[1].is_zoomed then
-				tab:set_zoomed(false)
-				panes[2].pane:activate()
-			end
-		end),
-	},
+	-- {
+	-- 	key = "F1",
+	-- 	-- mods = "CTRL",
+	-- 	action = wezterm.action_callback(function(_, pane)
+	-- 		local tab = pane:tab()
+	-- 		local panes = tab:panes_with_info()
+	-- 		if #panes == 1 then
+	-- 			pane:split({
+	-- 				direction = "Right",
+	-- 				size = 0.40,
+	-- 			})
+	-- 		elseif not panes[1].is_zoomed then
+	-- 			panes[1].pane:activate()
+	-- 			tab:set_zoomed(true)
+	-- 		elseif panes[1].is_zoomed then
+	-- 			tab:set_zoomed(false)
+	-- 			panes[2].pane:activate()
+	-- 		end
+	-- 	end),
+	-- },
 }
 
 return config
