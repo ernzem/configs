@@ -46,13 +46,13 @@ local function write(silent)
 			return
 		end
 
-        -- Return if data is empty string
+		-- Return if data is empty string
 		local len = #data
 		if len == 1 and data[len] == "" then
 			return
 		end
 
-        -- Remove last empty line when multiple lines are in data object
+		-- Remove last empty line when multiple lines are in data object
 		if data[len] == "" then
 			table.remove(data, len)
 		end
@@ -92,11 +92,13 @@ function M.run(cmd, silent)
 	api.nvim_buf_set_lines(M.state.buf_id, 0, -1, true, { cmd })
 
 	-- Run the command.
-	fn.jobstart(cmd .. '&& echo "Done."', {
+	fn.jobstart(cmd, {
 		stdout_buffered = false,
 		on_stdout = write(silent),
 		on_stderr = write(silent),
 		on_exit = function()
+			api.nvim_buf_set_lines(M.state.buf_id, -1, -1, true, { "Done" })
+
 			--Avoids nvim errors when exiting nvim
 			api.nvim_set_option_value("modified", false, { buf = M.state.buf_id })
 			make_output_readonly()
@@ -106,8 +108,6 @@ end
 
 --------------------------KEYMAPS--------------------------------
 vim.keymap.set({ "n" }, "<C-s>", M.toggle, { noremap = true })
-vim.keymap.set({ "n" }, "<C-e>", function()
-	M.run("date", true)
-end, { noremap = true })
+vim.keymap.set({ "n" }, "<C-e>", function() M.run("date", true) end, { noremap = true })
 
 return M
