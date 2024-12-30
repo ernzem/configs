@@ -9,8 +9,8 @@ local M = {
 	name = "OUTPUT",
 	state = {
 		buf_id = -1,
-		current_view = buf_view,
-		-- current_view = split_view,
+		-- current_view = buf_view,
+		current_view = split_view,
 	},
 	buffer_view = require("output.views.buffer"),
 	split_view = require("output.views.split"),
@@ -46,11 +46,13 @@ local function write(silent)
 			return
 		end
 
+        -- Return if data is empty string
 		local len = #data
 		if len == 1 and data[len] == "" then
 			return
 		end
 
+        -- Remove last empty line when multiple lines are in data object
 		if data[len] == "" then
 			table.remove(data, len)
 		end
@@ -93,7 +95,7 @@ function M.run(cmd, silent)
 	fn.jobstart(cmd .. '&& echo "Done."', {
 		stdout_buffered = false,
 		on_stdout = write(silent),
-		-- on_stderr = write(silent),
+		on_stderr = write(silent),
 		on_exit = function()
 			--Avoids nvim errors when exiting nvim
 			api.nvim_set_option_value("modified", false, { buf = M.state.buf_id })
