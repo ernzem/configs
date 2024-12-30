@@ -9,8 +9,8 @@ local M = {
 	name = "OUTPUT",
 	state = {
 		buf_id = -1,
-		-- current_view = buf_view,
-		current_view = split_view,
+		current_view = buf_view,
+		-- current_view = split_view,
 	},
 	buffer_view = require("output.views.buffer"),
 	split_view = require("output.views.split"),
@@ -35,9 +35,9 @@ local function ensure_output_buffer_exists()
 
 	M.state.buf_id = api.nvim_create_buf(true, false)
 
-    api.nvim_set_option_value("filetype", "output", { buf = M.state.buf_id })
-    api.nvim_buf_set_name(M.state.buf_id, M.name)
-    make_output_readonly()
+	api.nvim_set_option_value("filetype", "output", { buf = M.state.buf_id })
+	api.nvim_buf_set_name(M.state.buf_id, M.name)
+	make_output_readonly()
 end
 
 local function write(_, data)
@@ -46,6 +46,9 @@ local function write(_, data)
 	end
 
 	api.nvim_buf_set_lines(M.state.buf_id, -1, -1, true, data)
+
+	-- Set the cursor position to the bottom.
+	api.nvim_win_set_cursor(0, { api.nvim_buf_line_count(M.state.buf_id), 0 })
 end
 
 -------------------------EXTERNAL---------------------------------
@@ -82,7 +85,7 @@ function M.run(cmd, silent)
 		on_exit = function()
 			--Avoids nvim errors when exiting nvim
 			api.nvim_set_option_value("modified", false, { buf = M.state.buf_id })
-            make_output_readonly()
+			make_output_readonly()
 		end,
 	})
 end
