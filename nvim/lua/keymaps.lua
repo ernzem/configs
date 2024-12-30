@@ -48,11 +48,11 @@ key.set("n", "<C-/>", comment_line, { expr = true, desc = "Toggle comment line" 
 key.set("i", "<C-/>", comment_line_in_insert, { expr = true, desc = "Toggle comment line" })
 ----------------------------------------------------------------------------------------------
 
-key.set("n", "<C-space>", ":", { desc = "Enter command"})
+key.set("n", "<C-space>", ":", { desc = "Enter command" })
 key.set("n", "<C-;>", ":!", { desc = "Run shell command" })
 
 key.set("i", "<C-j>", "<ESC>", { desc = "Exit insert mode" })
-key.set("t", "<C-j>", "<C-\\><C-n>",{ desc = "Exit terminal mode" } )
+key.set("t", "<C-j>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Print git branch name in buffer
 key.set(
@@ -65,3 +65,17 @@ key.set("n", "<leader>ih", function()
 	local result = vim.treesitter.get_captures_at_cursor(0)
 	print(vim.inspect(result))
 end, { noremap = true, silent = false, desc = "Print highlight name under cursor" })
+
+
+local function toggle_relative_line_nrs()
+	if not vim.opt.nu then
+		return
+	end
+
+	if vim.opt.relativenumber._value then
+		vim.opt.relativenumber = false
+	else
+		vim.opt.relativenumber = true
+	end
+end
+key.set({ "n", "i", "t" }, "<F1>", toggle_relative_line_nrs, {noremap = true, desc = "Toggle between relative and actual line numbers"})

@@ -6,9 +6,6 @@ if vim.g.vscode then
 	return
 end
 
-require("defaults")
-require("commands")
-require("output")
 -------------------- Initialize Lazy plugin manager -----------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -25,5 +22,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false } })
 ---------------------------------------------------------------------------
+require("defaults")
+require("commands")
 require("winbar")
 require("statusline")
+require("output")
