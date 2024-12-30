@@ -40,13 +40,27 @@ local function ensure_output_buffer_exists()
 	make_output_readonly()
 end
 
-local function write(_, data)
-	if not data then
-		return
-	end
+local function write(silent)
+	return function(_, data)
+		if not data then
+			return
+		end
 
-	api.nvim_buf_set_lines(M.state.buf_id, -1, -1, true, data)
-	api.nvim_win_set_cursor(0, { api.nvim_buf_line_count(M.state.buf_id), 0 }) -- Move cursor position to the bottom.
+		local len = #data
+		if len == 1 and data[len] == "" then
+			return
+		end
+
+		if data[len] == "" then
+			table.remove(data, len)
+		end
+
+		api.nvim_buf_set_lines(M.state.buf_id, -1, -1, true, data)
+		if not silent then
+			-- Move cursor position to the bottom.
+			api.nvim_win_set_cursor(0, { api.nvim_buf_line_count(M.state.buf_id), 0 })
+		end
+	end
 end
 
 -------------------------EXTERNAL---------------------------------
@@ -78,8 +92,8 @@ function M.run(cmd, silent)
 	-- Run the command.
 	fn.jobstart(cmd .. '&& echo "Done."', {
 		stdout_buffered = false,
-		on_stdout = write,
-		on_stderr = write,
+		on_stdout = write(silent),
+		-- on_stderr = write(silent),
 		on_exit = function()
 			--Avoids nvim errors when exiting nvim
 			api.nvim_set_option_value("modified", false, { buf = M.state.buf_id })
