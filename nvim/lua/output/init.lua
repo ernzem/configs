@@ -136,16 +136,7 @@ vim.api.nvim_create_autocmd("TabClosed", {
 	group = vim.api.nvim_create_augroup("clean-split-toggle-state", { clear = true }),
 	desc = "Toggle output: clean a closed tab state",
 	callback = function(data)
-		-- NOTE: not sure with field to pick for removing tab data
-		-- Example of data object:
-		-- {
-		--   buf = 2,
-		--   event = "TabClosed",
-		--   file = "2",
-		--   group = 26,
-		--   id = 49,
-		--   match = "2"
-		-- }
+		-- { buf = 2, event = "TabClosed", file = "2", group = 26, jid = 49, match = "2" }
 		M.tab_view[tonumber(data.match)] = nil
 	end,
 })
