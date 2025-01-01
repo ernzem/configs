@@ -1,9 +1,7 @@
+local api = vim.api
 local M = {}
 
-local fn = vim.fn
-local api = vim.api
-
-function M.is_visible(buf_id)
+function M.is_visible(buf_id, _)
     if buf_id == -1 then
         print("buffer id equals -1")
         return false
@@ -14,17 +12,14 @@ function M.is_visible(buf_id)
         return false
     end
 
-    -- print(buf_id)
-    -- print(api.nvim_win_get_buf(0))
-    -- print(api.nvim_win_get_buf(0) == buf_id)
 	return api.nvim_win_get_buf(0) == buf_id
 end
 
-function M.raise(buf_id)
+function M.raise(buf_id, _)
 	api.nvim_win_set_buf(0, buf_id)
 end
 
-function M.hide()
+function M.hide(_)
 	vim.cmd("b#")
 end
 
