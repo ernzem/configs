@@ -27,12 +27,21 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("ColorScheme", {
+			group = vim.api.nvim_create_augroup("onedar-theme-changes", { clear = true }),
 			pattern = "onedark",
 			callback = function()
 				-- Disable highlights
 				-- if vim.g.onedark_config.style == "light" then
 				-- vim.api.nvim_set_hl(0, "Normal", { bg = "#f2f2f2" })
 				-- end
+
+				-- Disable lua variable highlight
+				vim.api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary", {})
+				vim.api.nvim_set_hl(0, "@lsp.type.parameter", {})
+				vim.api.nvim_set_hl(0, "@variable", {})
+				vim.api.nvim_set_hl(0, "@variable.builtin", {})
+
+				-- Others
 				vim.api.nvim_set_hl(0, "@variable.parameter", {})
 				vim.api.nvim_set_hl(0, "TelescopeBorder", {})
 				vim.api.nvim_set_hl(0, "TelescopePreviewBorder", {})
