@@ -1,5 +1,4 @@
 local api = vim.api
--- local fn = vim.fn
 local M = {
 	buf_id = -1,
 	name = "OUTPUT",
