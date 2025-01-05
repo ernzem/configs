@@ -115,7 +115,7 @@ disabled=false
 disabled=true
 
 [jobs]
-disabled=true
+disabled=false
 
 [julia]
 disabled=true
