@@ -47,7 +47,6 @@ return {
 				vim.api.nvim_set_hl(0, "TelescopePreviewBorder", {})
 				vim.api.nvim_set_hl(0, "TelescopePromptBorder", {})
 				vim.api.nvim_set_hl(0, "TelescopeResultsBorder", {})
-				vim.api.nvim_set_hl(0, "MsgArea", { bold = true })
 			end,
 		})
 
