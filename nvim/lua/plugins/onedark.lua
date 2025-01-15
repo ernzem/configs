@@ -5,7 +5,7 @@ return {
 	-- event = "VeryLazy",
 	config = function()
 		require("onedark").setup({
-			style = "warmer",
+			style = "light",
 			toggle_style_key = "<leader>cs",
 			toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
 			diagnostics = { darker = false },

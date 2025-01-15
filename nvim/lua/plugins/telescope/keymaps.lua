@@ -18,11 +18,11 @@ local function ivy_theme(telescope_command)
 end
 -- Search
 
-vim.keymap.set("n", "<leader>f", ivy_theme(t.find_files), { desc = "Search [F]iles" })
+vim.keymap.set("n", "<leader>f", t.find_files, { desc = "Search [F]iles" })
 vim.keymap.set("n", "<leader>gf", ivy_theme(t.git_files), { desc = "Search [G]it [F]iles" })
 vim.keymap.set("n", "<leader>?", ivy_theme(t.oldfiles), { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader>sh", t.help_tags, { desc = "[S]earch [H]elp" })
-vim.keymap.set("n", "<leader>b", ivy_theme(t.buffers), { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<leader>b", t.buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>sw", t.grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", t.live_grep, { desc = "[S]earch by [G]rep" })
 
