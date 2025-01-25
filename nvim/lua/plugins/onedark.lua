@@ -7,10 +7,11 @@ return {
 		require("onedark").setup({
 			style = "light",
 			toggle_style_key = "<leader>cs",
-			toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+			-- toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+			toggle_style_list = {"warm", "warmer", "light" },
 			diagnostics = { darker = false },
 			highlights = {
-				CursorLine = { bg = "$bg0" },
+				-- CursorLine = { bg = "$bg0" },
 				CursorLineNr = { bg = "$bg1" },
 				FoldColumn = { fg = "$grey", bg = "$bg0" },
 				GitSignsChange = { fg = "$yellow" },
@@ -32,7 +33,7 @@ return {
 			callback = function()
 				-- Disable highlights
 				-- if vim.g.onedark_config.style == "light" then
-				-- vim.api.nvim_set_hl(0, "Normal", { bg = "#f2f2f2" })
+				-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "#f9f9f9" })
 				-- end
 
 				-- Disable lua variable highlight
