@@ -4,7 +4,7 @@ local buffer = "buffer"
 local vsplit = "vsplit"
 local hsplit = "hsplit"
 local M = {
-    tab_view = {},
+	tab_view = {},
 	output = require("output.output_buffer"),
 	default_view = 2,
 	views = { buffer, vsplit, hsplit },
@@ -142,13 +142,12 @@ vim.api.nvim_create_autocmd("TabClosed", {
 })
 
 --------------------------KEYMAPS--------------------------------
-vim.keymap.set({ "n" }, "<C-s>", M.toggle, { noremap = true })
-vim.keymap.set({ "n" }, "<C-a>", function()
+vim.keymap.set({ "n" }, "<leader>o", M.toggle, { noremap = true })
+vim.keymap.set({ "n" }, "<leader>O", function()
 	M.switch_layout()
 end, { noremap = true })
 
-vim.keymap.set({ "n" }, "<C-e>", function()
-	M.run("date", false)
-end, { noremap = true })
 
 return M
+
+
