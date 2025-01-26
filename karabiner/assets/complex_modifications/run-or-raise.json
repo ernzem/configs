@@ -1,321 +1,426 @@
 {
-  "title": "Run or Raise Apps",
-  "rules": [
-    {
-      "description": "left_option + n  -> VSCodium",
-      "manipulators": [
+    "title": "Run or Raise Apps",
+    "rules": [
         {
-          "from": {
-            "key_code": "n",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/VSCodium.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + n  -> Typora",
-      "manipulators": [
+            "description": "left_option + n  -> VSCodium",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/VSCodium.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "n",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Typora.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + w  -> Brave",
-      "manipulators": [
+            "description": "left_option + p  -> Postman",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "p",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Postman.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "w",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Brave Browser.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + w  -> Firefox",
-      "manipulators": [
+            "description": "left_option + a  -> TablePlus",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "a",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/TablePlus.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "w",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Firefox.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + shift + s  -> VSCode",
-      "manipulators": [
+            "description": "left_option + n  -> Typora",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Typora.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "s",
-            "modifiers": {
-              "mandatory": [
-                "left_option",
-                "left_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Visual Studio Code.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + s  -> Goland",
-      "manipulators": [
+            "description": "left_option + w  -> Brave",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Brave Browser.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "s",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/GoLand.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + s  -> Sublime Text",
-      "manipulators": [
+            "description": "left_option + w  -> Firefox",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Firefox.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "s",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Sublime Text.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + d  -> WezTerm",
-      "manipulators": [
+            "description": "left_option + shift + s  -> VSCode",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Visual Studio Code.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "d",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/WezTerm.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + s  -> Alacritty ",
-      "manipulators": [
+            "description": "left_option + s  -> Goland",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/GoLand.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "s",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Alacritty.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + d  -> Alacritty ",
-      "manipulators": [
+            "description": "left_option + s  -> VSCodium",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/VSCodium.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "d",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Alacritty.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + d  -> Kitty",
-      "manipulators": [
+            "description": "left_option + s  -> Sublime Text",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Sublime Text.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "d",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Kitty.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + d  -> Apple Terminal",
-      "manipulators": [
+            "description": "left_option + d  -> WezTerm",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/WezTerm.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "d",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -a Terminal"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + x  -> Slack",
-      "manipulators": [
+            "description": "left_option + s  -> WezTerm",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/WezTerm.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "x",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Slack.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + m  -> Microsoft Outlook",
-      "manipulators": [
+            "description": "left_option + n  -> Alacritty ",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Alacritty.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "m",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open '/Applications/Microsoft Outlook.app'"
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "left_option + e  -> Finder",
-      "manipulators": [
+            "description": "left_option + s  -> Alacritty ",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Alacritty.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
         {
-          "from": {
-            "key_code": "e",
-            "modifiers": {
-              "mandatory": [
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open ."
-            }
-          ],
-          "type": "basic"
+            "description": "left_option + d  -> Alacritty ",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Alacritty.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + d  -> Kitty",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Kitty.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + d  -> Apple Terminal",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a Terminal"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + x  -> Slack",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "x",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Slack.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + m  -> Microsoft Outlook",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "m",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Microsoft Outlook.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + e  -> Finder",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open ."
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
