@@ -60,6 +60,7 @@ alias cn='print -z -- $(rg "" $CLI --no-filename | grep -v -e "^[[:space:]]*$" |
 alias ecn='(cd $CLI; vim)'
 alias cfg="(cd ~/.cfg; vim)"
 alias notes="(cd $NOTES/; nvim)"
+alias wk="(cd Desktop/Work; nvim)"
 alias todo="(cd $NOTES; vim TODO/)"
 alias bat='bat --paging=never'
 alias rp='cd `find $REPOS -mindepth 1 -maxdepth 1 -type d | fzf`'
