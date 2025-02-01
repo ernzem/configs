@@ -1,0 +1,3 @@
+[ 
+	{ "keys": ["shift+space"], "command": "lsp_format_document" },
+]
