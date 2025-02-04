@@ -34,18 +34,6 @@ function M.is_ui_filetype(target_filetype)
     return false
 end
 
-function M.run(cmd)
-    require("output").run(cmd, false)
-    -- vim.fn.jobstart("sh " .. "$HOME/.cfg/tmux/scripts/send-cmd.bash " .. "'" .. cmd .. "'")
-    -- vim.cmd("TermExec cmd='" .. cmd .. "'")
-    -- require("terminal").termExec(cmd)
-    -- require("wezterm-toggle").exec(cmd)
-end
-
-function M.run_silent(cmd)
-    require("output").run(cmd, true)
-end
-
 -- Detect if nvim mode is insert
 function M.is_insert_mode()
     local mode = vim.api.nvim_get_mode().mode
@@ -80,3 +68,17 @@ function M.get_buf_option(opt)
 end
 
 return M
+
+---------------------------------------------------------------------------------------------
+
+-- function M.run(cmd)
+    -- require("output").run(cmd, false)
+    -- vim.fn.jobstart("sh " .. "$HOME/.cfg/tmux/scripts/send-cmd.bash " .. "'" .. cmd .. "'")
+    -- vim.cmd("TermExec cmd='" .. cmd .. "'")
+    -- require("terminal").termExec(cmd)
+    -- require("wezterm-toggle").exec(cmd)
+-- end
+
+-- function M.run_silent(cmd)
+    -- require("output").run(cmd, true)
+-- end

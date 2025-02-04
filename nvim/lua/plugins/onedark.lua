@@ -11,7 +11,8 @@ return {
 			toggle_style_list = { "warm", "warmer", "light" },
 			diagnostics = { darker = false },
 			highlights = {
-				CursorLineNr = { bg = "$bg1" },
+				CursorLine = { bg = "$bg0" },
+				CursorLineNr = { bg = "$bg2", bold = true },
 				FoldColumn = { fg = "$grey", bg = "$bg0" },
 				GitSignsChange = { fg = "$yellow" },
 				GitSignsChangeNr = { fg = "$yellow" },
@@ -24,35 +25,16 @@ return {
 				GitSignsStagedChangedeleteNr = { fg = "$orange" },
 				["@string.escape"] = { fg = "$orange" },
 
-				--MiniPick
-				MiniPickMatchRanges = { fg = "$yellow" },
+				SnacksPicker = { bg = "$bg0" },
+				SnacksPickerListCursorline = { bg = "$bg1" },
+				SnacksPickerBorder = { bg = "$bg0", fg = "$fg", bold = true, default = true },
 			},
 		})
 
-		-- * `MiniPickBorder` - window border.
-		-- * `MiniPickBorderBusy` - window border while picker is busy processing.
-		-- * `MiniPickBorderText` - non-prompt on border.
-		-- * `MiniPickCursor` - cursor during active picker (hidden by default).
-		-- * `MiniPickIconDirectory` - default icon for directory.
-		-- * `MiniPickIconFile` - default icon for file.
-		-- * `MiniPickHeader` - headers in info buffer and previews.
-		-- * `MiniPickMatchCurrent` - current matched item.
-		-- * `MiniPickMatchMarked` - marked matched items.
-		-- * `MiniPickMatchRanges` - ranges matching query elements.
-		-- * `MiniPickNormal` - basic foreground/background highlighting.
-		-- * `MiniPickPreviewLine` - target line in preview.
-		-- * `MiniPickPreviewRegion` - target region in preview.
-		-- * `MiniPickPrompt` - prompt.
-		--
 		vim.api.nvim_create_autocmd("ColorScheme", {
-			group = vim.api.nvim_create_augroup("onedar-theme-changes", { clear = true }),
+			group = vim.api.nvim_create_augroup("onedark-theme-changes", { clear = true }),
 			pattern = "onedark",
 			callback = function()
-				-- Disable highlights
-				-- if vim.g.onedark_config.style == "light" then
-				-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "#f9f9f9" })
-				-- end
-
 				-- Disable lua variable highlight
 				vim.api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary", {})
 				vim.api.nvim_set_hl(0, "@lsp.type.parameter", {})
@@ -61,10 +43,6 @@ return {
 
 				-- Others
 				vim.api.nvim_set_hl(0, "@variable.parameter", {})
-				-- vim.api.nvim_set_hl(0, "TelescopeBorder", {})
-				-- vim.api.nvim_set_hl(0, "TelescopePreviewBorder", {})
-				-- vim.api.nvim_set_hl(0, "TelescopePromptBorder", {})
-				-- vim.api.nvim_set_hl(0, "TelescopeResultsBorder", {})
 			end,
 		})
 
