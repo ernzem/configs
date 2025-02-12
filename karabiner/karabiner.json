@@ -4,6 +4,45 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "left_option + d  -> Ghostty",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Ghostty.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> Sublime Text",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + n  -> Typora",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Typora.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left_option + a  -> TablePlus",
                         "manipulators": [
                             {
@@ -30,45 +69,6 @@
                         ]
                     },
                     {
-                        "description": "left_option + n  -> Alacritty ",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Alacritty.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + s  -> WezTerm",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + n  -> VSCodium",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/VSCodium.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "left_option + w  -> Firefox",
                         "manipulators": [
                             {
@@ -77,19 +77,6 @@
                                     "modifiers": { "mandatory": ["left_option"] }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/Firefox.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + shift + s  -> VSCode",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": ["left_option", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
                                 "type": "basic"
                             }
                         ]
@@ -134,84 +121,6 @@
                         ]
                     },
                     {
-                        "description": "command+tilda -> control+tilda",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "grave_accent_and_tilde",
-                                    "modifiers": { "mandatory": ["left_command"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "grave_accent_and_tilde",
-                                        "modifiers": ["left_control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "control+tilda -> command+tilda",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "grave_accent_and_tilde",
-                                    "modifiers": { "mandatory": ["left_control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "grave_accent_and_tilde",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Command+Tab to Control+Tab",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "mandatory": ["command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Control+Tab to Command+Tab",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Capslock -> Left Control if terminal app",
                         "manipulators": [
                             {
@@ -222,6 +131,7 @@
                                             "^com\\.googlecode\\.iterm2$",
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.github.wez\\.wezterm$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -272,16 +182,16 @@
                     },
                     "simple_modifications": [
                         {
+                            "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
                             "from": { "key_code": "grave_accent_and_tilde" },
                             "to": [{ "key_code": "left_shift" }]
                         },
                         {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "key_code": "left_control" }]
-                        },
-                        {
                             "from": { "key_code": "left_control" },
-                            "to": [{ "key_code": "left_command" }]
+                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
                         },
                         {
                             "from": { "key_code": "non_us_backslash" },
@@ -355,31 +265,6 @@
                         {
                             "from": { "key_code": "left_option" },
                             "to": [{ "key_code": "left_control" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 480,
-                        "vendor_id": 13364
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "key_code": "left_option" }]
-                        },
-                        {
-                            "from": { "key_code": "left_control" },
-                            "to": [{ "key_code": "left_command" }]
-                        },
-                        {
-                            "from": { "key_code": "left_option" },
-                            "to": [{ "key_code": "left_control" }]
-                        },
-                        {
-                            "from": { "key_code": "right_control" },
-                            "to": [{ "key_code": "right_command" }]
                         }
                     ]
                 }

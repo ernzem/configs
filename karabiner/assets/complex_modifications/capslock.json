@@ -27,6 +27,7 @@
                 "^com\\.googlecode\\.iterm2$",
                 "^net\\.kovidgoyal\\.kitty$",
                 "^org\\.alacritty$",
+                "^com\\.mitchellh\\.ghostty$",
                 "^com\\.github.wez\\.wezterm$"
               ]
             }
