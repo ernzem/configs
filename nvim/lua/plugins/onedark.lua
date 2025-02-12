@@ -28,6 +28,10 @@ return {
 				SnacksPicker = { bg = "$bg0" },
 				SnacksPickerListCursorline = { bg = "$bg1" },
 				SnacksPickerBorder = { bg = "$bg0", fg = "$fg", bold = true, default = true },
+
+				NvimTreeNormal = { bg = "$bg0" },
+				NvimTreeVerticalSplit = { bg = "$bg0" },
+                NvimTreeEndOfBuffer = { bg = "$bg0"}
 			},
 		})
 
