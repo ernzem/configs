@@ -12,7 +12,7 @@ size = 14
 
   [font.normal]
   family = "JetBrainsMono Nerd Font"
-  style = "Regular"
+  style = "Medium"
 
 [window]
 # decorations = "None"
