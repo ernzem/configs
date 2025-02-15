@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"FileIcons",
+		"GitHub Theme",
+		"Gomod",
+		"LSP",
+		"LSP-gopls",
+		"LSP-typescript",
+		"Package Control",
+		"Theme - One",
+	],
+	"in_process_packages":
+	[
+	],
+}

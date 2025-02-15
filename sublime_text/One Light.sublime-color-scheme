@@ -1,0 +1,34 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+	"variables":
+	{
+	},
+	"globals":
+	{
+	},
+	"rules":
+	[
+		{
+			"scope": "source.json meta.mapping.key.json string.quoted.double.json",
+			"foreground": "var(--yellowish)",
+		},
+		{
+			"scope": "meta.mapping.key string",
+			"foreground": "var(--yellowish)",
+		},
+		{
+			"scope": "punctuation.accessor",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "keyword.operator",
+			"foreground": "var(--foreground)",
+			// "font_style": "bold"
+		},
+		{
+			"scope": "variable - variable.other.constant",
+			"foreground": "var(--foreground)",
+		},
+
+	]
+}
