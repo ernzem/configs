@@ -29,6 +29,7 @@
     ~/.config/wofi/:  wofi
     ~/.config/waybar/:  waybar
     ~/.config/gammastep/:  gammastep
+    ~/.config/sublime-text/Packages/User/:  sublime_text
 
 # Mac
 - defaults:
@@ -42,3 +43,4 @@
     ~/Library/Application Support/Code/User/snippets:  code/User/snippets
     ~/.config/karabiner:  karabiner
     ~/.Library/Keyboard Layouts/US Keyboard with Lithuanian letters.bundle: US Keyboard with Lithuanian letters.bundle
+    ~/Library/Application Support/Sublime Text/Packages/User/:  sublime_text
