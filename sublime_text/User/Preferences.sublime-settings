@@ -12,7 +12,8 @@
 	"show_full_path": true, // Shows full file path in title bar
 	"auto_complete": false,
 	"animation_enabled": false,
-	"ignored_packages": ["Vintage"],
+	"ignored_packages": ["Vintage",
+	],
 	"index_files": true,
 	"dark_theme": "Default.sublime-theme",
 	"light_theme": "Default.sublime-theme",
