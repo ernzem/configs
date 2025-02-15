@@ -26,6 +26,9 @@ case $OS in
   *)
 esac
 
+# Editor for other commands
+export EDIT="subl ."
+
 # Share history across shells
 setopt SHARE_HISTORY
 
@@ -57,11 +60,11 @@ export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs'
 
 # Aliases
 alias cn='print -z -- $(rg "" $CLI --no-filename | grep -v -e "^[[:space:]]*$" | fzf | grep -o "^[^#]*")'
-alias ecn='(cd $CLI; vim)'
-alias cfg="(cd ~/.cfg; vim)"
-alias notes="(cd $NOTES/; nvim)"
-alias wk="(cd Desktop/Work; nvim)"
-alias todo="(cd $NOTES; vim TODO/)"
+alias ecn='(cd $CLI; $EDIT)'
+alias cfg="(cd ~/.cfg; $EDIT)"
+alias notes="(cd $NOTES/; $EDIT)"
+alias wk="(cd Desktop/Work; $EDIT)"
+alias todo="(cd $NOTES/TODO; $EDIT)"
 alias bat='bat --paging=never'
 alias rp='cd `find $REPOS -mindepth 1 -maxdepth 1 -type d | fzf`'
 
