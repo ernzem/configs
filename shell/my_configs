@@ -27,7 +27,8 @@ case $OS in
 esac
 
 # Editor for other commands
-export EDIT="subl ."
+export EDIT="nvim"
+# export EDIT="subl ."
 
 # Share history across shells
 setopt SHARE_HISTORY
