@@ -44,5 +44,19 @@ return {
 			end,
 			desc = "Find Files",
 		},
+		{
+			"<leader>ss",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			desc = "LSP Symbols",
+		},
+		{
+			"<leader>SS",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			desc = "LSP Workspace Symbols",
+		},
 	},
 }
