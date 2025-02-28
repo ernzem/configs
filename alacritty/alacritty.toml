@@ -6,13 +6,17 @@ import = [
 [font]
 size = 14
 
-  [font.offset]
-  x = 0
-  y = 1
+[font.offset]
+x = 0
+y = 4
 
-  [font.normal]
-  family = "JetBrainsMono Nerd Font"
-  style = "Medium"
+[font.glyph_offset]
+x = 0
+y = 2
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
 
 [window]
 # decorations = "None"
