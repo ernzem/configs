@@ -19,9 +19,10 @@ sudo apt install -y libpam-fprintd
 sudo apt install -y zsh
 sudo apt install -y dconf-editor
 sudo apt install -y wl-clipboard # Wayland only
-sudo apt install -y libnotify-bin # for sending notifications via cli
+sudo apt install -y fd-find
+# sudo apt install -y libnotify-bin # for sending notifications via cli
 # sudo apt install -y xclip # X11 only
-sudo apt install -y gnome-tweaks
+# sudo apt install -y gnome-tweaks
 # -----------------------------------------------------------------------------------------------------------------------
 sudo apt install -y bat
 mkdir -p ~/.local/bin
@@ -86,17 +87,17 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # -----------------------------------------------------------------------------------------------------------------------
 # Syntching
 # Add the release PGP keys:
-sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+# sudo curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
 
 # Add the "stable" channel to your APT sources:
-echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+# echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 
 # Add the "candidate" channel to your APT sources:
-echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing candidate" | sudo tee /etc/apt/sources.list.d/syncthing.list
+# echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing candidate" | sudo tee /etc/apt/sources.list.d/syncthing.list
 
 # Update and install syncthing:
-sudo apt update
-sudo apt install -y syncthing
+# sudo apt update
+# sudo apt install -y syncthing
 # -----------------------------------------------------------------------------------------------------------------------
 # Neovim setup
 # TODO: install nvim AppImage.
@@ -108,7 +109,7 @@ sudo apt install -y syncthing
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 mkdir -p ~/.local/bin
-curl -L -o ~/.local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+curl -L -o ~/.local/bin/nvim https://github.com/neovim/neovim/releases/download/releases/latest/nvim-linux-x86_64.appimage
 chmod u+x ~/.local/bin/nvim
 
 # curl -LO https://github.com/wez/wezterm/releases/download/20240128-202157-1e552d76/wezterm-20240128-202157-1e552d76.Debian12.deb
@@ -116,10 +117,10 @@ chmod u+x ~/.local/bin/nvim
 # rm wezterm-20240128-202157-1e552d76.Debian12.deb
 # ---------------------------------------------------------------------------------------------------------------------------
 # Wezterm
-curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-sudo apt update && sudo apt install wezterm
-
-echo "\nDONE!\n"
+#curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+#echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+#sudo apt update && sudo apt install wezterm
+echo ""
+echo "DONE!"
 
 
