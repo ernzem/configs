@@ -1,6 +1,6 @@
 {
     "editor.minimap.enabled": false,
-    "editor.scrollbar.verticalScrollbarSize": 10,
+    "editor.scrollbar.verticalScrollbarSize": 8,
     "editor.fontSize": 14,
     "editor.lineHeight": 1.5,
     "workbench.activityBar.location": "hidden",
@@ -15,23 +15,17 @@
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono Light,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
     "workbench.colorCustomizations": {
         "[Default Dark+]": {
-            "editor.background": "#252525",
-            "statusBar.background":"#303030",
+            "editor.background": "#272727",
+            // "statusBar.background":"#303030",
         }
     },
-    // "editor.semanticTokenColorCustomizations": {
-    //     "[Atom One Light]": {
-    //         "enabled": true,
-    //         "comments": "#009090"
-    //     }
-    // },
     "git.blame.editorDecoration.enabled": false,
     "git.blame.statusBarItem.enabled": false,
-    "workbench.colorTheme": "Material Light",
+    "workbench.colorTheme": "Default Dark+",
     "window.menuBarVisibility": "toggle"
 }
