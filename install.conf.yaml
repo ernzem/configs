@@ -24,6 +24,9 @@
     ~/.config/Code/User/settings.json:  code/User/settings.json
     ~/.config/Code/User/keybindings.json:  code/User/keybindings.json
     ~/.config/Code/User/snippets:  code/User/snippets
+    ~/.config/VSCodium/User/settings.json:  code/User/settings.json
+    ~/.config/VSCodium/User/keybindings.json:  code/User/keybindings.json
+    ~/.config/VSCodium/User/snippets:  code/User/snippets
     ~/.config/foot/: foot
     ~/.config/sway/:  sway
     ~/.config/wofi/:  wofi
@@ -42,6 +45,9 @@
     ~/Library/Application Support/Code/User/settings.json:  code/User/settings.json
     ~/Library/Application Support/Code/User/keybindings.json:  code/User/keybindings.json
     ~/Library/Application Support/Code/User/snippets:  code/User/snippets
+    ~/Library/Application Support/VSCodium/User/settings.json:  code/User/settings.json
+    ~/Library/Application Support/VSCodium/User/keybindings.json:  code/User/keybindings.json
+    ~/Library/Application Support/VSCodium/User/snippets:  code/User/snippets
     ~/.config/karabiner:  karabiner
     ~/.Library/Keyboard Layouts/US Keyboard with Lithuanian letters.bundle: US Keyboard with Lithuanian letters.bundle
     ~/Library/Application Support/Sublime Text/Packages/Default:  sublime_text/Default

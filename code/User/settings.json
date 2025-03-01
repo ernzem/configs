@@ -1,31 +1,36 @@
 {
-    "security.workspace.trust.untrustedFiles": "open",
-    "workbench.startupEditor": "none",
-    "go.toolsManagement.autoUpdate": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "redhat.telemetry.enabled": false,
-    "explorer.confirmDragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.verticalScrollbarSize": 10,
     "editor.fontSize": 14,
-    "terminal.integrated.fontSize": 14,
-    "files.autoSave": "onFocusChange",
-    "editor.lineNumbers": "relative",
-    "eslint.codeActionsOnSave.rules": null,
-    "editor.fontFamily": "jetbrainsmono nerd font,Menlo, Monaco, 'Courier New', monospace",
-    "window.titleBarStyle": "native",
-    "breadcrumbs.enabled": false,
-    "workbench.colorTheme": "Material Light",
-    "gruvboxMaterial.lightContrast": "soft",
-    "window.menuBarVisibility": "toggle",
-    "git.openRepositoryInParentFolders": "never",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
+    "workbench.activityBar.location": "hidden",
+    "editor.stickyScroll.enabled": false,
+    "editor.hover.enabled": false,
+    "debug.inlineValues": "on",
+    "editor.accessibilitySupport": "off",
+    "workbench.startupEditor": "none",
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.quickSuggestions": {
+        "other": "off"
     },
+    "go.toolsManagement.autoUpdate": true,
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
+    "editor.guides.indentation": false,
     "workbench.colorCustomizations": {
-        "[Material Light]": {
-            "terminal.ansiBrightBlack": "#BCBCBC",
+        "[Default Dark+]": {
+            "editor.background": "#252525",
+            "statusBar.background":"#303030",
         }
     },
-    "workbench.activityBar.location": "hidden",
-    "markdown.extension.preview.autoShowPreviewToSide": true,
-    "editor.minimap.enabled": false
+    // "editor.semanticTokenColorCustomizations": {
+    //     "[Atom One Light]": {
+    //         "enabled": true,
+    //         "comments": "#009090"
+    //     }
+    // },
+    "git.blame.editorDecoration.enabled": false,
+    "git.blame.statusBarItem.enabled": false,
+    "workbench.colorTheme": "Material Light"
 }
