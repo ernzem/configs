@@ -2,6 +2,7 @@
     "editor.minimap.enabled": false,
     "editor.scrollbar.verticalScrollbarSize": 10,
     "editor.fontSize": 14,
+    "editor.lineHeight": 1.5,
     "workbench.activityBar.location": "hidden",
     "editor.stickyScroll.enabled": false,
     "editor.hover.enabled": false,
@@ -12,7 +13,6 @@
     "editor.quickSuggestions": {
         "other": "off"
     },
-    "go.toolsManagement.autoUpdate": true,
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
@@ -32,5 +32,6 @@
     // },
     "git.blame.editorDecoration.enabled": false,
     "git.blame.statusBarItem.enabled": false,
-    "workbench.colorTheme": "Material Light"
+    "workbench.colorTheme": "Material Light",
+    "window.menuBarVisibility": "toggle"
 }
