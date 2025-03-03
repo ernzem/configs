@@ -2,7 +2,7 @@
     "editor.minimap.enabled": false,
     "editor.scrollbar.verticalScrollbarSize": 8,
     "editor.fontSize": 14,
-    "editor.lineHeight": 1.5,
+    "editor.lineHeight": 1.6,
     "workbench.activityBar.location": "hidden",
     "editor.stickyScroll.enabled": false,
     "editor.hover.enabled": false,
@@ -15,15 +15,29 @@
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    "editor.fontFamily": "JetBrains Mono Light,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
     // "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
+    "editor.bracketPairColorization.enabled": false,
     "workbench.colorCustomizations": {
         "[Default Dark+]": {
-            "editor.background": "#272727",
-            // "statusBar.background":"#303030",
+            "editor.background": "#282828",
+            // "statusBar.background":"#282828",
         }
     },
+    "editor.tokenColorCustomizations": {
+        "[Default Dark+]": {
+            // "variables": "#CE9178",
+            "variables": "#bfbfbf",
+            "comments": "#707070",
+            "strings": "#6A9955"
+        }
+    },
+
+    //Open Markdown preview by default
+    "workbench.editorAssociations": {   
+        "*.md": "vscode.markdown.preview.editor"
+    },    
     "git.blame.editorDecoration.enabled": false,
     "git.blame.statusBarItem.enabled": false,
     "workbench.colorTheme": "Default Dark+",
