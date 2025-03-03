@@ -21,8 +21,8 @@
     "editor.bracketPairColorization.enabled": false,
     "workbench.colorCustomizations": {
         "[Default Dark+]": {
-            "editor.background": "#282828",
-            // "statusBar.background":"#282828",
+            "editor.background": "#292929",
+            "statusBar.background":"#232323"
         }
     },
     "editor.tokenColorCustomizations": {
@@ -41,5 +41,6 @@
     "git.blame.editorDecoration.enabled": false,
     "git.blame.statusBarItem.enabled": false,
     "workbench.colorTheme": "Default Dark+",
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "diffEditor.hideUnchangedRegions.enabled": true
 }
