@@ -1,4 +1,30 @@
 // Place your key bindings in this file to override the defaults
 [
-    
+    {
+        "key": "shift+space",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "shift+space",
+        "command": "editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    //  TODO: Add file type and in "when" and fix command
+    // {
+    //     "key": "shift+space",
+    //     "command": "workbench.action.terminal.sendSequence",
+    //     "when": "editorTextFocus &&",
+    //     "args": { "text": "prettier ${file} --write \u000D" }
+    // }    
 ]

@@ -15,32 +15,89 @@
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
-    // "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono Regular,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono Regular,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
     "editor.bracketPairColorization.enabled": false,
-    "workbench.colorCustomizations": {
-        "[Default Dark+]": {
-            "editor.background": "#292929",
-            "statusBar.background":"#232323"
-        }
-    },
     "editor.tokenColorCustomizations": {
-        "[Default Dark+]": {
-            // "variables": "#CE9178",
-            "variables": "#bfbfbf",
+        "[Default Dark Modern]": {
+            "variables": "#BFBFBF",
+            "comments": "#808080",
+            // "strings": "#6A9955"
+            "strings": "#70aa55"
+        },
+        // "[Default Light Modern]": {
+        //     "variables": "#484848",
+        //     "comments": "#707070",
+        //     "strings": "#008000",
+        //     "keywords": "#8f3197"
+        // },
+        "[chalice-color-theme-light]": {
             "comments": "#707070",
-            "strings": "#6A9955"
+            // "functions": "#936b1f",
+            // "types": "#936b1f",
+            // "keywords": "#a626a4"
+            "keywords": {"fontStyle": "bold"}
         }
     },
-
-    //Open Markdown preview by default
-    "workbench.editorAssociations": {   
+    "workbench.colorCustomizations": {
+        // "[Default Light Modern]": {
+        //     "editor.background": "#F0F0F0",
+        //     "sideBar.background": "#F0F0F0",
+        //     "titleBar.activeBackground": "#F0F0F0",
+        //     "statusBar.background":"#F0F0F0"
+        // },
+        "[chalice-color-theme-light]": {
+            //     // // "editor.background": "#F0F0F0",
+            //     "sideBar.background": "#F0F0F0",
+            //     "sideBar.border": "#dddddd",
+            //     "titleBar.activeBackground": "#DDDDDD",
+            //     "titleBar.border":"#dddddd",
+            //     "editorGroupHeader.tabsBorder": "#dddddd",
+            //     "tab.inactiveBackground": "#F0F0F0",
+            //     "tab.border": "#dddddd",
+            //     "tab.dragAndDropBorder": "#dddddd",
+            //     // "tab.activeBorderTop": "#dddddd",
+            //     "tab.unfocusedInactiveBackground": "#F0F0F0",
+            //     "tab.unfocusedActiveBorder": "#dddddd",
+            //     "tab.unfocusedActiveBorderTop": "#dddddd",
+            //     "statusBar.background":"#F0F0F0",
+            "statusBarItem.remoteBackground": "#C8C8C8",
+            "statusBarItem.remoteForeground": "#303030"
+        },
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript][javascriptreact][typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[css][scss][less]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
-    },    
+    },
     "git.blame.editorDecoration.enabled": false,
-    "git.blame.statusBarItem.enabled": false,
-    "workbench.colorTheme": "Default Dark+",
+    "git.blame.statusBarItem.enabled": true,
     "window.menuBarVisibility": "toggle",
-    "diffEditor.hideUnchangedRegions.enabled": true
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "window.title": "${dirty} ${activeEditorMedium}${separator}${folderName}",
+    "git.autofetch": true,
+    "go.toolsManagement.autoUpdate": true,
+    "git.decorations.enabled": false,
+    "numberedBookmarks.gutterIconFillColor": "#3452b4",
+    "numberedBookmarks.gutterIconNumberColor": "#f2f2f2",
+    "workbench.iconTheme": "atom-icons",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "chat.commandCenter.enabled": false,
+    "breadcrumbs.enabled": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.colorTheme": "chalice-color-theme-light"
 }
