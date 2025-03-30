@@ -2,8 +2,7 @@
 	"bootstrapped": true,
 	"installed_packages":
 	[
-		"FileIcons",
-		"GitHub Theme",
+		"Alabaster Color Scheme",
 		"Gomod",
 		"LSP",
 		"LSP-gopls",

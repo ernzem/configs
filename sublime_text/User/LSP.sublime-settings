@@ -1,5 +1,6 @@
 // Settings in here override those in "LSP/LSP.sublime-settings"
 {
 	"show_symbol_action_links": false,
+	"show_diagnostics_count_in_view_status": true,
 	"link_highlight_style": "none"
 }
