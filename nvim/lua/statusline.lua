@@ -54,7 +54,7 @@ end
 
 local git_branch = [[%{luaeval("vim.g.branch_name")}]]
 local workspace_dir = [[%{luaeval("require('statusline').workspace_dir()")}]]
-local tags = "%{%v:lua.require'statusline'.grapple_marks()%}"
+-- local tags = "%{%v:lua.require'statusline'.grapple_marks()%}"
 local align_right = "%="
 local linecol = "%l:%c"
 local percentage = "%p%%"
@@ -66,8 +66,8 @@ function Statusline()
         git_branch,
         " ",
         workspace_dir,
-        " ",
-        tags,
+        -- " ",
+        -- tags,
         align_right,
         " | ",
         linecol,
