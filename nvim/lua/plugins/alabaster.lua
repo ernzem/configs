@@ -1,7 +1,8 @@
 return {
     "p00f/alabaster.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
+    event = "VeryLazy",
     config = function ()
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			group = vim.api.nvim_create_augroup("alabaster-theme-changes", { clear = true }),
@@ -13,6 +14,6 @@ return {
 			end,
 		})
 
-		vim.cmd("colorscheme alabaster")
+		-- vim.cmd("colorscheme alabaster")
     end
 }

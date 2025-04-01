@@ -36,12 +36,12 @@ function M.grapple_marks()
         m = table.concat({
             m,
             " ",
-            "%#" .. hl_marks .. "#",
+            -- "%#" .. hl_marks .. "#",
             index,
             ": ",
             "%#" .. hl_mark_icon_name .. index .. "#",
             icon,
-            "%#" .. hl_marks .. "#",
+            -- "%#" .. hl_marks .. "#",
             " ",
             filename,
             "%* "
@@ -96,8 +96,8 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     group = statusline_group,
     pattern = "*",
     callback = function()
-        local statusline = vim.api.nvim_get_hl(0, { name = "StatusLine" })
-        vim.api.nvim_set_hl(0, hl_marks, { bg=statusline.bg, fg=statusline.fg, bold = false, underline = false })
+        -- local statusline = vim.api.nvim_get_hl(0, { name = "StatusLine" })
+        -- vim.api.nvim_set_hl(0, hl_marks, { bg=statusline.bg, fg=statusline.fg, bold = false, underline = false })
         vim.opt.statusline = "%!v:lua.Statusline()"
     end,
 })

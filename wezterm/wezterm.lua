@@ -18,7 +18,8 @@ end)
 
 if wezterm.target_triple:find("darwin") ~= nil then
 	config.font_size = 14
-	-- config.window_decorations = "RESIZE"
+	config.window_decorations = "RESIZE"
+    config. freetype_load_target = "Light"
 end
 
 if wezterm.target_triple:find("linux") ~= nil then
@@ -26,22 +27,45 @@ if wezterm.target_triple:find("linux") ~= nil then
 	config.window_decorations = "RESIZE"
 end
 
+config.font_rules = {
+  {
+    intensity = 'Bold',
+    italic = false,
+    font = wezterm.font("JetBrains Mono", {weight="Bold", stretch="Normal", style="Normal"})
+  },
+  {
+    intensity = 'Bold',
+    italic = true,
+    font = wezterm.font("JetBrains Mono", {weight="Bold", stretch="Normal", style="Italic"})
+  },
+}
 config.font = wezterm.font({
-	family = "JetBrainsMono Nerd Font Mono",
+	-- family = "JetBrainsMono Nerd Font Mono",
+	family = "JetBrains Mono Medium",
+	-- family = "JetBrains Mono",
+    -- family = "Fira Code",
+	-- family = "Hack Nerd Font Mono",
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-    weight = "Medium"
+	-- weight = "Medium",
+	-- weight = "Regular",
+	-- weight = "Light",
+	-- weight = "ExtraLight",
 })
 
 config.max_fps = 144
 config.scroll_to_bottom_on_input = true
 config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom = "0cell" }
+config.line_height = 1.25
+
+-- config.color_scheme = "Default Dark (base16)"
+-- config.color_scheme = "Alabaster"
 config.color_scheme = "Mexico Light (base16)"
--- config.color_scheme = "Catppuccin Mocha"
--- c.color_scheme = "Kanagawa (Gogh)"
--- config.color_scheme = 'Default Dark (base16)'
--- config.colors = {
---     background = "#232326",
--- }
+config.colors = {
+	-- background = "#232326",
+	background = "#F2F2F2",
+	-- background = "#E6E6E6",
+    foreground = "#000000"
+}
 
 config.tab_max_width = 40
 config.tab_bar_at_bottom = true
@@ -51,7 +75,7 @@ config.switch_to_last_active_tab_when_closing_tab = true
 
 -- timeout_milliseconds defaults to 1000 and can be omitted
 -- config.disable_default_key_bindings = true
-config.leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
+config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
 		key = "j",

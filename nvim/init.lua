@@ -23,6 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false } })
 ---------------------------------------------------------------------------
 require("defaults")
+require("colors")
 require("commands")
 require("winbar")
 require("statusline")
