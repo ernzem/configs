@@ -28,7 +28,7 @@ local function apply_light_changes()
 	-- local DarkYellow = "#756200"
 
 	-- local background_color = "#E6E6E6"
-    local background_color = "#F2F2F2"
+    local background_color = "#F6F6F6"
     -- local background_color = "#E1E1E1"
 	local cursorLineNrBg = "#CCCCCC"
 	local ColorColumn = "#DDDDDD"
