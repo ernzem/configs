@@ -88,6 +88,7 @@
     "diffEditor.hideUnchangedRegions.enabled": true,
     "window.title": "${dirty} ${activeEditorMedium}${separator}${folderName}",
     "git.autofetch": true,
+    "keyboard.dispatch": "keyCode",
     "go.toolsManagement.autoUpdate": true,
     "git.decorations.enabled": false,
     "numberedBookmarks.gutterIconFillColor": "#3452b4",
@@ -99,5 +100,6 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    "window.titleBarStyle": "native",
     "workbench.colorTheme": "chalice-color-theme-light"
 }
