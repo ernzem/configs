@@ -1,2 +1,2 @@
  - golangci-lint : `https://golangci-lint.run/welcome/install/`
- - gotests: `go install -u github.com/cweill/gotests/@latest`
+ - gotests: `go install github.com/cweill/gotests/gotests@latest`
