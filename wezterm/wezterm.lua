@@ -75,10 +75,10 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.switch_to_last_active_tab_when_closing_tab = true
 
-config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
+-- config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
-		key = "j",
+		key = "Space",
 		mods = "CTRL",
 		action = wezterm.action_callback(function(_, pane)
 			local tab = pane:tab()
