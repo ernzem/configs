@@ -6,6 +6,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- Remove "~" from empty lines
+vim.opt.fillchars = { eob = " "}
+
 -- Enable mouse mode
 vim.opt.mouse = "a"
 
@@ -54,7 +57,6 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-
 -- Highlight number
 vim.opt.cursorline = true
 
@@ -64,8 +66,8 @@ vim.o.splitright = true
 
 -- Statusline
 vim.opt.laststatus = 3
--- vim.opt.cmdheight = 0
--- vim.opt.showmode = false
+vim.opt.cmdheight = 0
+vim.opt.showmode = false
 
 -- Title in titlebar work-dir nvim
 vim.opt.title = true

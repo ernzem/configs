@@ -1,10 +1,4 @@
 -- DATA: https://github.com/neovim/neovim/pull/26334
-
--- Dark palette:
--- grey3   = "#2c2e33" -- CursorLine
-
--- Light palette:
-
 local set_hl = vim.api.nvim_set_hl
 local get_hl = vim.api.nvim_get_hl
 
@@ -24,19 +18,17 @@ end
 local function apply_light_changes()
 	-- NvimLightGrey1 = "" or 12895949
 	-- NvimLightGrey3 = "#2c2e33"
-
 	-- local DarkYellow = "#756200"
-
 	-- local background_color = "#E6E6E6"
+	-- local background_color = "#E1E1E1"
+
     local background_color = "#F6F6F6"
-    -- local background_color = "#E1E1E1"
 	local cursorLineNrBg = "#CCCCCC"
 	local ColorColumn = "#DDDDDD"
 	local DarkYellow = "#754a00"
 	local blue = "#284bbd"
 	local green = "#30670f"
 	local selection = "#D1D1D1"
-	local var = "#062e7f"
 
 	-- TODO: optimize replacing get with hardcoded values
 	local status_ln = get_hl(0, { name = "StatuslineNC" })
@@ -70,9 +62,9 @@ local function apply_light_changes()
 end
 
 local function apply_dark_changes()
-	-- TODO: optimize replacing get with hardcoded values
 	local TitleHi = get_hl(0, { name = "Title" })
 	local NormalHi = get_hl(0, { name = "Normal" })
+	local hl_comment = vim.api.nvim_get_hl(0, { name = "Comment" })
 	local StatementHi = get_hl(0, { name = "Statement" })
 	local DarkYellow = "#F0CA66"
 
@@ -81,16 +73,16 @@ local function apply_dark_changes()
 	})
 
 	-- set_hl(0, "Normal", { bg = "#252525", fg = NormalHi.fg })
-	set_hl(0, "WinBar", { bg = NormalHi.bg, fg = TitleHi.fg, bold = true })
+	set_hl(0, "WinBar", { bg = NormalHi.bg, fg = TitleHi.fg, bold = false })
 	set_hl(0, "WinBarNC", { bg = NormalHi.bg })
 
-	-- set_hl(0, "Cursorline", { bg = "#202020" })
-	set_hl(0, "CursorlineNr", { bg = "#2c2e33" })
+	set_hl(0, "Cursorline", { bg = NormalHi.bg })
+	set_hl(0, "CursorlineNr", { bg = "#2c2e33", bold = true })
 
 	set_hl(0, "String", { fg = "#8CB648" })
 	set_hl(0, "Special", { fg = StatementHi.fg })
-	set_hl(0, "Statusline", { bg = NormalHi.bg, fg = NormalHi.fg })
-	set_hl(0, "StatuslineNC", { bg = NormalHi.bg })
+	set_hl(0, "Statusline", { bg = NormalHi.bg, fg = hl_comment.fg })
+	-- set_hl(0, "Statusline", { bg = NormalHi.bg })
 	set_hl(0, "ColorColumn", { bg = "#7f7e77" })
 end
 
@@ -118,6 +110,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = fix_default_colorscheme,
 })
 
-vim.cmd("set bg=light")
+-- vim.cmd("set bg=light")
+vim.cmd("set bg=dark")
 vim.cmd("colorscheme default")
 fix_default_colorscheme()

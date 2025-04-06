@@ -1,5 +1,6 @@
 return {
 	"rockyzhang24/arctic.nvim",
+    event="VeryLazy",
 	branch = "v2",
 	dependencies = { "rktjmp/lush.nvim" },
 	config = function()
