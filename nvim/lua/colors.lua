@@ -22,7 +22,7 @@ local function apply_light_changes()
 	-- local background_color = "#E6E6E6"
 	-- local background_color = "#E1E1E1"
 
-    local background_color = "#F6F6F6"
+	local background_color = "#F6F6F6"
 	local cursorLineNrBg = "#DDDDDD"
 	local ColorColumn = "#DDDDDD"
 	local DarkYellow = "#754a00"
@@ -64,9 +64,18 @@ end
 local function apply_dark_changes()
 	local TitleHi = get_hl(0, { name = "Title" })
 	local NormalHi = get_hl(0, { name = "Normal" })
-	local hl_comment = vim.api.nvim_get_hl(0, { name = "Comment" })
+	local HLComment = get_hl(0, { name = "Comment" })
 	local StatementHi = get_hl(0, { name = "Statement" })
 	local DarkYellow = "#F0CA66"
+
+	-- local type = "#fd4096"
+	-- local type = "#69abff"
+	-- local type = "#c07530"
+    local type = "#a6dbff"
+
+	-- local keyword = "#cc9ffc"
+	-- local keyword = "#69abff"
+	local keyword = "#c586c0"
 
 	change_colors({
 		[get_hl(0, { name = "Function" }).fg] = DarkYellow,
@@ -81,9 +90,14 @@ local function apply_dark_changes()
 
 	set_hl(0, "String", { fg = "#8CB648" })
 	set_hl(0, "Special", { fg = StatementHi.fg })
-	set_hl(0, "Statusline", { bg = NormalHi.bg, fg = hl_comment.fg })
-	-- set_hl(0, "Statusline", { bg = NormalHi.bg })
+	set_hl(0, "Statusline", { bg = NormalHi.bg, fg = HLComment.fg })
 	set_hl(0, "ColorColumn", { bg = "#7f7e77" })
+	-- set_hl(0, "@keyword", { fg = keyword })
+	-- set_hl(0, "@operator", { fg = keyword })
+	-- set_hl(0, "@keyword.type", { fg = keyword })
+	set_hl(0, "@type", { fg = type })
+	set_hl(0, "@type.builtin", { fg = type })
+	set_hl(0, "@type.definition", { fg = type })
 end
 
 local function fix_default_colorscheme()
