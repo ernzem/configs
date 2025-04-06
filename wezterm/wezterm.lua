@@ -29,13 +29,13 @@ end
 
 if wezterm.target_triple:find("linux") ~= nil then
 	config.font = wezterm.font({
-		family = "JetBrains Mono Regular",
+		family = "JetBrains Mono",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	})
-	config.font_size = 10.8
+	config.font_size = 12
 	config.window_decorations = "RESIZE"
 	config.freetype_load_target = "Light"
-	config.line_height = 1.2
+	config.line_height = 1.1
 end
 
 config.font_rules = {
@@ -59,14 +59,13 @@ config.max_fps = 144
 config.scroll_to_bottom_on_input = true
 config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom = "0cell" }
 
--- config.color_scheme = "Default Dark (base16)"
--- config.color_scheme = "Alabaster"
-config.color_scheme = "Mexico Light (base16)"
+config.color_scheme = "Default Dark (base16)"
+-- config.color_scheme = "Mexico Light (base16)"
 config.colors = {
 	-- background = "#232326",
-	background = "#F6F6F6",
+	-- background = "#F6F6F6",
 	-- background = "#E6E6E6",
-	foreground = "#000000",
+	-- foreground = "#000000",
 }
 
 config.tab_max_width = 40
