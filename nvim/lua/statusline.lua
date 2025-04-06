@@ -6,10 +6,10 @@ local hl_mode_other = "ModeOther"
 
 M.mode_map = {
     ["n"] = { name = "NORMAL", color = hl_mode_normal },
-    ["no"] = { name = "O-PENDING", color = "Statusline" },
-    ["nov"] = { name = "O-PENDING", color = "Statusline" },
-    ["noV"] = { name = "O-PENDING", color = "Statusline" },
-    ["no\22"] = { name = "O-PENDING", color = "Statusline" },
+    ["no"] = { name = "O-PENDING", color = hl_mode_other },
+    ["nov"] = { name = "O-PENDING", color = hl_mode_other },
+    ["noV"] = { name = "O-PENDING", color = hl_mode_other },
+    ["no\22"] = { name = "O-PENDING", color = hl_mode_other },
     ["niI"] = { name = "NORMAL", color = hl_mode_normal },
     ["niR"] = { name = "NORMAL", color = hl_mode_normal },
     ["niV"] = { name = "NORMAL", color = hl_mode_normal },
@@ -21,26 +21,26 @@ M.mode_map = {
     ["Vs"] = { name = "V-LINE", color = hl_mode_visual },
     ["\22"] = { name = "V-BLOCK", color = hl_mode_visual },
     ["\22s"] = { name = "V-BLOCK", color = hl_mode_visual },
-    ["s"] = { name = "SELECT", color = "Statusline" },
-    ["S"] = { name = "S-LINE", color = "Statusline" },
-    ["\19"] = { name = "S-BLOCK", color = "Statusline" },
+    ["s"] = { name = "SELECT", color = hl_mode_other },
+    ["S"] = { name = "S-LINE", color = hl_mode_other },
+    ["\19"] = { name = "S-BLOCK", color = hl_mode_other },
     ["i"] = { name = "INSERT", color = hl_mode_insert },
     ["ic"] = { name = "INSERT", color = hl_mode_insert },
     ["ix"] = { name = "INSERT", color = hl_mode_insert },
-    ["r"] = { name = "REPLACE", color = "Statusline" },
-    ["R"] = { name = "REPLACE", color = "Statusline" },
-    ["Rc"] = { name = "REPLACE", color = "Statusline" },
-    ["Rx"] = { name = "REPLACE", color = "Statusline" },
-    ["Rv"] = { name = "V-REPLACE", color = "Statusline" },
-    ["Rvc"] = { name = "V-REPLACE", color = "Statusline" },
-    ["Rvx"] = { name = "V-REPLACE", color = "Statusline" },
-    ["c"] = { name = "COMMAND", color = "Statusline" },
-    ["cv"] = { name = "EX", color = "Statusline" },
-    ["ce"] = { name = "EX", color = "Statusline" },
-    ["rm"] = { name = "MORE", color = "Statusline" },
-    ["r?"] = { name = "CONFIRM", color = "Statusline" },
-    ["!"] = { name = "SHELL", color = "Statusline" },
-    ["t"] = { name = "T", color = "Statusline" },
+    ["r"] = { name = "REPLACE", color = hl_mode_other },
+    ["R"] = { name = "REPLACE", color = hl_mode_other },
+    ["Rc"] = { name = "REPLACE", color = hl_mode_other },
+    ["Rx"] = { name = "REPLACE", color = hl_mode_other },
+    ["Rv"] = { name = "V-REPLACE", color = hl_mode_other },
+    ["Rvc"] = { name = "V-REPLACE", color = hl_mode_other },
+    ["Rvx"] = { name = "V-REPLACE", color = hl_mode_other },
+    ["c"] = { name = "COMMAND", color = hl_mode_other },
+    ["cv"] = { name = "EX", color = hl_mode_other },
+    ["ce"] = { name = "EX", color = hl_mode_other },
+    ["rm"] = { name = "MORE", color = hl_mode_other },
+    ["r?"] = { name = "CONFIRM", color = hl_mode_other },
+    ["!"] = { name = "SHELL", color = hl_mode_other },
+    ["t"] = { name = "TERMINAL", color = hl_mode_insert },
 }
 
 function M.mode()
@@ -157,7 +157,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
         vim.api.nvim_set_hl(0, hl_mode_insert, { bg = hl_string.fg, fg = hl_normal.bg, bold = true })
         vim.api.nvim_set_hl(0, hl_mode_normal, { fg = hl_comment.fg })
         vim.api.nvim_set_hl(0, hl_mode_visual, { bg = hl_function.fg, fg = hl_normal.bg, bold = true })
-        vim.api.nvim_set_hl(0, hl_mode_other, { bg = statusline.bg })
+        vim.api.nvim_set_hl(0, hl_mode_other, { fg = hl_normal.fg, bold = true })
 
        -- vim.api.nvim_set_hl(0, hl_mode_insert, { fg = hl_string.fg, bold = true })
         -- vim.api.nvim_set_hl(0, hl_mode_normal, { fg = hl_comment.fg })
