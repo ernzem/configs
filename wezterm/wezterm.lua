@@ -62,6 +62,7 @@ config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom
 config.color_scheme = "Default Dark (base16)"
 -- config.color_scheme = "Mexico Light (base16)"
 config.colors = {
+    background = "#14161b",
 	-- background = "#232326",
 	-- background = "#F6F6F6",
 	-- background = "#E6E6E6",
