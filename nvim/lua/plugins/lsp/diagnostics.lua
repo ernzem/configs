@@ -1,6 +1,6 @@
 local utils = require("utils")
 vim.diagnostic.config({
-    virtual_text = true,
+	virtual_text = { current_line = true },
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = utils.diagn_symbols.error,
