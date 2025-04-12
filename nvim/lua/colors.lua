@@ -27,7 +27,7 @@ local function apply_light_changes()
 	local selection = "#D1D1D1"
     local blue = "#153bb7"
 	local yellow = "#b58407"
-	local github_violet = "#5625B1"
+	local github_violet = "#6614b3"
 
 	-- TODO: optimize replacing get with hardcoded values
 	local status_ln = get_hl(0, { name = "StatuslineNC" })
