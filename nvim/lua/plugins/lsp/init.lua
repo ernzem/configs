@@ -5,16 +5,10 @@ return {
         opts = { library = { { path = "luvit-meta/library", words = { "vim%.uv" } } } },
     },
     { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-    {                                        -- optional completion source for require statements and module annotations.
-        "hrsh7th/nvim-cmp",
-        opts = function(_, opts)
-            opts.sources = opts.sources or {}
-            table.insert(opts.sources, { name = "lazydev", group_index = 0 }) -- 0 to skip loading LuaLS completions
-        end,
-    },
     {
         "neovim/nvim-lspconfig",
         dependencies = {
+            'saghen/blink.cmp',
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -42,8 +36,7 @@ return {
             })
 
             local servers = require("plugins.lsp.servers")
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             require("mason").setup()
 

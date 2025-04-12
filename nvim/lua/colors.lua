@@ -1,4 +1,6 @@
 -- DATA: https://github.com/neovim/neovim/pull/26334
+-- https://github.com/neovim/neovim/blob/master/src/nvim/highlight_group.c
+
 local set_hl = vim.api.nvim_set_hl
 local get_hl = vim.api.nvim_get_hl
 
@@ -29,13 +31,17 @@ local function apply_light_changes()
 	local blue = "#284bbd"
 	local green = "#30670f"
 	local selection = "#D1D1D1"
+	local yellow = "#b58407"
+	local github_violet = "#512598"
 
 	-- TODO: optimize replacing get with hardcoded values
 	local status_ln = get_hl(0, { name = "StatuslineNC" })
 	local StatementHi = get_hl(0, { name = "Statement" })
+	local IdentifierHi = get_hl(0, { name = "Identifier" })
 
 	change_colors({
-		[get_hl(0, { name = "Function" }).fg] = blue,
+		-- [get_hl(0, { name = "Function" }).fg] = blue,
+		[get_hl(0, { name = "Function" }).fg] = DarkYellow,
 		[get_hl(0, { name = "String" }).fg] = green,
 	})
 
@@ -43,7 +49,7 @@ local function apply_light_changes()
 	set_hl(0, "ColorColumn", { bg = "#F5F5F5" })
 	set_hl(0, "Statusline", { bg = cursorLineNrBg, fg = status_ln.fg })
 	set_hl(0, "StatuslineNC", { bg = cursorLineNrBg })
-	set_hl(0, "WinBar", { bg = background_color, bold = true })
+	set_hl(0, "WinBar", { bg = background_color })
 	set_hl(0, "WinbarNC", { bg = background_color })
 	set_hl(0, "Special", { fg = StatementHi.fg })
 	set_hl(0, "ColorColumn", { bg = ColorColumn })
@@ -54,11 +60,25 @@ local function apply_light_changes()
 	set_hl(0, "MatchParen", { bg = selection })
 	set_hl(0, "NormalFloat", { bg = background_color })
 
-	set_hl(0, "Identifier", {})
-	set_hl(0, "@variable", {})
-	set_hl(0, "@variable.member", {})
-	set_hl(0, "variable", {})
-	set_hl(0, "variable.member", {})
+	-- set_hl(0, "keyword", { fg = github_violet })
+
+	--
+	-- set_hl(0, "Identifier", { fg = github_violet })
+	-- set_hl(0, "type", { fg = github_violet })
+
+	-- set_hl(0, "Identifier", { fg = DarkYellow })
+	-- set_hl(0, "type", { fg = DarkYellow })
+
+    set_hl(0, "type", { fg = IdentifierHi.fg})
+	set_hl(0, "@variable.member", { fg = IdentifierHi.fg})
+	-- set_hl(0, "@variable.member", { fg = DarkYellow})
+
+
+	-- set_hl(0, "@property", {})
+	-- set_hl(0, "@variable", {})
+	-- set_hl(0, "@variable.member", { fg = github_violet })
+	-- set_hl(0, "variable", {})
+	-- set_hl(0, "variable.member", {})
 end
 
 local function apply_dark_changes()
@@ -124,7 +144,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = fix_default_colorscheme,
 })
 
--- vim.cmd("set bg=light")
-vim.cmd("set bg=dark")
+vim.cmd("set bg=light")
+-- vim.cmd("set bg=dark")
 vim.cmd("colorscheme default")
 fix_default_colorscheme()

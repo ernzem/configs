@@ -11,7 +11,7 @@ return {
 		},
 
 		palettes = {
-			github_light = {
+			github_light_high_contrast = {
 				inactive = '#EEEEEE', -- not working at the moment
 			},
 		},
@@ -27,7 +27,7 @@ return {
 
 		groups = {
 			github_light_high_contrast = {
-		-- 		NormalNC = { bg = "inactive" }, -- Non-current windows
+				Normal = { bg = 'inactive' },
 				-- StatusLine = { bg = "#eeeeee" },
 				StatusLineNC = { bg = 'inactive' },
 

@@ -52,7 +52,7 @@ return {
 		{
 			"<leader>b",
 			function()
-				Snacks.picker.buffers({layout = dock})
+				Snacks.picker.buffers({ layout = dock })
 			end,
 			desc = "Buffers",
 		},
@@ -73,7 +73,7 @@ return {
 		{
 			"<leader>f",
 			function()
-				Snacks.picker.files({layout = dock})
+				Snacks.picker.files({ layout = dock })
 			end,
 			desc = "Find Files",
 		},
@@ -97,6 +97,13 @@ return {
 				Snacks.picker.lsp_workspace_symbols()
 			end,
 			desc = "LSP Workspace Symbols",
+		},
+		{
+			"<leader>sc",
+			function()
+				Snacks.picker.highlights()
+			end,
+			desc = "Highlights",
 		},
 	},
 }

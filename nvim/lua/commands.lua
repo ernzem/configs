@@ -24,15 +24,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
-
-vim.api.nvim_create_user_command("NrColumnToggle", function()
-	if not vim.opt.nu then
-		return
-	end
-
-	if vim.opt.relativenumber._value then
-		vim.opt.relativenumber = false
-	else
-		vim.opt.relativenumber = true
-	end
-end, {})

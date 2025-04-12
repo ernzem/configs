@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Set relative line number
 vim.opt.nu = true
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 
 -- Remove "~" from empty lines
 vim.opt.fillchars = { eob = " "}
