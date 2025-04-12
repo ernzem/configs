@@ -30,13 +30,13 @@ end
 
 if wezterm.target_triple:find("linux") ~= nil then
 	config.font = wezterm.font({
-		family = "JetBrains Mono ExtraLight",
+		family = "JetBrains Mono Medium",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	})
-	config.font_size = 12
+	config.font_size = 10.8
 	config.window_decorations = "RESIZE"
 	config.freetype_load_target = "Light"
-	config.line_height = 1.1
+	config.line_height = 1.2
 end
 
 config.font_rules = {
