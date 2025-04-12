@@ -18,21 +18,16 @@ local function change_colors(changes)
 end
 
 local function apply_light_changes()
-	-- NvimLightGrey1 = "" or 12895949
-	-- NvimLightGrey3 = "#2c2e33"
-	-- local DarkYellow = "#756200"
-	-- local background_color = "#E6E6E6"
-	-- local background_color = "#E1E1E1"
-
-	local background_color = "#F6F6F6"
+	local background_color = "#FAFAFA"
 	local cursorLineNrBg = "#DDDDDD"
 	local ColorColumn = "#DDDDDD"
-	local DarkYellow = "#754a00"
-	local blue = "#284bbd"
-	local green = "#30670f"
+	local DarkYellow = "#664200"
+    local cyan = "#004e75"
+	local green = "#005600"
 	local selection = "#D1D1D1"
+    local blue = "#153bb7"
 	local yellow = "#b58407"
-	local github_violet = "#512598"
+	local github_violet = "#5625B1"
 
 	-- TODO: optimize replacing get with hardcoded values
 	local status_ln = get_hl(0, { name = "StatuslineNC" })
@@ -40,12 +35,14 @@ local function apply_light_changes()
 	local IdentifierHi = get_hl(0, { name = "Identifier" })
 
 	change_colors({
-		-- [get_hl(0, { name = "Function" }).fg] = blue,
-		[get_hl(0, { name = "Function" }).fg] = DarkYellow,
+		[get_hl(0, { name = "Identifier" }).fg] = cyan,
+		[get_hl(0, { name = "Identifier" }).fg] = DarkYellow,
+		-- [get_hl(0, { name = "Function" }).fg] = DarkYellow,
+		[get_hl(0, { name = "Function" }).fg] = blue,
 		[get_hl(0, { name = "String" }).fg] = green,
 	})
 
-	set_hl(0, "Normal", { bg = background_color, fg = "#000000" })
+	set_hl(0, "Normal", { bg = background_color, fg = "#494949" })
 	set_hl(0, "ColorColumn", { bg = "#F5F5F5" })
 	set_hl(0, "Statusline", { bg = cursorLineNrBg, fg = status_ln.fg })
 	set_hl(0, "StatuslineNC", { bg = cursorLineNrBg })
@@ -60,9 +57,7 @@ local function apply_light_changes()
 	set_hl(0, "MatchParen", { bg = selection })
 	set_hl(0, "NormalFloat", { bg = background_color })
 
-	-- set_hl(0, "keyword", { fg = github_violet })
-
-	--
+	set_hl(0, "keyword", { fg = github_violet })
 	-- set_hl(0, "Identifier", { fg = github_violet })
 	-- set_hl(0, "type", { fg = github_violet })
 
@@ -72,7 +67,6 @@ local function apply_light_changes()
     set_hl(0, "type", { fg = IdentifierHi.fg})
 	set_hl(0, "@variable.member", { fg = IdentifierHi.fg})
 	-- set_hl(0, "@variable.member", { fg = DarkYellow})
-
 
 	-- set_hl(0, "@property", {})
 	-- set_hl(0, "@variable", {})
