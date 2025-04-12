@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- Maximize on startup
@@ -18,7 +19,7 @@ end)
 
 if wezterm.target_triple:find("darwin") ~= nil then
 	config.font = wezterm.font({
-		family = "JetBrains Mono",
+		family = "JetBrains Mono Medium",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 	})
 	config.font_size = 14
@@ -50,23 +51,22 @@ config.font_rules = {
 		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
 	},
 }
-config.font = wezterm.font({
-	family = "JetBrains Mono Regular",
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-})
 
 config.max_fps = 144
 config.scroll_to_bottom_on_input = true
 config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom = "0cell" }
 
-config.color_scheme = "Default Dark (base16)"
--- config.color_scheme = "Mexico Light (base16)"
+-- config.color_scheme = "Default Dark (base16)"
+-- config.color_scheme = 'Catppuccin Mocha'
+config.color_scheme = "Mexico Light (base16)"
+-- config.color_scheme = 'Tokyo Night Storm'
 config.colors = {
-    background = "#14161b",
+	-- background = "#14161b",
 	-- background = "#232326",
-	-- background = "#F6F6F6",
 	-- background = "#E6E6E6",
-	-- foreground = "#000000",
+    --
+    background = "#F6F6F6",
+	foreground = "#000000",
 }
 
 config.tab_max_width = 40
@@ -75,7 +75,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.switch_to_last_active_tab_when_closing_tab = true
 
--- config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 1000 }
 config.keys = {
 	{
 		key = "Space",
@@ -97,6 +97,56 @@ config.keys = {
 				panes[2].pane:activate()
 			end
 		end),
+	},
+	{
+		key = "1",
+		mods = "LEADER",
+		action = act.ActivateTab(0),
+	},
+	{
+		key = "2",
+		mods = "LEADER",
+		action = act.ActivateTab(1),
+	},
+	{
+		key = "3",
+		mods = "LEADER",
+		action = act.ActivateTab(2),
+	},
+	{
+		key = "4",
+		mods = "LEADER",
+		action = act.ActivateTab(3),
+	},
+	{
+		key = "5",
+		mods = "LEADER",
+		action = act.ActivateTab(4),
+	},
+	{
+		key = "6",
+		mods = "LEADER",
+		action = act.ActivateTab(5),
+	},
+	{
+		key = "7",
+		mods = "LEADER",
+		action = act.ActivateTab(6),
+	},
+	{
+		key = "8",
+		mods = "LEADER",
+		action = act.ActivateTab(7),
+	},
+	{
+		key = "9",
+		mods = "LEADER",
+		action = act.ActivateTab(8),
+	},
+	{
+		key = "0",
+		mods = "LEADER",
+		action = act.ActivateTab(9),
 	},
 }
 
