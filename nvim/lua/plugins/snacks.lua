@@ -2,8 +2,8 @@ local h_layout = {
 	preset = "default",
 	layout = {
 		box = "horizontal",
-		height = 0.95,
-		width = 0.95,
+		height = 0.9,
+		width = 0.9,
 		{
 			box = "vertical",
 			border = "rounded",
@@ -37,7 +37,7 @@ return {
 	opts = {
 		picker = {
 			enabled = true,
-			sources = {
+			sources= {
 				explorer = {
 					diagnostics = false,
 					diagnostics_open = false,
@@ -73,7 +73,7 @@ return {
 		{
 			"<leader>f",
 			function()
-				Snacks.picker.files({ layout = dock })
+				Snacks.picker.files({ layout = dock, hidden = true })
 			end,
 			desc = "Find Files",
 		},
@@ -87,7 +87,7 @@ return {
 		{
 			"<leader>e",
 			function()
-				Snacks.explorer()
+				Snacks.explorer({ hidden = true })
 			end,
 			desc = "File Explorer",
 		},
