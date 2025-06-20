@@ -19,12 +19,22 @@ end)
 
 if wezterm.target_triple:find("darwin") ~= nil then
 	config.font = wezterm.font({
-		family = "JetBrains Mono Medium",
+		family = "JetBrains Mono",
+		-- family = "JetBrains Mono Medium",
+		-- family = "JetBrains Mono Regular",
+		-- family = "JetBrains Mono SemiBold",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+		weight = "DemiBold",
+		-- weight="Medium",
+		-- stretch="UltraExpanded",
+		-- stretch="UltraCondensed",
 	})
-	config.font_size = 14
-	config.window_decorations = "RESIZE"
+	config.font_size = 14.45
+	-- config.font_size = 14
+	-- config.window_decorations = "RESIZE"
 	config.freetype_load_target = "Light"
+	-- config.freetype_render_target = 'HorizontalLcd'
+	-- config.front_end = "OpenGL"
 	config.line_height = 1.2
 end
 
@@ -64,8 +74,8 @@ config.colors = {
 	-- background = "#14161b",
 	-- background = "#232326",
 	-- background = "#E6E6E6",
-    --
-    background = "#F6F6F6",
+	--
+	-- background = "#FFFFFF",
 	foreground = "#000000",
 }
 
