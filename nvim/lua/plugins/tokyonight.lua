@@ -1,8 +1,8 @@
 return {
 	"folke/tokyonight.nvim",
-	-- event = "VeryLazy",
-	lazy = false,
-	priority = 1000,
+	event = "VeryLazy",
+	-- lazy = false,
+	-- priority = 1000,
 	opts = {
 		style = "storm",
 		day_brightness = 0.1,

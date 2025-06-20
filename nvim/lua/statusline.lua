@@ -62,7 +62,7 @@ local function branch_name()
 end
 
 function M.workspace_dir()
-    return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    return "   " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 end
 
 function M.grapple_marks()

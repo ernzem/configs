@@ -18,7 +18,9 @@ local function change_colors(changes)
 end
 
 local function apply_light_changes()
-	local background_color = "#EEEEEE"
+	-- local background_color = "#E4E4E4"
+	-- local background_color = "#F6F6F6"
+	local background_color = "#FFFFFF"
 	local cursorLineNrBg = "#DDDDDD"
 	local ColorColumn = "#DDDDDD"
 	local DarkYellow = "#664200"
@@ -26,8 +28,8 @@ local function apply_light_changes()
 	local green = "#005600"
 	local selection = "#D1D1D1"
 	local blue = "#153bb7"
-	local github_violet = "#6614b3"
-    -- local yellow = "#b58407"
+	-- local github_violet = "#6614b3"
+	-- local yellow = "#b58407"
 
 	-- TODO: optimize replacing get with hardcoded values
 	local status_ln = get_hl(0, { name = "StatuslineNC" })
@@ -35,13 +37,13 @@ local function apply_light_changes()
 	-- local IdentifierHi = get_hl(0, { name = "Identifier" })
 
 	change_colors({
-		[get_hl(0, { name = "Identifier" }).fg] = cyan,
-		-- [get_hl(0, { name = "Identifier" }).fg] = DarkYellow,
+		-- [get_hl(0, { name = "Identifier" }).fg] = cyan,
+		[get_hl(0, { name = "Identifier" }).fg] = DarkYellow,
 		[get_hl(0, { name = "Function" }).fg] = blue,
 		[get_hl(0, { name = "String" }).fg] = green,
 	})
 
-	set_hl(0, "Normal", { bg = background_color, fg = "#333333" })
+	set_hl(0, "Normal", { bg = background_color, fg = "#000000" })
 	set_hl(0, "ColorColumn", { bg = "#F5F5F5" })
 	set_hl(0, "Statusline", { bg = cursorLineNrBg, fg = status_ln.fg })
 	set_hl(0, "StatuslineNC", { bg = cursorLineNrBg })
@@ -50,7 +52,7 @@ local function apply_light_changes()
 	set_hl(0, "ColorColumn", { bg = ColorColumn })
 	set_hl(0, "Special", { fg = StatementHi.fg })
 	set_hl(0, "Cursorline", { bg = background_color })
-	set_hl(0, "CursorlineNr", { fg = DarkYellow, bold = true })
+	set_hl(0, "CursorlineNr", { fg = "#000000", bg = "#CCCCCC", bold = true })
 	set_hl(0, "Visual", { bg = selection })
 	set_hl(0, "MatchParen", { bg = selection })
 	set_hl(0, "NormalFloat", { bg = background_color })
@@ -63,12 +65,14 @@ local function apply_light_changes()
 	-- set_hl(0, "Identifier", { fg = DarkYellow })
 	-- set_hl(0, "type", { fg = DarkYellow })
 
-	set_hl(0, "type", { fg = cyan })
+	-- set_hl(0, "type", { fg = github_violet })
+	-- set_hl(0, "type", { fg = cyan })
+	set_hl(0, "type", { fg = DarkYellow })
 	-- set_hl(0, "@variable.member", { fg = DarkYellow })
-	set_hl(0, "@boolean", { fg = github_violet })
-	set_hl(0, "@number", { fg = github_violet })
+	set_hl(0, "@boolean", { fg = cyan })
+	set_hl(0, "@number", { fg = cyan })
 
-	set_hl(0, "@variable", { fg = "#333333" })
+	set_hl(0, "@variable", { fg = "#000000" })
 	-- set_hl(0, "keyword", { fg = "#333333", bold = true })
 	-- set_hl(0, "@variable", {})
 	-- set_hl(0, "@variable.member", { fg = github_violet })

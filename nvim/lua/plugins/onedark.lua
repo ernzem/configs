@@ -1,15 +1,21 @@
 return {
 	"navarasu/onedark.nvim",
-	-- lazy = false,
-	-- priority = 1000,
-	event = "VeryLazy",
+	lazy = false,
+	priority = 1000,
+	-- event = "VeryLazy",
 	config = function()
 		require("onedark").setup({
-			style = "light",
+			style = "deep",
 			toggle_style_key = "<leader>cs",
-			-- toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
-			toggle_style_list = { "warm", "warmer", "light" },
+			toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+			-- toggle_style_list = { "warm", "warmer", "light" },
 			diagnostics = { darker = false },
+			code_style = {
+				comments = "none",
+			},
+			-- colors = {
+			-- 	bg0 = "#ffffff",
+			-- },
 			highlights = {
 				CursorLine = { bg = "$bg0" },
 				CursorLineNr = { bg = "$bg2", bold = true },
@@ -31,7 +37,7 @@ return {
 
 				NvimTreeNormal = { bg = "$bg0" },
 				NvimTreeVerticalSplit = { bg = "$bg0" },
-                NvimTreeEndOfBuffer = { bg = "$bg0"}
+				NvimTreeEndOfBuffer = { bg = "$bg0" },
 			},
 		})
 
@@ -39,7 +45,11 @@ return {
 			group = vim.api.nvim_create_augroup("onedark-theme-changes", { clear = true }),
 			pattern = "onedark",
 			callback = function()
-				-- Disable lua variable highlight
+
+				-- if vim.o.background == "light" then
+				-- vim.api.nvim_set_hl(0, "Normal", { bg = "#FFFFFF" })
+				-- end
+
 				vim.api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary", {})
 				vim.api.nvim_set_hl(0, "@lsp.type.parameter", {})
 				vim.api.nvim_set_hl(0, "@variable", {})
@@ -47,9 +57,10 @@ return {
 
 				-- Others
 				vim.api.nvim_set_hl(0, "@variable.parameter", {})
+				vim.api.nvim_set_hl(0, "@punctuation.bracket", {})
 			end,
 		})
 
-		-- vim.cmd("colorscheme onedark")
+		vim.cmd("colorscheme onedark")
 	end,
 }
