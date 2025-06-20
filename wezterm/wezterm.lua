@@ -66,9 +66,9 @@ config.max_fps = 144
 config.scroll_to_bottom_on_input = true
 config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom = "0cell" }
 
--- config.color_scheme = "Default Dark (base16)"
+config.color_scheme = "Default Dark (base16)"
 -- config.color_scheme = 'Catppuccin Mocha'
-config.color_scheme = "Mexico Light (base16)"
+-- config.color_scheme = "Mexico Light (base16)"
 -- config.color_scheme = 'Tokyo Night Storm'
 config.colors = {
 	-- background = "#14161b",
@@ -76,7 +76,7 @@ config.colors = {
 	-- background = "#E6E6E6",
 	--
 	-- background = "#FFFFFF",
-	foreground = "#000000",
+	-- foreground = "#000000",
 }
 
 config.tab_max_width = 40
