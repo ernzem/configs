@@ -20,6 +20,7 @@
       if: '[ "$(uname -s)" = "Linux" ]'
       create: true
       relink: true
+      force:  true
 - link:
     ~/.config/Code/User/settings.json:  code/User/settings.json
     ~/.config/Code/User/keybindings.json:  code/User/keybindings.json
@@ -34,6 +35,8 @@
     ~/.config/gammastep/:  gammastep
     ~/.config/sublime-text/Packages/Default/:  sublime_text/Default
     ~/.config/sublime-text/Packages/User/:  sublime_text/User
+    ~/.config/user-dirs.dirs: linux_config/user-dirs.dirs
+    
 
 # Mac
 - defaults:
