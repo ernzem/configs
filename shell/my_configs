@@ -28,30 +28,39 @@ esac
 
 # Editor for other commands
 export EDIT="nvim"
-# export EDIT="subl ."
 
-# Share history across shells
-setopt SHARE_HISTORY
+# TODO: change shell config script to import zsh config as separate zsh config file
+if [ ! -z ${ZSH_VERSION+x} ]; then
+    # echo "this is zsh"
+	# Share history across shells
+	setopt SHARE_HISTORY
 
-# Ensure that history is appended immedaitely
-setopt INC_APPEND_HISTORY
+	# Ensure that history is appended immedaitely
+	setopt INC_APPEND_HISTORY
 
-# History time format
-export HISTTIMEFORMAT="[%F %T] "
+	# History time format
+	export HISTTIMEFORMAT="[%F %T] "
 
-# History size
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+	# History size
+	HISTFILE=~/.zsh_history
+	HISTSIZE=1000000
+	SAVEHIST=1000000
 
-# Adds timestamp to cmd history file
-setopt EXTENDED_HISTORY
+	# Adds timestamp to cmd history file
+	setopt EXTENDED_HISTORY
 
-# Don't write duplicated cmds to history file.
-# setopt HIST_IGNORE_ALL_DUPS
+	# Don't write duplicated cmds to history file.
+	# etopt HIST_IGNORE_ALL_DUPS
 
-# Write cmd history as is, but when serching cmd in history, show cmds without duplicates
-setopt HIST_FIND_NO_DUPS
+	# Write cmd history as is, but when serching cmd in history, show cmds without duplicates
+	setopt HIST_FIND_NO_DUPS
+
+# elif [ ! -z ${BASH_VERSION+x} ]; then
+    # echo "this is bash"
+    # echo $BASH_SOURCE
+# else
+#    echo "not recognized!!!!"
+fi
 
 #Starts starship in default shell
 eval "$(starship init $SHELL)"
@@ -89,11 +98,19 @@ gd() {
 # Optional:
 #  2nd -> desired indentation. 4 by default
 fjson() {
-    local i=4
-    if [[ "$2" =~ ^[0-9]+$ ]]; then i="$2" fi
-    jq --indent $i <<< $1 | tocbd && fromcbd | jq && echo '\nCopied to clipboard!'
+    local indent=4
+    if [[ "$2" =~ ^[0-9]+$ ]] then
+       indent="$2"
+    fi
+
+    # jq --indent $i <<< $1 | tocbd && fromcbd | jq && echo '\nCopied to clipboard!'
+    local fjson=$(echo "$1" | jq --indent $indent '.')
+    echo "$fjson"| tocbd
+    echo "$fjson"
+    printf "\nCopied to clipboard!\n"
 }
 
+# Generates unique uuid
 genuuid() {
     local cmd=$(uuidgen)
 
@@ -102,5 +119,8 @@ genuuid() {
 	    cmd=$(uuidgen | tr A-Z a-z)
     fi
 
-    echo -n "$cmd" | tocbd && fromcbd && echo '\nCopied to clipboard!'
+    # echo -n "$cmd" | tocbd && fromcbd && echo '\nCopied to clipboard!'
+    echo -n "$cmd" | tocbd
+    echo "$cmd"
+    printf "Copied to clipboard!\n"
 }
