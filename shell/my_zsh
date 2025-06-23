@@ -1,0 +1,22 @@
+# Share history across shells
+setopt SHARE_HISTORY
+
+# Ensure that history is appended immedaitely
+setopt INC_APPEND_HISTORY
+
+# History time format
+export HISTTIMEFORMAT="[%F %T] "
+
+# History size
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# Adds timestamp to cmd history file
+setopt EXTENDED_HISTORY
+
+# Don't write duplicated cmds to history file.
+# setopt HIST_IGNORE_ALL_DUPS
+
+# Write cmd history as is, but when serching cmd in history, show cmds without duplicates
+setopt HIST_FIND_NO_DUPS
