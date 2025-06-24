@@ -13,8 +13,11 @@ sudo dnf install -y fd-find
 sudo dnf install -y gnupg
 sudo dnf install -y ripgrep
 sudo dnf install -y pandoc
-sudo dnf group install c-development # Nvim needs c compiler but i install c dev tools
+sudo dnf install -y gnome-extensions-app
+sudo dnf group install -y c-development # Nvim needs c compiler but i install c dev tools
+sudo dnf install -y podman
 # sudo dnf install -y zsh
+# sudo dnf install -y alacritty
 
 # Bat
 sudo dnf install -y bat
@@ -29,6 +32,9 @@ curl -sS https://starship.rs/install.sh | sh
 
  # Flathub
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+# Flatpaks: Extensions Manager
+# flatpak install flathub com.mattjakeman.ExtensionManager
 
 # FZF installation
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
