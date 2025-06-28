@@ -50,7 +50,7 @@ vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 10
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noinsert" }
 
 -- Default tab behavior
 vim.opt.tabstop = 4

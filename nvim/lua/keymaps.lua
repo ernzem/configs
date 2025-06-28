@@ -44,7 +44,7 @@ local comment_line_in_insert = function()
 	return "<cmd>stopinsert<cr>" .. comment_line() .. "<cmd>startinsert<cr>"
 end
 
-key.set("n", "<C-/>", comment_line, { expr = true, desc = "Toggle comment line" })
+key.set({"n", "v"}, "<C-/>", comment_line, { expr = true, desc = "Toggle comment line" })
 key.set("i", "<C-/>", comment_line_in_insert, { expr = true, desc = "Toggle comment line" })
 ----------------------------------------------------------------------------------------------
 
