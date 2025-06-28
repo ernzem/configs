@@ -1,11 +1,11 @@
 Automount Failai partition as /mnt/failai
 Copy/create ssh keys to ~/.ssh folder
 bash ssh-permissions.sh
-bash Fedora/settings.sh
-bash Fedora/app_install.sh
+bash fedora/apps_install.sh
+bash gnome/settings.sh
 bash shell_cfg_install.sh
-bash nerdfonts.sh
-install original JetBrains Mono fonts
+bash other/nerdfonts.sh
+bash jet-brains-mono-fonts.sh
 bash go-linux-install.sh 1.24.4 && exec bash
 install go tools
 
