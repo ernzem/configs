@@ -86,6 +86,27 @@
             ]
         },
         {
+            "description": "left_option + w  -> Chrome",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Google Chrome.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
             "description": "left_option + w  -> Brave",
             "manipulators": [
                 {

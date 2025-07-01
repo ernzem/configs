@@ -4,27 +4,40 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "left_option + d  -> Ghostty",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Ghostty.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + s  -> Sublime Text",
+                        "description": "left_option + s  -> VSCodium",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["left_option"] }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/VSCodium.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + w  -> Chrome",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Google Chrome.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + d  -> WezTerm",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
                                 "type": "basic"
                             }
                         ]
@@ -64,19 +77,6 @@
                                     "modifiers": { "mandatory": ["left_option"] }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/Postman.app'" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + w  -> Firefox",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [{ "shell_command": "open '/Applications/Firefox.app'" }],
                                 "type": "basic"
                             }
                         ]
