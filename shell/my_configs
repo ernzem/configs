@@ -59,6 +59,12 @@ gd() {
   git diff $@ --name-only | fzf -m --ansi --preview $preview
 }
 
+# fuzzy find git STAGED file differences
+gds() {
+  preview="git diff --staged $@ --color=always -- {-1}"
+  git diff --staged $@ --name-only | fzf -m --ansi --preview $preview
+}
+
 # Format Json, print outptut & copy to clipboard.
 # Required params:
 #  1st -> raw Json string. Required
