@@ -1,0 +1,17 @@
+theme = dark:Operator Mono Dark,light:AtomOneLight
+#theme = Operator Mono Dark
+
+font-family = JetBrainsMono Nerd Font
+#font-size = 14
+#font-size = 14.6
+font-size = 16
+font-feature="-calt, -liga, -dlig"
+
+quick-terminal-position=bottom
+keybind = ctrl+space=toggle_quick_terminal
+
+font-thicken=true
+font-thicken-strength=200
+
+adjust-cell-width = "-10%"
+#adjust-cell-height = "5%"
