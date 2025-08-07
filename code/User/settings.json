@@ -1,8 +1,9 @@
 {
     "editor.minimap.enabled": false,
     "editor.scrollbar.verticalScrollbarSize": 8,
+    "editor.scrollbar.horizontalScrollbarSize": 8,
     "editor.fontSize": 14,
-    "editor.lineHeight": 1.6,
+    "editor.lineHeight": 1.4,
     "workbench.activityBar.location": "hidden",
     "editor.stickyScroll.enabled": false,
     "editor.hover.enabled": false,
@@ -15,30 +16,37 @@
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    // "editor.fontFamily": "JetBrains Mono Regular,Menlo, Monaco, 'Courier New', monospace",
     "editor.fontFamily": "JetBrains Mono Regular,Menlo, Monaco, 'Courier New', monospace",
     // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "Fira Code",
     "editor.guides.indentation": false,
+    // "editor.fontWeight": "400",                                                                                                                                                                                                                                      /s
     "editor.bracketPairColorization.enabled": false,
     "editor.tokenColorCustomizations": {
         "[Default Dark Modern]": {
-            "variables": "#BFBFBF",
+            "variables": "#CCCCCC",
             "comments": "#808080",
             // "strings": "#6A9955"
             "strings": "#70aa55"
         },
-        // "[Default Light Modern]": {
-        //     "variables": "#484848",
-        //     "comments": "#707070",
-        //     "strings": "#008000",
-        //     "keywords": "#8f3197"
-        // },
+        "[Default Light Modern]": {
+            // "variables": "#101010",
+            "comments": "#959595",
+            "strings": "#008000",
+            "keywords": {
+                "foreground": "#8f3197",
+                "fontStyle": "bold"
+            }
+        },
         "[chalice-color-theme-light]": {
             "comments": "#707070",
             // "functions": "#936b1f",
             // "types": "#936b1f",
             // "keywords": "#a626a4"
-            "keywords": {"fontStyle": "bold"}
+            "keywords": {
+                "fontStyle": "bold"
+            }
         }
     },
     "workbench.colorCustomizations": {
@@ -96,10 +104,10 @@
     "workbench.iconTheme": "atom-icons",
     "workbench.editor.editorActionsLocation": "hidden",
     "chat.commandCenter.enabled": false,
-    "breadcrumbs.enabled": false,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
     "window.titleBarStyle": "native",
-    "workbench.colorTheme": "chalice-color-theme-light"
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.colorTheme": "Default Light Modern"
 }
