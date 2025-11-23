@@ -4,7 +4,7 @@ import = [
 ]
 
 [font]
-size = 10.6
+size = 14.4
 
 [font.offset]
 x = 0
@@ -16,7 +16,7 @@ y = 1
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "Medium"
+style = "SemiBold"
 
 [window]
 # decorations = "None"
