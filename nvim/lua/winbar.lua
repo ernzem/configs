@@ -15,7 +15,6 @@ local hl_info = "WinBarDiagnosticSignInfo"
 
 local opts = {
 	file_icon_default = "",
-	folder_icon = "",
 	seperator = "⏵",
 	editor_state = "●",
 }
@@ -42,10 +41,10 @@ M.file_path = function()
 
 	local icon, icon_cl = utils.file_icon(filename, file_type)
 	if icon ~= "" then
-		vim.api.nvim_set_hl(0, hl_file_icon, { fg = icon_cl, bg = M.winbar_bg, bold = true })
+		vim.api.nvim_set_hl(0, hl_file_icon, { fg = icon_cl, bg = M.winbar_bg, bold = false })
 	else
         icon = opts.file_icon_default
-		vim.api.nvim_set_hl(0, hl_file_icon, { fg = M.winbar_fg, bg = M.winbar_bg, bold = true })
+		vim.api.nvim_set_hl(2, hl_file_icon, { fg = M.winbar_fg, bg = M.winbar_bg, bold = false })
 	end
 
 	icon = "%#" .. hl_file_icon .. "#" .. icon .. "%*"
@@ -57,15 +56,15 @@ M.file_path = function()
 	end)
 
 	local path_length = #file_path_list
-	if path_length > 0 then
-		value = value .. opts.folder_icon .. " "
-	end
+	-- if path_length > 0 then
+	-- 	value = value .. opts.folder_icon .. " "
+	-- end
 
 	for i = 1, path_length do
 		local sep = opts.seperator
-		if i ~= path_length then
-			sep = sep .. " " .. opts.folder_icon
-		end
+		-- if i ~= path_length then
+		-- 	sep = sep .. " " .. opts.folder_icon
+		-- end
 
 		value = value .. "%#" .. hl_path .. "#" .. file_path_list[i] .. " " .. sep .. " %*"
 	end

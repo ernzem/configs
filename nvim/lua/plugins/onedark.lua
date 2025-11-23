@@ -1,8 +1,8 @@
 return {
 	"navarasu/onedark.nvim",
-	lazy = false,
-	priority = 1000,
-	-- event = "VeryLazy",
+	-- lazy = false,
+	-- priority = 1000,
+	event = "VeryLazy",
 	config = function()
 		require("onedark").setup({
 			style = "deep",
@@ -13,12 +13,8 @@ return {
 			code_style = {
 				comments = "none",
 			},
-			-- colors = {
-			-- 	bg0 = "#ffffff",
-			-- },
 			highlights = {
-				CursorLine = { bg = "$bg0" },
-				CursorLineNr = { bg = "$bg2", bold = true },
+				CursorLineNr = { bg = "$bg3", bold = true },
 				FoldColumn = { fg = "$grey", bg = "$bg0" },
 				GitSignsChange = { fg = "$yellow" },
 				GitSignsChangeNr = { fg = "$yellow" },
@@ -45,10 +41,11 @@ return {
 			group = vim.api.nvim_create_augroup("onedark-theme-changes", { clear = true }),
 			pattern = "onedark",
 			callback = function()
-
 				-- if vim.o.background == "light" then
 				-- vim.api.nvim_set_hl(0, "Normal", { bg = "#FFFFFF" })
 				-- end
+
+				vim.api.nvim_set_hl(0, "WinBar", { bold = false })
 
 				vim.api.nvim_set_hl(0, "@lsp.typemod.variable.defaultLibrary", {})
 				vim.api.nvim_set_hl(0, "@lsp.type.parameter", {})
@@ -61,6 +58,6 @@ return {
 			end,
 		})
 
-		vim.cmd("colorscheme onedark")
+		-- vim.cmd("colorscheme onedark")
 	end,
 }

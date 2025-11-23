@@ -118,9 +118,9 @@ function Statusline()
         " ",
         workspace_dir,
         align_right,
-        " | ",
+        "  ",
         linecol,
-        " | ",
+        "  ",
         percentage,
         " ",
     })

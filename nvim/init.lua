@@ -21,7 +21,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { change_detection = { notify = false } })
----------------------------------------------------------------------------
+-------------------------------------------------------------------------
+require("colors")
 require("defaults")
 require("commands")
 require("winbar")

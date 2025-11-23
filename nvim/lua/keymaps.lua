@@ -48,7 +48,6 @@ key.set({"n", "v"}, "<C-/>", comment_line, { expr = true, desc = "Toggle comment
 key.set("i", "<C-/>", comment_line_in_insert, { expr = true, desc = "Toggle comment line" })
 ----------------------------------------------------------------------------------------------
 
-key.set("n", "<C-space>", ":", { desc = "Enter command" })
 key.set("n", "<C-;>", ":!", { desc = "Run shell command" })
 
 key.set("i", "<C-j>", "<ESC>", { desc = "Exit insert mode" })

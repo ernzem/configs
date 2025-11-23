@@ -6,9 +6,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.nu = true
 -- vim.opt.relativenumber = true
 
--- Remove "~" from empty lines
-vim.opt.fillchars = { eob = " "}
-
 -- Enable mouse mode
 vim.opt.mouse = "a"
 
@@ -34,6 +31,10 @@ vim.opt.backup = false
 -- Save undo history
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+
+-- We want string-like-this to be treated as word. That however means that proper spacing must
+-- be used in arithmetic operations.
+vim.opt.iskeyword:append('-')
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
@@ -73,3 +74,5 @@ vim.opt.showmode = false
 vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
 vim.opt.titlestring = "%{fnamemodify(getcwd(0), ':t')}"
+
+vim.diagnostic.config({ virtual_text = true })
