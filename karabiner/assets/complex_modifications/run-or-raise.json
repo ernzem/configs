@@ -213,6 +213,28 @@
             ]
         },
         {
+            "description": "left_option + shift + s  -> VSCodium",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/VSCodium.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
             "description": "left_option + s  -> Sublime Text",
             "manipulators": [
                 {
@@ -221,6 +243,28 @@
                         "modifiers": {
                             "mandatory": [
                                 "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Sublime Text.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + shift + s  -> Sublime Text",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option",
+                                "left_shift"
                             ]
                         }
                     },
