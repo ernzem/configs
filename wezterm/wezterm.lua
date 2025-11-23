@@ -3,11 +3,11 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- Maximize on startup
-local mux = wezterm.mux
-wezterm.on("gui-startup", function()
-	local _, _, window = mux.spawn_window({})
-	window:gui_window():maximize()
-end)
+-- local mux = wezterm.mux
+-- wezterm.on("gui-startup", function()
+-- 	local _, _, window = mux.spawn_window({})
+-- 	window:gui_window():maximize()
+-- end)
 
 -- Set window titlebar the same as pane title
 wezterm.on("format-window-title", function(tab)
@@ -19,23 +19,30 @@ end)
 
 if wezterm.target_triple:find("darwin") ~= nil then
 	config.font = wezterm.font({
-		family = "JetBrains Mono",
-		-- family = "JetBrains Mono Medium",
+		-- family = "Hack Nerd Font",
 		-- family = "JetBrains Mono Regular",
+		-- family = "JetBrains Mono ExtraLight",
+		family = "JetBrains Mono Medium",
 		-- family = "JetBrains Mono SemiBold",
+		-- family = "Fira Code Retina",
+		-- family = "Fira Code Medium",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-		weight = "DemiBold",
-		-- weight="Medium",
+		-- weight = "DemiBold",
+		-- weight = "Bold",
+		-- weight = "Retina",
 		-- stretch="UltraExpanded",
 		-- stretch="UltraCondensed",
 	})
-	config.font_size = 14.45
-	-- config.font_size = 14
-	-- config.window_decorations = "RESIZE"
+	-- config.font_size = 14.4
+	-- config.font_size = 16
+	config.font_size = 15
+	config.window_decorations = "RESIZE"
 	config.freetype_load_target = "Light"
+	config.freetype_load_flags = "NO_HINTING"
+	-- config.freetype_load_flags = 'DEFAULT'
 	-- config.freetype_render_target = 'HorizontalLcd'
 	-- config.front_end = "OpenGL"
-	config.line_height = 1.2
+	-- config.line_height = 1.1
 end
 
 if wezterm.target_triple:find("linux") ~= nil then
@@ -86,26 +93,38 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.switch_to_last_active_tab_when_closing_tab = true
 
-config.leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 1000 }
+config.leader = { key = "Tab", mods = "CTRL", timeout_milliseconds = 1000 }
+local last_active_pane_id = nil
+
 config.keys = {
 	{
-		key = "Space",
+		key = "k",
+		mods = "LEADER",
+		action = act.ShowTabNavigator,
+	},
+	{
+		key = "k",
 		mods = "CTRL",
 		action = wezterm.action_callback(function(_, pane)
 			local tab = pane:tab()
 			local panes = tab:panes_with_info()
 			if #panes == 1 then
 				pane:split({
-					-- direction = "Right",
 					direction = "Bottom",
-					size = 0.25,
+					size = 0.35,
 				})
-			elseif not panes[1].is_zoomed then
-				panes[1].pane:activate()
-				tab:set_zoomed(true)
 			elseif panes[1].is_zoomed then
 				tab:set_zoomed(false)
-				panes[2].pane:activate()
+				for _, p in ipairs(panes) do
+					if p.pane:pane_id() == last_active_pane_id then
+						p.pane:activate()
+						return
+					end
+				end
+			else
+				last_active_pane_id = pane:pane_id()
+				panes[1].pane:activate()
+				tab:set_zoomed(true)
 			end
 		end),
 	},
