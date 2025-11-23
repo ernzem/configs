@@ -1,14 +1,16 @@
 {
-	"theme": "Adaptive.sublime-theme",
-	"color_scheme": "Alabaster.sublime-color-scheme",
+	"theme": "Default.sublime-theme",
+	"color_scheme": "Mariana.sublime-color-scheme",
 	"draw_indent_guides": false,  
-	"font_face": "JetBrains Mono Regular",
+	"font_face": "JetBrains Mono Medium",
+	"font_size": 15,
 	"word_wrap": true,
-	"line_padding_top": 2,
-	"line_padding_bottom": 2,
+	// "line_padding_top": 1,
+	// "line_padding_bottom": 1,
 	"font_options": [
 		"no_italic"
 	],
+	"line_numbers": true,
 	"show_full_path": true, // Shows full file path in title bar
 	"auto_complete": false,
 	"show_rel_path": true,

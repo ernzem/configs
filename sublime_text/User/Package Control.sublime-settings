@@ -3,6 +3,7 @@
 	"installed_packages":
 	[
 		"Alabaster Color Scheme",
+		"Git blame",
 		"Gomod",
 		"LSP",
 		"LSP-gopls",
