@@ -2,7 +2,7 @@
     "editor.minimap.enabled": false,
     "editor.scrollbar.verticalScrollbarSize": 8,
     "editor.scrollbar.horizontalScrollbarSize": 8,
-    "editor.fontSize": 14,
+    "editor.fontSize": 14.8,
     "editor.lineHeight": 1.4,
     "workbench.activityBar.location": "hidden",
     "editor.stickyScroll.enabled": false,
@@ -16,16 +16,14 @@
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    "editor.fontFamily": "JetBrains Mono Regular,Menlo, Monaco, 'Courier New', monospace",
     // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
-    // "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
-    // "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
-    // "editor.fontWeight": "400",                                                                                                                                                                                                                                      /s
+    // "editor.fontWeight": "460",
     "editor.bracketPairColorization.enabled": false,
     "editor.tokenColorCustomizations": {
         "[Default Dark Modern]": {
-            "variables": "#CCCCCC",
+            // "variables": "#CCCCCC",
             "comments": "#808080",
             // "strings": "#6A9955"
             "strings": "#70aa55"
@@ -101,7 +99,6 @@
     "git.decorations.enabled": false,
     "numberedBookmarks.gutterIconFillColor": "#3452b4",
     "numberedBookmarks.gutterIconNumberColor": "#f2f2f2",
-    "workbench.iconTheme": "atom-icons",
     "workbench.editor.editorActionsLocation": "hidden",
     "chat.commandCenter.enabled": false,
     "extensions.experimental.affinity": {
@@ -109,5 +106,8 @@
     },
     "window.titleBarStyle": "native",
     "git.openRepositoryInParentFolders": "never",
-    "workbench.colorTheme": "Default Light Modern"
+    "editor.parameterHints.enabled": false,
+    "workbench.iconTheme": "chalice-icon-theme",
+    "breadcrumbs.enabled": false,
+    "workbench.colorTheme": "Darkwaves: Nebula"
 }

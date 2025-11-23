@@ -20,6 +20,79 @@
         "command": "-editor.action.formatDocument.none",
         "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
     },
+    {
+        "key": "cmd+1",
+        "command": "-numberedBookmarks.jumpToBookmark1",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+2",
+        "command": "-numberedBookmarks.jumpToBookmark2",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+3",
+        "command": "-numberedBookmarks.jumpToBookmark3",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+4",
+        "command": "-numberedBookmarks.jumpToBookmark4",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+5",
+        "command": "-numberedBookmarks.jumpToBookmark5",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+6",
+        "command": "-numberedBookmarks.jumpToBookmark6",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+7",
+        "command": "-numberedBookmarks.jumpToBookmark7",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+1",
+        "command": "numberedBookmarks.jumpToBookmark1"
+    },
+    {
+        "key": "cmd+2",
+        "command": "numberedBookmarks.jumpToBookmark2"
+    },
+    {
+        "key": "cmd+3",
+        "command": "numberedBookmarks.jumpToBookmark3"
+    },
+    {
+        "key": "cmd+4",
+        "command": "numberedBookmarks.jumpToBookmark4"
+    },
+    {
+        "key": "cmd+5",
+        "command": "numberedBookmarks.jumpToBookmark5"
+    },
+    {
+        "key": "cmd+6",
+        "command": "numberedBookmarks.jumpToBookmark6"
+    },
+    {
+        "key": "cmd+7",
+        "command": "numberedBookmarks.jumpToBookmark7"
+    },
+    // {
+    //     "key": "ctrl+shift+p",
+    //     "command": "workbench.action.showCommands",
+    //     "when": "isMac"
+    // },
+    // {
+    //     "key": "ctrl+p",
+    //     "command": "workbench.action.quickOpen",
+    //     "when": "isMac"
+    // }
     //  TODO: Add file type and in "when" and fix command
     // {
     //     "key": "shift+space",
