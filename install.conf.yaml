@@ -36,7 +36,8 @@
     ~/.config/sublime-text/Packages/Default/:  sublime_text/Default
     ~/.config/sublime-text/Packages/User/:  sublime_text/User
     ~/.config/user-dirs.dirs: linux_config/user-dirs.dirs
-    
+    ~/.config/ghostty:  ghostty/linux
+
 
 # Mac
 - defaults:
@@ -55,4 +56,4 @@
     ~/.Library/Keyboard Layouts/US Keyboard with Lithuanian letters.bundle: US Keyboard with Lithuanian letters.bundle
     ~/Library/Application Support/Sublime Text/Packages/Default:  sublime_text/Default
     ~/Library/Application Support/Sublime Text/Packages/User:  sublime_text/User
-
+    ~/Library/Application Support/com.mitchellh.ghostty:  ghostty/macos
