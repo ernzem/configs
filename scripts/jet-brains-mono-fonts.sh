@@ -20,6 +20,8 @@ fonts=(
 	"JetBrainsMono"  
 )
 
+mkdir $TMP_FOLDER
+
 for font in ${fonts[@]}
 do
     download_latest_release "JetBrains/JetBrainsMono" "JetBrainsMono.*\.zip\"" "${TMP_FOLDER}/${font}.zip"
