@@ -20,8 +20,9 @@ end)
 if wezterm.target_triple:find("darwin") ~= nil then
 	config.font = wezterm.font({
 		-- family = "Hack Nerd Font",
+		-- family = "JetBrains Mono",
+		-- family = "JetBrains Mono Light",
 		-- family = "JetBrains Mono Regular",
-		-- family = "JetBrains Mono ExtraLight",
 		family = "JetBrains Mono Medium",
 		-- family = "JetBrains Mono SemiBold",
 		-- family = "Fira Code Retina",
@@ -33,11 +34,9 @@ if wezterm.target_triple:find("darwin") ~= nil then
 		-- stretch="UltraExpanded",
 		-- stretch="UltraCondensed",
 	})
-	-- config.font_size = 14.4
-	-- config.font_size = 16
 	config.font_size = 15
 	config.window_decorations = "RESIZE"
-	config.freetype_load_target = "Light"
+	-- config.freetype_load_target = "Light"
 	config.freetype_load_flags = "NO_HINTING"
 	-- config.freetype_load_flags = 'DEFAULT'
 	-- config.freetype_render_target = 'HorizontalLcd'
@@ -74,17 +73,16 @@ config.max_fps = 144
 config.scroll_to_bottom_on_input = true
 config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom = "0cell" }
 
-config.color_scheme = "Default Dark (base16)"
+-- config.color_scheme = "Default Dark (base16)"
 -- config.color_scheme = 'Catppuccin Mocha'
--- config.color_scheme = "Mexico Light (base16)"
+config.color_scheme = "Mexico Light (base16)"
 -- config.color_scheme = 'Tokyo Night Storm'
 config.colors = {
 	-- background = "#14161b",
 	-- background = "#232326",
 	-- background = "#E6E6E6",
-	--
-	-- background = "#FFFFFF",
-	-- foreground = "#000000",
+	background = "#FFFFFF",
+	foreground = "#000000",
 }
 
 config.tab_max_width = 40
@@ -103,8 +101,8 @@ config.keys = {
 		action = act.ShowTabNavigator,
 	},
 	{
-		key = "k",
-		mods = "CTRL",
+		key = "Space",
+		mods = "SHIFT",
 		action = wezterm.action_callback(function(_, pane)
 			local tab = pane:tab()
 			local panes = tab:panes_with_info()
@@ -113,18 +111,12 @@ config.keys = {
 					direction = "Bottom",
 					size = 0.35,
 				})
-			elseif panes[1].is_zoomed then
-				tab:set_zoomed(false)
-				for _, p in ipairs(panes) do
-					if p.pane:pane_id() == last_active_pane_id then
-						p.pane:activate()
-						return
-					end
-				end
-			else
-				last_active_pane_id = pane:pane_id()
+			elseif not panes[1].is_zoomed then
 				panes[1].pane:activate()
 				tab:set_zoomed(true)
+			elseif panes[1].is_zoomed then
+				tab:set_zoomed(false)
+				panes[2].pane:activate()
 			end
 		end),
 	},
