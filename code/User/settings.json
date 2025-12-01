@@ -109,5 +109,6 @@
     "editor.parameterHints.enabled": false,
     "workbench.iconTheme": "chalice-icon-theme",
     "breadcrumbs.enabled": false,
-    "workbench.colorTheme": "Darkwaves: Nebula"
+    "workbench.colorTheme": "Default Light Modern",
+    "workbench.editor.showTabs": "none"
 }
