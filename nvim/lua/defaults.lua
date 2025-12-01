@@ -6,6 +6,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.nu = true
 -- vim.opt.relativenumber = true
 
+-- vim.o.wrap = true
+
 -- Enable mouse mode
 vim.opt.mouse = "a"
 

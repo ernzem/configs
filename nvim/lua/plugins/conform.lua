@@ -26,6 +26,7 @@ return {
         -- end,
         formatters_by_ft = {
             lua = { "stylua" },
+            json = {"jq"}
             -- go = { "goimports-reviser", "gofumpt", "golines" }, -- disabling because in work i golangci is in use
             -- python = { "isort", "black" },
             -- javascript = { { "prettierd", "prettier" } },
