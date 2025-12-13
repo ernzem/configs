@@ -5,6 +5,7 @@
 	},
 	"globals":
 	{
+		"background":                  "#FFFFFF",
 	},
 	"rules":
 	[

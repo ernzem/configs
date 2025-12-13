@@ -2,13 +2,16 @@
 	"bootstrapped": true,
 	"installed_packages":
 	[
-		"Alabaster Color Scheme",
 		"Git blame",
 		"Gomod",
 		"LSP",
+		"LSP-eslint",
 		"LSP-gopls",
+		"LSP-json",
 		"LSP-typescript",
 		"Package Control",
+		"TabsExtra",
+		"Telescope",
 		"Theme - One",
 	],
 	"in_process_packages":

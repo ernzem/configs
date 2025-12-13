@@ -1,25 +1,37 @@
 {
-	"theme": "Default.sublime-theme",
-	"color_scheme": "Mariana.sublime-color-scheme",
-	"draw_indent_guides": false,  
-	"font_face": "JetBrains Mono Medium",
-	"font_size": 15,
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "One Light.sublime-color-scheme",
+	"draw_indent_guides": false,
+	// "font_face": "JetBrains Mono Light",
+	// "font_face": "JetBrains Mono Medium",
+	// "font_face": "JetBrains Mono Regular",
+	"font_face": "JetBrains Mono",
+	// "font_size": 15,
+	"font_size": 14,
+	// "font_size": 14.8,
+	"font_options": [
+		"no_liga",
+		"no_clig",
+		"no_calt"
+	],
 	"word_wrap": true,
 	// "line_padding_top": 1,
 	// "line_padding_bottom": 1,
-	"font_options": [
-		"no_italic"
-	],
 	"line_numbers": true,
-	"show_full_path": true, // Shows full file path in title bar
+	// "show_full_path": true, // Shows full file path in title bar
 	"auto_complete": false,
 	"show_rel_path": true,
-
 	"animation_enabled": false,
-	"ignored_packages": ["Vintage",
+	"ignored_packages": [
+		"Vintage",
 	],
 	"index_files": true,
 	"themed_title_bar": true,
-	"dark_theme": "Default Dark.sublime-theme",
+	"show_git_status": true,
+	"dark_theme": "Default.sublime-theme",
 	"light_theme": "Default.sublime-theme",
+	    // By default TabsExtra forgets a tab's "stickiness" when
+    // any "tab close" command is issued.  You can make the tab's
+    // "Stickiness" persist by enabling the following feature.
+    "persistent_sticky": true,
 }

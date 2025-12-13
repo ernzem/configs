@@ -1,0 +1,5 @@
+{
+	"shell_cmd": "golangci-lint run --no-config",
+	"working_dir": "$folder",
+	"quiet": true
+}

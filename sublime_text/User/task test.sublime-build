@@ -1,0 +1,5 @@
+{
+	"shell_cmd": "task test",
+	"working_dir": "$folder",
+	"quiet": true
+}

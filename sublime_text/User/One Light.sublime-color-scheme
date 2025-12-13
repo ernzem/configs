@@ -1,21 +1,33 @@
 // Documentation at https://www.sublimetext.com/docs/color_schemes.html
 {
-	"variables":
-	{
+	"variables": {
+		"--background": "hsl(0,  100%,  100%)",
+		// "--background": "hsl(230,  2%,  90%)",
+		"--foreground": "hsl(0,  0%,  8%)",
+		"blue": "hsl(240,  70%,  35%)",
+		"green": "hsl(119,  50%,  30%)",
+		"grey2": "hsl(0, 0%, 56%)",
+		"cyan": "hsl(200, 100%, 25%)",
+		"purple": "hsl(295,  80%,  25%)",
+		// "orange2": "hsl(41,  99%,  38%)"
+		"orange2": "hsl( 41,  99%,  30%)",
+		// "red1":    "hsl(0,  0%,  8%)",
 	},
-	"globals":
-	{
-	},
-	"rules":
-	[
+	"globals": {},
+	"rules": [
+		{
+			"scope": "comment, punctuation.definition.comment",
+			"foreground": "var(grey2)",
+			// "font_style": "italic",
+		},
 		{
 			"scope": "source.json meta.mapping.key.json string.quoted.double.json",
-			"foreground": "var(--yellowish)",
+			"foreground": "var(orange1)",
 		},
-		{
-			"scope": "meta.mapping.key string",
-			"foreground": "var(--yellowish)",
-		},
+		// {
+		// 	"scope": "meta.mapping.key string",
+		// 	"foreground": "var(--yellowish)",
+		// },
 		{
 			"scope": "punctuation.accessor",
 			"foreground": "var(--foreground)",
@@ -26,9 +38,57 @@
 			// "font_style": "bold"
 		},
 		{
+			"scope": "keyword",
+			"foreground": "var(purple)",
+			// "font_style": "bold"
+		},
+		{
 			"scope": "variable - variable.other.constant",
 			"foreground": "var(--foreground)",
 		},
-
+		{
+			"scope": "entity.name",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "meta.mapping.key string",
+			"foreground": "var(--foreground)",
+		},
+		// {
+		// 	"scope": "constant",
+		// 	"foreground": "var(--foreground)",
+		// },
+		{
+			"scope": "variable.parameter",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "support.constant",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "entity.name.constant",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "entity.other.attribute-name, entity.other.pseudo-class, entity.other.pseudo-element",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "variable.parameter.type",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "entity.other.inherited-class",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "support.class",
+			"foreground": "var(--foreground)",
+		},
+		{
+			"scope": "entity.name.type, entity.name.class, entity.name.struct, entity.name.enum, entity.name.union, entity.name.trait, entity.name.interface, entity.name.impl, entity.name.namespace, entity.name.module",
+			"foreground": "var(cyan)",
+		},
 	]
 }

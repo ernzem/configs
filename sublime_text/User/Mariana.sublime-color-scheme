@@ -5,8 +5,8 @@
         "white": "hsl(219, 28%, 75%)",
         "white2": "hsl(219, 28%, 75%)",
         "white3": "hsl(219, 28%, 75%)",
-        "blue3": "hsl(210, 25%, 20%)",
-        "blue6": "hsl(221, 12%, 55%)",
+        // "blue3": "hsl(210, 25%, 20%)",
+        // "blue6": "hsl(221, 12%, 55%)",
 	},
 	"globals":
 	{
@@ -14,12 +14,12 @@
 	},
 	"rules":
 	[
-		{
-            "name": "Entity name",
-            "scope": "entity.name.function",
-            "foreground": "var(blue)"
-            // "foreground": "var(orange3)"
-        },
+		// {
+        //     "name": "Entity name",
+        //     "scope": "entity.name.function",
+        //     "foreground": "var(blue)"
+        //     // "foreground": "var(orange3)"
+        // },
         {
             "name": "Punctuation",
             "scope": "punctuation.definition - punctuation.definition.numeric.base",
