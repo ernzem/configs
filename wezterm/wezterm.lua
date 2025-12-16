@@ -34,9 +34,11 @@ if wezterm.target_triple:find("darwin") ~= nil then
 		-- stretch="UltraExpanded",
 		-- stretch="UltraCondensed",
 	})
-	config.font_size = 15
-	config.window_decorations = "RESIZE"
-	-- config.freetype_load_target = "Light"
+	-- config.font_size = 15
+	config.font_size = 14
+	-- config.font_size = 14.4
+	-- config.window_decorations = "RESIZE"
+	config.freetype_load_target = "Light"
 	config.freetype_load_flags = "NO_HINTING"
 	-- config.freetype_load_flags = 'DEFAULT'
 	-- config.freetype_render_target = 'HorizontalLcd'
@@ -92,8 +94,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.switch_to_last_active_tab_when_closing_tab = true
 
 config.leader = { key = "Tab", mods = "CTRL", timeout_milliseconds = 1000 }
-local last_active_pane_id = nil
-
 config.keys = {
 	{
 		key = "k",
@@ -108,8 +108,8 @@ config.keys = {
 			local panes = tab:panes_with_info()
 			if #panes == 1 then
 				pane:split({
-					direction = "Bottom",
-					size = 0.35,
+					direction = "Right",
+					size = 0.4,
 				})
 			elseif not panes[1].is_zoomed then
 				panes[1].pane:activate()

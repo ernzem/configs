@@ -1,11 +1,11 @@
 theme = Atom One Light
 
-font-family = JetBrainsMono Nerd Font
+font-family = JetBrains Mono Medium
 font-feature="-calt, -liga, -dlig"
-font-size = 14.4
+font-size = 14
 
-font-thicken=true
-font-thicken-strength=120
+#font-thicken=true
+#font-thicken-strength=0
 
 adjust-cell-width = "-10%"
 adjust-cell-height= "5%"
