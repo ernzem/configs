@@ -17,7 +17,8 @@
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono Light,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono ,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
     // "editor.fontWeight": "460",
     "editor.bracketPairColorization.enabled": false,
@@ -32,10 +33,34 @@
             // "variables": "#101010",
             "comments": "#959595",
             "strings": "#008000",
+            "types": "#005c8a",
             "keywords": {
-                "foreground": "#8f3197",
-                "fontStyle": "bold"
-            }
+                "foreground": "#7c1386",
+                // "fontStyle": "bold"
+            },
+            "textMateRules": [
+                // {
+                    // "scope": [
+                    //     "entity.name.type.go",
+                    //     "storage.type..*.go",
+                    // ],
+                    // "settings": {
+                    //     "foreground": "#005c8a"
+                    // }
+                // },
+                {
+                    "scope": [
+                        "keyword.function.go",
+                        "keyword.type.go",
+                        "keyword.struct.go",
+                        "keyword.const.go",
+                        "keyword.interface.go"
+                    ],
+                    "settings": {
+                        "foreground": "#7c1386"
+                    }
+                }
+            ]
         },
         "[chalice-color-theme-light]": {
             "comments": "#707070",
@@ -69,8 +94,8 @@
             //     "tab.unfocusedActiveBorder": "#dddddd",
             //     "tab.unfocusedActiveBorderTop": "#dddddd",
             //     "statusBar.background":"#F0F0F0",
-            "statusBarItem.remoteBackground": "#C8C8C8",
-            "statusBarItem.remoteForeground": "#303030"
+            // "statusBarItem.remoteBackground": "#C8C8C8",
+            // "statusBarItem.remoteForeground": "#303030"
         },
     },
     "[html]": {
@@ -109,6 +134,5 @@
     "editor.parameterHints.enabled": false,
     "workbench.iconTheme": "chalice-icon-theme",
     "breadcrumbs.enabled": false,
-    "workbench.colorTheme": "Default Light Modern",
-    "workbench.editor.showTabs": "none"
+    "workbench.colorTheme": "Default Light Modern"
 }
