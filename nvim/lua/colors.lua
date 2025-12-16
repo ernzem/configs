@@ -18,31 +18,26 @@ local function change_colors(changes)
 end
 
 local function apply_light_changes()
+	-- local background_color = "#F9F9F9"
 	local background_color = "#FFFFFF"
-	-- local background_color = "#F8F8F8"
-	-- local background_color = "#F0F0F0"
-	local cursorLineNrBg = "#F0F0F0"
 	local ColorColumn = "#DDDDDD"
 	-- local DarkYellow = "#664200"
-	local DarkYellow = "#795E26"
-	-- local cyan = "#004e75"
-	local cyan = "#005c8a"
+	-- local DarkYellow = "#795E26"
+	local DarkYellow = "#b37f02"
+	local cyan = "#004e75"
+	-- local cyan = "#005c8a"
 	-- local green = "#008000"
-	local green = "#005900"
+	local green = "#005800"
+	local red = "#c4331d"
 	local selection = "#EEEEDA"
-	-- local blue = "#000ea3"
-	local blue = "#000095"
+	local blue = "#0000a3"
+	-- local blue = "#000095"
 	local grey = "#909090"
 	local violet = "#74287b"
-	-- local normal = "#202020"
-	local normal = "#101010"
-	-- local normal = "#171717"
-	-- local normal = "#181818"
 	local normal = "#000000"
-	-- local normal = "#001080"
-
-	local brown = "#8B4000"
-	local black = "#000000"
+	-- local sp = "#121212"
+	-- local brown = "#6B4423"
+	local brown = "#8B5A2B"
 
 	-- TODO: optimize replacing get with hardcoded values
 	-- local status_ln = get_hl(0, { name = "StatuslineNC" })
@@ -58,36 +53,43 @@ local function apply_light_changes()
 
 	set_hl(0, "Normal", { bg = background_color, fg = normal })
 	set_hl(0, "ColorColumn", { bg = "#F5F5F5" })
-	set_hl(0, "Statusline", { bg = background_color, fg = CommentHi.fg })
+	set_hl(0, "Statusline", { bg = background_color })
 	set_hl(0, "StatuslineNC", { bg = background_color })
-	set_hl(0, "WinBar", { bg = background_color, fg = black })
+	set_hl(0, "WinBar", { bg = background_color, fg = normal })
 	set_hl(0, "WinbarNC", { bg = background_color })
 	set_hl(0, "ColorColumn", { bg = ColorColumn })
 	set_hl(0, "Special", { fg = StatementHi.fg })
 	set_hl(0, "Cursorline", { bg = background_color })
-	set_hl(0, "CursorlineNr", { fg = violet, bold = true })
+	set_hl(0, "CursorlineNr", { fg = normal, bold = false })
 	set_hl(0, "Visual", { bg = selection })
 	set_hl(0, "MatchParen", { bg = selection })
 	set_hl(0, "NormalFloat", { bg = background_color })
-	set_hl(0, "Comment", { fg = grey })
+	set_hl(0, "Comment", { fg = grey, italic = false })
 	set_hl(0, "Function", { fg = blue, bold = false })
 	set_hl(0, "Keyword", { fg = violet, bold = true })
-	-- set_hl(0, "Keyword", { fg = black, bold = true })
 	set_hl(0, "type", { fg = cyan, bold = false })
-	-- set_hl(0, "type", { fg = DarkYellow, bold = false })
-	-- set_hl(0, "@variable.member", { fg = DarkYellow })
 	set_hl(0, "@type.builtin", { link = "type" })
+	-- set_hl(0, "Keyword", { fg = sp, bold = true })
 
-	set_hl(0, "@boolean", { fg = cyan, bold = false })
-	set_hl(0, "@number", { fg = cyan, bold = false })
+	set_hl(0, "@boolean", { fg = violet, bold = false })
+	set_hl(0, "@number", { fg = brown, bold = false })
+	-- set_hl(0, "@boolean", { fg = violet, bold = false })
+	-- set_hl(0, "@number", { fg = violet, bold = false })
 	set_hl(0, "@variable", { fg = normal })
+	set_hl(0, "@variable.member", { fg = cyan })
 	set_hl(0, "@constant", { fg = normal })
+	set_hl(0, "@constant.builtin", { fg = violet, underline = false })
 	set_hl(0, "@variable.builtin", { fg = violet, underline = false })
 	set_hl(0, "@punctuation", { fg = normal, italic = false })
 	set_hl(0, "@constructor", { link = "@punctuation" })
 	set_hl(0, "@punctuation.bracket", { link = "@punctuation" })
 	set_hl(0, "@punctuation.special", { link = "@punctuation" })
 	set_hl(0, "operator", { link = "@punctuation" })
+
+	set_hl(0, "DiagnosticError", { fg = red, bold = true })
+	set_hl(0, "DiagnosticWarn", { fg = DarkYellow, bold = true })
+	set_hl(0, "DiagnosticHint", { fg = blue, bold = true })
+	set_hl(0, "DiagnosticInfo", { fg = normal, italic = true })
 end
 
 local function apply_dark_changes()
@@ -113,7 +115,7 @@ local function apply_dark_changes()
 
 	local error = "#E06C75"
 	local warning = "#E5C07B"
-    local hint = "#FFFFFF"
+	local hint = "#FFFFFF"
 
 	change_colors({
 		[get_hl(0, { name = "Function" }).fg] = blue,

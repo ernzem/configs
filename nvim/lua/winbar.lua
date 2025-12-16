@@ -14,7 +14,7 @@ local hl_hint = "WinBarDiagnosticSignHint"
 local hl_info = "WinBarDiagnosticSignInfo"
 
 local opts = {
-	file_icon_default = "",
+	-- file_icon_default = "",
 	seperator = "⏵",
 	editor_state = "●",
 }
@@ -39,15 +39,15 @@ M.file_path = function()
 		file_type = ""
 	end
 
-	local icon, icon_cl = utils.file_icon(filename, file_type)
-	if icon ~= "" then
-		vim.api.nvim_set_hl(0, hl_file_icon, { fg = icon_cl, bg = M.winbar_bg, bold = false })
-	else
-        icon = opts.file_icon_default
-		vim.api.nvim_set_hl(2, hl_file_icon, { fg = M.winbar_fg, bg = M.winbar_bg, bold = false })
-	end
+	-- local icon, icon_cl = utils.file_icon(filename, file_type)
+	-- if icon ~= "" then
+	-- 	vim.api.nvim_set_hl(0, hl_file_icon, { fg = icon_cl, bg = M.winbar_bg, bold = false })
+	-- else
+	--        icon = opts.file_icon_default
+	-- 	vim.api.nvim_set_hl(2, hl_file_icon, { fg = M.winbar_fg, bg = M.winbar_bg, bold = false })
+	-- end
 
-	icon = "%#" .. hl_file_icon .. "#" .. icon .. "%*"
+	-- icon = "%#" .. hl_file_icon .. "#" .. icon .. "%*"
 
 	value = "%#" .. hl_path .. "#" .. " "
 	local file_path_list = {}
@@ -69,7 +69,8 @@ M.file_path = function()
 		value = value .. "%#" .. hl_path .. "#" .. file_path_list[i] .. " " .. sep .. " %*"
 	end
 
-	return value .. icon .. "%#" .. hl_file .. "#" .. " " .. filename
+	-- return value .. icon .. "%#" .. hl_file .. "#" .. " " .. filename
+	return value .. "%#" .. hl_file .. "#" .. filename
 end
 
 function M.lsp_info()
@@ -91,16 +92,18 @@ function M.lsp_info()
 	local info = ""
 
 	if count["errors"] ~= 0 then
-		errors = " %#" .. hl_error .. "#" .. utils.diagn_symbols.error .. " " .. count["errors"]
+		-- errors = " %#" .. hl_error .. "#" .. utils.diagn_symbols.error .. count["errors"]
+		errors = " %#" .. hl_error .. "#" .. count["errors"] .. utils.diagn_symbols.error
 	end
 	if count["warnings"] ~= 0 then
-		warnings = " %#" .. hl_warn .. "#" .. utils.diagn_symbols.warn .. " " .. count["warnings"]
+		warnings = " %#" .. hl_warn .. "#" .. count["warnings"] .. utils.diagn_symbols.warn
 	end
 	if count["hints"] ~= 0 then
-		hints = " %#" .. hl_hint .. "#" .. utils.diagn_symbols.hint .. " " .. count["hints"]
+		-- hints = " %#" .. hl_hint .. "#" .. utils.diagn_symbols.hint .. count["hints"]
+		hints = " %#" .. hl_hint .. "#" .. count["hints"] .. utils.diagn_symbols.hint
 	end
 	if count["info"] ~= 0 then
-		info = " %#" .. hl_info .. "#" .. utils.diagn_symbols.info .. " " .. count["info"]
+		info = " %#" .. hl_info .. "#" .. count["info"] .. utils.diagn_symbols.info
 	end
 
 	return errors .. warnings .. hints .. info .. " "
@@ -162,10 +165,10 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 		local hl_org_lsp_hint = vim.api.nvim_get_hl(0, { name = "DiagnosticHint" })
 		local hl_org_lsp_info = vim.api.nvim_get_hl(0, { name = "DiagnosticInfo" })
 
-		vim.api.nvim_set_hl(0, hl_error, { fg = hl_org_lsp_error.fg, bg = M.winbar_bg })
-		vim.api.nvim_set_hl(0, hl_warn, { fg = hl_org_lsp_warn.fg, bg = M.winbar_bg })
-		vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = M.winbar_bg })
-		vim.api.nvim_set_hl(0, hl_info, { fg = hl_org_lsp_info.fg, bg = M.winbar_bg })
+		vim.api.nvim_set_hl(0, hl_error, { fg = hl_org_lsp_error.fg, bg = M.winbar_bg, bold = true })
+		vim.api.nvim_set_hl(0, hl_warn, { fg = hl_org_lsp_warn.fg, bg = M.winbar_bg, bold = true })
+		vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = M.winbar_bg, bold = true })
+		vim.api.nvim_set_hl(0, hl_info, { fg = hl_org_lsp_info.fg, bg = M.winbar_bg, bold = false })
 
 		M.update()
 	end,

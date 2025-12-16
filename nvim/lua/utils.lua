@@ -1,10 +1,10 @@
 local M = {}
 
 M.diagn_symbols = {
-    error = "",
-    warn = "",
-    hint = "󰌶",
-    info = "󰋽",
+    error = "E",
+    warn = "W",
+    hint = "H",
+    info = "i",
 }
 
 M.exclude_filetype = {

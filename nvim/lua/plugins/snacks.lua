@@ -37,6 +37,11 @@ return {
 	opts = {
 		picker = {
 			enabled = true,
+            icons = {
+                files = {
+                    enabled = false,
+                }
+            },
 			sources= {
 				explorer = {
 					diagnostics = false,
