@@ -154,7 +154,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
         local hl_function = vim.api.nvim_get_hl(0, { name = "Function" })
 
         vim.api.nvim_set_hl(0, hl_mode_insert, { bg = hl_string.fg, fg = hl_normal.bg, bold = true })
-        vim.api.nvim_set_hl(0, hl_mode_normal, { fg = hl_comment.fg })
+        vim.api.nvim_set_hl(0, hl_mode_normal, { bg = hl_comment.fg, fg = hl_normal.bg, bold = true })
         vim.api.nvim_set_hl(0, hl_mode_visual, { bg = hl_function.fg, fg = hl_normal.bg, bold = true })
         vim.api.nvim_set_hl(0, hl_mode_other, { fg = hl_normal.fg, bold = true })
 
