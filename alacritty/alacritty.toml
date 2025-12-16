@@ -9,16 +9,14 @@ size = 14.4
 
 [font.offset]
 x = 0
-y = 4
+y = 2
 
 [font.glyph_offset]
 x = 0
-y = 2
+y = 1
 
 [font.normal]
 family = "JetBrains Mono"
-# family = "Fira Code"
-# style = "Regular"
 style = "Medium"
 
 [window]
