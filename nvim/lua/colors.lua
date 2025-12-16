@@ -88,8 +88,8 @@ local function apply_light_changes()
 
 	set_hl(0, "DiagnosticError", { fg = red, bold = true })
 	set_hl(0, "DiagnosticWarn", { fg = DarkYellow, bold = true })
-	set_hl(0, "DiagnosticHint", { fg = blue, bold = true })
-	set_hl(0, "DiagnosticInfo", { fg = normal, italic = true })
+	set_hl(0, "DiagnosticHint", { fg = blue, bold = false })
+	set_hl(0, "DiagnosticInfo", { fg = normal, italic = false })
 end
 
 local function apply_dark_changes()

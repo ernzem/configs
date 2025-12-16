@@ -167,7 +167,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 
 		vim.api.nvim_set_hl(0, hl_error, { fg = hl_org_lsp_error.fg, bg = M.winbar_bg, bold = true })
 		vim.api.nvim_set_hl(0, hl_warn, { fg = hl_org_lsp_warn.fg, bg = M.winbar_bg, bold = true })
-		vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = M.winbar_bg, bold = true })
+		vim.api.nvim_set_hl(0, hl_hint, { fg = hl_org_lsp_hint.fg, bg = M.winbar_bg, bold = false })
 		vim.api.nvim_set_hl(0, hl_info, { fg = hl_org_lsp_info.fg, bg = M.winbar_bg, bold = false })
 
 		M.update()
