@@ -50,12 +50,21 @@ if wezterm.target_triple:find("linux") ~= nil then
 	config.font = wezterm.font({
 		family = "JetBrains Mono",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-		weight = "DemiBold",
+		-- weight = "DemiBold",
 	})
 	config.font_size = 11.6
+	-- config.font_size = 12
 	config.window_decorations = "RESIZE"
 	config.freetype_load_target = "Light"
-	config.line_height = 1.2
+	config.freetype_load_flags = "NO_HINTING"
+	-- config.line_height = 1.2
+
+	-- Maximize on startup
+	local mux = wezterm.mux
+	wezterm.on("gui-startup", function()
+		local _, _, window = mux.spawn_window({})
+		window:gui_window():maximize()
+	end)
 end
 
 config.font_rules = {

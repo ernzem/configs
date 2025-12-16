@@ -20,8 +20,10 @@ sudo apt install -y curl
 sudo apt install -y ripgrep
 sudo apt install -y pandoc
 sudo apt install -y podman
+sudo apt install -y timeshift
+sudo apt install -y fprintd libpam-fprintd
 # sudo apt install -y keepassxc
-sudo apt install -y fd-find
+#KDE to enable fingerprint usage: sudo pam-auth-update --enable fprintd
 #~ sudo apt install -y geany geany-plugins-*
 # sudo apt install -y gpg
 # sudo apt install -y gnupg
@@ -31,7 +33,7 @@ sudo apt install -y fd-find
 # sudo apt install -y zsh
 # sudo apt install -y alacritty
 
-# Bat 
+# Bat
 sudo apt install -y bat
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
@@ -46,6 +48,9 @@ curl -sS https://starship.rs/install.sh | sh
  # Flatpak & Flathub
 sudo apt install -y flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub com.github.tchx84.Flatseal
+# flatpak install -y flathub org.mozilla.Thunderbird
+flatpak install -y flathub org.keepassxc.KeePassXC
 
 # FZF installation
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -57,17 +62,17 @@ download_latest_release "neovim/neovim" ".*linux.*x86_64.appimage\"" "${HOME}/.l
 chmod u+x ~/.local/bin/nvim
 
 # Wezterm https://wezterm.org/install/linux.html
-curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-sudo apt update && sudo apt install -y wezterm
+# curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+# echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+# sudo apt update && sudo apt install -y wezterm
 
 # VSCodium: https://vscodium.com/#install
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-    | gpg --dearmor \
-    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' \
-| sudo tee /etc/apt/sources.list.d/vscodium.sources
-sudo apt update && sudo apt install -y codium
+# wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+#     | gpg --dearmor \
+#     | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+# echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' \
+# | sudo tee /etc/apt/sources.list.d/vscodium.sources
+# sudo apt update && sudo apt install -y codium
 
 
 # VSCode: https://code.visualstudio.com/docs/setup/linux
