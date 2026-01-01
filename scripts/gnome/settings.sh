@@ -13,6 +13,8 @@ if [ ! -e ${GET_RELEASE_SCRIPT_PATH} ]; then
     exit 1
 fi
 
+mkdir -p "${TMP_FOLDER}"
+
 #================================GNOME==================================================
 echo "Applying gnome settings..."
 
