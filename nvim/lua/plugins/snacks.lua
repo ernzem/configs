@@ -39,7 +39,7 @@ return {
 			enabled = true,
             icons = {
                 files = {
-                    enabled = false,
+                    enabled = true,
                 }
             },
 			sources= {

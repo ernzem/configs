@@ -18,8 +18,8 @@ local function change_colors(changes)
 end
 
 local function apply_light_changes()
-	-- local background_color = "#F9F9F9"
-	local background_color = "#FFFFFF"
+	local background_color = "#FAFAFA"
+	-- local background_color = "#FFFFFF"
 	local ColorColumn = "#DDDDDD"
 	-- local DarkYellow = "#664200"
 	-- local DarkYellow = "#795E26"
@@ -27,11 +27,11 @@ local function apply_light_changes()
 	local cyan = "#004e75"
 	-- local cyan = "#005c8a"
 	-- local green = "#008000"
-	local green = "#005800"
+	local green = "#005100"
 	local red = "#c4331d"
 	local selection = "#EEEEDA"
 	local blue = "#0000a3"
-	-- local blue = "#000095"
+	-- local blue = "#325CC0"
 	local grey = "#909090"
 	local violet = "#74287b"
 	local normal = "#000000"

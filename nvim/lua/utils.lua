@@ -1,9 +1,9 @@
 local M = {}
 
 M.diagn_symbols = {
-    error = "E",
-    warn = "W",
-    hint = "H",
+    error = "e",
+    warn = "w",
+    hint = "h",
     info = "i",
 }
 

@@ -14,7 +14,7 @@ local hl_hint = "WinBarDiagnosticSignHint"
 local hl_info = "WinBarDiagnosticSignInfo"
 
 local opts = {
-	-- file_icon_default = "",
+	file_icon_default = "",
 	seperator = "⏵",
 	editor_state = "●",
 }
@@ -39,15 +39,15 @@ M.file_path = function()
 		file_type = ""
 	end
 
-	-- local icon, icon_cl = utils.file_icon(filename, file_type)
-	-- if icon ~= "" then
-	-- 	vim.api.nvim_set_hl(0, hl_file_icon, { fg = icon_cl, bg = M.winbar_bg, bold = false })
-	-- else
-	--        icon = opts.file_icon_default
-	-- 	vim.api.nvim_set_hl(2, hl_file_icon, { fg = M.winbar_fg, bg = M.winbar_bg, bold = false })
-	-- end
+	local icon, icon_cl = utils.file_icon(filename, file_type)
+	if icon ~= "" then
+		vim.api.nvim_set_hl(0, hl_file_icon, { fg = icon_cl, bg = M.winbar_bg, bold = false })
+	else
+	       icon = opts.file_icon_default
+		vim.api.nvim_set_hl(2, hl_file_icon, { fg = M.winbar_fg, bg = M.winbar_bg, bold = false })
+	end
 
-	-- icon = "%#" .. hl_file_icon .. "#" .. icon .. "%*"
+	icon = "%#" .. hl_file_icon .. "#" .. icon .. "%*"
 
 	value = "%#" .. hl_path .. "#" .. " "
 	local file_path_list = {}
@@ -69,8 +69,8 @@ M.file_path = function()
 		value = value .. "%#" .. hl_path .. "#" .. file_path_list[i] .. " " .. sep .. " %*"
 	end
 
-	-- return value .. icon .. "%#" .. hl_file .. "#" .. " " .. filename
-	return value .. "%#" .. hl_file .. "#" .. filename
+	return value .. icon .. "%#" .. hl_file .. "#" .. " " .. filename
+	-- return value .. "%#" .. hl_file .. "#" .. filename
 end
 
 function M.lsp_info()
