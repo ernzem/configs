@@ -17,6 +17,9 @@
   "window_decorations": "client",
   "title_bar": {
     "show_branch_icon": true,
+    "show_user_picture": false,
+    "show_user_menu": false,
+    "show_sign_in": false,
   },
   "toolbar": {
     "quick_actions": false,
@@ -31,9 +34,13 @@
   "theme": {
     "mode": "system",
     "light": "JetBrains Light",
-    "dark": "One Dark",
+    "dark": "JetBrains Dark",
   },
   "tabs": {
     "file_icons": true,
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false,
   },
 }
