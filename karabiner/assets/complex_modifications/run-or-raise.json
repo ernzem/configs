@@ -149,6 +149,51 @@
             ]
         },
         {
+            "description": "left_option + s  -> Zed",
+            "enabled": false,
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Zed.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + shift + s  -> Zed",
+            "enabled": false,
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Zed.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
             "description": "left_option + shift + s  -> VSCode",
             "manipulators": [
                 {
