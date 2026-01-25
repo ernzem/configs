@@ -37,7 +37,7 @@
     "dark": "JetBrains Dark",
   },
   "tabs": {
-    "file_icons": true,
+    "file_icons": false,
   },
   "tab_bar": {
     "show_nav_history_buttons": false,
