@@ -27,17 +27,19 @@ local function apply_light_changes()
 	local cyan = "#004e75"
 	-- local cyan = "#005c8a"
 	-- local green = "#008000"
-	local green = "#005100"
+	local green = "#006600"
 	local red = "#c4331d"
 	local selection = "#EEEEDA"
-	local blue = "#0000a3"
-	-- local blue = "#325CC0"
+	-- local blue = "#0000a3"
+	local blue = "#000099"
 	local grey = "#909090"
-	local violet = "#74287b"
-	local normal = "#000000"
-	-- local sp = "#121212"
+	-- local violet = "#74287b"
+	local violet = "#5e0066"
+	local normal = "#333333"
 	-- local brown = "#6B4423"
 	local brown = "#8B5A2B"
+	local black = "#000000"
+	local cursor_bg = "#F3F3F3"
 
 	-- TODO: optimize replacing get with hardcoded values
 	-- local status_ln = get_hl(0, { name = "StatuslineNC" })
@@ -53,28 +55,29 @@ local function apply_light_changes()
 
 	set_hl(0, "Normal", { bg = background_color, fg = normal })
 	set_hl(0, "ColorColumn", { bg = "#F5F5F5" })
-	set_hl(0, "Statusline", { bg = background_color })
-	set_hl(0, "StatuslineNC", { bg = background_color })
-	set_hl(0, "WinBar", { bg = background_color, fg = normal })
+	set_hl(0, "Statusline", { bg = background_color, fg = black })
+	set_hl(0, "StatuslineNC", { bg = background_color, fg = black })
+	set_hl(0, "WinBar", { bg = background_color, fg = black })
 	set_hl(0, "WinbarNC", { bg = background_color })
 	set_hl(0, "ColorColumn", { bg = ColorColumn })
 	set_hl(0, "Special", { fg = StatementHi.fg })
-	set_hl(0, "Cursorline", { bg = background_color })
-	set_hl(0, "CursorlineNr", { fg = normal, bold = false })
+	set_hl(0, "Cursorline", { bg = cursor_bg })
+	set_hl(0, "CursorlineNr", { fg = black, bg = cursor_bg, bold = false })
 	set_hl(0, "Visual", { bg = selection })
 	set_hl(0, "MatchParen", { bg = selection })
 	set_hl(0, "NormalFloat", { bg = background_color })
 	set_hl(0, "Comment", { fg = grey, italic = false })
 	set_hl(0, "Function", { fg = blue, bold = false })
-	set_hl(0, "Keyword", { fg = violet, bold = true })
+	set_hl(0, "Keyword", { fg = violet, bold = false })
 	set_hl(0, "type", { fg = cyan, bold = false })
+	-- set_hl(0, "type", { fg = violet, bold = false })
+	set_hl(0, "@type.definition", { fg = cyan, bold = false })
 	set_hl(0, "@type.builtin", { link = "type" })
 	-- set_hl(0, "Keyword", { fg = sp, bold = true })
 
-	set_hl(0, "@boolean", { fg = violet, bold = false })
+	set_hl(0, "@boolean", { fg = brown, bold = false })
 	set_hl(0, "@number", { fg = brown, bold = false })
-	-- set_hl(0, "@boolean", { fg = violet, bold = false })
-	-- set_hl(0, "@number", { fg = violet, bold = false })
+	set_hl(0, "@property", { fg = cyan, bold = false })
 	set_hl(0, "@variable", { fg = normal })
 	set_hl(0, "@variable.member", { fg = cyan })
 	set_hl(0, "@constant", { fg = normal })
@@ -90,6 +93,10 @@ local function apply_light_changes()
 	set_hl(0, "DiagnosticWarn", { fg = DarkYellow, bold = true })
 	set_hl(0, "DiagnosticHint", { fg = blue, bold = false })
 	set_hl(0, "DiagnosticInfo", { fg = normal, italic = false })
+
+	set_hl(0, "TabLine", { fg = normal })
+	set_hl(0, "TabLineFill", { bg = ColorColumn })
+	set_hl(0, "TabLineSel", { bg= background_color, fg = black})
 end
 
 local function apply_dark_changes()
@@ -243,7 +250,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = fix_default_colorscheme,
 })
 
--- vim.cmd("set bg=light")
+vim.cmd("set bg=light")
 -- vim.cmd("set bg=dark")
 vim.cmd("colorscheme default")
 fix_default_colorscheme()

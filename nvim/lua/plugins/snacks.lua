@@ -37,18 +37,27 @@ return {
 	opts = {
 		picker = {
 			enabled = true,
-            icons = {
-                files = {
-                    enabled = true,
-                }
-            },
-			sources= {
+			icons = {
+				files = {
+					enabled = true,
+				},
+			},
+			sources = {
 				explorer = {
 					diagnostics = false,
 					diagnostics_open = false,
 					git_status = false,
 					git_status_open = false,
 					git_untracked = false,
+				},
+			},
+			win = {
+				input = {
+					keys = {
+						-- to close the picker on ESC instead of going to normal mode,
+						-- add the following keymap to your config
+						["<Esc>"] = { "close", mode = { "n", "i" } },
+					},
 				},
 			},
 		},
