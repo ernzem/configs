@@ -21,7 +21,6 @@ sudo apt install -y ripgrep
 sudo apt install -y pandoc
 sudo apt install -y podman
 sudo apt install -y keepassxc
-sudo apt install -y geany geany-plugins-*w
 # sudo apt install -y gpg
 # sudo apt install -y gnupg
 # sudo apt install -y dconf-editor
@@ -54,7 +53,9 @@ download_latest_release "neovim/neovim" ".*linux.*x86_64.appimage\"" "${HOME}/.l
 chmod u+x ~/.local/bin/nvim
 
 # Wezterm https://wezterm.org/install/linux.html
-#~ sudo apt install -y $(latest_release_url "wezterm/wezterm" ".fedora39.x86_64rpmw\"")
+ curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+ echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+ sudo apt update && sudo apt install -y wezterm
 
 # VSCodium: https://vscodium.com/#install
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
