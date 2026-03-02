@@ -2,6 +2,7 @@
 	"bootstrapped": true,
 	"installed_packages":
 	[
+		"Default File Type",
 		"Git blame",
 		"Gomod",
 		"LSP",
@@ -12,6 +13,7 @@
 		"Package Control",
 		"TabsExtra",
 		"Telescope",
+		"Terraform",
 		"Theme - One",
 	],
 	"in_process_packages":

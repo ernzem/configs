@@ -3,7 +3,8 @@
 	"variables": {
 		"--background": "hsl(0,  100%,  100%)",
 		// "--background": "hsl(230,  2%,  90%)",
-		"--foreground": "hsl(0,  0%,  8%)",
+		// "--background": "#F6F6F6",
+		"--foreground": "hsl(0,  0%,  10%)",
 		"blue": "hsl(240,  70%,  35%)",
 		"green": "hsl(119,  50%,  30%)",
 		"grey2": "hsl(0, 0%, 56%)",

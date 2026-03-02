@@ -6,17 +6,17 @@
 	// "font_face": "JetBrains Mono Medium",
 	// "font_face": "JetBrains Mono Regular",
 	"font_face": "JetBrains Mono",
-	// "font_size": 15,
-	"font_size": 14,
-	// "font_size": 14.8,
+	"font_size": 15,
+	// "font_size": 14.1,
+	// "font_size": 14.9,
 	"font_options": [
 		"no_liga",
 		"no_clig",
 		"no_calt"
 	],
 	"word_wrap": true,
-	// "line_padding_top": 1,
-	// "line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"line_padding_bottom": 1,
 	"line_numbers": true,
 	// "show_full_path": true, // Shows full file path in title bar
 	"auto_complete": false,
