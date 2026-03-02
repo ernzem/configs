@@ -2,11 +2,11 @@
     "editor.minimap.enabled": false,
     "editor.scrollbar.verticalScrollbarSize": 8,
     "editor.scrollbar.horizontalScrollbarSize": 8,
-    "editor.fontSize": 14.8,
-    "editor.lineHeight": 1.4,
+    "editor.fontSize": 15,
+    "editor.lineHeight": 1.5,
     "workbench.activityBar.location": "hidden",
     "editor.stickyScroll.enabled": false,
-    "editor.hover.enabled": false,
+    "editor.hover.enabled": "off",
     "debug.inlineValues": "on",
     "editor.accessibilitySupport": "off",
     "workbench.startupEditor": "none",
@@ -16,11 +16,9 @@
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
-    // "editor.fontFamily": "JetBrains Mono Light,Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontFamily": "JetBrains Mono ,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono Medium,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
-    // "editor.fontWeight": "460",
+    // "editor.fontWeight": "450",
     "editor.bracketPairColorization.enabled": false,
     "editor.tokenColorCustomizations": {
         "[Default Dark Modern]": {
@@ -35,18 +33,19 @@
             "strings": "#008000",
             "types": "#005c8a",
             "keywords": {
-                "foreground": "#7c1386",
+                // "foreground": "#7c1386",
+                "foreground": "#5e0066"
                 // "fontStyle": "bold"
             },
             "textMateRules": [
                 // {
-                    // "scope": [
-                    //     "entity.name.type.go",
-                    //     "storage.type..*.go",
-                    // ],
-                    // "settings": {
-                    //     "foreground": "#005c8a"
-                    // }
+                // "scope": [
+                //     "entity.name.type.go",
+                //     "storage.type..*.go",
+                // ],
+                // "settings": {
+                //     "foreground": "#005c8a"
+                // }
                 // },
                 {
                     "scope": [
@@ -73,29 +72,17 @@
         }
     },
     "workbench.colorCustomizations": {
-        // "[Default Light Modern]": {
-        //     "editor.background": "#F0F0F0",
-        //     "sideBar.background": "#F0F0F0",
-        //     "titleBar.activeBackground": "#F0F0F0",
-        //     "statusBar.background":"#F0F0F0"
-        // },
-        "[chalice-color-theme-light]": {
-            //     // // "editor.background": "#F0F0F0",
-            //     "sideBar.background": "#F0F0F0",
-            //     "sideBar.border": "#dddddd",
-            //     "titleBar.activeBackground": "#DDDDDD",
-            //     "titleBar.border":"#dddddd",
-            //     "editorGroupHeader.tabsBorder": "#dddddd",
-            //     "tab.inactiveBackground": "#F0F0F0",
-            //     "tab.border": "#dddddd",
-            //     "tab.dragAndDropBorder": "#dddddd",
-            //     // "tab.activeBorderTop": "#dddddd",
-            //     "tab.unfocusedInactiveBackground": "#F0F0F0",
-            //     "tab.unfocusedActiveBorder": "#dddddd",
-            //     "tab.unfocusedActiveBorderTop": "#dddddd",
-            //     "statusBar.background":"#F0F0F0",
-            // "statusBarItem.remoteBackground": "#C8C8C8",
-            // "statusBarItem.remoteForeground": "#303030"
+        "[Default Light Modern]": {
+            "sideBar.background": "#F0F0F0",
+            "titleBar.activeBackground": "#F0F0F0",
+            "titleBar.border": "#F0F0F0",
+            "statusBar.background": "#F0F0F0",
+            "tab.inactiveBackground": "#F0F0F0",
+            "tab.activeBorder": "#FFFFFF",
+            "tab.activeBorderTop": "#DDDDDD",
+            "editorGroupHeader.tabsBackground": "#F0F0F0",
+            "scrollbar.shadow": "#FFFFFF",
+            // "panel.background": "#F0F0F0"
         },
     },
     "[html]": {
@@ -110,11 +97,11 @@
     "[css][scss][less]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
-    "workbench.editorAssociations": {
-        "*.md": "vscode.markdown.preview.editor"
-    },
+    // "workbench.editorAssociations": {
+        // "*.md": "vscode.markdown.preview.editor"
+    // },
     "git.blame.editorDecoration.enabled": false,
-    "git.blame.statusBarItem.enabled": true,
+    "git.blame.statusBarItem.enabled": false,
     "window.menuBarVisibility": "toggle",
     "diffEditor.hideUnchangedRegions.enabled": true,
     "window.title": "${dirty} ${activeEditorMedium}${separator}${folderName}",
@@ -129,10 +116,9 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "window.titleBarStyle": "native",
+    "window.titleBarStyle": "custom",
     "git.openRepositoryInParentFolders": "never",
     "editor.parameterHints.enabled": false,
-    "workbench.iconTheme": "chalice-icon-theme",
     "breadcrumbs.enabled": false,
     "workbench.colorTheme": "Default Light Modern"
 }

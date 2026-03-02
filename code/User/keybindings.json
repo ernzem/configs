@@ -83,6 +83,11 @@
         "key": "cmd+7",
         "command": "numberedBookmarks.jumpToBookmark7"
     },
+    {
+        "key": "cmd+k cmd+m",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "panelFocus"
+    },
     // {
     //     "key": "ctrl+shift+p",
     //     "command": "workbench.action.showCommands",
