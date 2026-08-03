@@ -50,8 +50,8 @@ key.set("i", "<C-/>", comment_line_in_insert, { expr = true, desc = "Toggle comm
 
 key.set("n", "<C-;>", ":!", { desc = "Run shell command" })
 
-key.set("i", "<C-j>", "<ESC>", { desc = "Exit insert mode" })
-key.set("t", "<C-j>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+-- key.set("i", "<C-j>", "<ESC>", { desc = "Exit insert mode" })
+-- key.set("t", "<C-j>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Print git branch name in buffer
 key.set(

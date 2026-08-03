@@ -44,6 +44,8 @@ return {
 			},
 			sources = {
 				explorer = {
+					replace_netrw = false, -- Replace netrw with the snacks explorer
+					trash = true, -- Use the system trash when deleting files
 					diagnostics = false,
 					diagnostics_open = false,
 					git_status = false,

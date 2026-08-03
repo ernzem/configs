@@ -18,14 +18,15 @@ local function change_colors(changes)
 end
 
 local function apply_light_changes()
-	local background_color = "#FAFAFA"
-	-- local background_color = "#FFFFFF"
+	-- local background_color = "#FAFAFA"
+	-- local background_color = "#F5F5F5"
+	local background_color = "#FFFFFF"
 	local ColorColumn = "#DDDDDD"
 	-- local DarkYellow = "#664200"
 	-- local DarkYellow = "#795E26"
 	local DarkYellow = "#b37f02"
-	local cyan = "#004e75"
-	-- local cyan = "#005c8a"
+	-- local cyan = "#004e75"
+	local cyan = "#005885"
 	-- local green = "#008000"
 	local green = "#006600"
 	local red = "#c4331d"
@@ -34,12 +35,12 @@ local function apply_light_changes()
 	local blue = "#000099"
 	local grey = "#909090"
 	-- local violet = "#74287b"
-	local violet = "#5e0066"
-	local normal = "#333333"
+	local violet = "#6d008f"
+	local normal = "#252525"
 	-- local brown = "#6B4423"
 	local brown = "#8B5A2B"
 	local black = "#000000"
-	local cursor_bg = "#F3F3F3"
+	local cursor_bg = "#EEEEEE"
 
 	-- TODO: optimize replacing get with hardcoded values
 	-- local status_ln = get_hl(0, { name = "StatuslineNC" })
@@ -73,6 +74,7 @@ local function apply_light_changes()
 	-- set_hl(0, "type", { fg = violet, bold = false })
 	set_hl(0, "@type.definition", { fg = cyan, bold = false })
 	set_hl(0, "@type.builtin", { link = "type" })
+	set_hl(0, "@function.builtin", { fg = blue, bold = false })
 	-- set_hl(0, "Keyword", { fg = sp, bold = true })
 
 	set_hl(0, "@boolean", { fg = brown, bold = false })
@@ -102,12 +104,13 @@ end
 local function apply_dark_changes()
 	-- https://github.com/spacelaxy/darkwaves/blob/main/themes/darkwaves-nebula.json/
 	local TitleHi = get_hl(0, { name = "Title" })
-	-- local NormalHi = get_hl(0, { name = "Normal" })
+	--  flocal NormalHi = get_hl(0, { name = "Normal" })
 	local HLComment = get_hl(0, { name = "Comment" })
 	local StatementHi = get_hl(0, { name = "Statement" })
 
-	-- local background = "#191b1f"
-	local background = "#181818"
+	local background = "#191b1f"
+	-- local background = "#303030"
+	-- local background = "#00000"
 	local normal = "#ABB2BF"
 	local blue = "#61AFEF"
 	local comment = "#5C6370"

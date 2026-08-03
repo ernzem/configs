@@ -38,10 +38,10 @@ return {
 		-- (Default) Only show the documentation popup when manually triggered
 		completion = {
 			trigger = { show_on_keyword = false },
-			list = {
-				preselect = true,
-				auto_insert = true,
-			},
+			-- list = {
+			-- 	preselect = true,
+			-- 	auto_insert = true,
+			-- },
 			documentation = { auto_show = false },
 		},
 
