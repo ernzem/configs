@@ -3,9 +3,14 @@ import = [
   "/opt/homebrew/lib/node_modules/alacritty-themes/themes/Google.light.toml"
 ]
 
+[colors.primary]
+background = "#FFFFFF"
+
 [font]
 # size = 14.8
-size = 14.4
+size = 15
+# size = 14.4
+# size =  14
 
 [font.offset]
 x = 0
@@ -16,8 +21,11 @@ x = 0
 y = 1
 
 [font.normal]
-family = "JetBrains Mono"
-style = "Medium"
+family = "JetBrainsMono Nerd Font"
+# family = "JetBrains Mono"
+style = "Regular"
+# style = "Light"
+# style = "Medium"
 
 [window]
 # decorations = "None"
