@@ -20,13 +20,13 @@ end)
 if wezterm.target_triple:find("darwin") ~= nil then
 	config.font = wezterm.font({
 		-- family = "Hack Nerd Font",
-		-- family = "JetBrains Mono",
+		family = "JetBrains Mono",
 		-- family = "JetBrains Mono Light",
 		-- family = "JetBrains Mono Regular",
-		family = "JetBrains Mono Medium",
+		-- family = "JetBrains Mono Medium",
 		-- family = "JetBrains Mono SemiBold",
 		-- family = "Fira Code Retina",
-		-- family = "Fira Code Medium",
+		-- family = "Fira Code",
 		harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 		-- weight = "DemiBold",
 		-- weight = "Bold",
@@ -34,16 +34,14 @@ if wezterm.target_triple:find("darwin") ~= nil then
 		-- stretch="UltraExpanded",
 		-- stretch="UltraCondensed",
 	})
-	-- config.font_size = 15
-	config.font_size = 14
+	config.font_size = 15
+	-- config.font_size = 14
 	-- config.font_size = 14.4
+	-- config.font_size = 14.9
 	-- config.window_decorations = "RESIZE"
 	config.freetype_load_target = "Light"
 	config.freetype_load_flags = "NO_HINTING"
-	-- config.freetype_load_flags = 'DEFAULT'
-	-- config.freetype_render_target = 'HorizontalLcd'
-	-- config.front_end = "OpenGL"
-	-- config.line_height = 1.1
+	config.line_height = 1.1
 end
 
 if wezterm.target_triple:find("linux") ~= nil then
@@ -86,13 +84,16 @@ config.window_padding = { left = "0cell", right = "0cell", top = "0cell", bottom
 
 -- config.color_scheme = "Default Dark (base16)"
 -- config.color_scheme = 'Catppuccin Mocha'
+-- config.color_scheme = 'Catppuccin Frappe'
 config.color_scheme = "Mexico Light (base16)"
+-- config.color_scheme = 'nord'
 -- config.color_scheme = 'Tokyo Night Storm'
+-- config.color_scheme = 'Tokyo Night'
 config.colors = {
 	-- background = "#14161b",
 	-- background = "#232326",
 	-- background = "#E6E6E6",
-	background = "#FFFFFF",
+	background = "#F5F5F5",
 	foreground = "#000000",
 }
 
@@ -117,12 +118,16 @@ config.keys = {
 			local panes = tab:panes_with_info()
 			if #panes == 1 then
 				pane:split({
-					direction = "Right",
-					size = 0.4,
+					direction = "Bottom",
+					size = 0.3,
 				})
 			elseif not panes[1].is_zoomed then
-				panes[1].pane:activate()
-				tab:set_zoomed(true)
+				if panes[1].is_active then
+					panes[2].pane:activate()
+				else
+					panes[1].pane:activate()
+					tab:set_zoomed(true)
+				end
 			elseif panes[1].is_zoomed then
 				tab:set_zoomed(false)
 				panes[2].pane:activate()
