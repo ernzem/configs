@@ -107,6 +107,28 @@
             ]
         },
         {
+            "description": "left_option + shift + w  -> Chrome",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option",
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Google Chrome.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
             "description": "left_option + w  -> Brave",
             "manipulators": [
                 {
@@ -136,6 +158,28 @@
                         "modifiers": {
                             "mandatory": [
                                 "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Firefox.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + shift + w  -> Firefox",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option",
+                                "left_shift"
                             ]
                         }
                     },
@@ -273,6 +317,27 @@
                     "to": [
                         {
                             "shell_command": "open '/Applications/VSCodium.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "left_option + n  -> Sublime Text",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_option"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open '/Applications/Sublime Text.app'"
                         }
                     ],
                     "type": "basic"

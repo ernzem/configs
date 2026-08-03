@@ -4,6 +4,145 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "left_option + s  -> Alacritty ",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Alacritty.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + n  -> Alacritty ",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Alacritty.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + n  -> Sublime Text",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> Alacritty ",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Alacritty.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> Zed",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Zed.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + shift + s  -> Zed",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Zed.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + shift + s  -> Sublime Text",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> Sublime Text",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> VSCodium",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/VSCodium.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + s  -> WezTerm",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/WezTerm.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left_option + d  -> WezTerm",
                         "manipulators": [
                             {
@@ -18,6 +157,7 @@
                     },
                     {
                         "description": "left_option + s  -> Zed",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -31,6 +171,7 @@
                     },
                     {
                         "description": "left_option + s  -> Goland",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -43,12 +184,53 @@
                         ]
                     },
                     {
-                        "description": "left_option + w  -> Firefox",
+                        "description": "left_option + w  -> Chrome",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Google Chrome.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + shift + w  -> Chrome",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["left_option", "left_shift"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Google Chrome.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + w  -> Firefox",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Firefox.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_option + shift + w  -> Firefox",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["left_option", "left_shift"] }
                                 },
                                 "to": [{ "shell_command": "open '/Applications/Firefox.app'" }],
                                 "type": "basic"
@@ -70,6 +252,7 @@
                     },
                     {
                         "description": "left_option + n  -> Typora",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -234,11 +417,11 @@
                         },
                         {
                             "from": { "key_code": "left_control" },
-                            "to": [{ "key_code": "left_command" }]
+                            "to": [{ "key_code": "left_control" }]
                         },
                         {
                             "from": { "key_code": "left_option" },
-                            "to": [{ "key_code": "left_control" }]
+                            "to": [{ "key_code": "left_command" }]
                         },
                         {
                             "from": { "key_code": "right_control" },
