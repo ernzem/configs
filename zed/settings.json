@@ -8,15 +8,50 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // Settings overrides to use when using Linux.
+  "terminal": {
+    "font_family": "JetBrains Mono",
+    "scrollbar": {
+      "show": "auto",
+    },
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)",
+  },
+  "vim_mode": false,
   "linux": {},
   // Settings overrides to use when using macOS.
-  "macos": {},
+  "macos": {
+    "ui_font_size": 15,
+    // "ui_font_weight": 400,
+    "buffer_font_size": 15,
+    // "buffer_font_weight": 350,
+    "buffer_font_family": "JetBrains Mono",
+  },
   // Settings overrides to use when using Windows.
   "windows": {},
 
   "window_decorations": "client",
   "title_bar": {
-    "show_branch_icon": true,
+    "show_branch_status_icon": true,
     "show_user_picture": false,
     "show_user_menu": false,
     "show_sign_in": false,
@@ -29,10 +64,8 @@
     "diagnostics": false,
     "metrics": false,
   },
-  "ui_font_size": 14,
-  "buffer_font_size": 14,
   "theme": {
-    "mode": "system",
+    "mode": "light",
     "light": "JetBrains Light",
     "dark": "JetBrains Dark",
   },
