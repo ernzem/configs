@@ -1,13 +1,13 @@
 theme = Atom One Light
 
-font-family = JetBrains Mono Medium
+font-family = JetBrains Mono
 font-feature="-calt, -liga, -dlig"
-font-size = 14
+font-size = 15
 
-#font-thicken=true
-#font-thicken-strength=0
+font-thicken=false
+font-thicken-strength=0
 
-adjust-cell-width = "-10%"
-adjust-cell-height= "5%"
+adjust-cell-width = "-5%"
+adjust-cell-height= "10%"
 quick-terminal-position=bottom
 keybind = shift+space=toggle_quick_terminal
