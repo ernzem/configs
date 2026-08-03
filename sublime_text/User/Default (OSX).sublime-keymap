@@ -1,8 +1,11 @@
 [
 	// LSP
 	{ "keys": ["shift+space"], "command": "lsp_format_document" },
-	{ "keys": ["f1"], "command": "lsp_code_actions" }, 
-	{ "keys": ["f2"], "command": "lsp_symbol_rename" },
-	{ "keys": ["f3"], "command": "lsp_symbol_definition" },
-	{ "keys": ["f4"], "command": "lsp_symbol_implementation" },
+	{ "keys": ["f9"], "command": "lsp_code_actions" }, 
+	{ "keys": ["f10"], "command": "lsp_symbol_rename" },
+	{ "keys": ["f11"], "command": "lsp_symbol_implementation" },
+	// { "keys": ["f12"], "command": "lsp_symbol_definition" },
+	{ "keys": ["alt+up"], "command": "swap_line_up" },
+	{ "keys": ["alt+down"], "command": "swap_line_down" },
+	// { "keys": ["alt"], "command": "toggle_bookmark", "args": {"toggle_line": true } },
 ]

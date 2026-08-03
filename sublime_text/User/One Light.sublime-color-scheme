@@ -1,14 +1,17 @@
 // Documentation at https://www.sublimetext.com/docs/color_schemes.html
 {
 	"variables": {
-		"--background": "hsl(0,  100%,  100%)",
+		"--background": "hsl(0,  0%,  100%)",
+		// "--bacskground": "hsl(0,  0%,  100%)",
 		// "--background": "hsl(230,  2%,  90%)",
 		// "--background": "#F6F6F6",
-		"--foreground": "hsl(0,  0%,  10%)",
-		"blue": "hsl(240,  70%,  35%)",
-		"green": "hsl(119,  50%,  30%)",
+		// "--foreground": "hsl(292,  1%,  10%)",
+		"blue": "hsl(240,  75%,  35%)",
+		"green": "hsl(119,  50%,  27%)",
+		// "green": "hsl(120,  90%,  22%)",
 		"grey2": "hsl(0, 0%, 56%)",
 		"cyan": "hsl(200, 100%, 25%)",
+		// "purple": "hsl(286,  95%,  30%)",
 		"purple": "hsl(295,  80%,  25%)",
 		// "orange2": "hsl(41,  99%,  38%)"
 		"orange2": "hsl( 41,  99%,  30%)",

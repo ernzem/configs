@@ -1,11 +1,18 @@
 // Documentation at https://www.sublimetext.com/docs/themes.html
 {
-	"variables":
-	{
-				"font_size_sm": 12,
+	"variables": {
+		"font_size_sm": 13,
 	},
-	"rules":
-	[
-		
+	"rules": [
+		{
+			"class": "tab_label",
+			"parents": [
+				{
+					"class": "tab_control",
+					"attributes": ["selected"]
+				}
+			],
+			// "fg": [5,5,5]
+		}
 	]
 }
