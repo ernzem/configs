@@ -3,22 +3,24 @@
     "editor.scrollbar.verticalScrollbarSize": 8,
     "editor.scrollbar.horizontalScrollbarSize": 8,
     "editor.fontSize": 15,
-    "editor.lineHeight": 1.5,
-    "workbench.activityBar.location": "hidden",
-    "editor.stickyScroll.enabled": false,
+    // "editor.fontSize": 14,
+    // "editor.lineHeight": 1.45,
     "editor.hover.enabled": "off",
     "debug.inlineValues": "on",
     "editor.accessibilitySupport": "off",
     "workbench.startupEditor": "none",
-    "editor.suggestOnTriggerCharacters": false,
+    "editor.suggestOnTriggerCharacters": true,
     "editor.quickSuggestions": {
         "other": "off"
     },
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
-    "editor.fontFamily": "JetBrains Mono Medium,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono Medium,Menlo, Monaco, 'Courier New', monospace",
+    // "editor.fontFamily": "JetBrains Mono ExtraLight,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono Light,Menlo, Monaco, 'Courier New', monospace",
     "editor.guides.indentation": false,
-    // "editor.fontWeight": "450",
+    // "editor.fontWeight": "400",
     "editor.bracketPairColorization.enabled": false,
     "editor.tokenColorCustomizations": {
         "[Default Dark Modern]": {
@@ -27,7 +29,7 @@
             // "strings": "#6A9955"
             "strings": "#70aa55"
         },
-        "[Default Light Modern]": {
+        "[Light Modern]": {
             // "variables": "#101010",
             "comments": "#959595",
             "strings": "#008000",
@@ -72,7 +74,8 @@
         }
     },
     "workbench.colorCustomizations": {
-        "[Default Light Modern]": {
+        "[Light Modern]": {
+            "editor.background": "#FFFFFF",
             "sideBar.background": "#F0F0F0",
             "titleBar.activeBackground": "#F0F0F0",
             "titleBar.border": "#F0F0F0",
@@ -81,7 +84,7 @@
             "tab.activeBorder": "#FFFFFF",
             "tab.activeBorderTop": "#DDDDDD",
             "editorGroupHeader.tabsBackground": "#F0F0F0",
-            "scrollbar.shadow": "#FFFFFF",
+            // "scrollbar.shadow": "#F8F8F8",
             // "panel.background": "#F0F0F0"
         },
     },
@@ -98,10 +101,10 @@
         "editor.defaultFormatter": "vscode.css-language-features"
     },
     // "workbench.editorAssociations": {
-        // "*.md": "vscode.markdown.preview.editor"
+    // "*.md": "vscode.markdown.preview.editor"
     // },
     "git.blame.editorDecoration.enabled": false,
-    "git.blame.statusBarItem.enabled": false,
+    "git.blame.statusBarItem.enabled": true,
     "window.menuBarVisibility": "toggle",
     "diffEditor.hideUnchangedRegions.enabled": true,
     "window.title": "${dirty} ${activeEditorMedium}${separator}${folderName}",
@@ -119,6 +122,22 @@
     "window.titleBarStyle": "custom",
     "git.openRepositoryInParentFolders": "never",
     "editor.parameterHints.enabled": false,
+    "errorLens.enabled": true,
+    "chat.disableAIFeatures": false,
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning"
+    ],
+    "redhat.telemetry.enabled": false,
+    "window.confirmSaveUntitledWorkspace": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "chat.viewSessions.orientation": "stacked",
+    "workbench.activityBar.location": "hidden",
+    "workbench.browser.showInTitleBar": false,
+    "editor.stickyScroll.enabled": false,
+    "workbench.colorTheme": "Light Modern",
+    "catppuccin.italicKeywords": false,
+    "catppuccin.italicComments": false,
     "breadcrumbs.enabled": false,
-    "workbench.colorTheme": "Default Light Modern"
+    "explorer.confirmDelete": false
 }
