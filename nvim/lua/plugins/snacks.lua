@@ -2,8 +2,8 @@ local h_layout = {
 	preset = "default",
 	layout = {
 		box = "horizontal",
-		height = 0.9,
-		width = 0.9,
+		height = 0.95,
+		width = 0.95,
 		{
 			box = "vertical",
 			border = "rounded",
@@ -11,7 +11,7 @@ local h_layout = {
 			{ win = "input", height = 1, border = "bottom" },
 			{ win = "list", border = "none" },
 		},
-		{ win = "preview", title = "{preview}", border = "rounded", width = 0.6 },
+		{ win = "preview", title = "{preview}", border = "rounded", width = 0.55 },
 	},
 }
 

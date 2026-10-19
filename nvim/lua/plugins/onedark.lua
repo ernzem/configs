@@ -5,7 +5,7 @@ return {
 	event = "VeryLazy",
 	config = function()
 		require("onedark").setup({
-			style = "warm",
+			style = "light",
 			toggle_style_key = "<leader>cs",
 			toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
 			-- toggle_style_list = { "warm", "warmer", "light" },
@@ -13,6 +13,9 @@ return {
 			code_style = {
 				comments = "none",
 			},
+			colors = {
+                bg0 = "#FAFAFA"
+            },
 			highlights = {
 				CursorLineNr = { bg = "$bg3", bold = true },
 				FoldColumn = { fg = "$grey", bg = "$bg0" },
