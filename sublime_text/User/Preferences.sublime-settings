@@ -18,7 +18,7 @@
 	// "line_padding_bottom": 1,
 	"line_numbers": true,
 	// "show_full_path": true, // Shows full file path in title bar
-	"auto_complete": false,
+	// "auto_complete": false,
 	"show_rel_path": true,
 	"animation_enabled": false,
 	"ignored_packages": ["Vintage",
