@@ -354,6 +354,38 @@
         "key": "cmd+k cmd+j",
         "command": "search.action.expandSearchResults"
     },
+    {
+        "key": "cmd+k shift+p",
+        "command": "workbench.view.extension.github-pull-requests"
+    },
+    {
+        "key": "cmd+k cmd+p",
+        "command": "pr.create"
+    },
+    {
+        "key": "cmd+k, cmd+enter",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                {
+                    "command": "git.stageAll"
+                },
+                {
+                    "command": "github.copilot.git.generateCommitMessage"
+                },
+                {
+                    "command": "git.commitAll"
+                },
+                // {
+                //     "command": "git.sync"
+                // }
+            ]
+        }
+    },
+    {
+        "key": "shift+k shift+p",
+        "command": "github:activePullRequest:welcome.focus"
+    }
     // {
     //     "key": "ctrl+shift+p",
     //     "command": "workbench.action.showCommands",
